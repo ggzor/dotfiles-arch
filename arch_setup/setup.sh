@@ -5,7 +5,7 @@ set -euo pipefail
 
 # Install required packages
 pacman -S --noconfirm "$KERNEL" "$KERNEL-headers" "$UCODE-ucode" \
-                      base-devel linux-firmware
+                      base-devel linux-firmware git
 
 # Setup user accounts
 printf "root:%s" "$ROOT_PASSWD" | chpasswd

@@ -7,6 +7,3 @@ iwd
 openssh
 wpa_supplicant
 
-# Utils
-git
-
