@@ -78,8 +78,7 @@ arch-chroot /mnt bash -c "
   cd dotfiles
   ./arch_setup/setup.sh
   cd ..
-  chown -R '$USER_NAME:users' dotfiles
-  mv dotfiles '/home/$USER_NAME/'"
+  rm -rf dotfiles"
 
 echo "Installation completed. You can reboot now."
 
