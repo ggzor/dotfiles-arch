@@ -44,9 +44,6 @@ mount "/dev/${DISK}1" /efi || true
 pacman -S --noconfirm refind
 refind-install
 
-# Update refind configuration
-printf "\nextra_kernel_version_strings %s\n" "$KERNEL" >> /efi/EFI/refind/refind.conf
-
 # Get partition uuid assuming root is on third partition
 UUID=$(lsblk -o NAME,PARTUUID | grep "${DISK}3" | cut -d' ' -f2)
 EFI_CONF="rw add_efi_memmap initrd=boot\\${UCODE}-ucode.img initrd=boot\\initramfs-%v.img"
@@ -58,4 +55,11 @@ printf "\"Boot with simple configuration\" \"root=PARTUUID=%s %s\"\n" \
 DOTFILES_PATH="/home/$USER_NAME/dotfiles"
 git clone https://github.com/ggzor/dotfiles "$DOTFILES_PATH"
 chown -R "${USER_NAME}:users" "$DOTFILES_PATH"
+
+# Finally reinstall refind
+mkinitcpio -p "$KERNEL"
+refind-install
+
+# Update refind configuration
+printf "\nextra_kernel_version_strings %s\n" "$KERNEL" >> /efi/EFI/refind/refind.conf
 
