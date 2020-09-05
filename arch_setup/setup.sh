@@ -8,9 +8,9 @@ pacman -S --noconfirm "$KERNEL" "$KERNEL-headers" "$UCODE-ucode" \
                       base-devel linux-firmware
 
 # Setup user accounts
-printf "root:$ROOT_PASSWD" | chpasswd
+printf "root:%s" "$ROOT_PASSWD" | chpasswd
 useradd -m -G wheel -g users "$USER_NAME"
-printf "$USER_NAME:$PASSWD" | chpasswd
+printf "%s:%s" "$USER_NAME" "$PASSWD" | chpasswd
 # Add user to sudoers
 echo '%wheel ALL=(ALL) ALL' | EDITOR='tee -a' visudo
 
@@ -44,7 +44,7 @@ pacman -S --noconfirm refind
 refind-install
 
 # Update refind configuration
-printf "\nextra_kernel_version_strings $KERNEL\n" >> /efi/EFI/refind/refind.conf
+printf "\nextra_kernel_version_strings %s\n" "$KERNEL" >> /efi/EFI/refind/refind.conf
 
 # Get partition uuid assuming root is on third partition
 UUID=$(lsblk -o NAME,PARTUUID | grep "${DISK}3" | cut -d' ' -f2)
