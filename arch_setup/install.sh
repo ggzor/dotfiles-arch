@@ -75,10 +75,10 @@ cp -R dotfiles "/mnt"
 # Run setup
 arch-chroot /mnt bash -c "
   set -euo pipefail
-  chown -R '$USER_NAME:users' dotfiles
   cd dotfiles
   ./arch_setup/setup.sh
   cd ..
+  chown -R '$USER_NAME:users' dotfiles
   mv dotfiles '/home/$USER_NAME/'"
 
 echo "Installation completed. You can reboot now."
