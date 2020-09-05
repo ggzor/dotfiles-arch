@@ -58,8 +58,16 @@ mount "${DEVICE}3" /mnt
 # Install only base package
 pacstrap /mnt base
 
+# Get created partition uuids
+UUIDS=( $(lsblk -o NAME,UUID | grep "$DISK" | tail -3 | cut -d' ' -f2 | tr '\n' ' ') )
+export EFI_UUID=${UUIDS[0]}
+export SWAP_UUID=${UUIDS[1]}
+export ROOT_UUID=${UUIDS[2]}
+
 # Generate fstab file
 genfstab -U /mnt >> /mnt/etc/fstab
+printf "\n#efi\nUUID=%s /efi vfat defaults 0 2\n" "$EFI_UUID" >> /mnt/etc/fstab
+printf "\n#swap\nUUID=%s none swap defaults 0 0\n" "$SWAP_UUID" >> /mnt/etc/fstab
 
 # Copy dotfiles
 cp -R dotfiles "/mnt"
