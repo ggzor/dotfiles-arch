@@ -1,0 +1,12 @@
+# Editor
+vim
+
+# Network
+dhcpcd
+iwd
+openssh
+wpa_supplicant
+
+# Utils
+git
+
