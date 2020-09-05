@@ -7,9 +7,9 @@ declare -A REQUIRED_VARS
 REQUIRED_VARS=(
   [DISK]="WARNING: All device data will be deleted. Be sure to backup your data.
 Example: sda"
-  [SWAP]="The amount of swap space in GiB. You should omit the GiB unit. Example: 4"
-  [KERNEL]="It should be set to either linux or linux-lts"
-  [UCODE]="It should be set to either amd or intel"
+  [SWAP]="The amount of swap space in GiB. You must omit the GiB unit. Example: 4"
+  [KERNEL]="It must be set to either linux or linux-lts"
+  [UCODE]="It must be set to either amd or intel"
   [ROOT_PASSWD]="This is the root password.
 Setting root password in a variable is safe as long as you set it inside archiso.
 It will be erased after root password is changed."
@@ -47,10 +47,10 @@ parted --script $DEVICE \
   print
 
 # Create file systems without asking for confirmation
-yes |  mkfs.fat -F32 "${DEVICE}1" \
-    && mkfs.ext4 "${DEVICE}2" \
-    && mkfs.ext4 "${DEVICE}3" \
-    && mkswap "${DEVICE}2"
+mkfs.fat -F32 "${DEVICE}1"
+mkfs.ext4 -F "${DEVICE}2"
+mkfs.ext4 -F "${DEVICE}3"
+mkswap "${DEVICE}2"
 
 # Mount root partition
 mount "${DEVICE}3" /mnt
