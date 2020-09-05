@@ -74,6 +74,7 @@ cp -R dotfiles "/mnt"
 
 # Run setup
 arch-chroot /mnt bash -c "
+  set -euo pipefail
   chown -R '$USER_NAME:users' dotfiles
   cd dotfiles
   ./arch_setup/setup.sh
