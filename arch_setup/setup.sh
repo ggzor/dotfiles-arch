@@ -54,6 +54,3 @@ printf "\"Boot with simple configuration\" \"root=PARTUUID=%s %s\"\n" \
        "$UUID" "$EFI_CONF" \
        > /boot/refind_linux.conf
 
-# Update initrd
-mkinitcpio -p "$KERNEL"
-
