@@ -21,7 +21,7 @@ PASSWD=''
 unset PASSWD
 
 # Install pacman packages
-./install_packages.sh
+./arch_setup/install_packages.sh
 
 # Download yay
 git clone https://aur.archlinux.org/yay.git /yay

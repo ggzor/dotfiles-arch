@@ -7,5 +7,5 @@ PACKAGES=$(cat './packages.txt' | sed '/^$/d' | grep -v '^#' | tr '\n' ' ')
 pacman -S --noconfirm $PACKAGES
 
 # Run extra install commands
-./packages.sh
+./arch_setup/packages.sh
 

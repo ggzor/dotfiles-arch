@@ -5,7 +5,8 @@ set -euo pipefail
 
 declare -A REQUIRED_VARS
 REQUIRED_VARS=(
-  [DISK]="Example: sda"
+  [DISK]="WARNING: All device data will be deleted. Be sure to backup your data.
+Example: sda"
   [SWAP]="The amount of swap space in GiB. You should omit the GiB unit. Example: 4"
   [KERNEL]="It should be set to either linux or linux-lts"
   [UCODE]="It should be set to either amd or intel"
@@ -61,10 +62,15 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Copy dotfiles
-USER_HOME="/home/$USER_NAME"
-mkdir -p "$USER_HOME"
-cp -R dotfiles "/mnt/$USER_HOME"
+cp -R dotfiles "/mnt"
 
 # Run setup
-arch-chroot /mnt bash -c "cd /mnt/$USER_HOME/dotfiles; ./setup.sh"
+arch-chroot /mnt bash -c "
+  chown -R '$USER_NAME:users' dotfiles
+  cd dotfiles
+  ./arch_setup/setup.sh
+  cd ..
+  mv dotfiles '/home/$USER_NAME/'"
+
+echo "Installation completed. You can reboot now."
 
