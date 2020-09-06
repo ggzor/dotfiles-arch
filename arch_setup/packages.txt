@@ -1,9 +1,25 @@
 # Editor
 vim
 
+# GUI
+glu
+kitty
+mesa
+qtile
+xorg-server
+xorg-xrandr
+xorg-xinit
+xterm
+
 # Network
 dhcpcd
 iwd
+netctl
 openssh
 wpa_supplicant
 
+# Utils
+bat
+fd
+fzf
+tmux
