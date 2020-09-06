@@ -1,0 +1,5 @@
+# Fonts
+nerd-fonts-jetbrains-mono
+
+# Utilities
+glslviewer-git
