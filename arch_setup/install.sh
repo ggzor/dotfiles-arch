@@ -23,6 +23,7 @@ Example: en_US.UTF-8"
 Example: America/Mexico_City"
   [KEYMAP]="The keyboard layout. All keyboards layouts can be found in /usr/share/kbd/keymaps
 Examples: us, la-latin1"
+  [XORG_KEYMAP]="The keyboard layout for xorg. Examples: us, latam"
 )
 
 # Check existence of each variable
