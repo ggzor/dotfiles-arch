@@ -1,3 +1,11 @@
+# Browser
+# Controversial, but this is the browser I use for now
+google-chrome
+
+# Code editors
+neovim-nightly
+visual-studio-code-insiders
+
 # Fonts
 nerd-fonts-jetbrains-mono
 
