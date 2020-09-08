@@ -14,7 +14,9 @@ else
 fi
 
 # Install packages
-yay -S $PACKAGES
+# Update system before installing a new package
+sudo pacman -Syu --noconfirm
+yay -S --norebuild --nodiffmenu --batchinstall $PACKAGES
 
 # Run extra install commands
 ./arch_setup/aur_packages.sh
