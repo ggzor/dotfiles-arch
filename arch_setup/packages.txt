@@ -1,3 +1,10 @@
+# Development
+docker
+go
+python
+rustup
+rust-analyzer
+
 # Editor
 vim
 
@@ -6,6 +13,9 @@ glu
 kitty
 mesa
 qtile
+ttf-roboto
+noto-fonts
+noto-fonts-emoji
 xorg-server
 xorg-xrandr
 xorg-xinit
@@ -14,12 +24,19 @@ xterm
 # Network
 dhcpcd
 iwd
+firewalld
 netctl
 openssh
 wpa_supplicant
 
 # Utils
 bat
+dialog
 fd
 fzf
+gzip
+man
 tmux
+unzip
+zsh
+
