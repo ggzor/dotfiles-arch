@@ -5,14 +5,16 @@ python
 rustup
 rust-analyzer
 
+# Desktop
+qtile
+kitty
+
 # Editor
 vim
 
 # GUI
 glu
-kitty
 mesa
-qtile
 ttf-roboto
 noto-fonts
 noto-fonts-emoji
