@@ -33,6 +33,7 @@ wpa_supplicant
 
 # Utils
 bat
+brightnessctl
 dialog
 fd
 fzf
