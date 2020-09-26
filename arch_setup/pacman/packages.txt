@@ -52,6 +52,7 @@ python-pynvim
 
 # Utils
 bat
+brightnessctl
 dialog
 exa
 fd
