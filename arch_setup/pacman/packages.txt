@@ -1,4 +1,11 @@
+# Audio
+alsa-utils
+pavucontrol
+pulseaudio
+pulseaudio-alsa
+
 # Development
+clang
 docker
 go
 python
@@ -6,21 +13,27 @@ rustup
 rust-analyzer
 
 # Desktop
-qtile
+brightnessctl
+flameshot
+inkscape
 kitty
+qtile
 
 # Editor
 vim
 
 # GUI
+feh
 glu
 mesa
 ttf-roboto
 noto-fonts
 noto-fonts-emoji
+xcb-util-cursor
 xorg-server
 xorg-xrandr
 xorg-xinit
+xsettingsd
 xterm
 
 # Network
@@ -31,14 +44,30 @@ netctl
 openssh
 wpa_supplicant
 
+# Python global packages
+python-pywal
+python-pipx
+python-poetry
+python-pynvim
+
 # Utils
 bat
 dialog
+exa
 fd
+ffmpeg
 fzf
+gifski
 gzip
 man
+neofetch
+peek
+obs-studio
 tmux
+tree
+usbutils
 unzip
+xclip
+zip
 zsh
 

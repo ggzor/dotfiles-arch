@@ -77,7 +77,7 @@ cp -R dotfiles "/mnt"
 arch-chroot /mnt bash -c "
   set -euo pipefail
   cd dotfiles
-  ./arch_setup/setup.sh
+  ./arch_setup/arch/setup.sh
   cd ..
   rm -rf dotfiles"
 

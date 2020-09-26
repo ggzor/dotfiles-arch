@@ -6,8 +6,15 @@ google-chrome
 neovim-nightly
 visual-studio-code-insiders
 
+# GUI Customization
+awesome-git
+xcursor-sweet
+
 # Fonts
 nerd-fonts-jetbrains-mono
 
 # Utilities
+fnm-bin
 glslviewer-git
+picom-ibhagwan-git
+

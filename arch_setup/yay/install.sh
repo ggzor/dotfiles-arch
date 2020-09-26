@@ -2,11 +2,16 @@
 
 set -euo pipefail
 
+YAY_PATH="$HOME/.yay"
+
 # Load packages from list
-PACKAGES=$(cat './arch_setup/aur_packages.txt' | sed '/^$/d' | grep -v '^#' | tr '\n' ' ')
+PACKAGES=$(cat './arch_setup/yay/packages.txt' \
+          | sed '/^$/d' | grep -v '^#' | tr '\n' ' ')
 
 if ! which yay &> /dev/null; then
-  cd "$HOME/.yay"
+  echo "Installing yay..."
+  git clone https://yay.archlinux.org/yay.git "$YAY_PATH"
+  cd "$YAY_PATH"
   makepkg -si
   cd -
 else
@@ -19,5 +24,5 @@ sudo pacman -Syu --noconfirm
 yay -S --norebuild --nodiffmenu --batchinstall $PACKAGES
 
 # Run extra install commands
-./arch_setup/aur_packages.sh
+./arch_setup/yay/config.sh
 

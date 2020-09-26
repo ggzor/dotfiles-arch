@@ -23,11 +23,6 @@ unset PASSWD
 # Install pacman packages
 ./arch_setup/install_packages.sh
 
-# Download yay
-YAY_PATH="/home/$USER_NAME/.yay"
-git clone https://aur.archlinux.org/yay.git "$YAY_PATH"
-chown -R "${USER_NAME}:users" "$YAY_PATH"
-
 # Setup locale and timezone
 echo "$LOCALE $ENCODING" > /etc/locale.gen
 locale-gen
