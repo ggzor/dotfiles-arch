@@ -18,6 +18,8 @@ flameshot
 inkscape
 kitty
 qtile
+thunar
+zathura
 
 # Editor
 vim
