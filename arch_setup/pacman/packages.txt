@@ -1,44 +1,58 @@
-# Audio
+### Audio
 alsa-utils
-pavucontrol
 pulseaudio
 pulseaudio-alsa
 
-# Development
+### CLI Standard Utils
+dialog
+ffmpeg
+gzip
+man
+tmux
+tree
+usbutils
+unzip
+vim
+zip
+zsh
+
+### CLI Utils
+bat           # cat replacement with syntax highlighting
+brightnessctl # control brightness from command line
+exa           # ls and tree replacement with colors and icons
+fd            # find replacement with better user experience
+fzf           # powerful and really useful fuzzy selector
+neofetch      # cli system info viewer
+xclip         # clipboard manager
+
+### Development
 clang
 docker
+glu
 go
+mesa
 python
 rustup
 rust-analyzer
+tk
 
-# Desktop
-brightnessctl
-flameshot
-inkscape
-kitty
-qtile
-thunar
-zathura
+### Desktop
+feh         # Simple image viewer
+flameshot   # Powerful screen shot utility
+inkscape    # Open source vector graphics editor
+kitty       # Featureful terminal emulator
+obs-studio  # Powerful screen recorder
+pavucontrol # Pulseaudio volume control
+peek        # Simple screen recorder
+thunar      # Customizable file manager
+zathura     # Customizable document viewer
 
-# Editor
-vim
-
-# GUI
-feh
-glu
-mesa
+### Fonts
 ttf-roboto
 noto-fonts
 noto-fonts-emoji
-xcb-util-cursor
-xorg-server
-xorg-xrandr
-xorg-xinit
-xsettingsd
-xterm
 
-# Network
+### Network
 dhcpcd
 iwd
 firewalld
@@ -46,31 +60,21 @@ netctl
 openssh
 wpa_supplicant
 
-# Python global packages
-python-pywal
-python-pipx
-python-poetry
-python-pynvim
+### Other
+gifski  # Required by peek to generate good quality gifs
+tumbler # Required by thunar to generate thumbnails
 
-# Utils
-bat
-brightnessctl
-dialog
-exa
-fd
-ffmpeg
-fzf
-gifski
-gzip
-man
-neofetch
-peek
-obs-studio
-tmux
-tree
-usbutils
-unzip
-xclip
-zip
-zsh
+### Python global packages
+python-pywal  # Global color scheme setter
+python-pipx   # Useful python executable installer
+python-poetry # Virtual environment manager
+python-pynvim # nvim python support
+
+### xorg
+xcb-util-cursor
+xorg-server
+xorg-xrandr
+xorg-xinit
+xsettingsd
+xterm
 
