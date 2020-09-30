@@ -22,6 +22,7 @@ brightnessctl # control brightness from command line
 exa           # ls and tree replacement with colors and icons
 fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
+moreutils     # extra cli utils (especially vidir)
 neofetch      # cli system info viewer
 xclip         # clipboard manager
 
