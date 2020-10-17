@@ -905,12 +905,6 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 " General
 " Save file with ñs
 noremap <silent>ñs :silent w<CR>
-" Quit with Ctrl-q
-noremap <silent><C-q> :q<CR>
-" Scroll down with Ctrl-j
-noremap <C-j> <C-d>
-" Scroll up with Ctrl-k
-noremap <C-k> <C-u>
 
 " Filter selection with program
 nnoremap <silent> <leader>1 :set opfunc=ProgramFilter<cr>g@
@@ -925,7 +919,7 @@ noremap , J
 noremap E ge
 
 " Navigate to alternate file
-nnoremap <silent> ña <C-^>
+nnoremap <silent> <leader>a <C-^>
 
 " Delete buffer
 nnoremap <silent> ñQ :<C-u>bd<CR>
@@ -946,8 +940,8 @@ if s:use_operators
 
   " vim-sandwich
   " add
-  nmap ñi <Plug>(operator-sandwich-add)
-  xmap ñi <Plug>(operator-sandwich-add)
+  nmap ña <Plug>(operator-sandwich-add)
+  xmap ña <Plug>(operator-sandwich-add)
   " delete
   nmap ñd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
   xmap ñd <Plug>(operator-sandwich-delete)
@@ -966,10 +960,10 @@ if s:use_operators
 endif
 
 if s:use_easymotion
-  map f <Plug>(easymotion-fl)
-  map F <Plug>(easymotion-Fl)
-  map t <Plug>(easymotion-tl)
-  map T <Plug>(easymotion-Tl)
+  map ñf <Plug>(easymotion-fl)
+  map ñF <Plug>(easymotion-Fl)
+  map ñt <Plug>(easymotion-tl)
+  map ñT <Plug>(easymotion-Tl)
 
   map ñw <Plug>(easymotion-wl)
   map ñb <Plug>(easymotion-bl)
@@ -988,8 +982,8 @@ if s:use_insert
 endif
 
 if s:use_fzf
-  nnoremap <silent> ñf :call FZFFiles('', 0, 1)<CR>
-  nnoremap <silent> ñF :call FZFFiles('', 1, 1)<CR>
+  nnoremap <silent> <leader>f :call FZFFiles('', 0, 1)<CR>
+  nnoremap <silent> <leader>F :call FZFFiles('', 1, 1)<CR>
   nnoremap <silent> ñj :Buffers<CR>
   nnoremap <silent> ñl :BLines<CR>
   nnoremap <silent> ññ :History:<CR>
@@ -1107,7 +1101,7 @@ if g:env == 'vim'
   autocmd FileType qf nmap <silent> <buffer> u :call RestoreQFItem()<cr>
 
   " vim-test
-  nnoremap <silent> ñt :<C-u>w <bar> TestNearest<CR>
+  " nnoremap <silent> ñt :<C-u>w <bar> TestNearest<CR>
   " nnoremap <silent> ñtf :<C-u>w <bar> TestFile<CR>
   " nnoremap <silent> ñtj :<C-u>TestVisit<CR>
 

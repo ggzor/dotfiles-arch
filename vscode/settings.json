@@ -37,6 +37,16 @@
   // Don't look after this line, it's really ugly to make
   // vscode work like vim :(
   "vim.normalModeKeyBindingsNonRecursive": [
+    // Quit with ñq
+    {
+      "before": [
+        "ñ",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
     // Save with ñs
     {
       "before": [
