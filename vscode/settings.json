@@ -1,0 +1,359 @@
+{
+  // Experimental (may disable later)
+  "editor.formatOnType": true,
+  "editor.formatOnSaveMode": "modifications",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 3,
+  // Edition Settings
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 88,
+  // Visual settings
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "window.dialogStyle": "custom",
+  "window.titleBarStyle": "custom",
+  "workbench.colorTheme": "Night Owl",
+  "workbench.sideBar.location": "right",
+  // Extensions
+  // VIM
+  "vim.changeWordIncludesWhitespace": true,
+  "vim.easymotion": true,
+  "vim.leader": " ",
+  "vim.replaceWithRegister": true,
+  "vim.surround": true,
+  "vim.visualstar": true,
+  // Required for remapped esc to work
+  "keyboard.dispatch": "keyCode",
+  "vim.handleKeys": {
+    "<C-f>": false,
+  },
+  // Mappings at the end, too noisy
+  // Don't look after this line, it's really ugly to make
+  // vscode work like vim :(
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Save with ñs
+    {
+      "before": [
+        "ñ",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    },
+    // Open commands with ññ
+    {
+      "before": [
+        "ñ",
+        "ñ"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
+    },
+    // Open file
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    // Replace with register (similar to vim subversive)
+    {
+      "before": [
+        "s"
+      ],
+      "after": [
+        "\"",
+        "\"",
+        "g",
+        "r"
+      ]
+    },
+    // surround
+    {
+      "before": [
+        "ñ",
+        "a"
+      ],
+      "after": [
+        "y",
+        "s"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "d"
+      ],
+      "after": [
+        "d",
+        "s"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "r"
+      ],
+      "after": [
+        "c",
+        "s"
+      ]
+    },
+    // easymotion 
+    {
+      "before": [
+        "ñ",
+        "f"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "f"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "F"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "F"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "t"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "t"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "T"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "T"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "b"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "b"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "w"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "e"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "e"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "g",
+        "e"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "g",
+        "e"
+      ]
+    },
+    {
+      "before": [
+        "K",
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "k",
+      ]
+    },
+    {
+      "before": [
+        "J",
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "j",
+      ]
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // surround
+    {
+      "before": [
+        "ñ",
+        "a"
+      ],
+      "after": [
+        "S"
+      ]
+    },
+    // easymotion but in visual mode
+    {
+      "before": [
+        "ñ",
+        "f"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "f"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "F"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "F"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "t"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "t"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "T"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "T"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "b"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "b"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "w"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "e"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "e"
+      ]
+    },
+    {
+      "before": [
+        "ñ",
+        "g",
+        "e"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "g",
+        "e"
+      ]
+    },
+    {
+      "before": [
+        "K",
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "k",
+      ]
+    },
+    {
+      "before": [
+        "J",
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "j",
+      ]
+    },
+  ],
+  "vim.operatorPendingModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "s"
+      ],
+      "after": [
+        "g",
+        "r"
+      ]
+    }
+  ],
+}
