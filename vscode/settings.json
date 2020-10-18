@@ -1,29 +1,54 @@
 {
+  // May change frequently
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
+  "workbench.colorTheme": "Night Owl",
+
   // Experimental (may disable later)
-  "editor.formatOnType": true,
-  "editor.formatOnSaveMode": "modifications",
+  "editor.formatOnType": true, // Check performance
+  "editor.formatOnSaveMode": "modifications", // Maybe doesn't work well sometimes?
+  "window.menuBarVisibility": "toggle", // Maybe hidden will be better?
+  // Maybe 3 is too low?
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.value": 3,
+  // To not lose cursor in sight
+  "editor.cursorSurroundingLines": 1,
+  // Cleaner vscode
+  "breadcrumbs.enabled": false,
+  "editor.scrollbar.verticalScrollbarSize": "0",
+  "editor.renderIndentGuides": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "[python]": {
+    "editor.renderIndentGuides": true
+  },
+  "workbench.statusBar.visible": false,
+
   // Edition Settings
+  "editor.detectIndentation": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
+  "editor.suggestSelection": "first",
   "editor.wordWrapColumn": 88,
+
   // Visual settings
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
   "window.dialogStyle": "custom",
-  "window.titleBarStyle": "custom",
-  "workbench.colorTheme": "Night Owl",
+  // Better with a tiling window manager
+  "window.titleBarStyle": "native",
+  "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
+
   // Extensions
+  // Intellicode
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   // VIM
   "vim.changeWordIncludesWhitespace": true,
   "vim.easymotion": true,
+  "vim.easymotionKeys": "fasjuirwzmkhdoe",
   "vim.leader": " ",
   "vim.replaceWithRegister": true,
   "vim.surround": true,
@@ -67,14 +92,60 @@
         "workbench.action.showCommands"
       ]
     },
-    // Open file
+    // Rename with ñc
     {
       "before": [
-        "<leader>",
+        "ñ",
+        "c"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    // Open file with ñf
+    {
+      "before": [
+        "ñ",
         "f"
       ],
       "commands": [
         "workbench.action.quickOpen"
+      ]
+    },
+    // Go to right split
+    {
+      "before": [
+        "<C-l>",
+      ],
+      "commands": [
+        "workbench.action.navigateRight"
+      ]
+    },
+    // Go to left split
+    {
+      "before": [
+        "<C-h>",
+      ],
+      "commands": [
+        "workbench.action.navigateLeft"
+      ]
+    },
+    // Go to up split
+    {
+      "before": [
+        "<C-k>",
+      ],
+      "commands": [
+        "workbench.action.navigateUp"
+      ]
+    },
+    // Go to down split
+    {
+      "before": [
+        "<C-j>",
+      ],
+      "commands": [
+        "workbench.action.navigateDown"
       ]
     },
     // Replace with register (similar to vim subversive)
@@ -123,7 +194,6 @@
     // easymotion 
     {
       "before": [
-        "ñ",
         "f"
       ],
       "after": [
@@ -134,7 +204,6 @@
     },
     {
       "before": [
-        "ñ",
         "F"
       ],
       "after": [
@@ -145,7 +214,6 @@
     },
     {
       "before": [
-        "ñ",
         "t"
       ],
       "after": [
@@ -156,7 +224,6 @@
     },
     {
       "before": [
-        "ñ",
         "T"
       ],
       "after": [
@@ -246,7 +313,6 @@
     // easymotion but in visual mode
     {
       "before": [
-        "ñ",
         "f"
       ],
       "after": [
@@ -355,15 +421,8 @@
       ]
     },
   ],
-  "vim.operatorPendingModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "s"
-      ],
-      "after": [
-        "g",
-        "r"
-      ]
-    }
+  "java.home": "/home/ggzor/.sdkman/candidates/java/11.0.8-open",
+  "java.configuration.runtimes": [
+    {"name": "JavaSE-1.8", "path": "/home/ggzor/.sdkman/candidates/java/8.0.265-open", "default": true},
   ],
 }

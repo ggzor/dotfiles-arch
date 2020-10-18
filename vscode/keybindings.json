@@ -1,0 +1,95 @@
+// Place your key bindings in this file to override the defaults
+[
+  // Match vim keybindings
+  {
+    "key": "` `",
+    "command": "workbench.action.showCommands",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "` q",
+    "command": "workbench.action.closeWindow",
+    "when": "!editorIsOpen && !multipleEditorGroups"
+  },
+  {
+    "key": "` q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "!editorTextFocus"
+  },
+  {
+    "key": "` f",
+    "command": "workbench.action.quickOpen",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+
+  // Match coc.vim list item selection
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  // Match CHADTree behavior
+  {
+    "key": "ctrl+n",
+    "command": "workbench.view.explorer",
+    "when": "!suggestWidgetVisible && !inQuickOpen"
+  },
+  {
+    "key": "ctrl+n", 
+    "command": "workbench.action.closeSidebar",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+
+  // Keybindings to allow to hide sidebar with same command
+  {
+    "key": "ctrl+shift+x",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.extensions' && sideBarVisible"
+  },
+  {
+    "key": "ctrl+shift+f",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.search' && sideBarVisible"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.scm' && sideBarVisible"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.debug' && sideBarVisible",
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.view.extension.test"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.extension.test' && sideBarVisible"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "-workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "workbench.view.extension.liveshare"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "workbench.action.closeSidebar",
+    "when": "activeViewlet == 'workbench.view.extension.liveshare' && sideBarVisible"
+  },
+]
