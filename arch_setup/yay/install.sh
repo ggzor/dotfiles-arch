@@ -8,6 +8,7 @@ YAY_PATH="$HOME/.yay"
 PACKAGES=$(cat './arch_setup/yay/packages.txt' \
           | sed '/^$/d' | grep -v '^#' | tr '\n' ' ')
 
+# FIXME: Avoid using which, prefer command, hash or type
 if ! which yay &> /dev/null; then
   echo "Installing yay..."
   git clone https://yay.archlinux.org/yay.git "$YAY_PATH"
