@@ -421,8 +421,4 @@
       ]
     },
   ],
-  "java.home": "/home/ggzor/.sdkman/candidates/java/11.0.8-open",
-  "java.configuration.runtimes": [
-    {"name": "JavaSE-1.8", "path": "/home/ggzor/.sdkman/candidates/java/8.0.265-open", "default": true},
-  ],
 }
