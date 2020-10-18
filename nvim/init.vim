@@ -920,7 +920,7 @@ noremap , J
 noremap E ge
 
 " Navigate to alternate file
-nnoremap <silent> <leader>a <C-^>
+nnoremap <silent> ña <C-^>
 
 " Delete buffer
 nnoremap <silent> ñQ :<C-u>bd<CR>
