@@ -441,6 +441,7 @@ endif
 
 if g:env == 'vim'
 
+  " FIXME: Allow easymotion up and down line
   " CHADTree
   let g:chadtree_settings = {
     \ 'open_left': 0,
@@ -940,8 +941,8 @@ if s:use_operators
 
   " vim-sandwich
   " add
-  nmap ña <Plug>(operator-sandwich-add)
-  xmap ña <Plug>(operator-sandwich-add)
+  nmap ñi <Plug>(operator-sandwich-add)
+  xmap ñi <Plug>(operator-sandwich-add)
   " delete
   nmap ñd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
   xmap ñd <Plug>(operator-sandwich-delete)
@@ -960,10 +961,10 @@ if s:use_operators
 endif
 
 if s:use_easymotion
-  map ñf <Plug>(easymotion-fl)
-  map ñF <Plug>(easymotion-Fl)
-  map ñt <Plug>(easymotion-tl)
-  map ñT <Plug>(easymotion-Tl)
+  map f <Plug>(easymotion-fl)
+  map F <Plug>(easymotion-Fl)
+  map t <Plug>(easymotion-tl)
+  map T <Plug>(easymotion-Tl)
 
   map ñw <Plug>(easymotion-wl)
   map ñb <Plug>(easymotion-bl)
@@ -982,8 +983,8 @@ if s:use_insert
 endif
 
 if s:use_fzf
-  nnoremap <silent> <leader>f :call FZFFiles('', 0, 1)<CR>
-  nnoremap <silent> <leader>F :call FZFFiles('', 1, 1)<CR>
+  nnoremap <silent> ñf :call FZFFiles('', 0, 1)<CR>
+  nnoremap <silent> ñF :call FZFFiles('', 1, 1)<CR>
   nnoremap <silent> ñj :Buffers<CR>
   nnoremap <silent> ñl :BLines<CR>
   nnoremap <silent> ññ :History:<CR>
