@@ -39,7 +39,7 @@ export DEVICE="/dev/$DISK"
 export SWAP_POSITION="$( echo "$SWAP + 0.5" | bc )"
 
 # Unmount if necessary
-umount /mnt || true
+umount /mnt &> /dev/null || true
 
 # Create partitions on given disks
 parted --script $DEVICE \
