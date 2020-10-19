@@ -25,6 +25,7 @@ fzf           # powerful and really useful fuzzy selector
 moreutils     # extra cli utils (especially vidir)
 neofetch      # cli system info viewer
 rsync         # file copying and synchronization tool
+ripgrep       # grep replacement with better interface
 xclip         # clipboard manager
 
 ### Development
