@@ -24,6 +24,3 @@ chsh -s "`which zsh`" "$USER_NAME"
 # Install stable rust toolchain
 sudo -u "$USER_NAME" rustup default stable
 
-# Install nodejs version and make the default
-sudo -u "$USER_NAME" bash -c 'fnm install 14.10.1 && fnm default 14.10.1'
-
