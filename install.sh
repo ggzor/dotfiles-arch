@@ -4,6 +4,9 @@ set -euo pipefail
 
 source './utils.sh'
 
+# Fresh install doesn't have this folder
+mkdir -p "$HOME/.config"
+
 # Link configuration files and folders using utils.sh
 link_same        "$(pwd)/awesome"      "$HOME/.config/awesome"
 link_same        "$(pwd)/kitty"        "$HOME/.config/kitty"
