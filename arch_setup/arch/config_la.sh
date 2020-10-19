@@ -5,5 +5,4 @@ export LOCALE=en_US.UTF-8
 export ENCODING=UTF-8
 export TIMEZONE=America/Mexico_City
 export KEYMAP=la-latin1
-export XORG_KEYMAP=latam
 
