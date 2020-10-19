@@ -18,9 +18,6 @@ systemctl start docker.service
 # Add user to docker group
 usermod -a -G docker "$USER_NAME"
 
-# Set xorg keyboard layout
-[ -v "XORG_KEYMAP" ] && localectl set-x11-keymap "$XORG_KEYMAP"
-
 # Set user shell
 chsh -s "`which zsh`" "$USER_NAME"
 
