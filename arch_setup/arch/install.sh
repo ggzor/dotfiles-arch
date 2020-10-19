@@ -74,7 +74,7 @@ printf "\n#efi\nUUID=%s /efi vfat defaults 0 2\n" "$EFI_UUID" >> /mnt/etc/fstab
 printf "\n#swap\nUUID=%s none swap defaults 0 0\n" "$SWAP_UUID" >> /mnt/etc/fstab
 
 # Copy dotfiles
-cp -R dotfiles-master "/mnt"
+cp -R dotfiles "/mnt"
 
 # Run setup
 arch-chroot /mnt bash -c "
