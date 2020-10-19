@@ -11,7 +11,7 @@ PACKAGES=$(cat './arch_setup/yay/packages.txt' \
 # FIXME: Avoid using which, prefer command, hash or type
 if ! which yay &> /dev/null; then
   echo "Installing yay..."
-  git clone https://yay.archlinux.org/yay.git "$YAY_PATH"
+  git clone https://aur.archlinux.org/yay.git "$YAY_PATH"
   cd "$YAY_PATH"
   makepkg -si
   cd -
