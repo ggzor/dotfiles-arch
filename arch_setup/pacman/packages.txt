@@ -24,6 +24,7 @@ fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
 moreutils     # extra cli utils (especially vidir)
 neofetch      # cli system info viewer
+rsync         # file copying and synchronization tool
 xclip         # clipboard manager
 
 ### Development
@@ -64,6 +65,7 @@ wpa_supplicant
 ### Other
 gifski  # Required by peek to generate good quality gifs
 tumbler # Required by thunar to generate thumbnails
+ntfs-3g # NTFS mount, read and write support
 
 ### Python global packages
 python-pywal  # Global color scheme setter
