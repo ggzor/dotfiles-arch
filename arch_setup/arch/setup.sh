@@ -21,7 +21,7 @@ PASSWD=''
 unset PASSWD
 
 # Install pacman packages
-./arch_setup/arch/install.sh
+./arch_setup/pacman/install.sh
 
 # Setup locale and timezone
 echo "$LOCALE $ENCODING" > /etc/locale.gen
