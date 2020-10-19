@@ -38,6 +38,9 @@ done
 export DEVICE="/dev/$DISK"
 export SWAP_POSITION="$( echo "$SWAP + 0.5" | bc )"
 
+# Unmount if necessary
+umount /mnt || true
+
 # Create partitions on given disks
 parted --script $DEVICE \
   mklabel gpt \
@@ -71,7 +74,7 @@ printf "\n#efi\nUUID=%s /efi vfat defaults 0 2\n" "$EFI_UUID" >> /mnt/etc/fstab
 printf "\n#swap\nUUID=%s none swap defaults 0 0\n" "$SWAP_UUID" >> /mnt/etc/fstab
 
 # Copy dotfiles
-cp -R dotfiles "/mnt"
+cp -R dotfiles-master "/mnt"
 
 # Run setup
 arch-chroot /mnt bash -c "
