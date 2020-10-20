@@ -40,15 +40,16 @@ rust-analyzer
 tk
 
 ### Desktop
-feh         # Simple image viewer
-flameshot   # Powerful screen shot utility
-inkscape    # Open source vector graphics editor
-kitty       # Featureful terminal emulator
-obs-studio  # Powerful screen recorder
-pavucontrol # Pulseaudio volume control
-peek        # Simple screen recorder
-thunar      # Customizable file manager
-zathura     # Customizable document viewer
+feh            # Simple image viewer
+flameshot      # Powerful screen shot utility
+inkscape       # Open source vector graphics editor
+kitty          # Featureful terminal emulator
+lxappearance   # GTK theme configuration
+obs-studio     # Powerful screen recorder
+pavucontrol    # Pulseaudio volume control
+peek           # Simple screen recorder
+thunar         # Customizable file manager
+zathura        # Customizable document viewer
 
 ### Fonts
 ttf-roboto
