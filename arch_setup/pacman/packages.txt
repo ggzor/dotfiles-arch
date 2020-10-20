@@ -67,6 +67,7 @@ wpa_supplicant
 gifski  # Required by peek to generate good quality gifs
 tumbler # Required by thunar to generate thumbnails
 ntfs-3g # NTFS mount, read and write support
+udisks2 # Mount USB without root permissions
 
 ### Python global packages
 python-pywal  # Global color scheme setter
