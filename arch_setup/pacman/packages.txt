@@ -79,8 +79,9 @@ python-pynvim # nvim python support
 ### xorg
 xcb-util-cursor
 xorg-server
-xorg-xrandr
+xorg-xev
 xorg-xinit
+xorg-xrandr
 xsettingsd
 xterm
 
