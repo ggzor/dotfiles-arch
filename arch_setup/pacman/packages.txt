@@ -45,6 +45,7 @@ flameshot      # Powerful screen shot utility
 inkscape       # Open source vector graphics editor
 kitty          # Featureful terminal emulator
 lxappearance   # GTK theme configuration
+mpv            # Media player
 obs-studio     # Powerful screen recorder
 pavucontrol    # Pulseaudio volume control
 peek           # Simple screen recorder
