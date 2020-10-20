@@ -61,5 +61,9 @@ export SDKMAN_DIR="/home/ggzor/.sdkman"
   && source "/home/ggzor/.sdkman/bin/sdkman-init.sh"
 
 # Powerlevel10k prompt configuration
+# OS name prompt segment
+function prompt_os_name() {
+  p10k segment -f white -t archlinux
+}
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
