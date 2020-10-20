@@ -14,7 +14,6 @@ usbutils
 unzip
 vim
 zip
-zsh
 
 ### CLI Utils
 bat           # cat replacement with syntax highlighting
