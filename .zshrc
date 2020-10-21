@@ -68,6 +68,7 @@ zinit light romkatv/powerlevel10k
 # TODO: Check if doesn't break anything important
 # Remove all keybindings starting with Esc Esc to allow faster
 # switching to normal mode
+VIM_MODE_ESC_PREFIXED_WANTED=''
 zinit wait lucid for \
   atload"bindkey -rpM viins '^[^['" \
   @softmoth/zsh-vim-mode
@@ -131,6 +132,10 @@ alias lt="exa --tree --level=2 --icons"
 bindkey -M vicmd '_' beginning-of-line
 bindkey -M visual '_' beginning-of-line
 bindkey -M viopp '_' beginning-of-line
+
+bindkey -M vicmd 'ñi' add-surround
+bindkey -M vicmd 'ñc' change-surround
+bindkey -M vicmd 'ñd' delete-surround
 
 bindkey "^[[H"    beginning-of-line
 bindkey "^[[F"    end-of-line
