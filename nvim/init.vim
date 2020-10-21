@@ -331,8 +331,10 @@ if s:use_easymotion
   let g:EasyMotion_do_mapping = 0
   " Allow mapping differently start of line mappings and same column
   let g:EasyMotion_startofline = 0
+  " Press space to select first
+  let g:EasyMotion_space_jump_first=1
   " The fastest keys I press
-  let g:EasyMotion_keys = 'fasjuirwzmkhdoe'
+  let g:EasyMotion_keys = '_fasjuirwzmkhdoe'
 
 endif
 
@@ -918,6 +920,12 @@ vnoremap <leader>2 :w !
 " Remap J
 noremap , J
 noremap E ge
+
+" Remap search next immediate (useful for macros)
+noremap <Space>f f
+noremap <Space>F F
+noremap <Space>t t
+noremap <Space>T T
 
 " Navigate to alternate file
 nnoremap <silent> ña <C-^>
