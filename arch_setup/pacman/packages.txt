@@ -75,6 +75,7 @@ python-pywal  # Global color scheme setter
 python-pipx   # Useful python executable installer
 python-poetry # Virtual environment manager
 python-pynvim # nvim python support
+python-lxml   # required by inkscape
 
 ### xorg
 xcb-util-cursor
