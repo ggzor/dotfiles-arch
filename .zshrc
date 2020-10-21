@@ -66,8 +66,10 @@ zinit light romkatv/powerlevel10k
 
 # better vim keybindings
 # TODO: Check if doesn't break anything important
+# Remove all keybindings starting with Esc Esc to allow faster
+# switching to normal mode
 zinit wait lucid for \
-  atload"bindkey -rpM viins '^['" \
+  atload"bindkey -rpM viins '^[^['" \
   @softmoth/zsh-vim-mode
 
 zinit wait lucid for \
@@ -79,7 +81,6 @@ zinit wait lucid for \
 # fzf integration
 zinit silent wait light-mode for \
   multisrc:'shell/*.zsh' @junegunn/fzf \
-  atload"bindkey -rpM viins '^['" \
   @Aloxaf/fzf-tab
 # get fzf ripgrep preview script
 zplugin ice as"program" mv"bin/preview.sh -> fzf_rg_preview" \
@@ -126,9 +127,6 @@ alias lt="exa --tree --level=2 --icons"
 # }}}
 
 # Keybindings {{{
-# Remove all keybindings starting with Esc to allow fast
-# switching to normal mode faster
-bindkey -rpM viins '^['
 # Missing bindings for underscore
 bindkey -M vicmd '_' beginning-of-line
 bindkey -M visual '_' beginning-of-line
