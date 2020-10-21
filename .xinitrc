@@ -28,6 +28,9 @@ fi
 # Remap caps to escape
 setxkbmap -option caps:swapescape -layout latam
 
+# Wallpaper
+feh --bg-scale "$HOME/Pictures/wallpapers/default.png"
+
 # Start flameshot (screen capture program)
 flameshot &
 
