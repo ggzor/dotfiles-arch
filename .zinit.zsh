@@ -56,6 +56,21 @@ export FZF_DEFAULT_OPTS="
 "
 
 # fzf-tab
+FZF_TAB_COMMAND=(
+    fzf
+    --ansi
+    --expect='$continuous_trigger,$print_query'
+
+    '--color=hl:$(( $#headers == 0 ? 108 : 255 ))'
+    --nth=2,3 --delimiter='\x00'  # Don't search prefix
+    --layout=reverse --height='${FZF_TMUX_HEIGHT:=75%}'
+    --tiebreak=begin -m --cycle
+    '--query=$query'
+    '--header-lines=$#headers'
+    --print-query
+    --bind=$FZF_BINDINGS_STRING
+)
+zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
 
 # forgit
 forgit_log=gitl
