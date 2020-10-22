@@ -936,6 +936,9 @@ nnoremap <silent> ñQ :<C-u>bd<CR>
 " Quit buffer
 nnoremap <silent> ñq :<C-u>q<CR>
 
+" No highlight
+nnoremap <silent> ñn :<C-u>nohlsearch<CR>
+
 " Plugins
 if s:use_operators
 
