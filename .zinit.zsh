@@ -13,7 +13,7 @@ ctrl-y:execute-silent(echo {+} | xclip)
 # Navigation
 ctrl-g:top
 ctrl-u:half-page-up
-ctrl-d:half-page-up
+ctrl-d:half-page-down
 ctrl-k:up
 ctrl-j:down
 ctrl-space:jump
@@ -24,7 +24,7 @@ alt-l:forward-char
 alt-b:backward-word
 alt-f:forward-word
 ctrl-a:beginning-of-line
-ctrl-e:beginning-of-line
+ctrl-e:end-of-line
 alt-bs:unix-line-discard
 ctrl-w:unix-word-rubout
 
@@ -51,7 +51,7 @@ export FZF_BINDINGS_STRING=$(printf "$FZF_BINDINGS" | grep -e "^[^#]" |
 export FZF_DEFAULT_OPTS="
   --exit-0
   --multi --info=inline
-  --filepath-word --height 71% --layout=reverse  --no-mouse
+   --height 99% --layout=reverse  --no-mouse
   --bind='$FZF_BINDINGS_STRING'
 "
 
