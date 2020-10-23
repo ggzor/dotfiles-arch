@@ -53,9 +53,10 @@ export FZF_BINDINGS_STRING=$(printf "$FZF_BINDINGS" | grep -e "^[^#]" |
                              tr "\n" "," | sed -E "s/.$//")
 
 export FZF_DEFAULT_OPTS="
-  --exit-0
-  --multi --info=inline
-   --height 99% --layout=reverse  --no-mouse
+  --exit-0 --multi --info=inline
+  --no-border --layout=reverse
+  --height 99% --no-mouse
+  --preview-window='right:95:wrap:noborder'
   --bind='$FZF_BINDINGS_STRING'
 "
 
