@@ -77,6 +77,25 @@ FZF_TAB_COMMAND=(
 )
 zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
 
+# fzf utilities
+# open files
+ñf() {
+  local out file key preview_command
+  preview_command="
+    [[ \$(file --mime {}) =~ binary ]] \
+        && echo {} is a binary file \
+        || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null"
+
+  IFS=$'\n'
+  out=("$(
+      fzf --query="$1" --preview="$preview_command"  \
+       --history="$HOME/.fzf-fo-history")")
+
+  if [[ -n "$out" ]]; then
+    xargs -d'\n' ${EDITOR:-nvim} <<< "$out"
+  fi
+}
+
 # forgit
 forgit_log=gitl
 forgit_diff=gitd
