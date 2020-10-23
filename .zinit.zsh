@@ -89,7 +89,7 @@ zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
   IFS=$'\n'
   out=("$(
       fzf --query="$1" --preview="$preview_command"  \
-       --history="$HOME/.fzf-fo-history")")
+       --history="$HOME/.fzf-open-file-history")")
 
   if [[ -n "$out" ]]; then
     xargs -d'\n' ${EDITOR:-nvim} <<< "$out"
