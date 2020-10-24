@@ -108,7 +108,8 @@ zinit wait lucid as"completion" for \
   OMZP::docker-compose \
   OMZP::docker/_docker \
   OMZP::cargo/_cargo \
-  OMZP::nvm/_nvm
+  OMZP::nvm/_nvm \
+  @spwhitt/nix-zsh-completions
 
 # }}}
 
@@ -151,8 +152,16 @@ bindkey "^[l"     vi-forward-char
 command -v fnm> /dev/null 2>&1 && eval `fnm env`
 
 # sdkman
-[[ -s "/home/ggzor/.sdkman/bin/sdkman-init.sh" ]] \
-  && source "/home/ggzor/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] \
+  && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# nix
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
+# direnv
+direnv version &>/dev/null && eval "$(direnv hook zsh)"
 
 # Powerlevel10k prompt configuration
 # OS name prompt segment
