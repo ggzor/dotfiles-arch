@@ -52,5 +52,18 @@
     "typeParameter": "\uf278",
     "default": "\uf29c"
   },
-  "java.jdt.ls.home": "/home/ggzor/jdtls"
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": ["haskell", "lhaskell"]
+    }
+  }
 }
