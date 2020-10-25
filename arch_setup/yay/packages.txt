@@ -18,6 +18,7 @@ git-delta-bin
 fnm-bin
 glslviewer-git
 picom-ibhagwan-git
+haskell-language-server-bin
 
 # Fixes some resizing issues with upstream zsh
 zsh-fix-winchanged-git

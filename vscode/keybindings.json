@@ -12,11 +12,6 @@
     "when": "!editorIsOpen && !multipleEditorGroups"
   },
   {
-    "key": "` q",
-    "command": "workbench.action.closeActiveEditor",
-    "when": "!editorTextFocus"
-  },
-  {
     "key": "` f",
     "command": "workbench.action.quickOpen",
     "when": "!editorTextFocus && !inputFocus"
