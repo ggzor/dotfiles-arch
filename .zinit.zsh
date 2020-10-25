@@ -8,7 +8,6 @@ export EXCLUDE_STRING=$(printf $EXCLUDE_DIRS | tr ' ' '\n' | \
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f $EXCLUDE_STRING --hidden --follow"
-# FIXME: Choose what is better by default: abort on escape or just cancel
 export FZF_BINDINGS="
 # Global
 esc:abort
@@ -16,7 +15,7 @@ ctrl-y:execute-silent(echo {+} | xclip)
 
 # Navigation
 ctrl-g:top
-ctrl-u:half-page-up
+ctrl-b:half-page-up
 ctrl-d:half-page-down
 ctrl-k:up
 ctrl-j:down
@@ -29,7 +28,7 @@ alt-b:backward-word
 alt-f:forward-word
 ctrl-a:beginning-of-line
 ctrl-e:end-of-line
-alt-bs:unix-line-discard
+ctrl-u:unix-line-discard
 ctrl-w:unix-word-rubout
 
 # Selection
