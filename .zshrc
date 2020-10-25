@@ -110,9 +110,9 @@ zinit wait lucid as"completion" for \
   OMZP::cargo/_cargo \
   @spwhitt/nix-zsh-completions
 
+fi
 # }}}
 
-fi
 # Alias {{{
 
 alias v=nvim
