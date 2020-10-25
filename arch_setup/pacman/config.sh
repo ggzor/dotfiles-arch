@@ -14,6 +14,10 @@ systemctl --user start pulseaudio
 systemctl enable dhcpcd
 systemctl start dhcpcd
 
+# firewalld
+systemctl enable firewalld
+systemctl start firewalld
+
 ## Docker
 # Enable docker service
 systemctl enable docker.service
