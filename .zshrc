@@ -64,43 +64,43 @@ fi
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
+# Utilities to defer execution of slow scripts
+zinit light romkatv/zsh-defer
+
+# command highlighting
+zinit wait'1' silent for \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+  atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
 # better vim keybindings
-# TODO: Check if doesn't break anything important
-# Remove all keybindings starting with Esc Esc to allow faster
-# switching to normal mode
 VIM_MODE_ESC_PREFIXED_WANTED=''
 zinit wait lucid for \
   atload"bindkey -rpM viins '^[^['" \
   @softmoth/zsh-vim-mode
 
-zinit wait lucid for \
-  atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions \
-    @ael-code/zsh-colored-man-pages \
-    @le0me55i/zsh-extract
-
 # fzf integration
-zinit silent wait light-mode for \
+zinit wait lucid light-mode for \
   multisrc:'shell/*.zsh' @junegunn/fzf \
   @Aloxaf/fzf-tab
+
 # get fzf ripgrep preview script
 zplugin ice as"program" mv"bin/preview.sh -> fzf_rg_preview" \
             pick"fzf_rg_preview" atpull"!git reset --hard"
-zinit light junegunn/fzf.vim
+zinit wait'1' silent for junegunn/fzf.vim
 
 # fzf git complement
-zinit wait lucid for \
+zinit wait'1' lucid for \
+  @IngoHeimbach/zsh-easy-motion \
   wfxr/forgit
 
-# vim easymotion and command highlighting
-zinit lucid for \
-    @IngoHeimbach/zsh-easy-motion \
-  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting
-fi
+zinit wait lucid for \
+    @ael-code/zsh-colored-man-pages \
+    @le0me55i/zsh-extract
 
 ## Completions
-zinit wait lucid for \
+zinit lucid for \
   blockf \
     zsh-users/zsh-completions
 
@@ -108,11 +108,11 @@ zinit wait lucid as"completion" for \
   OMZP::docker-compose \
   OMZP::docker/_docker \
   OMZP::cargo/_cargo \
-  OMZP::nvm/_nvm \
   @spwhitt/nix-zsh-completions
 
 # }}}
 
+fi
 # Alias {{{
 
 alias v=nvim
@@ -155,16 +155,16 @@ path+=( $HOME/.local/bin )
 # Bottom setup {{{
 
 # fnm
-command -v fnm> /dev/null 2>&1 && eval `fnm env`
+command -v fnm> /dev/null 2>&1 && \
+  zsh-defer eval `zsh-defer fnm env`
 
 # sdkman
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] \
-  && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && \
+  zsh-defer -t1 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # nix
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && \
   . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi
 
 # direnv
 direnv version &>/dev/null && eval "$(direnv hook zsh)"
