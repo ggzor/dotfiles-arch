@@ -921,6 +921,9 @@ vnoremap <leader>2 :w !
 noremap , J
 noremap E ge
 
+" Make Y similar to C and D
+noremap Y y$
+
 " Remap search next immediate (useful for macros)
 noremap <Space>f f
 noremap <Space>F F
