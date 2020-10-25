@@ -146,6 +146,12 @@ bindkey "^[[1;5D" backward-word
 bindkey "^[l"     vi-forward-char
 # }}}
 
+# Path {{{
+
+path+=( $HOME/.local/bin )
+
+# }}}
+
 # Bottom setup {{{
 
 # fnm
