@@ -38,6 +38,8 @@
   "[python]": {
     "editor.renderIndentGuides": true
   },
+  "git.confirmSync": false,
+  "git.autofetch": true,
 
   // Extensions
   // Intellicode
