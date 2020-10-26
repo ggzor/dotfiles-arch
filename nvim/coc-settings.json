@@ -1,6 +1,6 @@
 {
-  "diagnostic.errorSign": "\uf071",
-  "diagnostic.warningSign": "\uf071",
+  "diagnostic.errorSign": "\u1405",
+  "diagnostic.warningSign": "\u1405",
   "diagnostic.infoSign": "\uf05a",
   "diagnostic.hintSign": "\uf425",
   "suggest.noselect": false,
