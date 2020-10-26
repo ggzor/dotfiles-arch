@@ -156,7 +156,7 @@ path+=( $HOME/.local/bin )
 
 # fnm
 command -v fnm> /dev/null 2>&1 && \
-  zsh-defer eval `zsh-defer fnm env`
+  zsh-defer -c 'eval `fnm env`'
 
 # sdkman
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && \
