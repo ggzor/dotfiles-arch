@@ -94,6 +94,13 @@ set undodir=~/.vim/undo
 " Changing to another file doesn't requires save
 set hidden
 
+" Change terminal title to file name
+set title
+augroup au_terminal_title
+  au!
+  auto BufEnter * let &titlestring = expand("%") . " - vim"
+augroup end
+
 " }}}
 
 " Visual options {{{
