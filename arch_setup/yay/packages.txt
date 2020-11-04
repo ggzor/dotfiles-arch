@@ -6,6 +6,9 @@ google-chrome
 neovim-nightly
 visual-studio-code-insiders
 
+# Documentation viewer
+zeal
+
 # GUI Customization
 awesome-git
 xcursor-sweet
@@ -25,4 +28,7 @@ haskell-language-server-bin
 
 # Fixes some resizing issues with upstream zsh
 zsh-fix-winchanged-git
+
+# Qt5 extras
+qt5-styleplugins
 

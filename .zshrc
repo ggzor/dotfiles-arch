@@ -3,6 +3,7 @@
 # Global variables
 export USE_PLUGINS=true # Load plugins or not
 export {EDITOR,VISUAL}=nvim
+export QT_QPA_PLATFORMTHEME=gtk2
 
 # Required by some plugins
 setopt promptsubst
