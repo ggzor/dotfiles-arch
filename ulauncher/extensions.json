@@ -1,0 +1,65 @@
+{
+    "com.github.kwaadpepper.zealdoc": {
+        "id": "com.github.kwaadpepper.zealdoc",
+        "url": "https://github.com/Kwaadpepper/zealdoc",
+        "updated_at": "2020-11-04T10:32:49.657104",
+        "last_commit": "7af783b51726e4f16e0a723a97be0ba023ac9977",
+        "last_commit_time": "2020-09-07T21:13:33"
+    },
+    "com.github.sergius02.ulauncher-colorconverter": {
+        "id": "com.github.sergius02.ulauncher-colorconverter",
+        "url": "https://github.com/sergius02/ulauncher-colorconverter",
+        "updated_at": "2020-11-04T10:36:35.682749",
+        "last_commit": "22ce5806dceb1e1bfbc8756b8ce0645b69f0ef11",
+        "last_commit_time": "2020-09-03T12:43:47"
+    },
+    "com.github.ceroprogramming.ulauncher-pulsecontrol": {
+        "id": "com.github.ceroprogramming.ulauncher-pulsecontrol",
+        "url": "https://github.com/CeroProgramming/ulauncher-pulsecontrol",
+        "updated_at": "2020-11-04T10:37:17.303996",
+        "last_commit": "31c9dd2ba8471ee59f51bd4a35597965431c79d9",
+        "last_commit_time": "2020-10-31T13:35:13"
+    },
+    "com.github.brpaz.ulauncher-dockerhub": {
+        "id": "com.github.brpaz.ulauncher-dockerhub",
+        "url": "https://github.com/brpaz/ulauncher-dockerhub",
+        "updated_at": "2020-11-04T10:38:17.950788",
+        "last_commit": "c5bfcf4fe4a6fde5189eb4fa331d61028368e1bb",
+        "last_commit_time": "2020-06-24T15:20:47"
+    },
+    "com.github.rkarami.ulauncher-npms": {
+        "id": "com.github.rkarami.ulauncher-npms",
+        "url": "https://github.com/rkarami/ulauncher-npms",
+        "updated_at": "2020-11-04T10:40:12.028356",
+        "last_commit": "0848812c649ba05fc8ae80bfd254b6da3e9d8d1f",
+        "last_commit_time": "2019-09-26T13:36:17"
+    },
+    "com.github.iboyperson.ulauncher-system": {
+        "id": "com.github.iboyperson.ulauncher-system",
+        "url": "https://github.com/iboyperson/ulauncher-system",
+        "updated_at": "2020-11-04T10:47:04.457938",
+        "last_commit": "3b2639fd106ed3ef664953eb868b80c2fb8428ea",
+        "last_commit_time": "2020-09-22T18:29:15"
+    },
+    "com.github.psukys.ulauncher-plugin-windows": {
+        "id": "com.github.psukys.ulauncher-plugin-windows",
+        "url": "https://github.com/psukys/ulauncher-plugin-windows",
+        "updated_at": "2020-11-04T10:55:32.377110",
+        "last_commit": "455b8dd34e5c1236c3001480f86964b178a74725",
+        "last_commit_time": "2019-11-29T09:14:17"
+    },
+    "com.github.isacikgoz.ukill": {
+        "id": "com.github.isacikgoz.ukill",
+        "url": "https://github.com/isacikgoz/ukill",
+        "updated_at": "2020-11-04T11:15:51.982322",
+        "last_commit": "bc50d9f41d46b6813a5aeebddd15734dcdb9d8db",
+        "last_commit_time": "2019-05-28T18:30:00"
+    },
+    "com.github.ulauncher.ulauncher-timer": {
+        "id": "com.github.ulauncher.ulauncher-timer",
+        "url": "https://github.com/ulauncher/ulauncher-timer",
+        "updated_at": "2020-11-04T11:17:03.988134",
+        "last_commit": "4262fc24db08610d01ea311d2e12f22588c98886",
+        "last_commit_time": "2020-11-03T07:21:30"
+    }
+}

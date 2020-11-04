@@ -13,7 +13,6 @@ local wibox = require("wibox")
 -- Theme handling library
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -65,10 +64,6 @@ awful.layout.layouts = {
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
 }
--- }}}
-
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
@@ -243,8 +238,8 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    -- Launcher
+    awful.key({ modkey }, "p", function() awful.spawn("ulauncher") end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -432,6 +427,12 @@ client.connect_signal("manage", function (c)
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
+end)
+
+-- Focus urgent clients
+client.connect_signal("property::urgent", function(c)
+    c.minimized = false
+    c:jump_to()
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.

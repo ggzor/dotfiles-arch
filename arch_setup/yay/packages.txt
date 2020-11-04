@@ -10,6 +10,9 @@ visual-studio-code-insiders
 awesome-git
 xcursor-sweet
 
+# Launcher
+ulauncher
+
 # Fonts
 nerd-fonts-jetbrains-mono
 
