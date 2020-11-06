@@ -188,8 +188,18 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
+
     awful.key({ }, "Print", function () awful.spawn("flameshot gui") end,
               {description = "take a screenshot with gui", group = "launcher"}),
+
+    -- Media
+    awful.key({ }, "XF86AudioPlay", function () awful.spawn("playerctl play-pause") end,
+              {description = "media play/pause", group = "launcher"}),
+    awful.key({ }, "XF86AudioNext", function () awful.spawn("playerctl next") end,
+              {description = "media next", group = "launcher"}),
+    awful.key({ }, "XF86AudioPrev", function () awful.spawn("playerctl previous") end,
+              {description = "media previous", group = "launcher"}),
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,

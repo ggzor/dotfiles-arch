@@ -2,6 +2,7 @@
 alsa-utils
 pulseaudio
 pulseaudio-alsa
+playerctl
 
 ### CLI Standard Utils
 bc
