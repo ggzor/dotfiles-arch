@@ -679,6 +679,20 @@ function! ShowSyntaxGroupUnderCursor()
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
 
+function! ExitFloatingMode()
+  exec 'normal gg_vG$"+y'
+  call system("xclip -in -selection clipboard", getreg('+'))
+  quit!
+endfunction
+
+function! PrepareFloatingMode()
+  exec 'normal "+P'
+
+  " Exit either saving or quitting
+  nnoremap <silent> ñq :call ExitFloatingMode()<CR>
+  nnoremap <silent> ñs :call ExitFloatingMode()<CR>
+endfunction
+
 " FZF {{{
 
 " Hide status line
@@ -1140,6 +1154,11 @@ if g:env == 'vscode'
 endif
 
 " }}}
+
+" Check for special floating mode
+if $NVIM_FLOATING
+  call PrepareFloatingMode()
+endif
 
 " Load color configuration
 source $HOME/.config/nvim/other.vim

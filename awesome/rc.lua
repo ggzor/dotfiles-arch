@@ -200,6 +200,40 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioPrev", function () awful.spawn("playerctl previous") end,
               {description = "media previous", group = "launcher"}),
 
+    -- Vim fast opening
+    awful.key({ modkey }, "v",
+        function ()
+            local height = mouse.screen.geometry.height / 2
+            local width = height * 16 / 9
+            local ext = 'txt'
+
+            patterns = {
+                ["[Mm]ysql"] = "sql"
+            }
+
+            local c = client.focus
+            if c then
+                for k, v in pairs(patterns) do
+                    if c.class:find(k) then
+                        ext = v
+                        break
+                    end
+                end
+            end
+
+            awful.spawn("kitty bash -ic 'NVIM_FLOATING=1 nvim /tmp/temp."..ext.."'", {
+                floating = true,
+                focus = true,
+                ontop = true,
+                width = width,
+                height = height,
+                tag = mouse.screen.selected_tag,
+                placement = awful.placement.centered
+            })
+        end,
+        {description = "media play/pause", group = "launcher"}),
+
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
