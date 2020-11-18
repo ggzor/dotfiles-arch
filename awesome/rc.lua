@@ -199,6 +199,17 @@ globalkeys = gears.table.join(
               {description = "media next", group = "launcher"}),
     awful.key({ }, "XF86AudioPrev", function () awful.spawn("playerctl previous") end,
               {description = "media previous", group = "launcher"}),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%") end,
+              {description = "media lower volume", group = "launcher"}),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%") end,
+              {description = "media raise volume", group = "launcher"}),
+
+    -- brightnessctl
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl set 10%-") end,
+              {description = "set brightness down", group = "launcher"}),
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl set 10%+") end,
+              {description = "set brightness up", group = "launcher"}),
+
 
     -- Vim fast opening
     awful.key({ modkey }, "v",
