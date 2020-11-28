@@ -35,6 +35,7 @@ xclip         # clipboard manager
 ### Development
 clang
 docker
+docker-compose
 glu
 go
 mesa
