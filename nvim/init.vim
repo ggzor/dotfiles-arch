@@ -213,6 +213,7 @@ endif
 " New operators or enhancements
 if s:use_operators
   Plug 'godlygeek/tabular'
+  Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'andymass/vim-matchup'
   Plug 'machakann/vim-sandwich'
