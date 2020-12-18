@@ -40,10 +40,29 @@
   },
   "git.confirmSync": false,
   "git.autofetch": true,
+  // Exclude files from tree
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
 
   // Extensions
   // Intellicode
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  // Java
+  "java.refactor.renameFromFileExplorer": "autoApply",
+  // Python
+  "jupyter.insidersChannel": "weekly",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter-notebook",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "python.insidersChannel": "weekly",
+  "python.languageServer": "Pylance",
   // VIM
   "vim.changeWordIncludesWhitespace": true,
   "vim.easymotion": true,
@@ -55,7 +74,7 @@
   // Required for remapped esc to work
   "keyboard.dispatch": "keyCode",
   "vim.handleKeys": {
-    "<C-f>": false,
+    "<C-f>": false
   },
   // Mappings at the end, too noisy
   // Don't look after this line, it's really ugly to make
@@ -114,7 +133,7 @@
     // Go to right split
     {
       "before": [
-        "<C-l>",
+        "<C-l>"
       ],
       "commands": [
         "workbench.action.navigateRight"
@@ -123,7 +142,7 @@
     // Go to left split
     {
       "before": [
-        "<C-h>",
+        "<C-h>"
       ],
       "commands": [
         "workbench.action.navigateLeft"
@@ -132,7 +151,7 @@
     // Go to up split
     {
       "before": [
-        "<C-k>",
+        "<C-k>"
       ],
       "commands": [
         "workbench.action.navigateUp"
@@ -141,7 +160,7 @@
     // Go to down split
     {
       "before": [
-        "<C-j>",
+        "<C-j>"
       ],
       "commands": [
         "workbench.action.navigateDown"
@@ -279,24 +298,24 @@
     },
     {
       "before": [
-        "K",
+        "K"
       ],
       "after": [
         "<leader>",
         "<leader>",
-        "k",
+        "k"
       ]
     },
     {
       "before": [
-        "J",
+        "J"
       ],
       "after": [
         "<leader>",
         "<leader>",
-        "j",
+        "j"
       ]
-    },
+    }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     // surround
@@ -401,22 +420,22 @@
     },
     {
       "before": [
-        "K",
+        "K"
       ],
       "after": [
         "<leader>",
         "<leader>",
-        "k",
+        "k"
       ]
     },
     {
       "before": [
-        "J",
+        "J"
       ],
       "after": [
         "<leader>",
         "<leader>",
-        "j",
+        "j"
       ]
     },
   ],
