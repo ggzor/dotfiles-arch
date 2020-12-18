@@ -78,6 +78,7 @@ udisks2 # Mount USB without root permissions
 wmctrl  # Control window manager
 
 ### Python global packages
+python-pip    # package manager
 python-pywal  # Global color scheme setter
 python-pipx   # Useful python executable installer
 python-poetry # Virtual environment manager
@@ -86,6 +87,7 @@ python-lxml   # required by inkscape
 
 ### xorg
 xcb-util-cursor
+xdotool
 xorg-server
 xorg-xev
 xorg-xinit

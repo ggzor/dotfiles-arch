@@ -4,7 +4,7 @@ google-chrome
 
 # Code editors
 neovim-nightly
-visual-studio-code-insiders
+visual-studio-code-insiders-bin
 
 # Documentation viewer
 zeal
