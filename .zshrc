@@ -141,6 +141,9 @@ alias ll="exa -l --icons"
 alias la="exa -la --icons"
 alias lt="exa --tree --level=2 --icons"
 
+alias gitc="git commit -m"
+alias gits="git status"
+
 # }}}
 
 # Keybindings {{{
