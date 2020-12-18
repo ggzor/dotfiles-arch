@@ -458,7 +458,11 @@ if g:env == 'vim'
   " CHADTree
   let g:chadtree_settings = {
     \ 'open_left': 0,
-    \ 'use_icons': g:use_icons
+    \ 'use_icons': g:use_icons,
+    \ 'keymap': {
+    \   'jump_to_current': ['<C-o>'],
+    \   'stat': ['<C-g>'],
+    \ },
     \ }
   " Auto close if CHADTree is the only window open
   autocmd BufEnter * if (winnr("$") == 1 && &ft == 'chadtree') | q | endif
