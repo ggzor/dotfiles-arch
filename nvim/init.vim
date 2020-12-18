@@ -55,6 +55,9 @@ endif
 " Note: 'let &option = x' is equivalent to 'set option=x'
 "       but the former allows x to be a variable
 
+" Preview replacements
+set inccommand=nosplit
+
 " Replace tabs with spaces
 set expandtab
 
