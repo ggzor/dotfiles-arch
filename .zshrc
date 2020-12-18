@@ -114,6 +114,20 @@ zinit wait lucid as"completion" for \
 fi
 # }}}
 
+# Functions {{{
+
+# Set keyboard to latam and remap escape
+kb_latam() {
+  setxkbmap -option caps:swapescape -layout latam
+}
+
+# Set keyboard to esp
+kb_esp() {
+  setxkbmap -option -layout es
+}
+
+# }}}
+
 # Alias {{{
 
 alias v=nvim
