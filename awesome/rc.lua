@@ -240,10 +240,29 @@ globalkeys = gears.table.join(
                 height = height,
                 tag = mouse.screen.selected_tag,
                 placement = awful.placement.centered
-            })
+            }, function (c)
+                c:connect_signal("unmanage", function()
+                    awful.key.execute({"Ctrl"}, "v")
+                end)
+               end)
         end,
-        {description = "media play/pause", group = "launcher"}),
+        {description = "edit selection with vim", group = "launcher"}),
 
+    -- Debug data
+    awful.key({ modkey }, "d",
+        function ()
+            local c = client.focus
+            if c then
+                naughty.notify({
+                    title='Debug information:',
+                    text='Class: '..c.class..
+                         '\nName: '..c.name..
+                         '\nRole: '..(c.role or 'None')..
+                         '\nType: '..c.type
+                })
+            end
+        end,
+        {description = "show window data", group = "launcher"}),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -305,7 +324,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey }, "q", function (c) c:kill() end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -449,6 +468,7 @@ awful.rules.rules = {
         -- and the name shown there might not match defined rules here.
         name = {
           "Event Tester",  -- xev.
+          "Blender Preferences"  -- xev.
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
