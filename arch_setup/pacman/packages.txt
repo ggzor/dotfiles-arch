@@ -45,6 +45,7 @@ rust-analyzer
 tk
 
 ### Desktop
+arandr         # Display configuration
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
 inkscape       # Open source vector graphics editor
