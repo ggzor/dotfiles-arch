@@ -203,6 +203,8 @@ globalkeys = gears.table.join(
               {description = "media lower volume", group = "launcher"}),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%") end,
               {description = "media raise volume", group = "launcher"}),
+    awful.key({ }, "XF86AudioMute", function () awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end,
+              {description = "media raise volume", group = "launcher"}),
 
     -- brightnessctl
     awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl set 10%-") end,
