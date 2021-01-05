@@ -144,6 +144,8 @@ alias lt="exa --tree --level=2 --icons"
 alias gitc="git commit -m"
 alias gits="git status"
 
+alias z=zathura
+
 # }}}
 
 # Keybindings {{{
