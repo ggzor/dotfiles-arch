@@ -1,0 +1,47 @@
+# GUI configuration
+set font                      "JetBrainsMono\ Nerd\ Font bold 11"
+set guioptions                "sv"
+set statusbar-home-tilde      true
+set link-hadjust              false
+
+# Behavior configuration
+set n-completion-items        10
+set render-loading            false
+set selection-clipboard       clipboard
+
+# Theme
+
+# Enable recoloring
+set recolor true
+set recolor-lightcolor        "#011627"
+set recolor-darkcolor         "#d6deeb"
+
+# Default background colors
+set default-bg                "#011627"
+set default-fg                "#d6deeb"
+set highlight-color           "#82aaff"
+set highlight-active-color    "#ecc48d"
+
+# Index navigation
+set index-bg                  "#011627"
+set index-fg                  "#d6deeb"
+set index-active-bg           "#d6deeb"
+set index-active-fg           "#011627"
+
+# Bottom bar
+set completion-bg             "#011627"
+set completion-fg             "#d6deeb"
+set completion-highlight-bg   "#d6deeb"
+set completion-highlight-fg   "#011627"
+set statusbar-bg              "#011627"
+set statusbar-fg              "#d6deeb"
+set inputbar-bg               "#011627"
+set inputbar-fg               "#d6deeb"
+
+# Notifications
+set notification-bg           "#011627"
+set notification-fg           "#d6deeb"
+set notification-error-bg     "#ef5350"
+set notification-error-fg     "#d6deeb"
+set notification-warning-bg   "#ecc48d"
+set notification-warning-fg   "#011627"

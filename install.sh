@@ -20,6 +20,7 @@ link_same_single "$(pwd)" '.gitconfig' "$HOME"
 link_same_single "$(pwd)" '.p10k.zsh'  "$HOME"
 link_same_single "$(pwd)" 'picom.conf' "$HOME/.config/picom"
 link_same_single "$(pwd)" '.xinitrc'   "$HOME"
+link_same_single "$(pwd)" 'zathurarc'  "$HOME/.config/zathura"
 link_same_single "$(pwd)" '.zinit.zsh' "$HOME"
 link_same_single "$(pwd)" '.zshrc'     "$HOME"
 

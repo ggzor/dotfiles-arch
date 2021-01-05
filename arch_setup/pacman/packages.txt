@@ -57,6 +57,9 @@ pavucontrol    # Pulseaudio volume control
 peek           # Simple screen recorder
 thunar         # Customizable file manager
 zathura        # Customizable document viewer
+zathura-djvu
+zathura-pdf-mupdf
+zathura-ps
 
 ### Fonts
 ttf-roboto
