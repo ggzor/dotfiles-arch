@@ -1,7 +1,7 @@
 export EXCLUDE_DIRS="
 .git .fnm .cargo .vscode virtualenvs node_modules .cache __pycache__
 .fzf-vim-history .rustup .vscode-insiders .zinit .local .vim .nv .config
-.sdkman .npm .yay .mysql .yay .pki .gnome cache"
+.sdkman .npm .yay .mysql .yay .pki .gnome cache .nix .nix-profile jsm build"
 
 export EXCLUDE_STRING=$(printf $EXCLUDE_DIRS | tr ' ' '\n' | \
                         sed 's/^/--exclude /' | paste -sd' ')
@@ -35,6 +35,8 @@ ctrl-w:unix-word-rubout
 alt-c:clear-selection
 alt-e:select-all
 alt-t:toggle-all
+tab:toggle+down
+shift-tab:toggle+up
 
 # Preview
 alt-u:preview-page-up
@@ -60,21 +62,10 @@ export FZF_DEFAULT_OPTS="
 "
 
 # fzf-tab
-FZF_TAB_COMMAND=(
-    fzf
-    --ansi
-    --expect='$continuous_trigger,$print_query'
-
-    '--color=hl:$(( $#headers == 0 ? 108 : 255 ))'
-    --nth=2,3 --delimiter='\x00'  # Don't search prefix
-    --layout=reverse --height='${FZF_TMUX_HEIGHT:=75%}'
-    --tiebreak=begin -m --cycle
-    '--query=$query'
-    '--header-lines=$#headers'
-    --print-query
-    --bind=$FZF_BINDINGS_STRING
-)
-zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
+zstyle ':fzf-tab:*' fzf-bindings \
+  $(printf "%s" "$FZF_BINDINGS" | grep -e '^[^#]' | xargs -d'\n' echo)
+zstyle ':fzf-tab:*' fzf-flags --height 50%
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --color=always $realpath'
 
 # fzf utilities
 # open files
