@@ -3,7 +3,7 @@
 google-chrome
 
 # Code editors
-neovim-nightly
+neovim-nightly-bin
 visual-studio-code-insiders-bin
 
 # Documentation viewer
@@ -31,4 +31,3 @@ zsh-fix-winchanged-git
 
 # Qt5 extras
 qt5-styleplugins
-
