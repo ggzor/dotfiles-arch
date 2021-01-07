@@ -109,6 +109,7 @@ xdotool
 xorg-server
 xorg-xev
 xorg-xinit
+xorg-xhost
 xorg-xrandr
 xsettingsd
 xterm
