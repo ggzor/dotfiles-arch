@@ -56,10 +56,8 @@ obs-studio     # Powerful screen recorder
 pavucontrol    # Pulseaudio volume control
 peek           # Simple screen recorder
 thunar         # Customizable file manager
+xarchiver      # GUI for compression
 zathura        # Customizable document viewer
-zathura-djvu
-zathura-pdf-mupdf
-zathura-ps
 
 ### Fonts
 ttf-roboto
@@ -76,10 +74,26 @@ wpa_supplicant
 
 ### Other
 gifski  # Required by peek to generate good quality gifs
-tumbler # Required by thunar to generate thumbnails
 ntfs-3g # NTFS mount, read and write support
 udisks2 # Mount USB without root permissions
 wmctrl  # Control window manager
+# Extra filesystem support
+gvfs
+gvfs-afc
+gvfs-smb
+gvfs-gphoto2
+gvfs-mtp
+gvfs-nfs
+# Thunar plugins
+ffmpegthumbnailer
+thunar-archive-plugin
+thunar-volman
+tumbler
+# Zathura plugins
+zathura-djvu
+zathura-pdf-mupdf
+zathura-ps
+
 
 ### Python global packages
 python-pip    # package manager
