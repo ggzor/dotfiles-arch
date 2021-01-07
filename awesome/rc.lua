@@ -112,19 +112,30 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ screen = s, opacity = 0.60 })
+    s.systray = wibox.widget.systray()
+    s.systray.visible = false
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
+            wibox.widget {
+                {
+                    markup = "   ",
+                    font = beautiful.font_large,
+                    widget = wibox.widget.textbox
+                },
+                layout = wibox.layout.fixed.horizontal
+            },
             s.mytaglist,
         },
-        mytextclock,
+        wibox.widget {},
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            mytextclock,
             mykeyboardlayout,
-            wibox.widget.systray(),
+            s.systray,
             s.mylayoutbox,
         },
     }
@@ -143,6 +154,12 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey }, "s", hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
+    awful.key({ modkey }, "t",
+        function()
+            local systray = awful.screen.focused().systray
+            systray.visible = not systray.visible
+        end,
+              {description="show systray", group="awesome"}),
     awful.key({ modkey,           }, ",",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, ".",  awful.tag.viewnext,
