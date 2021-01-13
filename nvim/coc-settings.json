@@ -5,6 +5,7 @@
   "diagnostic.hintSign": "\uf425",
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
+  "codeLens.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "python",
     "rust",
@@ -22,8 +23,6 @@
   "python.linting.pylintEnabled": false,
   "python.linting.lintOnSave": true,
   "python.formatting.provider": "black",
-  "python.venvPath": "~/.cache/pypoetry/virtualenvs",
-  "python.formatting.blackPath": "~/.local/bin/black",
   "rust-analyzer.serverPath": "~/software/rust-analyzer",
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
