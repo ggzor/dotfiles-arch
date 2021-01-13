@@ -7,3 +7,5 @@
 [user]
 	name = ggzor
 	email = 30713864+ggzor@users.noreply.github.com
+[init]
+	defaultBranch = main
