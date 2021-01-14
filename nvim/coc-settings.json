@@ -23,7 +23,7 @@
   "python.linting.pylintEnabled": false,
   "python.linting.lintOnSave": true,
   "python.formatting.provider": "black",
-  "rust-analyzer.serverPath": "~/software/rust-analyzer",
+  "rust-analyzer.server.path": "/bin/rust-analyzer",
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
     "method": "\uf6a6",
