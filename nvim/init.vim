@@ -116,7 +116,7 @@ endif
 " Self explanatory
 set cursorline
 set noshowmode
-set number relativenumber
+set number nornu
 
 " Prefer splitting below and to the right
 set splitbelow
@@ -141,13 +141,6 @@ augroup aug_cursor_line
   au InsertEnter * if !&diff | setlocal nocursorline | endif
   au InsertLeave * if !&diff | setlocal cursorline | endif
 augroup END
-
-" Disable relative number in insert mode if not in diff
-augroup aug_rnu
-  au!
-  au InsertEnter * if !&diff | setlocal nornu | endif
-  au InsertLeave * if !&diff | setlocal rnu | endif
-augroup end
 
 " Diff options
 set diffopt=vertical,filler,foldcolumn:1
@@ -482,10 +475,6 @@ if g:env == 'vim'
     set laststatus=0
     set cmdheight=1
     set nolist
-
-    " Remove relative line numbering event handlers
-    autocmd! aug_rnu InsertEnter *
-    autocmd! aug_rnu InsertLeave *
   endfunction
 
   function! s:goyo_leave()
@@ -859,8 +848,6 @@ let g:indentLine_color_gui = '#283646'
 
       " Cursor line must be disabled in diff mode
       call s:change_option_in_diffmode("w:", "cursorline", 0, 1)
-      " Relative numbering should be disabled in diff mode
-      call s:change_option_in_diffmode("w:", "rnu", 0, 1)
     endfor
 
     " Get back to original window
@@ -1043,35 +1030,26 @@ if s:use_lsp
 
   " coc
   " Select completion option
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " Complete with <c-space>
-  if has('nvim')
-    inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-space> coc#refresh()
 
-    " Replicate vscode code action behavior
-    " Unfortunately, Ctrl-. cannot be mapped, so a custom char sequence is
-    " used, and then this sequence is mapped with the terminal emulator
-    nmap <silent> ñp v<Plug>(coc-codeaction-selected)<Esc>
-  else
-    inoremap <silent><expr> <c-@> coc#refresh()
-  endif
-
-  vmap <C-j> <Plug>(coc-snippets-select)
+  " Replicate vscode code action behavior
+  " Unfortunately, Ctrl-. cannot be mapped, so a custom char sequence is
+  " used, and then this sequence is mapped with the terminal emulator
+  nmap <silent> ñp v<Plug>(coc-codeaction-selected)<Esc>
 
   " FIXME: Format selection
   " FIXME: Save without formatting
-
-  " Navigate through errors
-  nmap <silent> [g <Plug>(coc-diagnostic-prev-error)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next-error)
 
   " Navigate through diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
   " GoTo code navigation.
-  nmap <silent> gd call CocAction()
+  nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
@@ -1080,18 +1058,11 @@ if s:use_lsp
   nnoremap <silent> ñk :call CocAction('doHover')<CR>
 
   " Symbol renaming
-  nmap <F2> <Plug>(coc-rename)
-
-  " Applying codeAction to the selected region.
-  " Example: `<leader>aap` for current paragraph
-  xmap <leader>c  <Plug>(coc-codeaction-selected)
-  nmap <leader>c  <Plug>(coc-codeaction-selected)
-
+  nmap <leader>r <Plug>(coc-rename)
   " Remap keys for applying codeAction to the current line.
-  " nmap <leader>ac  <Plug>(coc-codeaction)
+  nmap <leader>a <Plug>(coc-codeaction)
   " Apply AutoFix to problem on the current line.
-  nmap <leader>cf  <Plug>(coc-fix-current)
-
+  nmap <leader>q  <Plug>(coc-fix-current)
 
   " Refresh Coc
   inoremap <silent><expr> <C-space> coc#refresh()
@@ -1102,6 +1073,21 @@ if s:use_lsp
   nmap <silent><leader><TAB> <Plug>(coc-range-select)
   xmap <silent><leader><TAB> <Plug>(coc-range-select)
 
+  " Scroll float documentation
+  nnoremap <silent><nowait><expr> <A-j> coc#float#has_scroll()
+        \ ? coc#float#scroll(1) : ""
+  nnoremap <silent><nowait><expr> <A-k> coc#float#has_scroll()
+        \ ? coc#float#scroll(0) : ""
+
+  inoremap <silent><nowait><expr> <A-j> coc#float#has_scroll()
+        \ ? "\<c-r>=coc#float#scroll(1)\<cr>" : ""
+  inoremap <silent><nowait><expr> <A-k> coc#float#has_scroll()
+        \ ? "\<c-r>=coc#float#scroll(0)\<cr>" : ""
+
+  vnoremap <silent><nowait><expr> <A-j> coc#float#has_scroll()
+        \ ? coc#float#scroll(1) : ""
+  vnoremap <silent><nowait><expr> <A-k> coc#float#has_scroll()
+        \ ? coc#float#scroll(0) : ""
 endif
 
 if g:env == 'vim'
