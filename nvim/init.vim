@@ -1037,27 +1037,6 @@ if s:use_fzf
   " nnoremap <silent> ñR :call RipgrepFzfFuzzy('', 1, 1)<CR>
   nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
   nnoremap <silent> ñG :call RipgrepFzf('', 1)<CR>
-
-  " FZF LSP utils
-  if s:use_lsp
-    "FIXME nnoremap <silent> ñs :<C-u>CocFzfList outline<CR>
-
-    function! Coc_Symbols()
-      let old = $FZF_DEFAULT_OPTS
-      " Remove exit 0 to avoid closing immediatly
-      let $FZF_DEFAULT_OPTS = substitute(old, '--exit-0', '', '')
-      CocFzfList symbols --kind Function
-      let $FZF_DEFAULT_OPTS = old
-    endfunction
-
-    nnoremap <silent> ñS :<C-u>call Coc_Symbols()<CR>
-    nnoremap <silent> ñc :<C-u>CocFzfList commands<CR>
-    " nnoremap <silent> ñd :<C-u>CocFzfList diagnostics --current-buf<CR>
-    " nnoremap <silent> ñD :<C-u>CocFzfList diagnostics<CR>
-
-    nnoremap <silent> ñ1 :<C-u>CocFzfList symbols --kind Function<CR>
-    nnoremap <silent> ñ2 :<C-u>CocFzfList symbols --kind Constant<CR>
-  endif
 endif
 
 if s:use_lsp
@@ -1069,6 +1048,11 @@ if s:use_lsp
   " Complete with <c-space>
   if has('nvim')
     inoremap <silent><expr> <c-space> coc#refresh()
+
+    " Replicate vscode code action behavior
+    " Unfortunately, Ctrl-. cannot be mapped, so a custom char sequence is
+    " used, and then this sequence is mapped with the terminal emulator
+    nmap <silent> ñp v<Plug>(coc-codeaction-selected)<Esc>
   else
     inoremap <silent><expr> <c-@> coc#refresh()
   endif
