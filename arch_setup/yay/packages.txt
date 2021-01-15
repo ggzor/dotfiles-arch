@@ -6,9 +6,6 @@ google-chrome
 neovim-nightly-bin
 visual-studio-code-insiders-bin
 
-# Documentation viewer
-zeal
-
 # GUI Customization
 awesome-git
 xcursor-sweet
