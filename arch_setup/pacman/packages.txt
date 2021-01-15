@@ -25,6 +25,7 @@ exa           # ls and tree replacement with colors and icons
 fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
 jq            # json manipulator
+httpie        # easier curl
 moreutils     # extra cli utils (especially vidir)
 neofetch      # cli system info viewer
 rsync         # file copying and synchronization tool
