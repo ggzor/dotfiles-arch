@@ -62,6 +62,11 @@ function RefreshTheme()
   endif
 endfunction
 
+augroup zau-theme-custom
+  autocmd!
+  autocmd ColorScheme * call RefreshTheme()
+augroup END
+
 call RefreshTheme()
 
 

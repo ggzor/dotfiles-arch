@@ -231,7 +231,7 @@ if s:use_easymotion
     Plug 'asvetliakov/vim-easymotion'
   else
     Plug 'easymotion/vim-easymotion'
-    Plug 'boucherm/ShowMotion'
+    Plug 'ggzor/ShowMotion'
   endif
 endif
 
