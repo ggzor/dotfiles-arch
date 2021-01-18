@@ -30,6 +30,9 @@ function UseNightOwl()
   hi DiffDelete guifg='#00121f' guibg='#00121f'
 
   hi CursorLine guibg='#00121f'
+  hi CursorColumn guibg=NONE guifg=NONE
+
+  hi ShowMotion_CharSearchGroup gui=bold guibg=NONE guifg=red
 
   let g:lightline.colorscheme = 'nightowl'
   call RefreshLightline()

@@ -231,6 +231,7 @@ if s:use_easymotion
     Plug 'asvetliakov/vim-easymotion'
   else
     Plug 'easymotion/vim-easymotion'
+    Plug 'boucherm/ShowMotion'
   endif
 endif
 
@@ -934,8 +935,6 @@ vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
 nnoremap <leader>2 :.w !
 vnoremap <leader>2 :w !
 
-" Remap J
-noremap , J
 noremap E ge
 
 " Make Y similar to C and D
@@ -992,10 +991,17 @@ if s:use_operators
 endif
 
 if s:use_easymotion
-  map f <Plug>(easymotion-fl)
-  map F <Plug>(easymotion-Fl)
-  map t <Plug>(easymotion-tl)
-  map T <Plug>(easymotion-Tl)
+  nmap f <Plug>(show-motion-f)
+  nmap F <Plug>(show-motion-F)
+  nmap t <Plug>(show-motion-t)
+  nmap T <Plug>(show-motion-T)
+  nmap ; <Plug>(show-motion-;)
+  nmap , <Plug>(show-motion-,)
+
+  map <leader>f <Plug>(easymotion-fl)
+  map <leader>F <Plug>(easymotion-Fl)
+  map <leader>t <Plug>(easymotion-tl)
+  map <leader>T <Plug>(easymotion-Tl)
 
   map ñw <Plug>(easymotion-wl)
   map ñb <Plug>(easymotion-bl)
