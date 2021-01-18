@@ -83,8 +83,8 @@ zinit wait lucid for \
 
 # fzf integration
 zinit wait lucid light-mode for \
-  multisrc:'shell/*.zsh' @junegunn/fzf \
-  @Aloxaf/fzf-tab
+  @Aloxaf/fzf-tab \
+  multisrc:'shell/*.zsh' @junegunn/fzf
 
 # get fzf ripgrep preview script
 zplugin ice as"program" mv"bin/preview.sh -> fzf_rg_preview" \
