@@ -17,7 +17,6 @@ nerd-fonts-jetbrains-mono
 git-delta-bin
 fnm-bin
 glslviewer-git
-picom-ibhagwan-git
 haskell-language-server-bin
 
 # Fixes some resizing issues with upstream zsh
