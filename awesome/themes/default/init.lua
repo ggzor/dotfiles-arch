@@ -19,6 +19,7 @@ local blue          = "#82aaff"
 local base_font     = "JetBrainsMono Nerd Font"
 theme.font          = base_font.." 10"
 theme.font_large    = base_font.." 16"
+theme.wallpaper     = "~/Pictures/wallpapers/default.png"
 
 theme.bg_normal     = "#011627"
 theme.bg_focus      = "#535d6c"
