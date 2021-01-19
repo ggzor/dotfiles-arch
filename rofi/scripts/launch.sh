@@ -7,6 +7,8 @@ PROGRAMS=(
   ["﴾ nvidia settings"]="nvidia-settings"
   [" inkscape"]="inkscape"
   [" blender"]="blender"
+  [" thunar"]="thunar"
+  ["墳 pavucontrol"]="pavucontrol"
   [" vscode"]="code"
   [" vscode insiders"]="code-insiders"
 )
@@ -15,7 +17,8 @@ if [ "$@" ]
 then
     "${PROGRAMS["$*"]}" &> /dev/null &
 else
-    echo -en "\x00prompt\x1flaunch\n"
+    echo -en "\x00prompt\x1f<span fgcolor='#6c7a89'>launch</span>\n"
+    echo -en "\x00markup-rows\x1ftrue\n"
 
     for PROGRAM in "${!PROGRAMS[@]}"; do
         command -v "${PROGRAMS[$PROGRAM]}" &> /dev/null && \

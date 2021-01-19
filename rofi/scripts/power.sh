@@ -22,7 +22,7 @@ then
             ;;
     esac
 else
-    echo -en "\x00prompt\x1fpower\n"
+    echo -en "\x00prompt\x1f<span fgcolor='#6c7a89'>power</span>\n"
     echo -en "\0markup-rows\x1ftrue\n"
     echo -en "\0message\x1fSpecial <b>bold</b>message\n"
 
