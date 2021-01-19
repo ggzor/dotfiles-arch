@@ -272,7 +272,7 @@ globalkeys = gears.table.join(
               {description = "select next", group = "layout"}),
 
     -- Launcher
-    awful.key({ modkey }, "p", function() awful.spawn("ulauncher") end,
+    awful.key({ modkey }, "p", function() awful.spawn("rofi -show combi -display-combi do") end,
               {description = "show the menubar", group = "launcher"})
 )
 

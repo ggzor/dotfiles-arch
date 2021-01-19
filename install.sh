@@ -7,15 +7,18 @@ source './utils.sh'
 # Fresh install doesn't have this folder
 mkdir -p "$HOME/.config"
 
-# Link configuration files and folders using utils.sh
+# Link entire configuration folders
 link_same        "$(pwd)/awesome"      "$HOME/.config/awesome"
 link_same        "$(pwd)/kitty"        "$HOME/.config/kitty"
+link_same        "$(pwd)/rofi"         "$HOME/.config/rofi"
 link_same        "$(pwd)/wallpapers"   "$HOME/Pictures/wallpapers"
 
+# Link just files instead of entire folders to avoid
+# polluting this dotfiles directory with generated files
 link_same_files  "$(pwd)/nvim"         "$HOME/.config/nvim"
-link_same_files  "$(pwd)/ulauncher"    "$HOME/.config/ulauncher"
 link_same_files  "$(pwd)/vscode"       "$HOME/.config/Code - Insiders/User"
 
+# Link just one file
 link_same_single "$(pwd)" '.gitconfig' "$HOME"
 link_same_single "$(pwd)" '.p10k.zsh'  "$HOME"
 link_same_single "$(pwd)" 'picom.conf' "$HOME/.config/picom"
