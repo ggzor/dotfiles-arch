@@ -15,6 +15,8 @@ SITES=(
   [" youtube music"]="https://music.youtube.com"
   [" coolors"]="https://coolors.co"
   [" figma"]="https://figma.com"
+  [" outlook mail"]="https://outlook.live.com"
+  [" office outlook mail"]="https://outlook.office.com/"
 )
 
 if [ "$@" ]
