@@ -1046,6 +1046,7 @@ if s:use_lsp
   " Unfortunately, Ctrl-. cannot be mapped, so a custom char sequence is
   " used, and then this sequence is mapped with the terminal emulator
   nmap <silent> ñp v<Plug>(coc-codeaction-selected)<Esc>
+  vmap <silent> ñp <Plug>(coc-codeaction-selected)
 
   " FIXME: Format selection
   " FIXME: Save without formatting
