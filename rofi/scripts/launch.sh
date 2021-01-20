@@ -9,6 +9,7 @@ PROGRAMS=(
   [" blender"]="blender"
   [" thunar"]="thunar"
   ["墳 pavucontrol"]="pavucontrol"
+  [" obs studio"]="obs"
   [" vscode"]="code"
   [" vscode insiders"]="code-insiders"
 )
