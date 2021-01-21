@@ -1,7 +1,7 @@
 configuration {
   /* Behavior configuration */
-  modi: "actions:~/.config/rofi/scripts/actions.sh,term_in:~/.config/rofi/scripts/term_in.sh,launch:~/.config/rofi/scripts/launch.sh,power:~/.config/rofi/scripts/power.sh,navigate:~/.config/rofi/scripts/navigate.sh";
-  combi-modi: "launch,actions,term_in,navigate,power";
+  modi: "read:~/.config/rofi/scripts/read.sh,edit:~/.config/rofi/scripts/edit.sh,actions:~/.config/rofi/scripts/actions.sh,term_in:~/.config/rofi/scripts/term_in.sh,launch:~/.config/rofi/scripts/launch.sh,power:~/.config/rofi/scripts/power.sh,navigate:~/.config/rofi/scripts/navigate.sh";
+  combi-modi: "launch,actions,read,edit,term_in,navigate,power";
   case-sensitive: false;
   drun-show-actions: true;
   sort: true;
