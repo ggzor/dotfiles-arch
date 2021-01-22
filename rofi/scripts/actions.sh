@@ -6,7 +6,7 @@ ACTIONS=(
 )
 
 dotfiles_vim() {
-    kitty --directory "$HOME/dotfiles" nvim +CHADopen
+    kitty --directory "$HOME/dotfiles" nvim '+CHADopen --nofocus'
 }
 
 if [ "$@" ]
