@@ -87,4 +87,28 @@
     "command": "workbench.action.closeSidebar",
     "when": "activeViewlet == 'workbench.view.extension.liveshare' && sideBarVisible"
   },
+  {
+    "key": "ctrl+j",
+    "command": "extension.vim_ctrl+j",
+    "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl && !terminalFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-extension.vim_ctrl+j",
+    "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "extension.vim_ctrl+k",
+    "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl && !terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "-extension.vim_ctrl+k",
+    "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+  },
 ]
