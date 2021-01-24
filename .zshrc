@@ -156,7 +156,6 @@ bindkey -M viopp '_' beginning-of-line
 
 bindkey -M viins "^[l" vi-forward-char
 bindkey -M viins "^[h" vi-backward-char
-bindkey -M viins "^[w" vi-forward-word
 
 bindkey -M vicmd 'ñi' add-surround
 bindkey -M vicmd 'ñc' change-surround
