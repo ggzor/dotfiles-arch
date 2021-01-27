@@ -117,7 +117,7 @@ fi
 # Functions {{{
 
 # Set keyboard to latam and remap escape
-kb_latam() {
+kb_lat() {
   setxkbmap -option caps:swapescape -layout latam
 }
 
