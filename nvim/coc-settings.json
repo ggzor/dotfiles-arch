@@ -5,7 +5,7 @@
   "diagnostic.hintSign": "\uf425",
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "python",
     "rust",
@@ -17,7 +17,8 @@
     "css",
     "sass",
     "scss",
-    "html"
+    "html",
+    "go"
   ],
   "python.jediEnabled": false,
   "python.linting.pylintEnabled": false,

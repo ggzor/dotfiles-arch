@@ -426,7 +426,8 @@ if s:use_lsp
         \'coc-snippets',
         \'coc-tsserver',
         \'coc-clangd',
-        \'coc-java'
+        \'coc-java',
+        \'coc-go'
         \]
 
   " Function textobj provided by LSP
