@@ -18,7 +18,8 @@
     "sass",
     "scss",
     "html",
-    "go"
+    "go",
+    "rust"
   ],
   "python.jediEnabled": false,
   "python.linting.pylintEnabled": false,
