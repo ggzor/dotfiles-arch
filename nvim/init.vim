@@ -69,6 +69,8 @@ let &tabstop     = g:tabsize
 " Tab size overrides
 " Python: 4
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
+" Go: 4 and use tabs
+autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=-1
 
 " Indent preserving indentation level
 set autoindent
