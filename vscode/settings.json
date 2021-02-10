@@ -48,6 +48,12 @@
   // Extensions
   // Intellicode
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  // Haskell
+  "haskell.formattingProvider": "ormolu",
+  "[haskell]": {
+    // Has to format complete file
+    "editor.formatOnSaveMode": "file"
+  },
   // Java
   "java.refactor.renameFromFileExplorer": "autoApply",
   // Python
