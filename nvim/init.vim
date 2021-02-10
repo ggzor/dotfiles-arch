@@ -455,8 +455,9 @@ if g:env == 'vim'
   " FIXME: Allow easymotion up and down line
   " CHADTree
   let g:chadtree_settings = {
-    \ 'open_left': 0,
-    \ 'use_icons': g:use_icons,
+    \ 'view': {
+    \   'open_direction': 'right',
+    \ },
     \ 'keymap': {
     \   'jump_to_current': ['<C-o>'],
     \   'stat': ['<C-g>'],
