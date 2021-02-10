@@ -19,7 +19,8 @@
     "scss",
     "html",
     "go",
-    "rust"
+    "rust",
+    "haskell"
   ],
   "python.jediEnabled": false,
   "python.linting.pylintEnabled": false,
@@ -57,6 +58,11 @@
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
+      "settings": {
+        "haskell": {
+          "formattingProvider": "ormolu"
+        }
+      },
       "rootPatterns": [
         "*.cabal",
         "stack.yaml",
