@@ -25,9 +25,6 @@
   // Better with a tiling window manager
   "window.titleBarStyle": "native",
   "workbench.activityBar.visible": false,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.perEditorGroup": true,
-  "workbench.editor.limit.value": 3,
   // Cleaner vscode
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
