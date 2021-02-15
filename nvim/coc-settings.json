@@ -20,7 +20,9 @@
     "html",
     "go",
     "rust",
-    "haskell"
+    "haskell",
+    "cpp",
+    "c"
   ],
   "python.jediEnabled": false,
   "python.linting.pylintEnabled": false,
