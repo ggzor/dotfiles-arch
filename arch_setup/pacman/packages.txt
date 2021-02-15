@@ -10,6 +10,7 @@ dialog
 ffmpeg
 gzip
 man
+man-db
 time
 tmux
 tree
@@ -34,9 +35,12 @@ shfmt         # shell scripts formatter
 xclip         # clipboard manager
 
 ### Development
+autoconf
+automake
 clang
 docker
 docker-compose
+git
 glu
 go
 mesa
@@ -49,6 +53,7 @@ tk
 arandr         # Display configuration
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
+gimp           # Open source rastar graphics editor
 inkscape       # Open source vector graphics editor
 kitty          # Featureful terminal emulator
 lxappearance   # GTK theme configuration
@@ -71,7 +76,9 @@ dhcpcd
 iwd
 firewalld
 netctl
+nmap
 openssh
+openssh-askpass
 wpa_supplicant
 
 ### Other
