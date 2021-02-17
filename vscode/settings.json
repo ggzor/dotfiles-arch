@@ -66,6 +66,10 @@
   ],
   "python.insidersChannel": "weekly",
   "python.languageServer": "Pylance",
+  // Idris
+  "idris.idris2Mode": true,
+  "idris.idrisPath": "idris2",
+
   // VIM
   "vim.changeWordIncludesWhitespace": true,
   "vim.easymotion": true,
@@ -440,6 +444,6 @@
         "<leader>",
         "j"
       ]
-    },
+    }
   ],
 }
