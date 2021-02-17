@@ -257,6 +257,9 @@ if s:use_syntax
 
   " Custom syntax
   Plug 'ggzor/python-syntax', { 'branch': 'dev' }
+
+  " Idris
+  Plug 'edwinb/idris2-vim'
 endif
 
 if s:use_themes
