@@ -1,7 +1,9 @@
 export EXCLUDE_DIRS="
 .git .fnm .cargo .vscode virtualenvs node_modules .cache __pycache__
 .fzf-vim-history .rustup .vscode-insiders .zinit .local .vim .nv .config
-.sdkman .npm .yay .mysql .yay .pki .gnome cache .nix .nix-profile jsm build"
+.sdkman .npm .yay .mysql .yay .pki .gnome cache .nix .nix-profile jsm build
+.nv .venv debug release .stack .stack-work .cabal dist dist-newstyle .gradle
+.java .tooling .nix-defexpr mod .yarn"
 
 export EXCLUDE_STRING=$(printf $EXCLUDE_DIRS | tr ' ' '\n' | \
                         sed 's/^/--exclude /' | paste -sd' ')
