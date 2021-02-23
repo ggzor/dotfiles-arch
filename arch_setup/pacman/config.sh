@@ -10,10 +10,6 @@ systemctl enable sshd.service
 systemctl --user enable pulseaudio
 systemctl --user start pulseaudio
 
-# DHCP
-systemctl enable dhcpcd
-systemctl start dhcpcd
-
 # firewalld
 systemctl enable firewalld
 systemctl start firewalld
