@@ -165,6 +165,10 @@ call s:h("Debug", s:purple_fg_italic)
 
 call s:h("Todo", { "fg": s:purple, "bg": s:purple_25, "gui":"bold" })
 
+" Idris
+call s:h("idrisType", s:green_fg)
+call s:h("idrisOperators", s:cyan_fg)
+
 " JS
 call s:h("jsAll", s:purple_fg)
 call s:h("jsArguments", s:purple_fg)
