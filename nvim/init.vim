@@ -253,7 +253,7 @@ if s:use_syntax
   Plug 'sheerun/vim-polyglot'
   Plug 'honza/vim-snippets'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-  Plug 'junegunn/rainbow_parentheses.vim'
+  Plug 'luochen1990/rainbow'
 
   " Custom syntax
   Plug 'ggzor/python-syntax', { 'branch': 'dev' }
@@ -365,20 +365,7 @@ endif
 
 if s:use_syntax
 
-  "
-
-  " rainbow_parentheses
-  " FIXME: Replace with better plugin
-  let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-  augroup au_rainbow
-    autocmd!
-    autocmd FileType
-      \ lisp,clojure,scheme,
-      \python,javascript,javascriptreact,
-      \typescript,typescriptreact,
-      \lua,vim,zsh RainbowParentheses
-
-augroup END
+  let g:rainbow_active = 0
 
 endif
 

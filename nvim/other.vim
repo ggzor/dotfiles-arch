@@ -368,3 +368,24 @@ call s:h("pythonStrPrefix", s:purple_fg_italic)
 " Vimscript
 call s:h("vimOption", s:)
 
+" Rainbow parentheses
+let g:rainbow_conf = {
+  \	'guifgs': [s:orange.gui, s:violet.gui, s:green.gui],
+  \	'separately': {
+  \		'markdown': {
+  \			'parentheses_options': 'containedin=markdownCode contained'
+  \		},
+  \		'haskell': {
+  \			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold']
+  \		},
+  \		'vim': {
+  \			'parentheses_options': 'containedin=vimFuncBody',
+  \		},
+  \		'perl': {
+  \			'syn_name_prefix': 'perlBlockFoldRainbow',
+  \		},
+  \		'stylus': {
+  \			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
+  \		},
+  \	}
+  \}
