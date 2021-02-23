@@ -8,7 +8,6 @@ visual-studio-code-insiders-bin
 
 # GUI Customization
 awesome-git
-arc-gtk-theme
 xcursor-sweet
 
 # Fonts
@@ -29,5 +28,3 @@ qt5-styleplugins
 # Moonlander
 zsa-wally
 
-# Utils
-youtube-dl
