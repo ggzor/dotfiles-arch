@@ -145,6 +145,7 @@ alias gitc="git commit -m"
 alias gits="git status"
 
 alias z=zathura
+alias idris2="rlwrap idris2"
 
 # }}}
 
