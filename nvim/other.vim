@@ -71,7 +71,7 @@ call RefreshTheme()
 
 
 " Do not change foreground in visual mode
-highlight Visual guifg=None ctermfg=None
+highlight Visual guifg=NONE ctermfg=NONE
 endif
 
 " Theme corrections
