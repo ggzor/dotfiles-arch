@@ -260,6 +260,9 @@ if s:use_syntax
 
   " Idris
   Plug 'edwinb/idris2-vim'
+
+  " Agda
+  Plug 'derekelkins/agda-vim'
 endif
 
 if s:use_themes
