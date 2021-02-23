@@ -45,6 +45,10 @@
     "**/.factorypath": true
   },
 
+  // Terminal
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.shell.linux": "/usr/bin/zsh",
+
   // Extensions
   // Intellicode
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -445,5 +449,5 @@
         "j"
       ]
     }
-  ],
+  ]
 }
