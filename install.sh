@@ -19,6 +19,7 @@ link_same_files  "$(pwd)/nvim"         "$HOME/.config/nvim"
 link_same_files  "$(pwd)/vscode"       "$HOME/.config/Code - Insiders/User"
 
 # Link just one file
+link_same_single "$(pwd)" '.inputrc'   "$HOME"
 link_same_single "$(pwd)" '.gitconfig' "$HOME"
 link_same_single "$(pwd)" '.p10k.zsh'  "$HOME"
 link_same_single "$(pwd)" 'picom.conf' "$HOME/.config/picom"

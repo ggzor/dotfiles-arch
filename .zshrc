@@ -169,6 +169,31 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 # }}}
 
+# Cursor style {{{
+
+function _set_cursor() {
+  echo -ne $1
+}
+
+function _set_block_cursor() { _set_cursor '\e[2 q' }
+function _set_line_cursor() { _set_cursor '\e[6 q' }
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} = vicmd || $1 = 'block' ]]; then
+    _set_block_cursor
+  else
+    _set_line_cursor
+  fi
+}
+
+zle -N zle-keymap-select
+precmd_functions+=(_set_line_cursor)
+function zle-line-init() { zle -K viins; _set_line_cursor }
+function zle-line-finish() { _set_block_cursor }
+zle -N zle-line-finish
+
+# }}}
+
 # Path {{{
 
 path+=( $HOME/.local/bin )
