@@ -167,6 +167,9 @@ call s:h("Debug", s:purple_fg_italic)
 
 call s:h("Todo", { "fg": s:purple, "bg": s:purple_25, "gui":"bold" })
 
+call s:h("Search", { "bg": { "gui": "#2c476f" } })
+call s:h("IncSearch", { "gui": "bold", "bg": { "gui": "#6285c9" } })
+
 " Idris
 call s:h("idrisType", s:green_fg)
 call s:h("idrisOperators", s:cyan_fg)
