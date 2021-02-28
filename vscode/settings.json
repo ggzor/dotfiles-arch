@@ -62,6 +62,8 @@
   "java.refactor.renameFromFileExplorer": "autoApply",
   // Python
   "jupyter.insidersChannel": "weekly",
+  "python.showStartPage": false,
+  "jupyter.interactiveWindowMode": "perFile",
   "workbench.editorAssociations": [
     {
       "viewType": "jupyter-notebook",
