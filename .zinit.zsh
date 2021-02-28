@@ -88,6 +88,24 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --color=always $real
   fi
 }
 
+export ZD_FD_COMMAND_ARGS="--type d $EXCLUDE_STRING --hidden"
+# go to folder
+zd() {
+  local dir preview_command
+  preview_command="exa --color always --tree --level=2 --icons --git-ignore {}"
+
+  out=$(xargs fd <<< "$ZD_FD_COMMAND_ARGS" 2> /dev/null)
+
+  if [[ -n $out ]]; then
+    dir=$(fzf +m --preview="$preview_command" \
+              --history="$HOME/.fzf-zd-history" <<< "$out")
+
+    if [[ -n $dir ]]; then
+      cd "$dir"
+    fi
+  fi
+}
+
 # forgit
 forgit_log=gitl
 forgit_diff=gitd
