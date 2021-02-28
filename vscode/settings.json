@@ -93,7 +93,17 @@
   // Don't look after this line, it's really ugly to make
   // vscode work like vim :(
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Quit with ñq
+    // Show hover
+    {
+      "before": [
+        "ñ",
+        "k"
+      ],
+      "after": [
+        "g",
+        "h"
+      ]
+    },
     {
       "before": [
         "ñ",
@@ -103,7 +113,6 @@
         "workbench.action.closeActiveEditor"
       ]
     },
-    // Save with ñs
     {
       "before": [
         "ñ",
@@ -113,7 +122,6 @@
         "workbench.action.files.save"
       ]
     },
-    // Open commands with ññ
     {
       "before": [
         "ñ",
@@ -123,17 +131,15 @@
         "workbench.action.showCommands"
       ]
     },
-    // Rename with ñc
     {
       "before": [
-        "ñ",
-        "c"
+        "<leader>",
+        "r"
       ],
       "commands": [
         "editor.action.rename"
       ]
     },
-    // Open file with ñf
     {
       "before": [
         "ñ",
@@ -143,7 +149,6 @@
         "workbench.action.quickOpen"
       ]
     },
-    // Go to right split
     {
       "before": [
         "<C-l>"
@@ -152,7 +157,6 @@
         "workbench.action.navigateRight"
       ]
     },
-    // Go to left split
     {
       "before": [
         "<C-h>"
@@ -161,7 +165,6 @@
         "workbench.action.navigateLeft"
       ]
     },
-    // Go to up split
     {
       "before": [
         "<C-k>"
@@ -170,7 +173,6 @@
         "workbench.action.navigateUp"
       ]
     },
-    // Go to down split
     {
       "before": [
         "<C-j>"
@@ -225,6 +227,7 @@
     // easymotion
     {
       "before": [
+        "<leader>",
         "f"
       ],
       "after": [
@@ -235,6 +238,7 @@
     },
     {
       "before": [
+        "<leader>",
         "F"
       ],
       "after": [
@@ -245,6 +249,7 @@
     },
     {
       "before": [
+        "<leader>",
         "t"
       ],
       "after": [
@@ -255,6 +260,7 @@
     },
     {
       "before": [
+        "<leader>",
         "T"
       ],
       "after": [
@@ -344,6 +350,7 @@
     // easymotion but in visual mode
     {
       "before": [
+        "<leader>",
         "f"
       ],
       "after": [
