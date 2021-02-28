@@ -191,6 +191,7 @@ endif
 
 " Utilities for other plugins
 Plug 'xolox/vim-misc'
+Plug 'machakann/vim-highlightedyank'
 
 " Variables s:use_<option> are set in Computed Options section
 if s:use_textobj
@@ -319,6 +320,9 @@ call plug#end()
 " }}}
 
 " Plugin after configuration {{{
+
+let g:highlightedyank_highlight_duration = -1
+
 if s:use_textobj
 
 endif

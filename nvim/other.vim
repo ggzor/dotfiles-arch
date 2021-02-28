@@ -126,6 +126,8 @@ function! s:h(group, style)
     "\ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
 endfunction
 
+call s:h("HighlightedyankRegion", { "bg": { "gui": "#3c4241" } })
+
 " Defaults
 call s:h("Constant", s:orange_fg)
 call s:h("String", s:yellow_fg)
