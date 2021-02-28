@@ -420,7 +420,7 @@ if s:use_lsp
         \'coc-eslint',
         \'coc-json',
         \'coc-prettier',
-        \'coc-python',
+        \'coc-pyright',
         \'coc-rust-analyzer',
         \'coc-snippets',
         \'coc-tsserver',
