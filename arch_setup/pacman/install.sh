@@ -8,9 +8,9 @@ PACKAGES=$(cat './arch_setup/pacman/packages.txt' \
           | tr '\n' ' ')
 
 # Install packages
-pacman -Syu --noconfirm
-pacman -S --noconfirm --needed $PACKAGES
+sudo pacman -Syu --noconfirm
+sudo pacman -S --noconfirm --needed $PACKAGES
 
 # Run extra install commands
-./arch_setup/pacman/config.sh
+sudo ./arch_setup/pacman/config.sh
 
