@@ -22,7 +22,8 @@
     "rust",
     "haskell",
     "cpp",
-    "c"
+    "c",
+    "java"
   ],
   "python.jediEnabled": false,
   "python.linting.pylintEnabled": false,
