@@ -1,7 +1,9 @@
 ### Audio
 alsa-utils
-pulseaudio
-pulseaudio-alsa
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
 playerctl
 
 ### CLI Standard Utils
