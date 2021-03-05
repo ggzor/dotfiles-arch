@@ -106,6 +106,26 @@ zd() {
   fi
 }
 
+# search regex
+ñg() {
+  command_fmt='rg --column --line-number --no-heading --color=always --smart-case %b || true'
+  initial_command=$(printf $command_fmt "'$1'")
+  reload_command="$(printf $command_fmt "{q}")"
+
+  result=$(
+    eval "$initial_command" \
+      | fzf --disabled --ansi --query "$1" --bind "change:reload:$reload_command" \
+            --preview='fzf_rg_preview {}')
+
+  if [[ ! -z "$result" ]]; then
+    if [[ $(echo -n "$result" | wc -l) > 1 ]]; then
+      vim -q <(echo -n $result)
+    else
+      vim "$(echo "$result" | cut -d: -f1-3)"
+    fi
+  fi
+}
+
 # forgit
 forgit_log=gitl
 forgit_diff=gitd

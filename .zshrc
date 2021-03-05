@@ -87,9 +87,10 @@ zinit wait lucid light-mode for \
   multisrc:'shell/*.zsh' @junegunn/fzf
 
 # get fzf ripgrep preview script
-zplugin ice as"program" mv"bin/preview.sh -> fzf_rg_preview" \
-            pick"fzf_rg_preview" atpull"!git reset --hard"
-zinit wait'1' silent for junegunn/fzf.vim
+zinit wait lucid for \
+  as'program' mv'bin/preview.sh -> fzf_rg_preview' \
+  pick'fzf_rg_preview' \
+    junegunn/fzf.vim
 
 # fzf git complement
 zinit wait'1' lucid for \
