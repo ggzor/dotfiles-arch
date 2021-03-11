@@ -8,6 +8,7 @@ set link-hadjust              false
 set n-completion-items        10
 set render-loading            false
 set selection-clipboard       clipboard
+set scroll-page-aware         true
 
 # Theme
 
