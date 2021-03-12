@@ -3,7 +3,8 @@ export EXCLUDE_DIRS="
 .fzf-vim-history .rustup .vscode-insiders .zinit .local .vim .nv .config
 .sdkman .npm .yay .mysql .yay .pki .gnome cache .nix .nix-profile jsm build
 .nv .venv debug release .stack .stack-work .cabal dist dist-newstyle .gradle
-.java .tooling .nix-defexpr mod .yarn .ipython .ghc pkg"
+.java .tooling .nix-defexpr mod .yarn .ipython .ghc pkg .emscripten_cache
+.mozilla __MACOSX nltk_data"
 
 export EXCLUDE_STRING=$(printf $EXCLUDE_DIRS | tr ' ' '\n' | \
                         sed 's/^/--exclude /' | paste -sd' ')
