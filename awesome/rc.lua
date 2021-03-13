@@ -414,6 +414,15 @@ awful.rules.rules = {
 }
 -- }}}
 
+function filter_activation(c, context, hints)
+    if context == 'rules' and c.name == 'preview.mp4 - mpv' then
+        return false
+    else
+        return true
+    end
+end
+awful.ewmh.add_activate_filter(filter_activation)
+
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
