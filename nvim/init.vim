@@ -192,6 +192,7 @@ endif
 " Utilities for other plugins
 Plug 'xolox/vim-misc'
 Plug 'machakann/vim-highlightedyank'
+Plug 'lervag/vimtex'
 
 " Variables s:use_<option> are set in Computed Options section
 if s:use_textobj
@@ -323,6 +324,9 @@ call plug#end()
 
 let g:highlightedyank_highlight_duration = -1
 
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_enabled = 0
+
 if s:use_textobj
 
 endif
@@ -426,7 +430,8 @@ if s:use_lsp
         \'coc-tsserver',
         \'coc-clangd',
         \'coc-java',
-        \'coc-go'
+        \'coc-go',
+        \'coc-vimtex'
         \]
 
   " Function textobj provided by LSP
