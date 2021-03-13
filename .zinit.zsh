@@ -120,9 +120,9 @@ zd() {
 
   if [[ ! -z "$result" ]]; then
     if [[ $(echo -n "$result" | wc -l) > 1 ]]; then
-      vim -q <(echo -n $result)
+      ${EDITOR:-nvim} -q <(echo -n $result)
     else
-      vim "$(echo "$result" | cut -d: -f1-3)"
+      ${EDITOR:-nvim} "$(echo "$result" | cut -d: -f1-3)"
     fi
   fi
 }
