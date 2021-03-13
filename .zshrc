@@ -198,6 +198,7 @@ zle -N zle-line-finish
 # Path {{{
 
 path+=( $HOME/.local/bin )
+path+=( /usr/lib/emscripten )
 
 # }}}
 
