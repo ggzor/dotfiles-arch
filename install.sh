@@ -11,6 +11,7 @@ mkdir -p "$HOME/.config"
 link_same        "$(pwd)/awesome"      "$HOME/.config/awesome"
 link_same        "$(pwd)/kitty"        "$HOME/.config/kitty"
 link_same        "$(pwd)/rofi"         "$HOME/.config/rofi"
+mkdir -p "$HOME/Pictures/wallpapers"
 link_same        "$(pwd)/wallpapers"   "$HOME/Pictures/wallpapers"
 
 # Link just files instead of entire folders to avoid
