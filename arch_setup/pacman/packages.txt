@@ -36,7 +36,6 @@ rsync         # file copying and synchronization tool
 ripgrep       # grep replacement with better interface
 shfmt         # shell scripts formatter
 xclip         # clipboard manager
-youtube-dl    # video downloader
 
 ### Development
 autoconf
@@ -47,10 +46,7 @@ docker-compose
 git
 glu
 go
-mesa
 python
-rustup
-rust-analyzer
 tk
 
 ### Desktop
@@ -58,8 +54,6 @@ arandr         # Display configuration
 arc-gtk-theme  # Arc theme
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
-gimp           # Open source rastar graphics editor
-inkscape       # Open source vector graphics editor
 kitty          # Featureful terminal emulator
 lxappearance   # GTK theme configuration
 mpv            # Media player
@@ -87,7 +81,6 @@ openssh-askpass
 wpa_supplicant
 
 ### Other
-gifski  # Required by peek to generate good quality gifs
 ntfs-3g # NTFS mount, read and write support
 udisks2 # Mount USB without root permissions
 wmctrl  # Control window manager

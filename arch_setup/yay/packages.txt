@@ -4,7 +4,6 @@ google-chrome
 
 # Code editors
 neovim-nightly-bin
-visual-studio-code-insiders-bin
 
 # GUI Customization
 awesome-git
@@ -16,15 +15,10 @@ nerd-fonts-jetbrains-mono
 # Utilities
 git-delta-bin
 fnm-bin
-glslviewer-git
-haskell-language-server-bin
 
 # Fixes some resizing issues with upstream zsh
 zsh-fix-winchanged-git
 
 # Qt5 extras
 qt5-styleplugins
-
-# Moonlander
-zsa-wally
 
