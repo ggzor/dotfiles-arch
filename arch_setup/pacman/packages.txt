@@ -82,6 +82,7 @@ iwd
 firewalld
 netctl
 nmap
+openbsd-netcat
 openssh
 openssh-askpass
 wpa_supplicant
