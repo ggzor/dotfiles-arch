@@ -78,6 +78,7 @@ noto-fonts-emoji
 
 ### Network
 dhcpcd
+inetutils
 iwd
 firewalld
 netctl
