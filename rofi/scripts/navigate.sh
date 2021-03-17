@@ -2,6 +2,7 @@
 
 declare -A SITES
 SITES=(
+  [" calendar"]="https://calendar.google.com"
   [" github"]="https://github.com"
   [" instagram"]="https://instagram.com"
   [" google"]="https://google.com"
