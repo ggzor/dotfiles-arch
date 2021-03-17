@@ -119,6 +119,7 @@ python-pipx   # Useful python executable installer
 python-poetry # Virtual environment manager
 python-pynvim # nvim python support
 python-lxml   # required by inkscape
+python-wheel  # package installation
 
 ### xorg
 xcb-util-cursor
