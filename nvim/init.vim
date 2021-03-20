@@ -164,7 +164,7 @@ let g:gitgutter_sign_modified_removed   = '▍'
 
 " vim-polyglot
 " Use my own fork for this specific filetype
-let g:polyglot_disabled = [ 'python', 'idris', 'haskell' ]
+let g:polyglot_disabled = [ 'javascriptreact', 'javascript', 'jsx', 'python', 'idris', 'haskell' ]
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
@@ -253,8 +253,11 @@ if s:use_syntax
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lpinilla/vim-codepainter'
   Plug 'sheerun/vim-polyglot'
+
+  Plug 'pangloss/vim-javascript'
+  Plug 'maxmellon/vim-jsx-pretty'
+
   Plug 'honza/vim-snippets'
-  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'luochen1990/rainbow'
 
   " Custom syntax
@@ -431,6 +434,7 @@ if s:use_lsp
         \'coc-clangd',
         \'coc-java',
         \'coc-go',
+        \'coc-styled-components',
         \'coc-vimtex'
         \]
 
