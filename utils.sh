@@ -9,6 +9,7 @@ set -euo pipefail
 # if LINK_NAME exists and links to TARGET, then do nothing
 # otherwise, fail
 link_same() {
+  mkdir -p $(dirname "$2")
   (ln -sT "$1" "$2" &> /dev/null && echo "Linked $2 -> $1") \
    || ([ "$(readlink "$2")" = "$1" ] && echo "Already linked $2") \
    || (echo -e "\033[0;31mUnable to link $2 -> $1\033[0m" && false)
@@ -19,8 +20,6 @@ link_same() {
 #
 # Similar to link_same, but links each file inside of TARGET
 link_same_files() {
-  mkdir -p "$2"
-
   for f in $(ls "$1"); do
     link_same "$1/$f" "$2/$f"
   done
@@ -32,8 +31,6 @@ link_same_files() {
 # Links the file with the semantics of link_same and creates
 # the directory if not exists
 link_same_single() {
-  mkdir -p "$3"
-
   link_same "$1/$2" "$3/$2"
 }
 
