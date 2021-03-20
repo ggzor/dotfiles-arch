@@ -9,7 +9,7 @@ set -euo pipefail
 # if LINK_NAME exists and links to TARGET, then do nothing
 # otherwise, fail
 link_same() {
-  mkdir -p $(dirname "$2")
+  mkdir -p "$(dirname "$2")"
   (ln -sT "$1" "$2" &> /dev/null && echo "Linked $2 -> $1") \
    || ([ "$(readlink "$2")" = "$1" ] && echo "Already linked $2") \
    || (echo -e "\033[0;31mUnable to link $2 -> $1\033[0m" && false)
