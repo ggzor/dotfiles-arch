@@ -424,6 +424,7 @@ if s:use_lsp
 
   let g:coc_global_extensions = [
         \'coc-css',
+        \'coc-emmet',
         \'coc-eslint',
         \'coc-json',
         \'coc-prettier',
