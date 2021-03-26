@@ -131,7 +131,7 @@ zd() {
 forgit_log=gitl
 forgit_diff=gitd
 forgit_add=gita
-forgit_restore=gitr
+forgit_checkout_file=gitr
 forgit_reset_head=gitu
 
 forgit_ignore=gitignore
