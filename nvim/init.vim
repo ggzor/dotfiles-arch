@@ -732,8 +732,6 @@ function! FZFFiles(fullscreen)
         \ : right_preview_string
   let options = fzf#vim#with_preview(preview_params)
 
-  echom wh
-
   if !go_full
     let target_width = min([160, float2nr(0.9 * ww)])
     let target_height = min([60, float2nr(0.8 * wh)])
