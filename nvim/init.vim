@@ -384,6 +384,20 @@ if s:use_syntax
 endif
 
 if s:use_themes
+  " Code painter
+
+  let g:paint_color_idx = 0
+  let g:paint_colors = ['blue', 'yellow', 'green', 'red', 'gray']
+
+  " Code painter
+  func! CodePainterAdjustColor(amount) abort
+    let g:paint_color_idx = ((g:paint_color_idx + a:amount + len(g:paint_colors)) % len(g:paint_colors))
+    call codepainter#ChangeColorByName('paint'.g:paint_colors[g:paint_color_idx])
+    if a:amount != 0
+      echo "Using color: " . g:paint_colors[g:paint_color_idx]
+    endif
+  endfunc
+  call CodePainterAdjustColor(0)
 
 endif
 
@@ -1137,6 +1151,13 @@ if g:env == 'vim'
   let g:winresizer_start_key = '<leader>W'
 
 endif
+
+vnoremap <silent> gp :<c-u> call codepainter#paintText(visualmode())<cr>
+nnoremap <silent> gp <nop>
+nnoremap <silent> gP :<c-u> PainterEraseLine<cr>
+
+nnoremap <silent> g- :<c-u> call CodePainterAdjustColor(1)<cr>
+nnoremap <silent> g+ :<c-u> call CodePainterAdjustColor(-1)<cr>
 
 if g:env == 'vscode'
   " comments
