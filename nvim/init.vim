@@ -717,14 +717,30 @@ endif
 
 " FZF Full Screen preview to the right
 let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --exclude .git --follow"
-let g:fzf_preview_window_min_width=120
+let g:fzf_preview_window_min_width=100
 
-function! FZFFiles(query, fullscreen, preview)
-  if a:fullscreen && winwidth(0) < g:fzf_preview_window_min_width
-    call fzf#vim#files(a:query, a:preview ? fzf#vim#with_preview('up:80%:noborder') : {}, a:fullscreen)
-  else
-    call fzf#vim#files(a:query, a:preview ? fzf#vim#with_preview('right:95:noborder') : {}, a:fullscreen)
+function! FZFFiles(fullscreen)
+  let ww = winwidth(0)
+  let wh = winheight(0)
+  let go_full = a:fullscreen || ww <= 100
+
+  let preview_width = min([95, float2nr(0.50 * ww)])
+  let right_preview_string = 'right:'.preview_width.':noborder:nowrap'
+
+  let preview_params = go_full
+        \ ? fzf#vim#with_preview(ww <= 100 ? 'down:61%:border' : right_preview_string)
+        \ : right_preview_string
+  let options = fzf#vim#with_preview(preview_params)
+
+  echom wh
+
+  if !go_full
+    let target_width = min([160, float2nr(0.9 * ww)])
+    let target_height = min([60, float2nr(0.8 * wh)])
+    call extend(options, { 'window': { 'width': target_width, 'height': target_height } })
   endif
+
+  call fzf#vim#files('', options, go_full)
 endfunction
 
 let g:fzf_history_dir = '~/.fzf-vim-history'
@@ -1034,8 +1050,8 @@ if s:use_insert
 endif
 
 if s:use_fzf
-  nnoremap <silent> ñf :call FZFFiles('', 0, 1)<CR>
-  nnoremap <silent> ñF :call FZFFiles('', 1, 1)<CR>
+  nnoremap <silent> ñf :call FZFFiles(0)<CR>
+  nnoremap <silent> ñF :call FZFFiles(1)<CR>
   nnoremap <silent> ñj :Buffers<CR>
   nnoremap <silent> ñl :BLines<CR>
   nnoremap <silent> ññ :History:<CR>
