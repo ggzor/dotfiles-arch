@@ -963,16 +963,8 @@ vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
 nnoremap <leader>2 :.w !
 vnoremap <leader>2 :w !
 
-noremap E ge
-
 " Make Y similar to C and D
 noremap Y y$
-
-" Remap search next immediate (useful for macros)
-noremap <Space>f f
-noremap <Space>F F
-noremap <Space>t t
-noremap <Space>T T
 
 " Navigate to alternate file
 nnoremap <silent> ña <C-^>
@@ -989,14 +981,6 @@ nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 " Plugins
 if s:use_operators
 
-  " tabular
-  nmap <leader>T\| :Tabularize /\|<CR>
-  vmap <leader>T\| :Tabularize /\|<CR>
-  nmap <leader>T= :Tabularize /=<CR>
-  vmap <leader>T= :Tabularize /=<CR>
-  nmap <leader>T: :Tabularize /:\zs/l0l1<CR>
-  vmap <leader>T: :Tabularize /:\zs/l0l1<CR>
-
   " vim-sandwich
   " add
   nmap ñi <Plug>(operator-sandwich-add)
@@ -1012,9 +996,6 @@ if s:use_operators
 
   " vim-subversive
   nmap s <plug>(SubversiveSubstitute)
-  nmap <leader>s <plug>(SubversiveSubstituteRange)
-  xmap <leader>s <plug>(SubversiveSubstituteRange)
-  nmap <leader><leader>s <plug>(SubversiveSubstituteWordRange)
 
 endif
 
@@ -1075,9 +1056,6 @@ if s:use_lsp
   " used, and then this sequence is mapped with the terminal emulator
   nmap <silent> ñp v<Plug>(coc-codeaction-selected)<Esc>
   vmap <silent> ñp <Plug>(coc-codeaction-selected)
-
-  " FIXME: Format selection
-  " FIXME: Save without formatting
 
   " Navigate through diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
