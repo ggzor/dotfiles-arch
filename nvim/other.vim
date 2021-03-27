@@ -173,7 +173,9 @@ call s:h("Debug", s:purple_fg_italic)
 
 call s:h("Todo", { "fg": s:purple, "bg": s:purple_25, "gui":"bold" })
 
+" 1/6 opacity seems ok
 call s:h("Search", { "bg": { "gui": "#2c476f" } })
+" 75% opacity highlights a lot
 call s:h("IncSearch", { "gui": "bold", "bg": { "gui": "#6285c9" } })
 
 " Idris
