@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 READ_DIR="$HOME/Documents/Books"
-LIBRARIES=( "$READ_DIR" "$READ_DIR/TheDaoOfFP" )
+LIBRARIES=( "$READ_DIR" "$READ_DIR/TheDaoOfFP" "$READ_DIR/Papers" )
 
 if [ "$@" ]
 then
