@@ -304,7 +304,26 @@ clientkeys = gears.table.join(
             c.maximized = not c.maximized
             c:raise()
         end ,
-        {description = "(un)maximize", group = "client"})
+        {description = "(un)maximize", group = "client"}),
+    awful.key({ modkey, }, "n",
+        function (c)
+            if not c.floating then
+                c.floating = true
+                c.ontop = true
+                awful.placement.centered(c)
+                c:raise()
+            else
+                c.floating = false
+                c.ontop = false
+            end
+        end ,
+        {description = "toggle float", group = "client"}),
+    awful.key({ modkey, }, "b",
+        function (c)
+            c.ontop = not c.ontop
+            c:raise()
+        end ,
+        {description = "toggle on top", group = "client"})
 )
 
 -- Bind all key numbers to tags.
