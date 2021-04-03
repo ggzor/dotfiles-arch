@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Utilities for other scripts
 
 set -euo pipefail
@@ -20,7 +22,7 @@ link_same() {
 #
 # Similar to link_same, but links each file inside of TARGET
 link_same_files() {
-  for f in $(ls "$1"); do
+  for f in "$1"/*; do
     link_same "$1/$f" "$2/$f"
   done
 }

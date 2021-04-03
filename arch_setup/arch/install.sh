@@ -35,13 +35,14 @@ done
 
 # Calculated variables
 export DEVICE="/dev/$DISK"
-export SWAP_POSITION="$( echo "$SWAP + 0.5" | bc )"
+export SWAP_POSITION
+SWAP_POSITION="$( echo "$SWAP + 0.5" | bc )"
 
 # Unmount if necessary
 umount /mnt &> /dev/null || true
 
 # Create partitions on given disks
-parted --script $DEVICE \
+parted --script "$DEVICE" \
   mklabel gpt \
   mkpart efi fat32 1MiB 513MiB \
   mkpart swap ext4 513MiB "${SWAP_POSITION}GiB" \
@@ -62,15 +63,18 @@ mount "${DEVICE}3" /mnt
 pacstrap /mnt base
 
 # Get created partition uuids
-UUIDS=( $(lsblk -o NAME,UUID | grep "$DISK" | tail -3 | cut -d' ' -f2 | tr '\n' ' ') )
+read -ra UUIDS <<< "$(lsblk -o NAME,UUID | grep "$DISK" | \
+                      tail -3 | cut -d' ' -f2 | tr '\n' ' ')"
 export EFI_UUID=${UUIDS[0]}
 export SWAP_UUID=${UUIDS[1]}
 export ROOT_UUID=${UUIDS[2]}
 
 # Generate fstab file
-genfstab -U /mnt >> /mnt/etc/fstab
-printf "\n#efi\nUUID=%s /efi vfat defaults 0 2\n" "$EFI_UUID" >> /mnt/etc/fstab
-printf "\n#swap\nUUID=%s none swap defaults 0 0\n" "$SWAP_UUID" >> /mnt/etc/fstab
+{
+  genfstab -U /mnt
+  printf "\n#efi\nUUID=%s /efi vfat defaults 0 2\n" "$EFI_UUID"
+  printf "\n#swap\nUUID=%s none swap defaults 0 0\n" "$SWAP_UUID"
+} >> /mnt/etc/fstab
 
 # Copy dotfiles
 cp -R dotfiles "/mnt"
