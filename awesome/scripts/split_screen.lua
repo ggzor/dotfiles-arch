@@ -1,5 +1,4 @@
 local awful = require("awful")
-local naughty = require("naughty")
 
 local left_screen  = 'awm-left'
 local right_screen = 'awm-right'
@@ -9,9 +8,10 @@ local sh = require("utils.sh").load_scripts_from_dir('scripts/split_screen')
 return function()
     local run = awful.spawn.easy_async_with_shell
 
-    monitor_commands = 'xrandr'
     run(sh.check_status({ screen = left_screen }), function (stdout, _, _, code)
         if code == 0 then
+            local w, h = stdout:match('([0-9]+)\n([0-9]+)\n')
+
             local del_command =
                 sh.delete_monitor({ name = left_screen })..
                 sh.delete_monitor({ name = right_screen })
@@ -19,7 +19,7 @@ return function()
             run(del_command, function (stdout, stderr, _, code)
                 if code == 0 then
                     screen[2]:fake_remove()
-                    screen[1]:fake_resize(0, 0, 1366, 768)
+                    screen[1]:fake_resize(0, 0, w, h)
 
                     -- Ugly hack to remove again the non removed screen
                     run('sleep 1', function()
