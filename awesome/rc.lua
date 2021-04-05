@@ -281,6 +281,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
 
+    -- Screen sharing
+    awful.key({ modkey, "Control" }, "p", require('scripts.split_screen'),
+        {description = "toggle split screen", group = "layout"}),
+
     -- Launcher
     awful.key({ modkey }, "p", function() awful.spawn("rofi -show combi -display-combi do") end,
               {description = "show the menubar", group = "launcher"})
