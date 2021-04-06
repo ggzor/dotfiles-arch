@@ -23,7 +23,7 @@ link_same() {
 # Similar to link_same, but links each file inside of TARGET
 link_same_files() {
   for f in "$1"/*; do
-    link_same "$1/$f" "$2/$f"
+    link_same "$f" "$2/$(basename "$f")"
   done
 }
 
