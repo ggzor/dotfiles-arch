@@ -164,7 +164,12 @@ let g:gitgutter_sign_modified_removed   = '▍'
 
 " vim-polyglot
 " Use my own fork for this specific filetype
-let g:polyglot_disabled = [ 'javascriptreact', 'javascript', 'jsx', 'python', 'idris', 'haskell' ]
+let g:polyglot_disabled = [
+  \ 'javascriptreact',
+  \ 'typescriptreact',
+  \ 'javascript',
+  \ 'tsx', 'jsx',
+  \ 'python', 'idris', 'haskell' ]
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
