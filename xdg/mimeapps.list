@@ -1,0 +1,22 @@
+[Default Applications]
+# Default browser
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/webcal=google-chrome.desktop
+
+# Directories
+inode/directory=Thunar.desktop
+
+# Other files
+application/pdf=org.pwmt.zathura.desktop
+
+# Images
+image/jpeg=feh.desktop
+image/png=feh.desktop
+image/svg+xml=google-chrome.desktop
+
+# Video
+video/mp4=mpv.desktop
