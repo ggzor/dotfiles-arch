@@ -31,5 +31,8 @@ setxkbmap -option -layout es
 # Start flameshot (screen capture program)
 flameshot &
 
+# Start picom
+picom &
+
 exec awesome
 

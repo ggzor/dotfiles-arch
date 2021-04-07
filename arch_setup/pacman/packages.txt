@@ -63,6 +63,7 @@ mpv            # Media player
 obs-studio     # Powerful screen recorder
 pavucontrol    # Pulseaudio volume control
 peek           # Simple screen recorder
+picom          # Window compositor
 rofi           # Powerful launcher
 thunar         # Customizable file manager
 xarchiver      # GUI for compression
