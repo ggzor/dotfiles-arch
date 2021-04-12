@@ -4,6 +4,7 @@
 export USE_PLUGINS=true # Load plugins or not
 export {EDITOR,VISUAL}=nvim
 export QT_QPA_PLATFORMTHEME=gtk2
+export MANPAGER='nvim +Man!'
 
 # Required by some plugins
 setopt promptsubst
