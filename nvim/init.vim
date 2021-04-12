@@ -129,6 +129,12 @@ set shortmess+=cI
 
 " Add a color column at the 89th char
 call matchadd('ColorColumn', '\%89v', 100)
+let s:exclude_cursor_column=['', 'man']
+augroup au_color_col
+  au!
+  autocmd BufEnter,WinEnter,FileType * exec 'hi ColorColumn guifg=none guibg='
+        \.. (index(s:exclude_cursor_column, &ft) >= 0 ? 'none' : '#78808b')
+augroup end
 
 " Invisibles
 augroup au_list
