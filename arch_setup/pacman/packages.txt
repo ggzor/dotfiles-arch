@@ -68,6 +68,8 @@ rofi           # Powerful launcher
 thunar         # Customizable file manager
 xarchiver      # GUI for compression
 zathura        # Customizable document viewer
+screenkey      # Show keys on screen
+slop           # Utility to select a screen region
 
 ### Fonts
 ttf-roboto
