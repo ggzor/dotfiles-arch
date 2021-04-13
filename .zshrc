@@ -200,6 +200,7 @@ zle -N zle-line-finish
 
 path+=( $HOME/.local/bin )
 path+=( /usr/lib/emscripten )
+path+=( $HOME/dotfiles/scripts )
 
 # }}}
 
