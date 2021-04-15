@@ -977,8 +977,6 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 " Keybindings and Text objects {{{
 
 " General
-" Save file with ñs
-noremap <silent>ñs :silent w<CR>
 
 " Filter selection with program
 nnoremap <silent> <leader>1 :set opfunc=ProgramFilter<cr>g@
