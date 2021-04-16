@@ -982,21 +982,11 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 nnoremap <silent> <leader>1 :set opfunc=ProgramFilter<cr>g@
 vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
 
-" Run command (without filtering)
-nnoremap <leader>2 :.w !
-vnoremap <leader>2 :w !
-
 " Make Y similar to C and D
 noremap Y y$
 
 " Navigate to alternate file
 nnoremap <silent> ña <C-^>
-
-" Delete buffer
-nnoremap <silent> ñQ :<C-u>bd<CR>
-
-" Quit buffer
-nnoremap <silent> ñq :<C-u>q<CR>
 
 " No highlight
 nnoremap <silent> ñn :<C-u>nohlsearch<CR>
