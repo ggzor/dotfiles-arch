@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if (( $# < 2 )); then
+  echo "Not enough arguments"
+  echo "Usage: ffmpeg-fade-in-out [EXTRA_ARGS] INPUT OUTPUT"
+  exit 1
+fi
+
+FADEOUT_ST="$(bc <<< "$(ffmpeg-duration "$1") - 0.5")"
+
+ffmpeg -i "$1" \
+  -vf "fade=t=in:st=0:d=0.5,fade=t=out:st=$FADEOUT_ST:d=0.5" \
+  -af "afade=t=in:st=0:d=0.5,afade=t=out:st=$FADEOUT_ST:d=0.55" \
+  "$2"
+
