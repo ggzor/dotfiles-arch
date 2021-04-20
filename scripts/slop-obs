@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+read -ra DIMENSIONS \
+  <<< "$( xrandr | grep 'Screen 0' | grep -oP '\d+ x \d+' | sed -n '2p' )"
+
+readarray REGION \
+  <<< "$( slop | grep -oP '\d+' )"
+
+cat << EOF
+crop
+  top:    $(( ${REGION[3]} ))
+  left:   $(( ${REGION[2]} ))
+  right:  $(( ${DIMENSIONS[0]} - ${REGION[2]} - ${REGION[0]} ))
+  bottom: $(( ${DIMENSIONS[2]} - ${REGION[3]} - ${REGION[1]} ))
+EOF
