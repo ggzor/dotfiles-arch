@@ -36,6 +36,12 @@ function UseNightOwl()
 
   let g:lightline.colorscheme = 'nightowl'
   call RefreshLightline()
+
+  hi paintred gui=none guibg='#482833'
+  hi paintgreen gui=none guibg='#114d23'
+  hi paintyellow gui=none guibg='#484a46'
+  hi paintblue gui=none guibg='#284268'
+  hi paintgray gui=none guibg='#323232'
 endfunction
 
 "" Papercolor config
@@ -167,7 +173,9 @@ call s:h("Debug", s:purple_fg_italic)
 
 call s:h("Todo", { "fg": s:purple, "bg": s:purple_25, "gui":"bold" })
 
+" 1/6 opacity seems ok
 call s:h("Search", { "bg": { "gui": "#2c476f" } })
+" 75% opacity highlights a lot
 call s:h("IncSearch", { "gui": "bold", "bg": { "gui": "#6285c9" } })
 
 " Idris

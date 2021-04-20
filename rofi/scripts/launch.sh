@@ -7,9 +7,11 @@ PROGRAMS=(
   ["﴾ nvidia settings"]="nvidia-settings"
   [" inkscape"]="inkscape"
   [" blender"]="blender"
+  [" screenkey"]="screenkey"
   [" thunar"]="thunar"
   ["墳 pavucontrol"]="pavucontrol"
   [" obs studio"]="obs"
+  [" virtualbox"]="virtualbox"
   [" vscode"]="code"
   [" vscode insiders"]="code-insiders"
 )

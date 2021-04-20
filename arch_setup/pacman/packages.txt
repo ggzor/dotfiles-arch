@@ -1,9 +1,6 @@
 ### Audio
 alsa-utils
-pipewire
-pipewire-alsa
-pipewire-jack
-pipewire-pulse
+pulseaudio
 playerctl
 
 ### CLI Standard Utils
@@ -61,10 +58,13 @@ mpv            # Media player
 obs-studio     # Powerful screen recorder
 pavucontrol    # Pulseaudio volume control
 peek           # Simple screen recorder
+picom          # Window compositor
 rofi           # Powerful launcher
 thunar         # Customizable file manager
 xarchiver      # GUI for compression
 zathura        # Customizable document viewer
+screenkey      # Show keys on screen
+slop           # Utility to select a screen region
 
 ### Fonts
 ttf-roboto
@@ -73,10 +73,12 @@ noto-fonts-emoji
 
 ### Network
 dhcpcd
+inetutils
 iwd
 firewalld
 netctl
 nmap
+openbsd-netcat
 openssh
 openssh-askpass
 wpa_supplicant
@@ -113,6 +115,7 @@ python-pipx   # Useful python executable installer
 python-poetry # Virtual environment manager
 python-pynvim # nvim python support
 python-lxml   # required by inkscape
+python-wheel  # package installation
 
 ### xorg
 xcb-util-cursor

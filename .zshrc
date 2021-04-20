@@ -4,6 +4,7 @@
 export USE_PLUGINS=true # Load plugins or not
 export {EDITOR,VISUAL}=nvim
 export QT_QPA_PLATFORMTHEME=gtk2
+export MANPAGER='nvim +Man!'
 
 # Required by some plugins
 setopt promptsubst
@@ -199,6 +200,7 @@ zle -N zle-line-finish
 
 path+=( $HOME/.local/bin )
 path+=( /usr/lib/emscripten )
+path+=( $HOME/dotfiles/scripts )
 
 # }}}
 

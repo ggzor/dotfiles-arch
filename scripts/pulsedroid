@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+case "${1:-}" in
+  start)
+    SOURCE="$(pactl list sources short | grep pci | cut -f2 | head -1)"
+
+    if [[ ! -z "$SOURCE" ]]; then
+      pactl load-module module-simple-protocol-tcp rate=48000 format=s16le channels=2 \
+        source="$SOURCE" record=true port=8000 || \
+        echo "The source is already enabled" && exit 1
+    else
+      echo "No pci source was found"
+    fi
+    ;;
+  stop)
+    TARGET="$(pactl list | grep tcp -B1 | head -1 | cut -d'#' -f2)"
+
+    if [[ ! -z "$TARGET" ]]; then
+      pactl unload-module "$TARGET"
+    fi
+    ;;
+  *)
+    cat << EOF
+Usage: pulsedroid <start|stop>
+
+Starts or stops the pulseaudio tcp server
+EOF
+    ;;
+esac

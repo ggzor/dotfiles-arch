@@ -5,8 +5,8 @@ set -euo pipefail
 YAY_PATH="$HOME/.yay"
 
 # Load packages from list
-PACKAGES=$(cat './arch_setup/yay/packages.txt' \
-          | sed '/^$/d' | grep -v '^#' | tr '\n' ' ')
+read -ra PACKAGES <<< "$(sed '/^$/d' './arch_setup/yay/packages.txt' | \
+                         grep -v '^#' | awk '{print $1}' | tr '\n' ' ')"
 
 # FIXME: Avoid using which, prefer command, hash or type
 if ! which yay &> /dev/null; then
@@ -22,7 +22,7 @@ fi
 # Install packages
 # Update system before installing a new package
 sudo pacman -Syu --noconfirm
-yay -S --norebuild --nodiffmenu --batchinstall $PACKAGES
+yay -S --norebuild --nodiffmenu --batchinstall "${PACKAGES[@]}"
 
 # Run extra install commands
 ./arch_setup/yay/config.sh

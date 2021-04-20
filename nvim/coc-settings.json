@@ -57,6 +57,7 @@
     "typeParameter": "\uf278",
     "default": "\uf29c"
   },
+  "snippets.textmateSnippetsRoots": ["~/.config/Code - Insiders/User/snippets"],
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",

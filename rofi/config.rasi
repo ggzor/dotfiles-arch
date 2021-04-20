@@ -26,12 +26,13 @@ configuration {
 }
 
 * {
-  background-color: #011627;
+  background-color: transparent;
   text-color: #d6deeb;
   font: "JetBrainsMono Nerd Font 12";
 }
 
 #window {
+  background-color: #011627f2;
   width: 55ch;
   height: 22ch;
   padding: 2ch;

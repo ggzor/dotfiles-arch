@@ -129,6 +129,12 @@ set shortmess+=cI
 
 " Add a color column at the 89th char
 call matchadd('ColorColumn', '\%89v', 100)
+let s:exclude_cursor_column=['', 'man']
+augroup au_color_col
+  au!
+  autocmd BufEnter,WinEnter,FileType * exec 'hi ColorColumn guifg=none guibg='
+        \.. (index(s:exclude_cursor_column, &ft) >= 0 ? 'none' : '#78808b')
+augroup end
 
 " Invisibles
 augroup au_list
@@ -164,7 +170,12 @@ let g:gitgutter_sign_modified_removed   = '▍'
 
 " vim-polyglot
 " Use my own fork for this specific filetype
-let g:polyglot_disabled = [ 'python', 'idris', 'haskell' ]
+let g:polyglot_disabled = [
+  \ 'javascriptreact',
+  \ 'typescriptreact',
+  \ 'javascript',
+  \ 'tsx', 'jsx',
+  \ 'python', 'idris', 'haskell' ]
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
@@ -253,8 +264,11 @@ if s:use_syntax
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lpinilla/vim-codepainter'
   Plug 'sheerun/vim-polyglot'
+
+  Plug 'pangloss/vim-javascript'
+  Plug 'maxmellon/vim-jsx-pretty'
+
   Plug 'honza/vim-snippets'
-  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'luochen1990/rainbow'
 
   " Custom syntax
@@ -381,6 +395,20 @@ if s:use_syntax
 endif
 
 if s:use_themes
+  " Code painter
+
+  let g:paint_color_idx = 0
+  let g:paint_colors = ['blue', 'yellow', 'green', 'red', 'gray']
+
+  " Code painter
+  func! CodePainterAdjustColor(amount) abort
+    let g:paint_color_idx = ((g:paint_color_idx + a:amount + len(g:paint_colors)) % len(g:paint_colors))
+    call codepainter#ChangeColorByName('paint'.g:paint_colors[g:paint_color_idx])
+    if a:amount != 0
+      echo "Using color: " . g:paint_colors[g:paint_color_idx]
+    endif
+  endfunc
+  call CodePainterAdjustColor(0)
 
 endif
 
@@ -421,6 +449,7 @@ if s:use_lsp
 
   let g:coc_global_extensions = [
         \'coc-css',
+        \'coc-emmet',
         \'coc-eslint',
         \'coc-json',
         \'coc-prettier',
@@ -431,6 +460,7 @@ if s:use_lsp
         \'coc-clangd',
         \'coc-java',
         \'coc-go',
+        \'coc-styled-components',
         \'coc-vimtex'
         \]
 
@@ -712,14 +742,28 @@ endif
 
 " FZF Full Screen preview to the right
 let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --exclude .git --follow"
-let g:fzf_preview_window_min_width=120
+let g:fzf_preview_window_min_width=100
 
-function! FZFFiles(query, fullscreen, preview)
-  if a:fullscreen && winwidth(0) < g:fzf_preview_window_min_width
-    call fzf#vim#files(a:query, a:preview ? fzf#vim#with_preview('up:80%:noborder') : {}, a:fullscreen)
-  else
-    call fzf#vim#files(a:query, a:preview ? fzf#vim#with_preview('right:95:noborder') : {}, a:fullscreen)
+function! FZFFiles(fullscreen)
+  let ww = winwidth(0)
+  let wh = winheight(0)
+  let go_full = a:fullscreen || ww <= 100
+
+  let preview_width = min([95, float2nr(0.50 * ww)])
+  let right_preview_string = 'right:'.preview_width.':noborder:nowrap'
+
+  let preview_params = go_full
+        \ ? fzf#vim#with_preview(ww <= 100 ? 'down:61%:border:nowrap' : right_preview_string)
+        \ : right_preview_string
+  let options = fzf#vim#with_preview(preview_params)
+
+  if !go_full
+    let target_width = min([160, float2nr(0.9 * ww)])
+    let target_height = min([60, float2nr(0.8 * wh)])
+    call extend(options, { 'window': { 'width': target_width, 'height': target_height } })
   endif
+
+  call fzf#vim#files('', options, go_full)
 endfunction
 
 let g:fzf_history_dir = '~/.fzf-vim-history'
@@ -933,8 +977,6 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 " Keybindings and Text objects {{{
 
 " General
-" Save file with ñs
-noremap <silent>ñs :silent w<CR>
 
 " Filter selection with program
 nnoremap <silent> <leader>1 :set opfunc=ProgramFilter<cr>g@
@@ -944,16 +986,8 @@ vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
 nnoremap <leader>2 :.w !
 vnoremap <leader>2 :w !
 
-noremap E ge
-
 " Make Y similar to C and D
 noremap Y y$
-
-" Remap search next immediate (useful for macros)
-noremap <Space>f f
-noremap <Space>F F
-noremap <Space>t t
-noremap <Space>T T
 
 " Navigate to alternate file
 nnoremap <silent> ña <C-^>
@@ -970,14 +1004,6 @@ nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 " Plugins
 if s:use_operators
 
-  " tabular
-  nmap <leader>T\| :Tabularize /\|<CR>
-  vmap <leader>T\| :Tabularize /\|<CR>
-  nmap <leader>T= :Tabularize /=<CR>
-  vmap <leader>T= :Tabularize /=<CR>
-  nmap <leader>T: :Tabularize /:\zs/l0l1<CR>
-  vmap <leader>T: :Tabularize /:\zs/l0l1<CR>
-
   " vim-sandwich
   " add
   nmap ñi <Plug>(operator-sandwich-add)
@@ -993,9 +1019,6 @@ if s:use_operators
 
   " vim-subversive
   nmap s <plug>(SubversiveSubstitute)
-  nmap <leader>s <plug>(SubversiveSubstituteRange)
-  xmap <leader>s <plug>(SubversiveSubstituteRange)
-  nmap <leader><leader>s <plug>(SubversiveSubstituteWordRange)
 
 endif
 
@@ -1029,8 +1052,8 @@ if s:use_insert
 endif
 
 if s:use_fzf
-  nnoremap <silent> ñf :call FZFFiles('', 0, 1)<CR>
-  nnoremap <silent> ñF :call FZFFiles('', 1, 1)<CR>
+  nnoremap <silent> ñf :call FZFFiles(0)<CR>
+  nnoremap <silent> ñF :call FZFFiles(1)<CR>
   nnoremap <silent> ñj :Buffers<CR>
   nnoremap <silent> ñl :BLines<CR>
   nnoremap <silent> ññ :History:<CR>
@@ -1056,9 +1079,6 @@ if s:use_lsp
   " used, and then this sequence is mapped with the terminal emulator
   nmap <silent> ñp v<Plug>(coc-codeaction-selected)<Esc>
   vmap <silent> ñp <Plug>(coc-codeaction-selected)
-
-  " FIXME: Format selection
-  " FIXME: Save without formatting
 
   " Navigate through diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -1140,6 +1160,13 @@ if g:env == 'vim'
   let g:winresizer_start_key = '<leader>W'
 
 endif
+
+vnoremap <silent> gp :<c-u> call codepainter#paintText(visualmode())<cr>
+nnoremap <silent> gp <nop>
+nnoremap <silent> gP :<c-u> PainterEraseLine<cr>
+
+nnoremap <silent> g- :<c-u> call CodePainterAdjustColor(1)<cr>
+nnoremap <silent> g+ :<c-u> call CodePainterAdjustColor(-1)<cr>
 
 if g:env == 'vscode'
   " comments

@@ -281,6 +281,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
 
+    -- Screen sharing
+    awful.key({ modkey, "Control" }, "p", require('scripts.split_screen'),
+        {description = "toggle split screen", group = "layout"}),
+
     -- Launcher
     awful.key({ modkey }, "p", function() awful.spawn("rofi -show combi -display-combi do") end,
               {description = "show the menubar", group = "launcher"})
@@ -304,7 +308,26 @@ clientkeys = gears.table.join(
             c.maximized = not c.maximized
             c:raise()
         end ,
-        {description = "(un)maximize", group = "client"})
+        {description = "(un)maximize", group = "client"}),
+    awful.key({ modkey, }, "n",
+        function (c)
+            if not c.floating then
+                c.floating = true
+                c.ontop = true
+                awful.placement.centered(c)
+                c:raise()
+            else
+                c.floating = false
+                c.ontop = false
+            end
+        end ,
+        {description = "toggle float", group = "client"}),
+    awful.key({ modkey, }, "b",
+        function (c)
+            c.ontop = not c.ontop
+            c:raise()
+        end ,
+        {description = "toggle on top", group = "client"})
 )
 
 -- Bind all key numbers to tags.

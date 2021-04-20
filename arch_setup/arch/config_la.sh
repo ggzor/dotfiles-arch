@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # My preferred settings for installation
 # This file can be sourced to set the variables to these values
 

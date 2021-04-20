@@ -2,12 +2,8 @@
   // May change frequently
   "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
   "workbench.colorTheme": "Night Owl",
-
-  // Experimental (may disable later)
-  "editor.formatOnSaveMode": "modifications", // Maybe doesn't work well sometimes?
   "window.menuBarVisibility": "toggle", // Maybe hidden will be better?
   "workbench.statusBar.visible": true,
-
   // Edition Settings
   "editor.detectIndentation": false,
   "editor.formatOnPaste": true,
@@ -15,7 +11,6 @@
   "editor.tabSize": 2,
   "editor.suggestSelection": "first",
   "editor.wordWrapColumn": 88,
-
   // Visual settings
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": true,
@@ -44,11 +39,9 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-
   // Terminal
   "terminal.integrated.allowChords": false,
   "terminal.integrated.shell.linux": "/usr/bin/zsh",
-
   // Extensions
   // Intellicode
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -75,7 +68,6 @@
   // Idris
   "idris.idris2Mode": true,
   "idris.idrisPath": "idris2",
-
   // VIM
   "vim.changeWordIncludesWhitespace": true,
   "vim.easymotion": true,
