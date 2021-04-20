@@ -1101,9 +1101,9 @@ if s:use_lsp
 
   " Scroll float documentation
   nnoremap <silent><nowait><expr> <A-j> coc#float#has_scroll()
-        \ ? coc#float#scroll(1) : ""
+        \ ? coc#float#scroll(1) : "J"
   nnoremap <silent><nowait><expr> <A-k> coc#float#has_scroll()
-        \ ? coc#float#scroll(0) : ""
+        \ ? coc#float#scroll(0) : "i<CR><Esc>k$"
 
   inoremap <silent><nowait><expr> <A-j> coc#float#has_scroll()
         \ ? "\<c-r>=coc#float#scroll(1)\<cr>" : ""
