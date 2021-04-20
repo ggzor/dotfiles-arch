@@ -16,9 +16,3 @@ nerd-fonts-jetbrains-mono
 git-delta-bin
 fnm-bin
 
-# Fixes some resizing issues with upstream zsh
-zsh-fix-winchanged-git
-
-# Qt5 extras
-qt5-styleplugins
-
