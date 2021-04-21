@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+read -ra DIMENSIONS \
+  <<< "$( xrandr | grep 'Screen 0' | grep -oP '\d+ x \d+' | sed -n '2p' )"
+
+readarray REGION \
+  <<< "$( slop | grep -oP '\d+' )"
+
+TOP=$(( ${REGION[3]} ))
+LEFT=$(( ${REGION[2]} ))
+RIGHT=$(( ${DIMENSIONS[0]} - ${REGION[2]} - ${REGION[0]} ))
+BOTTOM=$(( ${DIMENSIONS[2]} - ${REGION[3]} - ${REGION[1]} ))
+
+if type obs-cli &> /dev/null; then
+  obs-cli SetSourceSettings="$(cat <<EOF
+{
+	"sourceName": "Screen Capture (XSHM)",
+	"sourceType": "xshm_input",
+	"sourceSettings": {
+		"cut_bot": $TOP,
+		"cut_left": $LEFT,
+		"cut_right": $RIGHT,
+		"cut_top": $BOTTOM
+	}
+}
+EOF
+)"
+else
+  cat << EOF
+This process can be automated with obs-cli:
+	npm install --global obs-cli
+crop
+  top:    $TOP
+  left:   $LEFT
+  right:  $RIGHT
+  bottom: $BOTTOM
+EOF
+fi

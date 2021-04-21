@@ -11,6 +11,7 @@ PROGRAMS=(
   [" thunar"]="thunar"
   ["墳 pavucontrol"]="pavucontrol"
   [" obs studio"]="obs"
+  [" obs resize"]="obs-slop"
   [" virtualbox"]="virtualbox"
   [" vscode"]="code"
   [" vscode insiders"]="code-insiders"
