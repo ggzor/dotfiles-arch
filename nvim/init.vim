@@ -247,6 +247,7 @@ if s:use_easymotion
   else
     Plug 'easymotion/vim-easymotion'
     Plug 'ggzor/ShowMotion'
+    Plug 'ggzor/hop.nvim'
   endif
 endif
 
@@ -370,6 +371,9 @@ if s:use_easymotion
   let g:EasyMotion_space_jump_first=1
   " The fastest keys I press
   let g:EasyMotion_keys = '_fasjuirwzmkhdoe'
+
+  " hop
+  lua require'hop'.setup { keys = 'fasjuirwzmkhdoe' }
 
 endif
 
@@ -1025,15 +1029,15 @@ if s:use_easymotion
   map <leader>t <Plug>(easymotion-tl)
   map <leader>T <Plug>(easymotion-Tl)
 
-  map ñw <Plug>(easymotion-wl)
-  map ñb <Plug>(easymotion-bl)
-  map ñe <Plug>(easymotion-el)
-  map ñE <Plug>(easymotion-ge)
+  map ñw :lua require'hop'.hint_words_same_line()<CR>
+  map ñb :lua require'hop'.hint_backwords_same_line()<CR>
+  map ñe :lua require'hop'.hint_word_ends_same_line()<CR>
+  map ñE :lua require'hop'.hint_backword_ends_same_line()<CR>
 
-  map J <Plug>(easymotion-sol-j)
-  map K <Plug>(easymotion-sol-k)
-  map <leader>j <Plug>(easymotion-j)
-  map <leader>k <Plug>(easymotion-k)
+  map K :lua require'hop'.hint_lines_to_top()<CR>
+  map J :lua require'hop'.hint_lines_to_bottom()<CR>
+  map <leader>j :lua require'hop'.hint_lines_to_bottom_same()<CR>
+  map <leader>k :lua require'hop'.hint_lines_to_top_same()<CR>
 endif
 
 if s:use_insert
