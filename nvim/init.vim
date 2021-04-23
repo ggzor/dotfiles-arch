@@ -373,7 +373,13 @@ if s:use_easymotion
   let g:EasyMotion_keys = '_fasjuirwzmkhdoe'
 
   " hop
-  lua require'hop'.setup { keys = 'fasjuirwzmkhdoe' }
+
+lua << EOF
+require'hop'.setup {
+    keys = 'fasjuirwzmkhdoe',
+    teasing = false
+  }
+EOF
 
 endif
 
