@@ -1029,15 +1029,25 @@ if s:use_easymotion
   map <leader>t <Plug>(easymotion-tl)
   map <leader>T <Plug>(easymotion-Tl)
 
-  map ñw :lua require'hop'.hint_words_same_line()<CR>
-  map ñb :lua require'hop'.hint_backwords_same_line()<CR>
-  map ñe :lua require'hop'.hint_word_ends_same_line()<CR>
-  map ñE :lua require'hop'.hint_backword_ends_same_line()<CR>
+  nmap ñw :lua require'hop'.hint_words_same_line()<CR>
+  nmap ñb :lua require'hop'.hint_backwords_same_line()<CR>
+  nmap ñe :lua require'hop'.hint_word_ends_same_line()<CR>
+  nmap ñE :lua require'hop'.hint_backword_ends_same_line()<CR>
 
-  map K :lua require'hop'.hint_lines_to_top()<CR>
-  map J :lua require'hop'.hint_lines_to_bottom()<CR>
-  map <leader>j :lua require'hop'.hint_lines_to_bottom_same()<CR>
-  map <leader>k :lua require'hop'.hint_lines_to_top_same()<CR>
+  vmap <silent> ñw :lua require'hop'.hint_words_same_line( { extend_visual = true } )<CR>
+  vmap <silent> ñb :lua require'hop'.hint_backwords_same_line( { extend_visual = true } )<CR>
+  vmap <silent> ñe :lua require'hop'.hint_word_ends_same_line( { extend_visual = true } )<CR>
+  vmap <silent> ñE :lua require'hop'.hint_backword_ends_same_line( { extend_visual = true } )<CR>
+
+  nmap <silent> K :lua require'hop'.hint_lines_to_top()<CR>
+  nmap <silent> J :lua require'hop'.hint_lines_to_bottom()<CR>
+  nmap <silent> <leader>j :lua require'hop'.hint_lines_to_bottom_same()<CR>
+  nmap <silent> <leader>k :lua require'hop'.hint_lines_to_top_same()<CR>
+
+  vmap <silent> K :lua require'hop'.hint_lines_to_top( { extend_visual = true } )<CR>
+  vmap <silent> J :lua require'hop'.hint_lines_to_bottom( { extend_visual = true } )<CR>
+  vmap <silent> <leader>j :lua require'hop'.hint_lines_to_bottom_same( { extend_visual = true } )<CR>
+  vmap <silent> <leader>k :lua require'hop'.hint_lines_to_top_same( { extend_visual = true } )<CR>
 endif
 
 if s:use_insert
