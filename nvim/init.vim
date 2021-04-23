@@ -1054,6 +1054,14 @@ if s:use_easymotion
   vmap <silent> J :lua require'hop'.hint_lines_to_bottom( { extend_visual = true } )<CR>
   vmap <silent> <leader>j :lua require'hop'.hint_lines_to_bottom_same( { extend_visual = true } )<CR>
   vmap <silent> <leader>k :lua require'hop'.hint_lines_to_top_same( { extend_visual = true } )<CR>
+
+  augroup hop_chad
+    au!
+    autocmd FileType CHADTree nmap <silent> K :lua require'hop'.hint_lines_sol_to_top()<CR>
+    autocmd FileType CHADTree nmap <silent> J :lua require'hop'.hint_lines_sol_to_bottom()<CR>
+    autocmd FileType CHADTree vmap <silent> K :lua require'hop'.hint_lines_sol_to_top( { extend_visual = true } )<CR>
+    autocmd FileType CHADTree vmap <silent> J :lua require'hop'.hint_lines_sol_to_bottom( { extend_visual = true } )<CR>
+  augroup end
 endif
 
 if s:use_insert
