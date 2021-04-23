@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+comm -1 -3 \
+  <(cat "$HOME/dotfiles/arch_setup/pacman/packages.txt" \
+        "$HOME/dotfiles/arch_setup/yay/packages.txt" \
+      | grep . | grep -v '^#' | cut -f1 -d' ' | sort) \
+  <(pacman -Qe | cut -f1 -d' ' | sort) \
+  | bat
+
