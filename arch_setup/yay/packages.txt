@@ -28,3 +28,6 @@ qt5-styleplugins
 # Moonlander
 zsa-wally
 
+# obs-plugins
+obs-websocket # websockets support for obs
+

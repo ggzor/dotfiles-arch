@@ -1,6 +1,7 @@
 ### Audio
 alsa-utils
 pulseaudio
+pulseaudio-rtp
 playerctl
 
 ### CLI Standard Utils
@@ -14,6 +15,7 @@ time
 tmux
 tree
 usbutils
+unrar
 unzip
 vim
 zip
@@ -38,24 +40,42 @@ youtube-dl    # video downloader
 ### Development
 autoconf
 automake
+bash-language-server
 clang
 docker
 docker-compose
+gcc
+gdb
 git
 glu
 go
+lldb
+make
+minted
 mesa
+nodejs
+npm
 python
 rustup
 rust-analyzer
+shellcheck
+swi-prolog
+texlive-bin
+texlive-core
+texlive-latexextra
+texlive-pictures
 tk
+virtualbox
+virtualbox-guest-utils
 
 ### Desktop
 arandr         # Display configuration
 arc-gtk-theme  # Arc theme
+deluge-gtk     # Torrent client
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
 gimp           # Open source rastar graphics editor
+glava          # Audio visualizer
 inkscape       # Open source vector graphics editor
 kitty          # Featureful terminal emulator
 lxappearance   # GTK theme configuration
