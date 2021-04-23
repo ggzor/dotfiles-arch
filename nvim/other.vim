@@ -95,6 +95,31 @@ let s:red = { "gui": "#ef5350" }
 let s:grey = { "gui": "#637777" }
 let s:none = { "gui": "#d6deeb" }
 
+let g:terminal_color_0  = '#536372'
+let g:terminal_color_8  = '#575656'
+
+let g:terminal_color_1  = '#ef5350'
+let g:terminal_color_9  = '#ef5350'
+
+let g:terminal_color_2  = '#22da6e'
+let g:terminal_color_10 = '#22da6e'
+
+let g:terminal_color_3  = '#ecc48d'
+let g:terminal_color_11 = '#ecc48d'
+
+let g:terminal_color_4  = '82aaff'
+let g:terminal_color_12 = '82aaff'
+
+let g:terminal_color_5  = '#c792ea'
+let g:terminal_color_13 = '#c792ea'
+
+let g:terminal_color_6  = '#21c7a8'
+let g:terminal_color_14 = '#21c7a8'
+
+let g:terminal_color_7  = '#FFFFFF'
+let g:terminal_color_15 = '#EFF0EB'
+
+
 " Foregrounds
 let s:blue_fg = { "fg": s:blue }
 let s:blue_fg_italic = { "fg": s:blue, "gui": "italic" }
