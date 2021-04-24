@@ -1,0 +1,7 @@
+{
+  "Mint inline": {
+    "prefix": "minli",
+    "body": ["\\mintinline{${1:idris}}|$0|"],
+    "description": "Minted inline component"
+  }
+}
