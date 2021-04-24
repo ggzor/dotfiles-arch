@@ -68,7 +68,7 @@ export FZF_DEFAULT_OPTS="
 
 # fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings \
-  "$(printf "%s" "$FZF_BINDINGS" | grep -e '^[^#]' | xargs -d'\n' echo)"
+  "$FZF_BINDINGS_STRING"
 zstyle ':fzf-tab:*' fzf-flags --height 50%
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --color=always $realpath'
