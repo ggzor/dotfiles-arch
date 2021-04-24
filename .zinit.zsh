@@ -1,17 +1,19 @@
-export EXCLUDE_DIRS="
+#!/usr/bin/env bash
+
+EXCLUDE_DIRS='
 .git .fnm .cargo .vscode virtualenvs node_modules .cache __pycache__
 .fzf-vim-history .rustup .vscode-insiders .zinit .local .vim .nv .config
 .sdkman .npm .yay .mysql .yay .pki .gnome cache .nix .nix-profile jsm build
 .nv .venv debug release .stack .stack-work .cabal dist dist-newstyle .gradle
 .java .tooling .nix-defexpr mod .yarn .ipython .ghc pkg .emscripten_cache
-.mozilla __MACOSX nltk_data"
+.mozilla __MACOSX nltk_data'
 
-export EXCLUDE_STRING=$(printf $EXCLUDE_DIRS | tr ' ' '\n' | \
-                        sed 's/^/--exclude /' | paste -sd' ')
+EXCLUDE_STRING=$(echo -n "$EXCLUDE_DIRS" | tr ' ' '\n' | \
+                   sed 's/^/--exclude /' | paste -sd' ')
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f $EXCLUDE_STRING --hidden --follow"
-export FZF_BINDINGS="
+FZF_BINDINGS='
 # Global
 esc:abort
 ctrl-y:execute-silent(echo {+} | xclip)
@@ -51,10 +53,10 @@ alt-k:preview-up+preview-up+preview-up
 # History
 alt-p:previous-history
 alt-n:next-history
-"
+'
 
-export FZF_BINDINGS_STRING=$(printf "$FZF_BINDINGS" | grep -e "^[^#]" |
-                             tr "\n" "," | sed -E "s/.$//")
+FZF_BINDINGS_STRING=$(echo -n "$FZF_BINDINGS" | grep -e "^[^#]" |
+                        tr "\n" "," | sed -E "s/.$//")
 
 export FZF_DEFAULT_OPTS="
   --exit-0 --multi --info=inline
@@ -66,76 +68,93 @@ export FZF_DEFAULT_OPTS="
 
 # fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings \
-  $(printf "%s" "$FZF_BINDINGS" | grep -e '^[^#]' | xargs -d'\n' echo)
+  "$(printf "%s" "$FZF_BINDINGS" | grep -e '^[^#]' | xargs -d'\n' echo)"
 zstyle ':fzf-tab:*' fzf-flags --height 50%
+# shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --color=always $realpath'
+
+fzf_preview_params() {
+  TARGET_WIDTH="${1:-95}"
+  PREV_WIDTH=$(( TARGET_WIDTH > COLUMNS / 2 ? COLUMNS / 2 : TARGET_WIDTH ))
+  RIGHT_PREV="right:${PREV_WIDTH}:noborder:nowrap"
+
+  if (( COLUMNS <= 100 )); then
+    echo "down:61%:border:nowrap"
+  else
+    echo "$RIGHT_PREV"
+  fi
+}
 
 # fzf utilities
 # open files
 ñf() {
-  local out file key preview_command
-  preview_command="
+  PREVIEW_COMMAND="
     [[ \$(file --mime {}) =~ binary ]] \
         && echo {} is a binary file \
         || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null"
 
-  IFS=$'\n'
-  out=("$(
-      fzf --query="$1" --preview="$preview_command"  \
-       --history="$HOME/.fzf-open-file-history")")
+  OUT=("$(
+      fzf --query="$1" --preview="$PREVIEW_COMMAND" \
+        --preview-window="$(fzf_preview_params)"  \
+        --history="$HOME/.fzf-open-file-history")")
 
-  if [[ -n "$out" ]]; then
-    xargs -d'\n' ${EDITOR:-nvim} <<< "$out"
+  # shellcheck disable=SC2128
+  if [[ -n "$OUT" ]]; then
+    xargs -d'\n' "${EDITOR:-nvim}" <<< "$OUT"
   fi
 }
 
 export ZD_FD_COMMAND_ARGS="--type d $EXCLUDE_STRING --hidden"
 # go to folder
 zd() {
-  local dir preview_command
-  preview_command="exa --color always --tree --level=2 --icons --git-ignore {}"
+  PREVIEW_COMMAND='exa --color always --tree --level=2 --icons --git-ignore {}'
 
-  out=$(xargs fd <<< "$ZD_FD_COMMAND_ARGS" 2> /dev/null)
+  OUT="$(xargs fd <<< "$ZD_FD_COMMAND_ARGS" 2> /dev/null)"
 
-  if [[ -n $out ]]; then
-    dir=$(fzf +m --preview="$preview_command" \
-              --history="$HOME/.fzf-zd-history" <<< "$out")
+  # zsh specific
+  # shellcheck disable=SC2128
+  if [[ -n "$OUT" ]]; then
+    DIR="$(fzf +m \
+            --preview="$PREVIEW_COMMAND" \
+            --preview-window="$(fzf_preview_params 50)" \
+            --history="$HOME/.fzf-zd-history" <<< "$OUT")"
 
-    if [[ -n $dir ]]; then
-      cd "$dir"
+    if [[ -n "$DIR" ]]; then
+      cd "$DIR" || exit
     fi
   fi
 }
 
 # search regex
 ñg() {
-  command_fmt='rg --column --line-number --no-heading --color=always --smart-case %b || true'
-  initial_command=$(printf $command_fmt "'$1'")
-  reload_command="$(printf $command_fmt "{q}")"
+  COMMAND_FMT='rg --column --line-number --no-heading --color=always --smart-case %b || true'
+  # shellcheck disable=SC2059
+  INITIAL_COMMAND=$(printf "$COMMAND_FMT" "'$1'")
+  # shellcheck disable=SC2059
+  RELOAD_COMMAND="$(printf "$COMMAND_FMT" "{q}")"
 
-  result=$(
-    eval "$initial_command" \
-      | fzf --disabled --ansi --query "$1" --bind "change:reload:$reload_command" \
+  RESULT=$(
+    eval "$INITIAL_COMMAND" \
+      | fzf --disabled --ansi --query "$1" --bind "change:reload:$RELOAD_COMMAND" \
             --preview='fzf_rg_preview {}')
 
-  if [[ ! -z "$result" ]]; then
-    if [[ $(echo -n "$result" | wc -l) > 1 ]]; then
-      ${EDITOR:-nvim} -q <(echo -n $result)
+  if [[ -n "$RESULT" ]]; then
+    if (( $(echo -n "$RESULT" | wc -l) > 1 )); then
+      ${EDITOR:-nvim} -q <(echo -n "$RESULT")
     else
-      ${EDITOR:-nvim} "$(echo "$result" | cut -d: -f1-3)"
+      ${EDITOR:-nvim} "$(echo "$RESULT" | cut -d: -f1-3)"
     fi
   fi
 }
 
 # forgit
-forgit_log=gitl
-forgit_diff=gitd
-forgit_add=gita
-forgit_checkout_file=gitr
-forgit_reset_head=gitu
-
-forgit_ignore=gitignore
-forgit_stash_show=gitstash
+export forgit_log=gitl
+export forgit_diff=gitd
+export forgit_add=gita
+export forgit_checkout_file=gitr
+export forgit_reset_head=gitu
+export forgit_ignore=gitignore
+export forgit_stash_show=gitstash
 
 # vim easymotion
 bindkey -M vicmd ' ' vi-easy-motion
