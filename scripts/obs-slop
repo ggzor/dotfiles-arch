@@ -19,10 +19,10 @@ if type obs-cli &> /dev/null; then
 	"sourceName": "Screen Capture (XSHM)",
 	"sourceType": "xshm_input",
 	"sourceSettings": {
-		"cut_bot": $TOP,
+		"cut_bot": $BOTTOM,
 		"cut_left": $LEFT,
 		"cut_right": $RIGHT,
-		"cut_top": $BOTTOM
+		"cut_top": $TOP
 	}
 }
 EOF
