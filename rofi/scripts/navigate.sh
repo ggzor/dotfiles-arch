@@ -7,6 +7,7 @@ SITES=(
   [" github"]="https://github.com"
   [" instagram"]="https://instagram.com"
   [" google"]="https://google.com"
+  [" google docs"]="https://docs.google.com/document/u/0/"
   [" facebook"]="https://facebook.com"
   [" reddit"]="https://reddit.com"
   [" hackernews"]="https://news.ycombinator.com"
