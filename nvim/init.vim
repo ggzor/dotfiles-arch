@@ -903,20 +903,20 @@ let g:indentLine_color_gui = '#283646'
           \ endif
   augroup END
 
-  function FixDiffParameters(timer)
-     let curwin = winnr()
+  function! FixDiffParameters(timer) abort
+    let curwin = winnr()
 
     " Check each window
     for _win in range(1, winnr('$'))
       " Go to window without triggering autocmd's
-      exe "noautocmd " . _win . "wincmd w"
+      silent! exe "noautocmd " . _win . "wincmd w"
 
       " Cursor line must be disabled in diff mode
-      call s:change_option_in_diffmode("w:", "cursorline", 0, 1)
+      silent! call s:change_option_in_diffmode("w:", "cursorline", 0, 1)
     endfor
 
     " Get back to original window
-    exe "noautocmd " . curwin . "wincmd w"
+    silent! exe "noautocmd " . curwin . "wincmd w"
   endfunction
 
   " Set option depending on diff state
@@ -951,11 +951,11 @@ let g:indentLine_color_gui = '#283646'
   endfunction
 
   " Update diff color depending on window index
-  function s:UpdateDiffColors()
+  function! s:UpdateDiffColors() abort
     let curwin = winnr()
 
     for _win in range(1, winnr('$'))
-      exe "noautocmd " . _win . "wincmd w"
+      silent! exe "noautocmd " . _win . "wincmd w"
 
       if _win == 1
         setlocal winhighlight=DiffAdd:DiffOldAdd,
@@ -967,7 +967,7 @@ let g:indentLine_color_gui = '#283646'
     endfor
 
     " Get back to original window
-    exe "noautocmd " . curwin . "wincmd w"
+    silent! exe "noautocmd " . curwin . "wincmd w"
   endfunction
 
 " }}}
