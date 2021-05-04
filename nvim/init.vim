@@ -562,7 +562,7 @@ if g:env == 'vim'
         \     'left':[ [ 'mode', 'paste' ],
         \              [ 'gitbranch', 'readonly', 'filename' ]
         \     ],
-        \     'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'filetype' ] ]
+        \     'right': [ [ 'lineinfo' ], [ 'filetype' ] ]
         \   },
         \   'inactive': {
         \     'left':[ [ 'filename' ]],
@@ -588,6 +588,19 @@ if g:env == 'vim'
         \   'tab_component_function': {
         \     'filename': 'GetTabFileNameIcon',
         \   },
+        \   'mode_map': {
+        \     'n': 'NORM',
+        \     'i': 'INS',
+        \     'R': 'REP',
+        \     'v': 'VIS',
+        \     'V': 'V-LINE',
+        \     "\<C-v>": 'V-BLOCK',
+        \     'c': 'COMM',
+        \     's': 'SEL',
+        \     'S': 'S-LINE',
+        \     "\<C-s>": 'S-BLOCK',
+        \     't': 'TERM',
+        \   }
         \ }
 
   " Auxiliar lightline functions {{{
