@@ -1,9 +1,6 @@
 " vim:fdm=marker
 
-" Global variables
-let g:theme = 'nightowl2'
-let g:mapleader = ' '
-let g:tabsize = 2
+" General
 
 " Editor options {{{
 
@@ -12,9 +9,9 @@ set nocompatible
 " Replace tabs with spaces
 set expandtab
 " Set tab size for all options
-let &shiftwidth  = g:tabsize
-let &softtabstop = g:tabsize
-let &tabstop     = g:tabsize
+set shiftwidth=2
+set shiftwidth=2
+set softtabstop=2
 
 " Tab size overrides
 augroup au_tab_size_override
@@ -119,7 +116,9 @@ let &t_EI = "\<Esc>[2 q"
 
 " }}}
 
-" Plugin before configuration {{{
+" Plugins
+
+" Pre-load {{{
 
 " Agda
 let g:agda_extraincpaths = ['/usr/share/agda/lib/stdlib']
@@ -179,7 +178,7 @@ endif
 
 " }}}
 
-" Plugins {{{
+" Plugins list {{{
 
 call plug#begin()
 
@@ -272,7 +271,7 @@ call plug#end()
 
 " }}}
 
-" Plugin after configuration {{{
+" Post-load {{{
 
 " nvim-treesitter
 if has('nvim')
@@ -604,6 +603,8 @@ endif
 
 " }}}
 
+" Custom configuration
+
 " Custom functions {{{
 
 function! ShowSyntaxGroupUnderCursor()
@@ -789,6 +790,7 @@ endfunction
 " Keymappings and text objects
 
 " General mappings {{{
+let g:mapleader = ' '
 
 " Make Y similar to C and D
 noremap Y y$
@@ -1037,4 +1039,5 @@ endif
 
 " }}}
 
-execute 'colorscheme' g:theme
+" End of File configuration
+colorscheme nightowl2
