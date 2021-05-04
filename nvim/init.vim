@@ -170,11 +170,35 @@ let g:gitgutter_sign_modified_removed   = '▍'
 " vim-polyglot
 " Use my own fork for this specific filetype
 let g:polyglot_disabled = [
-  \ 'javascriptreact',
-  \ 'typescriptreact',
+  \ 'c',
+  \ 'cs',
+  \ 'clojure',
+  \ 'cpp',
+  \ 'css',
+  \ 'fennel',
+  \ 'go',
+  \ 'graphql',
+  \ 'html',
+  \ 'java',
   \ 'javascript',
-  \ 'tsx', 'jsx',
-  \ 'python', 'idris', 'haskell' ]
+  \ 'jsx',
+  \ 'javascriptreact',
+  \ 'json',
+  \ 'julia',
+  \ 'kotlin',
+  \ 'tex',
+  \ 'lua',
+  \ 'nix',
+  \ 'python',
+  \ 'rst',
+  \ 'ruby',
+  \ 'rust',
+  \ 'sh',
+  \ 'svelte',
+  \ 'toml',
+  \ 'typescript',
+  \ 'tsx',
+  \ 'idris']
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
@@ -261,18 +285,10 @@ endif
 " Syntaxes and syntax enhancers
 if s:use_syntax
   Plug 'dylon/vim-antlr'
-  Plug 'hail2u/vim-css3-syntax'
   Plug 'lpinilla/vim-codepainter'
   Plug 'sheerun/vim-polyglot'
 
-  Plug 'pangloss/vim-javascript'
-  Plug 'maxmellon/vim-jsx-pretty'
-
   Plug 'honza/vim-snippets'
-  Plug 'luochen1990/rainbow'
-
-  " Custom syntax
-  Plug 'ggzor/python-syntax', { 'branch': 'dev' }
 
   " Idris
   Plug 'edwinb/idris2-vim'
@@ -282,7 +298,7 @@ if s:use_syntax
 endif
 
 if s:use_themes
-  Plug 'haishanh/night-owl.vim'
+  Plug 'ggzor/night-owl2.vim'
   Plug 'dylanaraps/wal.vim'
 endif
 
@@ -328,6 +344,9 @@ if g:env == 'vim'
   Plug 'vim-test/vim-test'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'simeji/winresizer'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
+  Plug 'p00f/nvim-ts-rainbow'
 endif
 
 call plug#end()
@@ -335,6 +354,43 @@ call plug#end()
 " }}}
 
 " Plugin after configuration {{{
+
+" nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+  ident = {
+    enable = true,
+  },
+  matchup = {
+    enable = false,
+  },
+  playground = {
+    enable = true,
+    updatetime = 25,
+    persist_queries = false,
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    }
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+  }
+}
+EOF
 
 let g:highlightedyank_highlight_duration = -1
 
@@ -494,7 +550,6 @@ endif
 
 if g:env == 'vim'
 
-  " FIXME: Allow easymotion up and down line
   " CHADTree
   let g:chadtree_settings = {
     \ 'theme': {
@@ -1213,6 +1268,5 @@ if $NVIM_FLOATING
   call PrepareFloatingMode()
 endif
 
-" Load color configuration
-source $HOME/.config/nvim/other.vim
+colorscheme nightowl2
 
