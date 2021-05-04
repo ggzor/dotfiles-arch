@@ -563,8 +563,8 @@ let g:fzf_preview_window_min_width=100
 let g:fzf_history_dir = '~/.fzf-vim-history'
 
 function! FZFFiles(fullscreen)
-  let ww = winwidth(0)
-  let wh = winheight(0)
+  let ww = &columns
+  let wh = &lines
   let go_full = a:fullscreen || ww <= 100
 
   let preview_width = min([95, float2nr(0.50 * ww)])
