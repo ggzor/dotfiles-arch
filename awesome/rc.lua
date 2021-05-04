@@ -184,6 +184,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
 
+    -- Standard browser
+    awful.key({ modkey,           }, "b", function () awful.spawn('google-chrome-stable --new-window') end,
+              {description = "open a terminal", group = "launcher"}),
+
     awful.key({ }, "Print", function () awful.spawn("flameshot gui") end,
               {description = "take a screenshot with gui", group = "launcher"}),
 
@@ -245,8 +249,16 @@ globalkeys = gears.table.join(
         end,
         {description = "edit selection with vim", group = "launcher"}),
 
-    -- Debug data
+    -- Open dotfiles
     awful.key({ modkey }, "d",
+        function ()
+            awful.spawn([[kitty --directory "$HOME/dotfiles" zsh -ic "nvim '+CHADopen --nofocus'; zsh -i"]])
+        end,
+            {description = "open dotfiles", group = "launcher"}),
+
+
+    -- Debug data
+    awful.key({ modkey }, "g",
         function ()
             local c = client.focus
             if c then
