@@ -78,7 +78,7 @@ set smartindent
 
 " Read file changes outside of vim automatically
 set autoread
-au FocusGained,BufEnter * :checktime
+au FocusGained,BufEnter * if !len(getcmdwintype()) | :checktime | endif
 
 " Show parenthesis match
 set showmatch
@@ -110,7 +110,6 @@ augroup end
 
 " Visual options {{{
 
-syntax enable
 if has("termguicolors")
   set termguicolors
 endif
