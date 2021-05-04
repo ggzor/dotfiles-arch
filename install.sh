@@ -26,5 +26,7 @@ link_same_single "$(pwd)" 'zathurarc'  "$HOME/.config/zathura"
 link_same_single "$(pwd)" '.zinit.zsh' "$HOME"
 link_same_single "$(pwd)" '.zshrc'     "$HOME"
 
+link_same "$(pwd)/nvim/init.vim" "$HOME/.vimrc"
+
 echo -e "\033[0;32mLinked all configuration files\033[0m"
 
