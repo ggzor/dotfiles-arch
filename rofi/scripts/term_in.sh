@@ -2,7 +2,6 @@
 
 declare -A DIRECTORIES
 DIRECTORIES=(
-  [" dotfiles"]="$HOME/dotfiles"
   [" scratch"]="$HOME/Scratch"
 )
 

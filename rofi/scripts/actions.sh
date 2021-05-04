@@ -2,13 +2,8 @@
 
 declare -A ACTIONS
 ACTIONS=(
-  [" open dotfiles in vim"]=dotfiles_vim
   [" open clipboard image"]=clipboard_image
 )
-
-dotfiles_vim() {
-    kitty --directory "$HOME/dotfiles" nvim '+CHADopen --nofocus'
-}
 
 clipboard_image() {
     xclip -selection clipboard -o -t image/png | feh -
