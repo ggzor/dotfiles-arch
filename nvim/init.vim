@@ -123,6 +123,9 @@ let &t_EI = "\<Esc>[2 q"
 " Agda
 let g:agda_extraincpaths = ['/usr/share/agda/lib/stdlib']
 
+" ale
+let g:ale_completion_enabled = 0
+
 " gitgutter
 " Use better change chars
 let g:gitgutter_sign_added              = '▍'
@@ -249,6 +252,7 @@ else
 endif
 
 " Custom language plugins
+Plug 'dense-analysis/ale'
 Plug 'derekelkins/agda-vim'
 Plug 'edwinb/idris2-vim'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
@@ -272,6 +276,16 @@ call plug#end()
 " }}}
 
 " Post-load {{{
+
+" ale
+" Only enable for certain file types
+let g:ale_enabled=0
+let g:ale_fixers = {
+  \  '*': ['trim_whitespace'],
+  \}
+let g:ale_fix_on_save = 1
+" LSP capabilities are provided by Coc.vim
+let g:ale_disable_lsp = 1
 
 " nvim-treesitter
 if has('nvim')
