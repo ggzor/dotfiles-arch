@@ -168,6 +168,11 @@ let g:polyglot_disabled = [
   \ 'tsx',
   \ 'idris']
 
+augroup au_polyglot_disable_indentexpr
+  autocmd!
+  autocmd BufEnter * set indentexpr=
+augroup END
+
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
 let g:operator_sandwich_no_default_key_mappings = 1
