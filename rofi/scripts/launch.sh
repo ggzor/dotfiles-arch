@@ -3,7 +3,6 @@
 declare -A PROGRAMS
 PROGRAMS=(
   [" arandr"]="arandr"
-  [" chrome"]="google-chrome-stable"
   ["﴾ nvidia settings"]="nvidia-settings"
   [" inkscape"]="inkscape"
   [" blender"]="blender"
