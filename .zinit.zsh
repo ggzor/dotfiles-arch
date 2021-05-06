@@ -74,12 +74,14 @@ zstyle ':fzf-tab:*' fzf-flags --height 50%
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --color=always $realpath'
 
 fzf_preview_params() {
-  TARGET_WIDTH="${1:-95}"
-  PREV_WIDTH=$(( TARGET_WIDTH > COLUMNS / 2 ? COLUMNS / 2 : TARGET_WIDTH ))
-  RIGHT_PREV="right:${PREV_WIDTH}:noborder:nowrap"
+  TARGET_PREV_WIDTH="${1:-95}"
+  SWITCH_LAYOUT_WIDTH="${2:-100}"
 
-  if (( COLUMNS <= 100 )); then
-    echo "down:61%:border:nowrap"
+  PREV_WIDTH=$(( TARGET_PREV_WIDTH > COLUMNS / 2 ? COLUMNS / 2 : TARGET_WIDTH ))
+  RIGHT_PREV="right:${TARGET_PREV_WIDTH}:noborder:nowrap"
+
+  if (( COLUMNS <= SWITCH_LAYOUT_WIDTH )); then
+    echo "top:61%:border:nowrap"
   else
     echo "$RIGHT_PREV"
   fi
@@ -127,7 +129,7 @@ zd() {
 
 # search regex
 ñg() {
-  COMMAND_FMT='rg --column --line-number --no-heading --color=always --smart-case %b || true'
+  COMMAND_FMT='rg --column --line-number --no-heading --color=always --smart-case -- %b || true'
   # shellcheck disable=SC2059
   INITIAL_COMMAND=$(printf "$COMMAND_FMT" "'$1'")
   # shellcheck disable=SC2059
@@ -136,7 +138,10 @@ zd() {
   RESULT=$(
     eval "$INITIAL_COMMAND" \
       | fzf --disabled --ansi --query "$1" --bind "change:reload:$RELOAD_COMMAND" \
-            --preview='fzf_rg_preview {}')
+            --preview='fzf_rg_preview {}' \
+            --delimiter ':' \
+            --preview-window="$(fzf_preview_params 100 180):+{2}-/2" \
+            --history="$HOME/.fzf-rg-history")
 
   if [[ -n "$RESULT" ]]; then
     if (( $(echo -n "$RESULT" | wc -l) > 1 )); then
