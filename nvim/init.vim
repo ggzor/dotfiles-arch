@@ -655,6 +655,27 @@ function! ProgramFilter(vt, ...)
     call setreg('"', qr, qt)
 endfunction
 
+function! OpenDirUnderCursor()
+  let directory = expand('<cfile>')
+  let path = glob(directory)
+
+  if empty(path)
+    echohl ErrorMsg
+    echom 'Directory "' . directory . "\" doesn't exists"
+    echohl None
+    return
+  endif
+
+  if !isdirectory(path)
+    echohl ErrorMsg
+    echom 'The given path is not a directory: ' . directory
+    echohl None
+    return
+  endif
+
+  call system('kitty --directory ' . shellescape(path) . ' zsh -i &')
+endfunction
+
 " }}}
 
 " Hacks {{{
@@ -837,6 +858,9 @@ vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
 " Delete and restore from quickfix
 autocmd FileType qf nmap <silent> <buffer> dd :call RemoveQFItem()<cr>
 autocmd FileType qf nmap <silent> <buffer> u :call RestoreQFItem()<cr>
+
+" Go to directory under cursor
+nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
 
 " }}}
 
