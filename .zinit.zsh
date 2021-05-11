@@ -62,7 +62,7 @@ export FZF_DEFAULT_OPTS="
   --exit-0 --multi --info=inline
   --no-border --layout=reverse
   --height 99% --no-mouse
-  --preview-window='right:95:wrap:noborder'
+  --preview-window='down:70%:wrap'
   --bind='$FZF_BINDINGS_STRING'
 "
 
@@ -72,6 +72,7 @@ zstyle ':fzf-tab:*' fzf-bindings \
 zstyle ':fzf-tab:*' fzf-flags --height 50%
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-flags --height 70%
 
 fzf_preview_params() {
   TARGET_PREV_WIDTH="${1:-95}"
