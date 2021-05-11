@@ -1051,36 +1051,36 @@ nmap , <Plug>(show-motion-,)
 
 " Easymotion like
 if has('nvim')
-  nmap ñw :lua require'hop'.hint_words_same_line()<CR>
-  nmap ñb :lua require'hop'.hint_backwords_same_line()<CR>
-  nmap ñe :lua require'hop'.hint_word_ends_same_line()<CR>
-  nmap ñE :lua require'hop'.hint_backword_ends_same_line()<CR>
+  function! s:hop_add_mapping(key, f, ft)
+    let prefix = len(a:ft) > 0 ? 'autocmd FileType '.a:ft.' ' : ''
 
-  vmap <silent> ñw :lua require'hop'.hint_words_same_line( { extend_visual = true } )<CR>
-  vmap <silent> ñb :lua require'hop'.hint_backwords_same_line( { extend_visual = true } )<CR>
-  vmap <silent> ñe :lua require'hop'.hint_word_ends_same_line( { extend_visual = true } )<CR>
-  vmap <silent> ñE :lua require'hop'.hint_backword_ends_same_line( { extend_visual = true } )<CR>
+    exec prefix.'nmap <silent> '.a:key." :lua require'hop'.".a:f.'()<CR>'
+    exec prefix.'vmap <silent> '.a:key.
+      \ " :lua require'hop'.".a:f.'({ extend_visual = true })<CR>'
+  endfunction
 
-  nmap <silent> K :lua require'hop'.hint_lines_to_top()<CR>
-  nmap <silent> J :lua require'hop'.hint_lines_to_bottom()<CR>
-  nmap <silent> <leader>j :lua require'hop'.hint_lines_to_bottom_same()<CR>
-  nmap <silent> <leader>k :lua require'hop'.hint_lines_to_top_same()<CR>
+  let s:hop_mappings = {
+    \ 'ñw': 'hint_words_same_line',
+    \ 'ñb': 'hint_backwords_same_line',
+    \ 'ñe': 'hint_word_ends_same_line',
+    \ 'ñE': 'hint_backword_ends_same_line',
+    \
+    \ 'K': 'hint_lines_to_top',
+    \ 'J': 'hint_lines_to_bottom',
+    \ '<leader>K': 'hint_lines_to_top_same',
+    \ '<leader>J': 'hint_lines_to_bottom_same',
+    \ }
 
-  vmap <silent> K :lua require'hop'.hint_lines_to_top( { extend_visual = true } )<CR>
-  vmap <silent> J :lua require'hop'.hint_lines_to_bottom( { extend_visual = true } )<CR>
-  vmap <silent> <leader>j :lua require'hop'.hint_lines_to_bottom_same( { extend_visual = true } )<CR>
-  vmap <silent> <leader>k :lua require'hop'.hint_lines_to_top_same( { extend_visual = true } )<CR>
+  for [key, f] in items(s:hop_mappings)
+    call s:hop_add_mapping(key, f, '')
+  endfor
 
   augroup hop_chad
     au!
-    autocmd FileType CHADTree nmap <silent> K :lua require'hop'.hint_lines_sol_to_top()<CR>
-    autocmd FileType CHADTree nmap <silent> J :lua require'hop'.hint_lines_sol_to_bottom()<CR>
-    autocmd FileType CHADTree vmap <silent> K :lua require'hop'.hint_lines_sol_to_top( { extend_visual = true } )<CR>
-    autocmd FileType CHADTree vmap <silent> J :lua require'hop'.hint_lines_sol_to_bottom( { extend_visual = true } )<CR>
+    call s:hop_add_mapping('K', 'hint_lines_sol_to_top', 'CHADTree')
+    call s:hop_add_mapping('J', 'hint_lines_sol_to_bottom', 'CHADTree')
   augroup end
-
 else
-
   map ñw <Plug>(easymotion-wl)
   map ñb <Plug>(easymotion-bl)
   map ñe <Plug>(easymotion-el)
@@ -1090,7 +1090,6 @@ else
   map K <Plug>(easymotion-sol-k)
   map <leader>j <Plug>(easymotion-j)
   map <leader>k <Plug>(easymotion-k)
-
 endif
 
 " }}}
