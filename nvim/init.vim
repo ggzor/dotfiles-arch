@@ -591,7 +591,7 @@ function! FZFFiles(fullscreen)
   let right_preview_string = 'right:'.preview_width.':noborder:nowrap'
 
   let preview_params = go_full
-        \ ? fzf#vim#with_preview(ww <= 100 ? 'down:61%:border:nowrap' : right_preview_string)
+        \ ? fzf#vim#with_preview(ww <= 100 ? 'up:61%:border:nowrap' : right_preview_string)
         \ : right_preview_string
   let options = fzf#vim#with_preview(preview_params)
 

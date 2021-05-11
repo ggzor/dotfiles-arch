@@ -6,7 +6,7 @@ EXCLUDE_DIRS='
 .sdkman .npm .yay .mysql .yay .pki .gnome cache .nix .nix-profile jsm build
 .nv .venv debug release .stack .stack-work .cabal dist dist-newstyle .gradle
 .java .tooling .nix-defexpr mod .yarn .ipython .ghc pkg .emscripten_cache
-.mozilla __MACOSX nltk_data'
+.mozilla __MACOSX nltk_data .nvim'
 
 EXCLUDE_STRING=$(echo -n "$EXCLUDE_DIRS" | tr ' ' '\n' | \
                    sed 's/^/--exclude /' | paste -sd' ')
@@ -81,7 +81,7 @@ fzf_preview_params() {
   RIGHT_PREV="right:${TARGET_PREV_WIDTH}:noborder:nowrap"
 
   if (( COLUMNS <= SWITCH_LAYOUT_WIDTH )); then
-    echo "top:61%:border:nowrap"
+    echo "up:61%:border:nowrap"
   else
     echo "$RIGHT_PREV"
   fi
