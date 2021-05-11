@@ -183,10 +183,6 @@ augroup au_polyglot_disable_indentexpr
   autocmd BufEnter * set indentexpr=
 augroup END
 
-" vim-sandwich
-let g:sandwich_no_default_key_mappings = 1
-let g:operator_sandwich_no_default_key_mappings = 1
-
 " vim-plug download
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -303,6 +299,9 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 " LSP capabilities are provided by Coc.vim
 let g:ale_disable_lsp = 1
+
+" vim-sandwich
+runtime macros/sandwich/keymap/surround.vim
 
 " nvim-treesitter
 if has('nvim')
@@ -969,19 +968,6 @@ endif
 
 " emmet
 let g:user_emmet_leader_key='<C-y>'
-
-" vim-sandwich
-" add
-nmap ñi <Plug>(operator-sandwich-add)
-xmap ñi <Plug>(operator-sandwich-add)
-" delete
-nmap ñd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-xmap ñd <Plug>(operator-sandwich-delete)
-nmap ñdd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-" replace
-nmap ñr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-xmap ñr <Plug>(operator-sandwich-replace)
-nmap ñrr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
 
 " vim-subversive
 nmap s <plug>(SubversiveSubstitute)
