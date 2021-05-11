@@ -582,18 +582,21 @@ let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --exclude .git --follow"
 let g:fzf_preview_window_min_width=100
 let g:fzf_history_dir = '~/.fzf-vim-history'
 
-function! FZFFiles(fullscreen)
+" Get preview options depending on current window size
+"   target_prev_width = The size of the preview window
+"   switch_layout_width = The neovim windows size at which full screen mode is
+"                         forced
+function! FZFPreviewOptions(options, target_prev_width, switch_layout_width)
   let ww = &columns
   let wh = &lines
-  let go_full = a:fullscreen || ww <= 100
+  let go_full = ww <= a:switch_layout_width
 
-  let preview_width = min([95, float2nr(0.50 * ww)])
+  let preview_width = min([a:target_prev_width, float2nr(0.50 * ww)])
   let right_preview_string = 'right:'.preview_width.':noborder:nowrap'
 
-  let preview_params = go_full
-        \ ? fzf#vim#with_preview(ww <= 100 ? 'up:61%:border:nowrap' : right_preview_string)
-        \ : right_preview_string
-  let options = fzf#vim#with_preview(preview_params)
+  let preview_params = go_full ? 'up:61%:border:nowrap' : right_preview_string
+
+  let options = fzf#vim#with_preview(a:options, preview_params)
 
   if !go_full
     let target_width = min([160, float2nr(0.9 * ww)])
@@ -601,17 +604,30 @@ function! FZFFiles(fullscreen)
     call extend(options, { 'window': { 'width': target_width, 'height': target_height } })
   endif
 
+  return [options, go_full]
+endfunction
+
+" Open a file in the current directory
+function! FZFFiles()
+  let [options, go_full] = FZFPreviewOptions({}, 95, 100)
   call fzf#vim#files('', options, go_full)
 endfunction
 
-" FIXME: Fix window size for all used fzf commands
+" Search for a regex pattern
 function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let command_fmt =
+    \ 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
   let reload_command = printf(command_fmt, '{q}')
-  let options = ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]
-  let spec = {'options': options }
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+
+  let options = [
+    \ '--disabled',
+    \ '--query', a:query,
+    \ '--bind', 'change:reload:'.reload_command
+    \ ]
+
+  let [options, go_full] = FZFPreviewOptions({ 'options': options }, 100, 180)
+  call fzf#vim#grep(initial_command, 1, options, go_full)
 endfunction
 
 function! RipgrepFzfFuzzy(query, fullscreen, preview)
@@ -880,8 +896,7 @@ nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
 " Plugin mappings {{{
 
 " fzf
-nnoremap <silent> ñf :call FZFFiles(0)<CR>
-nnoremap <silent> ñF :call FZFFiles(1)<CR>
+nnoremap <silent> ñf :call FZFFiles()<CR>
 nnoremap <silent> ñj :Buffers<CR>
 nnoremap <silent> ñl :BLines<CR>
 nnoremap <silent> ññ :History:<CR>
