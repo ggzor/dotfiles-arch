@@ -84,6 +84,12 @@ set signcolumn=yes
 set hlsearch
 set incsearch
 
+" Allow mouse to resize splits
+set mouse=n
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
 if has('nvim')
   " Preview replacements
   set inccommand=nosplit
@@ -113,6 +119,10 @@ set diffopt=vertical,filler,foldcolumn:1
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
+
+" Change characters
+" Vertical split char
+set fillchars+=fold:.,vert:│
 
 " }}}
 
@@ -195,7 +205,6 @@ call plug#begin()
 " Utilities
 Plug 'airblade/vim-gitgutter'
 Plug 'romainl/vim-qf'
-Plug 'simeji/winresizer'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 Plug 'wsdjeg/vim-fetch'
@@ -1015,9 +1024,6 @@ if has('nvim')
 else
   nmap <C-n> :NERDTreeToggle<CR>
 endif
-
-" winresizer
-let g:winresizer_start_key = '<leader>W'
 
 " Code Painter
 vnoremap <silent> gp :<c-u> call codepainter#paintText(visualmode())<cr>
