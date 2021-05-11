@@ -265,6 +265,7 @@ if has('nvim')
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 else
   Plug 'preservim/nerdtree'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 endif
 
 " Custom language plugins
@@ -350,7 +351,6 @@ let g:matchup_matchparen_deferred_show_delay = 50
 let g:matchup_matchparen_hi_surround_always = 1
 " Don't match offscreen parens
 let g:matchup_matchparen_offscreen = {}
-
 
 " easymotion
 let g:EasyMotion_off_screen_search = 0
@@ -453,6 +453,10 @@ if has('nvim')
   " Auto close if CHADTree is the only window open
   autocmd BufEnter * if (winnr("$") == 1 && &ft == 'chadtree') | q | endif
 else
+  " nerdtree
+  let g:NERDTreeWinPos = "right"
+  let g:NERDTreeMinimalUI = 1
+
   " Auto close if NERDTree is the only window open
   autocmd BufEnter * if (winnr("$") == 1 && &ft == 'nerdtree') | q | endif
 endif
