@@ -252,7 +252,13 @@ globalkeys = gears.table.join(
     -- Open dotfiles
     awful.key({ modkey }, "d",
         function ()
-            awful.spawn([[kitty --directory "$HOME/dotfiles" zsh -ic "nvim '+CHADopen --nofocus'; zsh -i"]])
+            local command = [[
+              echo '\033[1mDirectory contents:\033[0m'
+              exa --icons 2> /dev/null || ls
+              echo ''
+              zsh -i
+            ]]
+            awful.spawn('kitty --directory "$HOME/dotfiles" zsh -c "'..command..'"')
         end,
             {description = "open dotfiles", group = "launcher"}),
 
