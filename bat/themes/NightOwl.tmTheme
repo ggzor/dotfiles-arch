@@ -716,9 +716,31 @@
       </dict>
       <dict>
         <key>name</key>
+        <string>support.function.rust</string>
+        <key>scope</key>
+        <string>support.function.rust</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#82aaff</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
         <string>support.function.viml</string>
         <key>scope</key>
         <string>support.function.viml</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#c792ea</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>support.macro</string>
+        <key>scope</key>
+        <string>support.macro</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -756,6 +778,17 @@
         <dict>
           <key>foreground</key>
           <string>#c792ea</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>support.type.rust</string>
+        <key>scope</key>
+        <string>support.type.rust</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#ccacea</string>
         </dict>
       </dict>
       <dict>
