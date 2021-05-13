@@ -590,10 +590,11 @@ function! FZFPreviewOptions(options, target_prev_width, switch_layout_width)
   let wh = &lines
   let go_full = ww <= a:switch_layout_width
 
-  let preview_width = min([a:target_prev_width, float2nr(0.50 * ww)])
+  let max_width = float2nr(3.0 * ww / 5.0)
+  let preview_width = min([a:target_prev_width, max_width])
   let right_preview_string = 'right:'.preview_width.':noborder:nowrap'
 
-  let preview_params = go_full ? 'up:61%:border:nowrap' : right_preview_string
+  let preview_params = go_full ? 'up:71%:border:nowrap' : right_preview_string
 
   let options = fzf#vim#with_preview(a:options, preview_params)
 
@@ -608,7 +609,7 @@ endfunction
 
 " Open a file in the current directory
 function! FZFFiles()
-  let [options, go_full] = FZFPreviewOptions({}, 95, 100)
+  let [options, go_full] = FZFPreviewOptions({}, 95, 110)
   call fzf#vim#files('', options, go_full)
 endfunction
 
