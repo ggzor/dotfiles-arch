@@ -76,10 +76,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-flags --height 70%
 
 fzf_preview_params() {
   TARGET_PREV_WIDTH="${1:-95}"
-  SWITCH_LAYOUT_WIDTH="${2:-100}"
+  SWITCH_LAYOUT_WIDTH="${2:-105}"
 
-  PREV_WIDTH=$(( TARGET_PREV_WIDTH > COLUMNS / 2 ? COLUMNS / 2 : TARGET_WIDTH ))
-  RIGHT_PREV="right:${TARGET_PREV_WIDTH}:noborder:nowrap"
+  MAX_WIDTH=$(( 3 * COLUMNS / 5 ))
+  PREV_WIDTH=$(( TARGET_PREV_WIDTH > MAX_WIDTH ? MAX_WIDTH : TARGET_WIDTH ))
+  RIGHT_PREV="right:${PREV_WIDTH}:noborder:nowrap"
 
   if (( COLUMNS <= SWITCH_LAYOUT_WIDTH )); then
     echo 'up:71%:border:nowrap'
