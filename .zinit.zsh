@@ -55,8 +55,8 @@ alt-p:previous-history
 alt-n:next-history
 '
 
-FZF_BINDINGS_STRING=$(echo -n "$FZF_BINDINGS" | grep -e "^[^#]" |
-                        tr "\n" "," | sed -E "s/.$//")
+FZF_BINDINGS_STRING=$(echo -n "$FZF_BINDINGS" | grep -e '^[^#]' |
+                        tr '\n' ',' | sed -E 's/.$//')
 
 export FZF_DEFAULT_OPTS="
   --exit-0 --multi --info=inline
@@ -82,7 +82,7 @@ fzf_preview_params() {
   RIGHT_PREV="right:${TARGET_PREV_WIDTH}:noborder:nowrap"
 
   if (( COLUMNS <= SWITCH_LAYOUT_WIDTH )); then
-    echo "up:61%:border:nowrap"
+    echo 'up:71%:border:nowrap'
   else
     echo "$RIGHT_PREV"
   fi
@@ -91,10 +91,10 @@ fzf_preview_params() {
 # fzf utilities
 # open files
 ñf() {
-  PREVIEW_COMMAND="
+  PREVIEW_COMMAND='
     [[ \$(file --mime {}) =~ binary ]] \
         && echo {} is a binary file \
-        || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null"
+        || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null'
 
   OUT=("$(
       fzf --query="$1" --preview="$PREVIEW_COMMAND" \
