@@ -163,6 +163,6 @@ export forgit_ignore=gitignore
 export forgit_stash_show=gitstash
 
 # vim easymotion
-bindkey -M vicmd ' ' vi-easy-motion
+bindkey -M vicmd 'ñ' vi-easy-motion
 export EASY_MOTION_TARGET_KEYS='fasjuirwzmkhdoe'
 

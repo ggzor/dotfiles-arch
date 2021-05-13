@@ -157,13 +157,6 @@ bindkey -M vicmd '_' beginning-of-line
 bindkey -M visual '_' beginning-of-line
 bindkey -M viopp '_' beginning-of-line
 
-bindkey -M viins "^[l" vi-forward-char
-bindkey -M viins "^[h" vi-backward-char
-
-bindkey -M vicmd 'ñi' add-surround
-bindkey -M vicmd 'ñc' change-surround
-bindkey -M vicmd 'ñd' delete-surround
-
 bindkey "^[[H"    beginning-of-line
 bindkey "^[[F"    end-of-line
 bindkey "^[[3~"   delete-char

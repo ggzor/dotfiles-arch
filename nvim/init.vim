@@ -1067,8 +1067,8 @@ if has('nvim')
     \
     \ 'K': 'hint_lines_to_top',
     \ 'J': 'hint_lines_to_bottom',
-    \ '<leader>K': 'hint_lines_to_top_same',
-    \ '<leader>J': 'hint_lines_to_bottom_same',
+    \ '<leader>k': 'hint_lines_to_top_same',
+    \ '<leader>j': 'hint_lines_to_bottom_same',
     \ }
 
   for [key, f] in items(s:hop_mappings)
