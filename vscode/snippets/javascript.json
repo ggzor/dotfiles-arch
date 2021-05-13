@@ -1,0 +1,21 @@
+{
+  "React Component": {
+    "prefix": "rc",
+    "body": [
+      "const ${1:Component} = ({ ${3:...props} }) => {",
+      "\t$0",
+      "\treturn <${2:${1:Component}Layout}></${2:${1:Component}Layout}>",
+      "}"
+    ],
+    "description": "React functional component"
+  },
+  "Styled component": {
+    "prefix": "sc",
+    "body": [
+      "const ${1:Component} = styled.${2:div}`",
+      "\t$0",
+      "`;"
+    ],
+    "description": "React functional component"
+  }
+}

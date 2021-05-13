@@ -1,13 +1,1 @@
-{
-  "React Component": {
-    "prefix": "rc",
-    "body": [
-      "const ${1:Component} = ({ ${3:...props} }) => {",
-      "\t$0",
-      "\treturn <${2:${1:Component}Layout}></${2:${1:Component}Layout}>",
-      "}"
-    ],
-    "description": "React functional component"
-  }
-}
-
+javascript.json
