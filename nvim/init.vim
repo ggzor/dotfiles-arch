@@ -62,7 +62,7 @@ set hidden
 set title
 augroup au_terminal_title
   au!
-  auto BufEnter * let &titlestring = expand('%') . ' - vim'
+  autocmd BufEnter * let &titlestring = expand('%') . ' - vim'
 augroup end
 
 " }}}
@@ -387,7 +387,7 @@ let g:pear_tree_repeatable_expand = 0
 " Code painter
 let g:paint_color_idx = 0
 let g:paint_colors = ['blue', 'yellow', 'green', 'red', 'gray']
-func! CodePainterAdjustColor(amount) abort
+function! CodePainterAdjustColor(amount) abort
   let g:paint_color_idx = (
     \ (g:paint_color_idx + a:amount + len(g:paint_colors)) % len(g:paint_colors))
 
@@ -395,7 +395,7 @@ func! CodePainterAdjustColor(amount) abort
   if a:amount != 0
     echo "Using color: " . g:paint_colors[g:paint_color_idx]
   endif
-endfunc
+endfunction
 call CodePainterAdjustColor(0)
 
 if has('nvim')
