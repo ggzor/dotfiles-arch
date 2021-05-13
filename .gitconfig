@@ -7,5 +7,15 @@
 [user]
 	name = ggzor
 	email = 30713864+ggzor@users.noreply.github.com
+
 [init]
 	defaultBranch = main
+
+[delta]
+  plus-style = syntax "#243b37"
+  plus-emph-style = syntax "#476047"
+  minus-style = syntax "#382430"
+  minus-emph-style = syntax "#6f323a"
+
+  hunk-header-style = "#011627"
+  hunk-header-decoration-style = auto ol
