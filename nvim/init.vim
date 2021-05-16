@@ -84,12 +84,6 @@ set signcolumn=yes
 set hlsearch
 set incsearch
 
-" Allow mouse to resize splits
-set mouse=n
-if !has('nvim')
-  set ttymouse=xterm2
-endif
-
 if has('nvim')
   " Preview replacements
   set inccommand=nosplit
