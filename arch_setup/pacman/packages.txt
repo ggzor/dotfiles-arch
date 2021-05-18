@@ -49,6 +49,7 @@ gdb
 git
 glu
 go
+haskell-language-server
 lldb
 make
 minted
