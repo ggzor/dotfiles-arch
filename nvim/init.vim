@@ -140,8 +140,6 @@ let g:gitgutter_sign_modified_removed   = '▍'
 " vim-polyglot
 " treesitter handles all of these languages
 let g:polyglot_disabled = [
-  \ 'autoindent',
-  \
   \ 'c',
   \ 'cs',
   \ 'clojure',
