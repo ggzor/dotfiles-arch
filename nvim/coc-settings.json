@@ -25,6 +25,10 @@
     "c",
     "java"
   ],
+  "coc.source.emoji.filetypes": [
+    "markdown",
+    "toml"
+  ],
   "python.jediEnabled": false,
   "python.linting.pylintEnabled": false,
   "python.linting.lintOnSave": true,

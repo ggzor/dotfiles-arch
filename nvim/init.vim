@@ -405,6 +405,7 @@ if has('nvim')
         \'coc-clangd',
         \'coc-css',
         \'coc-emmet',
+        \'coc-emoji',
         \'coc-eslint',
         \'coc-go',
         \'coc-java',
