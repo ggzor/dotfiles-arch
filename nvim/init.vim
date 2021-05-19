@@ -346,9 +346,21 @@ let g:rainbow_conf = {
   \ 'separately': {
   \   'racket': {
   \     'after': ['syn clear racketQuoted']
-  \   }
+  \   },
+  \   'agda': {
+  \     'parentheses': [
+  \       'start=/(/ end=/)/ fold',
+  \       'start=/\[/ end=/\]/ fold',
+  \       'start=/\v\{\ze[^-]/ end=/}/ fold'
+  \     ],
+  \   },
   \ }
   \ }
+
+augroup au_rainbow_enter_fix
+  autocmd!
+  autocmd WinEnter *.agda RainbowToggleOn
+augroup END
 
 " vimtex
 let g:vimtex_view_method='zathura'
