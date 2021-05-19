@@ -223,6 +223,7 @@ Plug 'tpope/vim-commentary'
 " Extra old syntax
 Plug 'dylon/vim-antlr'
 Plug 'sheerun/vim-polyglot'
+Plug 'luochen1990/rainbow'
 
 " Easymotion like behavior
 if has('nvim')
@@ -245,7 +246,6 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  Plug 'p00f/nvim-ts-rainbow'
 endif
 
 " NERDTree Like
@@ -314,21 +314,34 @@ lua <<EOF
       updatetime = 25,
       persist_queries = false,
     },
-    rainbow = {
-      enable = true,
-      extended_mode = true,
-    },
     textobjects = {
       select = {
         enable = true,
       },
     },
   }
+
+  require'nvim-treesitter.highlight'
+  local hlmap = vim.treesitter.highlighter.hl_map
+
+  hlmap.error = nil
+  hlmap["punctuation.delimiter"] = "Delimiter"
+  hlmap["punctuation.bracket"] = nil
 EOF
 endif
 
 " highlightedyank
 let g:highlightedyank_highlight_duration = -1
+
+" rainbow
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+  \ 'separately': {
+  \   'racket': {
+  \     'after': ['syn clear racketQuoted']
+  \   }
+  \ }
+  \ }
 
 " vimtex
 let g:vimtex_view_method='zathura'
