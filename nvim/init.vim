@@ -253,6 +253,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'p00f/nvim-ts-rainbow'
 endif
 
 " NERDTree Like
@@ -316,6 +317,10 @@ lua <<EOF
     matchup = {
       enable = false,
     },
+    rainbow = {
+      enable = true,
+      extend_mode = true,
+    },
     playground = {
       enable = true,
       updatetime = 25,
@@ -341,7 +346,7 @@ endif
 let g:highlightedyank_highlight_duration = -1
 
 " rainbow
-let g:rainbow_active = 1
+let g:rainbow_active = 0
 let g:rainbow_conf = {
   \ 'separately': {
   \   'racket': {
@@ -356,6 +361,11 @@ let g:rainbow_conf = {
   \   },
   \ }
   \ }
+
+augroup au_rainbow_enable
+  autocmd!
+  autocmd FileType racket,agda,haskell RainbowToggleOn
+augroup END
 
 augroup au_rainbow_enter_fix
   autocmd!
