@@ -170,9 +170,16 @@ let g:polyglot_disabled = [
   \ 'tsx',
   \ 'idris']
 
-augroup au_polyglot_disable_indentexpr
+"
+augroup au_polyglot_md_disable_indentexpr
   autocmd!
-  autocmd BufEnter * set indentexpr=
+  autocmd BufEnter *.md set indentexpr=
+augroup END
+
+" Enable racket for rkt files
+augroup au_racket
+  autocmd!
+  autocmd BufNewFile,BufRead *.rkt setfiletype racket
 augroup END
 
 " vim-plug download
