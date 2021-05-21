@@ -41,13 +41,13 @@ fi
 
 if [ "$@" ]
 then
-    google-chrome-stable $EXTRA_PARAMS "${SITES["$@"]}" &> /dev/null &
+  firefox $EXTRA_PARAMS "${SITES["$@"]}" &> /dev/null &
 else
-    echo -en "\x00prompt\x1f<span fgcolor='#6c7a89'>go to</span>\n"
-    echo -en "\x00markup-rows\x1ftrue\n"
+  echo -en "\x00prompt\x1f<span fgcolor='#6c7a89'>go to</span>\n"
+  echo -en "\x00markup-rows\x1ftrue\n"
 
-    for SITE in "${!SITES[@]}"; do
-      echo "$SITE"
-    done
+  for SITE in "${!SITES[@]}"; do
+    echo "$SITE"
+  done
 fi
 

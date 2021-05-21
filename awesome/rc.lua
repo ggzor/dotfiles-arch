@@ -185,7 +185,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
 
     -- Standard browser
-    awful.key({ modkey,           }, "b", function () awful.spawn('google-chrome-stable --new-window') end,
+    awful.key({ modkey,           }, "b", function () awful.spawn('firefox') end,
               {description = "open a terminal", group = "launcher"}),
 
     awful.key({ }, "Print", function () awful.spawn("flameshot gui") end,

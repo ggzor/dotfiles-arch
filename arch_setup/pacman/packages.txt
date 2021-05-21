@@ -75,6 +75,7 @@ arc-gtk-theme  # Arc theme
 deluge-gtk     # Torrent client
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
+firefox        # Browser
 gimp           # Open source rastar graphics editor
 glava          # Audio visualizer
 inkscape       # Open source vector graphics editor
