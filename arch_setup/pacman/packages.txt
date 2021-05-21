@@ -6,11 +6,13 @@ playerctl
 
 ### CLI Standard Utils
 bc
+binutils
 dialog
 ffmpeg
 gzip
 man
 man-db
+sudo
 time
 tmux
 tree
@@ -38,6 +40,9 @@ xclip         # clipboard manager
 youtube-dl    # video downloader
 
 ### Development
+agda
+agda-stdlib
+android-tools
 autoconf
 automake
 bash-language-server
@@ -57,6 +62,7 @@ mesa
 nodejs
 npm
 python
+racket
 rustup
 rust-analyzer
 shellcheck
@@ -76,6 +82,7 @@ deluge-gtk     # Torrent client
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
 firefox        # Browser
+geeqie         # Image visualizer
 gimp           # Open source rastar graphics editor
 glava          # Audio visualizer
 inkscape       # Open source vector graphics editor
@@ -94,6 +101,8 @@ screenkey      # Show keys on screen
 slop           # Utility to select a screen region
 
 ### Fonts
+ttf-fira-mono
+ttf-fira-sans
 ttf-roboto
 noto-fonts
 noto-fonts-emoji

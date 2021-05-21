@@ -30,3 +30,5 @@ zsa-wally-cli-bin
 # obs-plugins
 obs-websocket # websockets support for obs
 
+# Android tools
+scrcpy
