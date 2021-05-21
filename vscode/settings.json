@@ -57,12 +57,9 @@
   "jupyter.insidersChannel": "weekly",
   "python.showStartPage": false,
   "jupyter.interactiveWindowMode": "perFile",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter-notebook",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
   "python.insidersChannel": "weekly",
   "python.languageServer": "Pylance",
   // Idris
