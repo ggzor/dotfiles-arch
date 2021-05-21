@@ -176,10 +176,12 @@ augroup au_polyglot_md_disable_indentexpr
   autocmd BufEnter *.md set indentexpr=
 augroup END
 
-" Enable racket for rkt files
-augroup au_racket
+augroup au_filetypes_rename
   autocmd!
+
+  " Enable racket for rkt files
   autocmd BufNewFile,BufRead *.rkt setfiletype racket
+  autocmd BufNewFile,BufRead *.json setfiletype jsonc
 augroup END
 
 " vim-plug download
