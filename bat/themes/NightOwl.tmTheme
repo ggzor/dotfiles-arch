@@ -13,6 +13,10 @@
           <string>#011627</string>
           <key>foreground</key>
           <string>#d6deeb</string>
+          <key>lineHighlight</key>
+          <string>#1a3352</string>
+          <key>gutterForeground</key>
+          <string>#364858</string>
         </dict>
       </dict>
       <dict>

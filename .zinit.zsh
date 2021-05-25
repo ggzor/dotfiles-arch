@@ -58,12 +58,29 @@ alt-n:next-history
 FZF_BINDINGS_STRING=$(echo -n "$FZF_BINDINGS" | grep -e '^[^#]' |
                         tr '\n' ',' | sed -E 's/.$//')
 
+FZF_COLORS="
+dark
+hl:$col_lime
+fg+:$col_fg
+bg+:$col_blue20
+hl+:$col_lime
+info:$col_fg
+border:$col_fg10
+prompt:$col_blue
+pointer:$col_red
+marker:$col_red
+header:#ff0000
+spinner:#ff0000
+"
+FZF_COLORS_STRING="$( echo -n "$FZF_COLORS" | grep -e '^[^#]' | paste -sd',' )"
+
 export FZF_DEFAULT_OPTS="
   --exit-0 --multi --info=inline
   --no-border --layout=reverse
   --height 99% --no-mouse
   --preview-window='down:70%:wrap'
   --bind='$FZF_BINDINGS_STRING'
+  --color='$FZF_COLORS_STRING'
 "
 
 # fzf-tab
