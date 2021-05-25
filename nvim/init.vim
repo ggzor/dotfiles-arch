@@ -131,6 +131,7 @@ let g:agda_extraincpaths = ['/usr/share/agda/lib/stdlib']
 let g:ale_completion_enabled = 0
 
 " gitgutter
+let g:gitgutter_map_keys = 0
 " Use better change chars
 let g:gitgutter_sign_added              = '▍'
 let g:gitgutter_sign_modified           = '▍'
@@ -1011,6 +1012,8 @@ let g:user_emmet_leader_key='<C-y>'
 nmap s <plug>(SubversiveSubstitute)
 
 " gitgutter
+nmap <silent> ]c <Plug>(GitGutterNextHunk)
+nmap <silent> [c <Plug>(GitGutterPrevHunk)
 nmap <silent> <leader>gr <Plug>(GitGutterUndoHunk)
 nmap <silent> <leader>gs :GitGutterStageHunk <bar> GitGutterNextHunk <bar> normal! zz<CR>
 
