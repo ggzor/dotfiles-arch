@@ -344,6 +344,15 @@ lua <<EOF
       persist_queries = false,
     },
     textobjects = {
+      swap = {
+        enable = true,
+        swap_next = {
+          ["<leader>l"] = "@parameter.inner",
+        },
+        swap_previous = {
+          ["<leader>h"] = "@parameter.inner",
+        },
+      },
       select = {
         enable = true,
       },
