@@ -70,6 +70,7 @@ prompt:$col_blue
 pointer:$col_red
 marker:$col_red
 header:$col_fg50
+gutter:-1
 spinner:#ff0000
 "
 FZF_COLORS_STRING="$( echo -n "$FZF_COLORS" | grep -e '^[^#]' | paste -sd',' )"
