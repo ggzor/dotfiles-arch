@@ -257,6 +257,7 @@ if has('nvim')
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'p00f/nvim-ts-rainbow'
+  Plug 'windwp/nvim-ts-autotag'
 endif
 
 " NERDTree Like
@@ -311,6 +312,9 @@ if has('nvim')
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",
+    autotag = {
+      enable = true,
+    },
     highlight = {
       enable = true,
     },
