@@ -255,6 +255,7 @@ endif
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
+  Plug 'nvim-treesitter/nvim-treesitter-refactor'
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'p00f/nvim-ts-rainbow'
   Plug 'windwp/nvim-ts-autotag'
@@ -327,6 +328,15 @@ lua <<EOF
     rainbow = {
       enable = true,
       extend_mode = true,
+    },
+    refactor = {
+      highlight_definitions = { enable = true },
+      smart_rename = {
+        enable = true,
+        keymaps = {
+          smart_rename = "<leader>r"
+        }
+      }
     },
     playground = {
       enable = true,
@@ -977,7 +987,7 @@ if has('nvim')
   nnoremap <silent> ñk :call CocAction('doHover')<CR>
 
   " Symbol renaming
-  nmap <leader>r <Plug>(coc-rename)
+  " nmap <leader>r <Plug>(coc-rename)
   " Remap keys for applying codeAction to the current line.
   nmap <leader>a <Plug>(coc-codeaction)
   " Apply AutoFix to problem on the current line.
