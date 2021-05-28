@@ -486,6 +486,7 @@ if has('nvim')
         \'coc-styled-components',
         \'coc-tsserver',
         \'coc-vimtex',
+        \'coc-vimlsp',
         \]
 endif
 
