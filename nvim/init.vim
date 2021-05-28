@@ -675,17 +675,22 @@ function! FZFFiles()
 endfunction
 
 " Search for a regex pattern
-function! RipgrepFzf(query, fullscreen)
+function! RipgrepFzf(query, fuzzy)
   let command_fmt =
     \ 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
   let reload_command = printf(command_fmt, '{q}')
 
   let options = [
-    \ '--disabled',
     \ '--query', a:query,
-    \ '--bind', 'change:reload:'.reload_command
     \ ]
+
+  if !a:fuzzy
+    call extend(options, [
+      \ '--disabled',
+      \ '--bind', 'change:reload:'.reload_command,
+      \ ])
+  endif
 
   let [options, go_full] = FZFPreviewOptions({ 'options': options }, 100, 180)
   call fzf#vim#grep(initial_command, 1, options, go_full)
@@ -958,14 +963,13 @@ nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
 
 " fzf
 nnoremap <silent> ñf :call FZFFiles()<CR>
+nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
+nnoremap <silent> ñr :call RipgrepFzf('', 1)<CR>
+
 nnoremap <silent> ñj :Buffers<CR>
 nnoremap <silent> ñl :BLines<CR>
 nnoremap <silent> ññ :History:<CR>
 nnoremap <silent> ñh :Helptags<CR>
-" nnoremap <silent> ñr :call RipgrepFzfFuzzy('', 0, 1)<CR>
-" nnoremap <silent> ñR :call RipgrepFzfFuzzy('', 1, 1)<CR>
-nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
-nnoremap <silent> ñG :call RipgrepFzf('', 1)<CR>
 
 " coc.nvim
 if has('nvim')

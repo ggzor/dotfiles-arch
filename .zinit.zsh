@@ -149,19 +149,36 @@ zd() {
 
 # search regex
 ñg() {
+  FUZZY=0
+
+  if [[ "$1" =~ 'fuzzy' ]]; then
+    FUZZY=1
+    shift
+  fi
+
   COMMAND_FMT='rg --column --line-number --no-heading --color=always --smart-case -- %b || true'
   # shellcheck disable=SC2059
   INITIAL_COMMAND=$(printf "$COMMAND_FMT" "'$1'")
   # shellcheck disable=SC2059
   RELOAD_COMMAND="$(printf "$COMMAND_FMT" "{q}")"
 
-  RESULT=$(
-    eval "$INITIAL_COMMAND" \
-      | fzf --disabled --ansi --query "$1" --bind "change:reload:$RELOAD_COMMAND" \
-            --preview='fzf_rg_preview {}' \
-            --delimiter ':' \
-            --preview-window="$(fzf_preview_params 100 180):+{2}-/2" \
-            --history="$HOME/.fzf-rg-history")
+  ARGS=(
+    --ansi
+    --query "$1"
+    '--preview=fzf_rg_preview {}'
+    --delimiter :
+    "--preview-window=$(fzf_preview_params 100 180):+{2}-/2"
+    "--history=$HOME/.fzf-rg-history"
+  )
+
+  if (( $FUZZY == 0 )); then
+    ARGS+=(
+      --disabled
+      --bind "change:reload:$RELOAD_COMMAND"
+    )
+  fi
+
+  RESULT=$(eval "$INITIAL_COMMAND" | fzf "${ARGS[@]}")
 
   if [[ -n "$RESULT" ]]; then
     if (( $(echo -n "$RESULT" | wc -l) > 1 )); then
@@ -171,6 +188,8 @@ zd() {
     fi
   fi
 }
+
+alias ñr='ñg --fuzzy'
 
 # forgit
 export forgit_log=gitl
