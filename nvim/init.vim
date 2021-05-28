@@ -696,20 +696,6 @@ function! RipgrepFzf(query, fuzzy)
   call fzf#vim#grep(initial_command, 1, options, go_full)
 endfunction
 
-function! RipgrepFzfFuzzy(query, fullscreen, preview)
-  let command = 'rg --column --line-number --no-heading --color=always --smart-case ""'
-  let shared_options = ['--delimiter', ':', '--nth', '3..', '--preview-window']
-
-  if a:fullscreen && winwidth(0) < g:fzf_preview_window_min_width
-    let options = shared_options + ['up:80%:noborder']
-  else
-    let options = shared_options + ['right:95:noborder']
-  endif
-
-  let spec = {'options': options }
-  call fzf#vim#grep(command, 1, a:preview ? fzf#vim#with_preview(spec) : {}, a:fullscreen)
-endfunction
-
 " Hide status line
 if has('nvim') && !exists('g:fzf_layout')
   autocmd! FileType fzf
