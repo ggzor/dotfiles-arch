@@ -43,11 +43,25 @@ refind-install
 printf "\nextra_kernel_version_strings %s\n" "$KERNEL" >> /efi/EFI/refind/refind.conf
 
 # Get partition uuid assuming root is on third partition
-UUID=$(lsblk -o NAME,PARTUUID | grep "${DISK}3" | cut -d' ' -f2)
+SWAP_PARTUUID=$(lsblk -o NAME,PARTUUID | grep "${DISK}2" | cut -d' ' -f2)
+ROOT_PARTUUID=$(lsblk -o NAME,PARTUUID | grep "${DISK}3" | cut -d' ' -f2)
+
 EFI_CONF="rw add_efi_memmap initrd=boot\\${UCODE}-ucode.img initrd=boot\\initramfs-%v.img"
-printf "\"Boot with simple configuration\" \"root=PARTUUID=%s %s\"\n" \
-       "$UUID" "$EFI_CONF" \
+printf "\"Boot with simple configuration\" \"root=PARTUUID=%s resume=PARTUUID=%s %s\"\n" \
+       "$ROOT_PARTUUID" "$SWAP_PARTUUID" "$EFI_CONF" \
        > /boot/refind_linux.conf
+
+# Add resume to kernel hooks
+{ cat << EOF
+MODULES=()
+BINARIES=()
+FILES=()
+HOOKS=(base udev autodetect modconf block filesystems keyboard fsck resume)
+EOF
+} > /etc/mkinitcpio.conf
+
+# Rebuild initramfs
+mkinitcpio -P
 
 # Download dotfiles for user
 DOTFILES_PATH="/home/$USER_NAME/dotfiles"
