@@ -508,6 +508,7 @@ if has('nvim')
     \   'keymap': {
     \     'jump_to_current': ['<C-o>'],
     \     'stat': ['<C-g>'],
+    \     'collapse': ['zm'],
     \   },
     \ }
 
