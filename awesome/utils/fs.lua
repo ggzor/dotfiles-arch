@@ -24,9 +24,13 @@ end
 
 function mod.read_file(file)
     local f = io.open(file, 'r')
-    local s = f:read('*all')
-    f:close()
-    return s
+    if f ~= nil then
+        local s = f:read('*all')
+        f:close()
+        return s
+    else
+        return nil
+    end
 end
 
 function mod.read_file_relative(file)

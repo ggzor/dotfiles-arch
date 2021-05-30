@@ -114,6 +114,22 @@ awful.screen.connect_for_each_screen(function(s)
     s.systray = wibox.widget.systray()
     s.systray.visible = false
 
+    -- Battery
+    s.battery = require('widgets.battery') {
+        font = beautiful.font,
+
+        initial = beautiful.fg_normal,
+        bold = 35,
+        yellow = { 25, '#e2b93d' },
+        red = { 20, '#ef5350' },
+        suspend = 7,
+
+        timeout = 10,
+
+        battery = 'BAT0',
+        ac = 'AC'
+    }
+
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -132,6 +148,11 @@ awful.screen.connect_for_each_screen(function(s)
         wibox.widget {},
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            s.battery,
+            wibox.widget {
+                text = " ",
+                widget = wibox.widget.textbox,
+            },
             mytextclock,
             mykeyboardlayout,
             s.systray,
