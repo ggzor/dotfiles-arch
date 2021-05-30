@@ -5,7 +5,7 @@ local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-beautiful.init(require("themes.default"))
+beautiful.init(require("theme"))
 
 require("awful.autofocus")
 -- Widget and layout library
