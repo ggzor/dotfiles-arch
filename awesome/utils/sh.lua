@@ -3,8 +3,10 @@ local fs = require('utils.fs')
 local mod = {}
 
 function mod.inject_vars(script, vars)
-    for k, v in pairs(vars) do
-        script = k.."='"..v.."';".."\n"..script
+    if vars ~= nil then
+        for k, v in pairs(vars) do
+            script = k.."='"..v.."';".."\n"..script
+        end
     end
 
     return script
