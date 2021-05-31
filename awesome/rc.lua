@@ -61,13 +61,10 @@ awful.screen.connect_for_each_screen(function(s)
         {
             -- Battery
             require('widgets.battery') {
-                font = beautiful.font,
-
-                initial = beautiful.fg_normal,
-                bold = 35,
-                yellow = { 25, '#e2b93d' },
-                red = { 20, '#ef5350' },
-                suspend = 7,
+                highlight = 35,
+                warning   = 25,
+                alert     = 15,
+                suspend   = 7,
 
                 timeout = 10,
 

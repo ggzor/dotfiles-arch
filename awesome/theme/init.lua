@@ -3,7 +3,7 @@ local colors = require('theme.colors')
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
-local theme = {}
+local theme = { colors = colors }
 
 theme.wallpaper = "~/Pictures/wallpapers/solid.png"
 

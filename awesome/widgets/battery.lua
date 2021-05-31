@@ -1,4 +1,5 @@
 local awful = require("awful")
+local beautiful = require("beautiful")
 local gears = require("gears")
 local naughty = require("naughty")
 local wibox = require("wibox")
@@ -31,7 +32,7 @@ local battery_icons = {
 
 local function battery(config)
     local widget = wibox.widget {
-        font = config.font,
+        font = beautiful.font,
         widget = wibox.widget.textbox,
     }
 
@@ -47,20 +48,20 @@ local function battery(config)
         local charging = state.charging
 
         -- Reset state
-        if charging or capacity > config.red[1] then
+        if charging or capacity > config.alert then
             notified_battery_low = false
             suspending = false
         end
 
         -- Battery color
-        local color = config.initial
+        local color = beautiful.fg_normal
         local weight = 'normal'
 
         if not charging then
-            if capacity <= config.yellow[1] then
-                color = config.yellow[2]
+            if capacity <= config.warning then
+                color = beautiful.colors.yellow_alt
             end
-            if capacity <= config.red[1] then
+            if capacity <= config.alert then
                 if not notified_battery_low then
                     naughty.notify({
                         preset = naughty.config.presets.critical,
@@ -71,7 +72,7 @@ local function battery(config)
                     notified_battery_low = true
                 end
 
-                color = config.red[2]
+                color = beautiful.colors.red
             end
             if capacity <= config.suspend then
                 if not suspending then
@@ -80,7 +81,7 @@ local function battery(config)
                 end
             end
 
-            if capacity <= config.bold then
+            if capacity <= config.highlight then
                 weight = 'bold'
             end
         end
