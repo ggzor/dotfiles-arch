@@ -31,6 +31,18 @@ theme.fg_focus    = colors.fg
 theme.fg_urgent   = colors.fg
 theme.fg_minimize = colors.fg
 
+-- Hotkeys
+theme.hotkeys_bg = colors.bg
+theme.hotkeys_fg = colors.fg
+theme.hotkeys_border_width = dpi(2)
+theme.hotkeys_border_color = colors.red
+theme.hotkeys_modifiers_fg = colors.blue
+theme.hotkeys_label_bg = colors.fg
+theme.hotkeys_label_fg = colors.fg
+theme.hotkeys_font = theme.font
+theme.hotkeys_description_font = theme.font
+theme.hotkeys_group_margin = dpi(30)
+
 -- Snap
 theme.snap_bg = colors.red
 theme.snap_shape = require('gears.shape').rectangle
