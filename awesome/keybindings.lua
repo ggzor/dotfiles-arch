@@ -190,7 +190,6 @@ end
 function get_client_actions()
     return {
         close = function(c)
-            naughty.notify{ title = "Here" }
             c:kill()
         end,
         fullscreen = function(c)
