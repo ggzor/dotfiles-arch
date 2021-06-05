@@ -23,6 +23,7 @@ vim
 zip
 
 ### CLI Utils
+acpid         # power events daemon
 bat           # cat replacement with syntax highlighting
 brightnessctl # control brightness from command line
 exa           # ls and tree replacement with colors and icons

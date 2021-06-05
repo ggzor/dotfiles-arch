@@ -21,3 +21,7 @@ usermod -a -G docker "$USER_NAME"
 # Install stable rust toolchain
 sudo -u "$USER_NAME" rustup default stable
 
+# Enable acpid
+systemctl enable acpid.service
+systemctl start acpid.service
+
