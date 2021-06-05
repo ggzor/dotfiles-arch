@@ -3,7 +3,7 @@
 google-chrome
 
 # Code editors
-neovim-nightly-bin
+neovim-git
 visual-studio-code-insiders-bin
 
 # GUI Customization
