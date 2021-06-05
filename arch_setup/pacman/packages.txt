@@ -34,6 +34,7 @@ httpie        # easier curl
 moreutils     # extra cli utils (especially vidir)
 neofetch      # cli system info viewer
 rlwrap        # readline wrapper for better features for CLI programs
+reflector     # determine fastest mirror
 rsync         # file copying and synchronization tool
 ripgrep       # grep replacement with better interface
 shfmt         # shell scripts formatter
