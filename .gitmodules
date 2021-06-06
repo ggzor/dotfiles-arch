@@ -1,0 +1,3 @@
+[submodule "arch_setup/extra/refind-conf"]
+	path = arch_setup/extra/refind-conf
+	url = https://github.com/ggzor/rEFInd-minimal-nightowl

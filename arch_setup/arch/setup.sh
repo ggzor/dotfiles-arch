@@ -65,6 +65,6 @@ mkinitcpio -P
 
 # Download dotfiles for user
 DOTFILES_PATH="/home/$USER_NAME/dotfiles"
-git clone https://github.com/ggzor/dotfiles "$DOTFILES_PATH"
+git clone --recursive https://github.com/ggzor/dotfiles "$DOTFILES_PATH"
 chown -R "${USER_NAME}:users" "$DOTFILES_PATH"
 

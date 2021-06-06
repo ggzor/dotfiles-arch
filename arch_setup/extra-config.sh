@@ -22,7 +22,7 @@ EndSection'
 refind_custom() {
 	REFIND_CONF_DIR='/efi/EFI/refind'
 	REFIND_CONF_FILE="${REFIND_CONF_DIR}/refind.conf"
-	REFIND_THEME_DIR='arch_setup/extra/refind'
+	REFIND_THEME_DIR='arch_setup/extra/refind-conf'
 
 	if [[ ! -d "$REFIND_THEME_DIR" ]]; then
 		echo "You must run this script from inside the dotfiles/ dir!"
