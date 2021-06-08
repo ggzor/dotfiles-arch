@@ -347,10 +347,10 @@ lua <<EOF
       swap = {
         enable = true,
         swap_next = {
-          ["<leader>l"] = "@parameter.inner",
+          ["<leader><leader>l"] = "@parameter.inner",
         },
         swap_previous = {
-          ["<leader>h"] = "@parameter.inner",
+          ["<leader><leader>h"] = "@parameter.inner",
         },
       },
       select = {
@@ -975,8 +975,8 @@ if has('nvim')
   vmap <silent> ñp <Plug>(coc-codeaction-selected)
 
   " Navigate through diagnostics
-  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  nmap <silent> <leader>h <Plug>(coc-diagnostic-prev)
+  nmap <silent> <leader>l <Plug>(coc-diagnostic-next)
 
   " GoTo code navigation.
   nmap <silent> gd <Plug>(coc-definition)
