@@ -134,7 +134,7 @@ function open_dotfiles()
       zsh -i
     ]]
 
-    awful.spawn('kitty --directory "$HOME/dotfiles" zsh -c "'..command..'"')
+    awful.spawn('kitty --title "<floating>" --directory "$HOME/dotfiles" zsh -c "'..command..'"')
 end
 
 function print_client_debug()

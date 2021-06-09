@@ -166,6 +166,18 @@ client.connect_signal("manage", function (c)
     if not awesome.startup then
         -- Place clients as slaves
         awful.client.setslave(c)
+
+        if c.name == '<floating>' then
+            c.floating = true
+            area = awful.screen.focused().workarea
+
+            conf = beautiful.floating
+
+            c.width = math.max(conf.min_width, conf.width_factor * area.width)
+            c.height = math.max(conf.min_height, conf.height_factor * area.height)
+
+            awful.placement.centered(c)
+        end
     end
 
     if awesome.startup

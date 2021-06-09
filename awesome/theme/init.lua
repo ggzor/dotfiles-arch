@@ -12,6 +12,13 @@ local base_font  = "JetBrainsMono Nerd Font"
 theme.font       = base_font.." 10"
 theme.font_large = base_font.." 16"
 
+-- Special vars
+theme.floating = {}
+theme.floating.width_factor = 0.4
+theme.floating.height_factor = 0.8
+theme.floating.min_width = 800
+theme.floating.min_height = 600
+
 -- Borders
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(2)
