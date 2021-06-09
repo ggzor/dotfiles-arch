@@ -145,6 +145,7 @@ function print_client_debug()
             text='Class: '..c.class..
                  '\nName: '..c.name..
                  '\nRole: '..(c.role or 'None')..
+                 '\nDimensions: '..c.width..'x'..c.height..
                  '\nType: '..c.type
         })
     end
