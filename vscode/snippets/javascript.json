@@ -1,4 +1,10 @@
 {
+  "Import": {
+    "prefix": "imp",
+    "body": [
+      "import { $0 } from '${1:module}'"
+    ]
+  },
   "React Component": {
     "prefix": "rc",
     "body": [
