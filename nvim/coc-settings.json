@@ -68,7 +68,7 @@
       "args": ["--lsp"],
       "settings": {
         "haskell": {
-          "formattingProvider": "ormolu"
+          "formattingProvider": "fourmolu"
         }
       },
       "rootPatterns": [
