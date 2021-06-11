@@ -183,6 +183,7 @@ augroup au_filetypes_rename
   " Enable racket for rkt files
   autocmd BufNewFile,BufRead *.rkt setfiletype racket
   autocmd BufNewFile,BufRead *.json setfiletype jsonc
+  autocmd BufNewFile,BufRead *.nix setfiletype nix
 augroup END
 
 " vim-plug download
