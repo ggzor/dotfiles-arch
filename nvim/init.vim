@@ -924,8 +924,8 @@ noremap Y y$
 " Navigate to alternate file
 nnoremap <silent> ña <C-^>
 
-" Toggle search highlighting
-nnoremap <silent> ñn :<C-u>let &hlsearch = !&hlsearch<CR>
+" Hide highlight temporarily
+nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 
 " }}}
 
