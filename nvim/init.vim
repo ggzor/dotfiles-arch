@@ -34,10 +34,6 @@ au FocusGained,BufEnter * if !len(getcmdwintype()) | :checktime | endif
 " Show parenthesis match
 set showmatch
 
-" Better search behavior
-set ignorecase
-set smartcase
-
 " File write behavior
 set updatetime=100
 set backupcopy=yes
