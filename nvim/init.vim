@@ -1082,9 +1082,9 @@ endif
 
 " NERDTree like
 if has('nvim')
-  nmap <leader>n :CHADopen<CR>
+  nmap <C-n> :CHADopen<CR>
 else
-  nmap <leader>n :NERDTreeToggle<CR>
+  nmap <C-n> :NERDTreeToggle<CR>
 endif
 
 " Code Painter
