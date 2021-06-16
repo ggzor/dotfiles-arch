@@ -274,6 +274,7 @@ Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'Olical/conjure', {'tag': 'v4.3.1'}
+Plug 'rhysd/reply.vim'
 
 " Visual plugins
 Plug 'christoomey/vim-tmux-navigator'
@@ -398,6 +399,9 @@ augroup END
 " vimtex
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_enabled = 0
+
+" reply.vim
+let g:reply_repl_node_command_options = ['--experimental-repl-await']
 
 " matchup
 " Increase responsiveness deferring highlighting
@@ -1082,6 +1086,9 @@ if has('nvim')
 else
   nmap <C-n> :NERDTreeToggle<CR>
 endif
+
+" reply.vim
+noremap <silent><leader>s :ReplSend<cr>
 
 " Code Painter
 vnoremap <silent> gp :<c-u> call codepainter#paintText(visualmode())<cr>
