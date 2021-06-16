@@ -9,6 +9,8 @@ local audio = require("scripts.audio")
 local Mod      = {"Mod4"}
 local ModShift = {"Mod4", "Shift"}
 local ModCtrl  = {"Mod4", "Control"}
+local ModAlt  = {"Mod4", "Mod1"}
+
 local bind = require('utils.functools').bind
 local spawn = function(program)
     return function()
@@ -43,6 +45,9 @@ function generate_globalkeys(tags)
 
             { Mod,      "l", "Increase master width", bind(awful.tag.incmwfact,  0.05) },
             { Mod,      "h", "Decrease master width", bind(awful.tag.incmwfact, -0.05) },
+
+            { ModAlt,   "l", "Increase client size", bind(awful.client.incwfact,  0.1) },
+            { ModAlt,   "h", "Decrease client size", bind(awful.client.incwfact, -0.1) },
 
             { Mod,      "space", "Next layout", bind(awful.layout.inc, 1) },
         },
