@@ -60,6 +60,10 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
   "python.insidersChannel": "weekly",
   "python.languageServer": "Pylance",
   // Idris
