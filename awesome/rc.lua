@@ -36,6 +36,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.systray = wibox.widget.systray()
     s.systray.visible = false
 
+    local separator = require('widgets.separator')
+
     local wibar = awful.wibar({ screen = s })
     wibar:setup {
         layout = wibox.layout.align.horizontal,
@@ -60,12 +62,7 @@ awful.screen.connect_for_each_screen(function(s)
         -- Right
         {
             require('widgets.network')(),
-            -- Separator
-            wibox.widget {
-                text = "  ",
-                widget = wibox.widget.textbox,
-            },
-            -- Battery
+            separator(2),
             require('widgets.battery') {
                 highlight = 35,
                 warning   = 25,
@@ -77,15 +74,10 @@ awful.screen.connect_for_each_screen(function(s)
                 battery = 'BAT0',
                 ac = 'AC'
             },
-            -- Separator
-            wibox.widget {
-                text = " ",
-                widget = wibox.widget.textbox,
-            },
+            separator(1),
             wibox.widget.textclock(),
             awful.widget.keyboardlayout(),
             s.systray,
-            -- Layout box
             awful.widget.layoutbox({
                 screen = s,
                 buttons = {
