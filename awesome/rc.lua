@@ -167,7 +167,7 @@ client.connect_signal("manage", function (c)
         -- Place clients as slaves
         awful.client.setslave(c)
 
-        if c.name == '<floating>' then
+        if c.name == '<dotfiles>' then
             c.floating = true
             area = awful.screen.focused().workarea
 

@@ -133,13 +133,24 @@ end
 
 function open_dotfiles()
     local command = [[
-      echo '\033[1mDirectory contents:\033[0m'
+      echo "\033[1mDirectory contents:\033[0m"
       exa --icons 2> /dev/null || ls
-      echo ''
+      echo ""
       zsh -i
     ]]
 
-    awful.spawn('kitty --title "<floating>" --directory "$HOME/dotfiles" zsh -c "'..command..'"')
+    local spawn = true
+
+    for _, c in ipairs(client.get()) do
+        if c.name == '<dotfiles>' then
+            spawn = false
+            c:jump_to()
+        end
+    end
+
+    if spawn then
+        awful.spawn("kitty --title '<dotfiles>' --directory \"$HOME/dotfiles\" zsh -c '"..command.."'")
+    end
 end
 
 function print_client_debug()
