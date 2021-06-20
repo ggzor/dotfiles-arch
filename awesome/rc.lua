@@ -59,6 +59,12 @@ awful.screen.connect_for_each_screen(function(s)
         wibox.widget {},
         -- Right
         {
+            require('widgets.network')(),
+            -- Separator
+            wibox.widget {
+                text = "  ",
+                widget = wibox.widget.textbox,
+            },
             -- Battery
             require('widgets.battery') {
                 highlight = 35,
