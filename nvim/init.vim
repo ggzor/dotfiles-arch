@@ -488,6 +488,7 @@ if has('nvim')
         \'coc-tsserver',
         \'coc-vimtex',
         \'coc-vimlsp',
+        \'coc-yaml',
         \]
 endif
 
