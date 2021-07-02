@@ -28,6 +28,7 @@
   "editor.renderIndentGuides": false,
   "editor.hideCursorInOverviewRuler": true,
   "[python]": {
+    "editor.tabSize": 4,
     "editor.renderIndentGuides": true
   },
   "git.confirmSync": false,
@@ -453,3 +454,4 @@
     }
   ]
 }
+
