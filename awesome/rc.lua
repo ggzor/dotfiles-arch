@@ -61,7 +61,9 @@ awful.screen.connect_for_each_screen(function(s)
         wibox.widget {},
         -- Right
         {
-            require('widgets.network')(),
+            require('widgets.network') {
+                server = 'google.com'
+            },
             separator(2),
             require('widgets.battery') {
                 highlight = 35,
