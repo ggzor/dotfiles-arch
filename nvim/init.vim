@@ -273,7 +273,7 @@ Plug 'edwinb/idris2-vim'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
-Plug 'Olical/conjure', {'tag': 'v4.3.1'}
+Plug 'Olical/conjure'
 Plug 'rhysd/reply.vim'
 
 " Visual plugins
