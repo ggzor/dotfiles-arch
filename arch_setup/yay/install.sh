@@ -22,7 +22,7 @@ fi
 # Install packages
 # Update system before installing a new package
 sudo pacman -Syu --noconfirm
-yay -S --norebuild --nodiffmenu --batchinstall "${PACKAGES[@]}"
+yay -S --norebuild --nodiffmenu --editmenu --batchinstall "${PACKAGES[@]}"
 
 # Run extra install commands
 ./arch_setup/yay/config.sh
