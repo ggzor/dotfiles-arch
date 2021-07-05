@@ -61,10 +61,6 @@ awful.screen.connect_for_each_screen(function(s)
         wibox.widget {},
         -- Right
         {
-            require('widgets.network') {
-                server = 'google.com'
-            },
-            separator(2),
             require('widgets.battery') {
                 highlight = 35,
                 warning   = 25,
@@ -76,6 +72,10 @@ awful.screen.connect_for_each_screen(function(s)
                 battery = 'BAT0',
                 ac = 'AC'
             },
+            require('widgets.network') {
+                server = 'google.com'
+            },
+            separator(2),
             separator(1),
             wibox.widget.textclock(),
             awful.widget.keyboardlayout(),
