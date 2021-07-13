@@ -218,6 +218,18 @@ command -v fnm> /dev/null 2>&1 && \
 # direnv
 direnv version &>/dev/null && eval "$(direnv hook zsh)"
 
+# Load aws-cli completion
+function load_aws_cli() {
+  if type aws_completer &> /dev/null; then
+    autoload bashcompinit && bashcompinit
+    autoload -Uz compinit && compinit
+    compinit
+    complete -C '/usr/local/bin/aws_completer' aws
+  fi
+}
+
+zsh-defer load_aws_cli
+
 # Powerlevel10k prompt configuration
 # OS name prompt segment
 function prompt_os_name() {
