@@ -144,6 +144,8 @@ zd() {
     if [[ -n "$DIR" ]]; then
       cd "$DIR" || exit
     fi
+  else
+    echo "The current directory has no subdirectories"
   fi
 }
 

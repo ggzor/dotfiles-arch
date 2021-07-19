@@ -23,5 +23,19 @@
       "`;"
     ],
     "description": "React functional component"
-  }
+  },
+  "React Styled Component": {
+    "prefix": "rsc",
+    "body": [
+      "const ${1:Component}Layout = styled.${2:div}`",
+      "\tdisplay: flex;",
+      "`;",
+      "",
+      "const $1 = ({ ${3:...props} }) => {",
+      "\t$0",
+      "\treturn <${1}Layout></${1}Layout>",
+      "}"
+    ],
+    "description": "React functional component with styled-components layout"
+  },
 }
