@@ -475,6 +475,7 @@ if has('nvim')
   let g:coc_global_extensions = [
         \'coc-clangd',
         \'coc-css',
+        \'coc-cfn-lint',
         \'coc-emmet',
         \'coc-emoji',
         \'coc-eslint',
