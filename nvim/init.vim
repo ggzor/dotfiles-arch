@@ -267,13 +267,15 @@ else
 endif
 
 " Custom language plugins
+if has('nvim')
+  Plug 'Olical/conjure'
+endif
 Plug 'dense-analysis/ale'
 Plug 'derekelkins/agda-vim'
 Plug 'edwinb/idris2-vim'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
-Plug 'Olical/conjure'
 Plug 'rhysd/reply.vim'
 
 " Visual plugins
