@@ -26,6 +26,7 @@ zip
 acpid         # power events daemon
 bat           # cat replacement with syntax highlighting
 brightnessctl # control brightness from command line
+git-delta     # enhanced git diff viewer
 exa           # ls and tree replacement with colors and icons
 fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
