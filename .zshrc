@@ -230,6 +230,9 @@ function load_aws_cli() {
 
 zsh-defer load_aws_cli
 
+type keychain &> /dev/null \
+  && eval "$(keychain --eval --quiet)"
+
 # Powerlevel10k prompt configuration
 # OS name prompt segment
 function prompt_os_name() {

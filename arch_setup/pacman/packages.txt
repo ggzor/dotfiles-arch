@@ -32,6 +32,7 @@ fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
 jq            # json manipulator
 httpie        # easier curl
+keychain      # ssh identity management
 moreutils     # extra cli utils (especially vidir)
 neofetch      # cli system info viewer
 rlwrap        # readline wrapper for better features for CLI programs
