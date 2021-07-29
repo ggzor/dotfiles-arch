@@ -123,6 +123,7 @@ openbsd-netcat
 openssh
 openssh-askpass
 strongswan
+traceroute
 wpa_supplicant
 
 ### Other
