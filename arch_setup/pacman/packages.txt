@@ -121,6 +121,7 @@ nmap
 openbsd-netcat
 openssh
 openssh-askpass
+strongswan
 wpa_supplicant
 
 ### Other
