@@ -597,7 +597,7 @@ endfunction
 function! GetFileNameIcon()
   if winwidth(0) > 70
     if strlen(@%)
-      return WebDevIconsGetFileTypeSymbol() . ' ' . @% . (&modified ? ' ●' : '')
+      return WebDevIconsGetFileTypeSymbol(@%) . ' ' . @% . (&modified ? ' ●' : '')
     else
       return '[No Name]'
     endif
@@ -608,7 +608,7 @@ endfunction
 
 function! GetFileTypeIcon()
   return winwidth(0) > 70
-    \ ? (strlen(&filetype) ? &filetype.' '.WebDevIconsGetFileTypeSymbol() : 'no ft')
+    \ ? (strlen(&filetype) ? &filetype.' '.WebDevIconsGetFileTypeSymbol(@%) : 'no ft')
     \ : ''
 endfunction
 
