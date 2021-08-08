@@ -153,6 +153,9 @@ alias gits="git status"
 alias z=zathura
 alias idris2="rlwrap idris2"
 
+# Fix white flash before startup
+alias emacs="emacs -bg $col_bg"
+
 # }}}
 
 # Keybindings {{{
