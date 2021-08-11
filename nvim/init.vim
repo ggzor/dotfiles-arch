@@ -438,7 +438,11 @@ endif
 " emmet-vim
 let g:user_emmet_install_global = 0
 " Load emmet only in certain file types
-autocmd FileType html,css,javascript,typescript,javascriptreact,typescriptreact,xml EmmetInstall
+autocmd FileType
+  \ html,css,javascript,typescript
+  \,javascriptreact,typescriptreact,xml
+  \,php
+  \ EmmetInstall
 
 " pear-tree
 let g:pear_tree_smart_openers = 1
