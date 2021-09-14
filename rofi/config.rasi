@@ -1,16 +1,13 @@
 configuration {
-  /* Behavior configuration */
-  modi: "read:~/.config/rofi/scripts/read.sh,edit:~/.config/rofi/scripts/edit.sh,actions:~/.config/rofi/scripts/actions.sh,term_in:~/.config/rofi/scripts/term_in.sh,launch:~/.config/rofi/scripts/launch.sh,power:~/.config/rofi/scripts/power.sh,navigate:~/.config/rofi/scripts/navigate.sh";
-  combi-modi: "launch,actions,read,edit,term_in,navigate,power";
+  /* General configuration */
+  matching: "fuzzy";
   case-sensitive: false;
-  drun-show-actions: true;
   sort: true;
   sorting-method: "fzf";
-  matching: "fuzzy";
 
-  /* Visual configuration */
-  show-match: true;
-  hide-scrollbar: true;
+  /* Custom modes */
+  modi: "read:~/.config/rofi/scripts/read.sh,edit:~/.config/rofi/scripts/edit.sh,actions:~/.config/rofi/scripts/actions.sh,term_in:~/.config/rofi/scripts/term_in.sh,launch:~/.config/rofi/scripts/launch.sh,power:~/.config/rofi/scripts/power.sh,navigate:~/.config/rofi/scripts/navigate.sh";
+  combi-modi: "launch,actions,read,edit,term_in,navigate,power";
 
   /* Keybindings */
   kb-move-char-back: "Left,Alt+h";
@@ -25,39 +22,73 @@ configuration {
   kb-cancel: "Escape";
 }
 
+/* Layout */
+window {
+  width: 55ch;
+  padding: 2ch;
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+prompt {
+  padding: 4px;
+}
+
+entry {
+  padding: 4px 8px;
+}
+
+listview {
+  lines: 5;
+  scrollbar: false;
+}
+
+element {
+  padding: 4px 4px 4px 12px;
+}
+
+/* Appearance */
 * {
   background-color: transparent;
   text-color: #d6deeb;
   font: "JetBrainsMono Nerd Font 12";
 }
 
-#window {
+window {
   background-color: #011627f2;
-  width: 55ch;
-  height: 22ch;
-  padding: 2ch;
+  border: 0;
 }
 
-#prompt {
-  padding: 4px;
+prompt {
   background-color: #82aaff;
   text-color: #011627;
 }
 
-#element.selected {
+entry {
+  placeholder: "";
+  text-color: #d6deeb;
+}
+
+listview {
+  border: 0;
+}
+
+element selected.normal {
   background-color: #173757;
+
   border: 0px 0px 0px 4px;
   border-color: #82aaff;
 }
 
-#entry {
-  padding: 4px;
+element normal.normal {
+  background-color: inherit;
+  text-color: inherit;
 }
 
-#element {
-  padding: 4px 4px 4px 12px;
+element alternate.normal {
+  background-color: inherit;
+  text-color: inherit;
 }
 
-inputbar {
-  children: [ prompt, entry ];
-}
