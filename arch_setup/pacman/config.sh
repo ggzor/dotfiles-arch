@@ -3,25 +3,18 @@
 set -euo pipefail
 export USER_NAME=${USER_NAME:-$SUDO_USER}
 
-# Systemd commands
-systemctl enable sshd.service
-
-# firewalld
-systemctl enable firewalld
-systemctl start firewalld
-
-## Docker
-# Enable docker service
-systemctl enable docker.service
-# Start docker
-systemctl start docker.service
 # Add user to docker group
-usermod -a -G docker "$USER_NAME"
+usermod -aG docker "$USER_NAME"
+
+# Systemd commands
+systemctl enable --now \
+	acpid.service \
+	docker.service \
+	firewalld.service \
+	sshd.service
 
 # Install stable rust toolchain
 sudo -u "$USER_NAME" rustup default stable
-
-# Enable acpid
-systemctl enable acpid.service
-systemctl start acpid.service
+# Update toolchain
+sudo -u "$USER_NAME" rustup update
 
