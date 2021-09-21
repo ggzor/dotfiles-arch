@@ -208,6 +208,11 @@ path+=( $HOME/dotfiles/scripts )
 
 # Bottom setup {{{
 
+# Disable annoying Ctrl-S
+if [[ -t 0 && $- = *i* ]]; then
+  stty -ixon
+fi
+
 # fnm
 command -v fnm> /dev/null 2>&1 && \
   zsh-defer -c 'eval `fnm env`'
