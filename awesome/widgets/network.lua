@@ -26,13 +26,13 @@ local function network(config)
 
     local function run()
         awful.spawn.easy_async_with_shell(
-            'ping -c 1 '..(config.server or '1.1.1.1')..' -W '..(config.wait or 0.4),
+            'ping -c 1 '..(config.server or '1.1.1.1')..' -W '..(config.wait or 2),
             function(_, _, _, code)
                 if code == 0 then
                     update(true)
 
                     gears.timer({
-                        timeout = config.timeout or 1,
+                        timeout = config.timeout or 3,
                         autostart = true,
                         single_shot = true,
                         callback = run
