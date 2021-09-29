@@ -27,6 +27,7 @@ acpid         # power events daemon
 bat           # cat replacement with syntax highlighting
 brightnessctl # control brightness from command line
 git-delta     # enhanced git diff viewer
+entr          # powerful file watcher
 exa           # ls and tree replacement with colors and icons
 fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
@@ -51,6 +52,7 @@ autoconf
 automake
 bash-language-server
 clang
+cmake
 docker
 docker-compose
 gcc
@@ -83,6 +85,7 @@ virtualbox-guest-utils
 ### Desktop
 arandr         # Display configuration
 arc-gtk-theme  # Arc theme
+blender        # 3d graphics creation suite
 deluge-gtk     # Torrent client
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
