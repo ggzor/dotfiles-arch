@@ -156,6 +156,7 @@ let g:polyglot_disabled = [
   \ 'tex',
   \ 'lua',
   \ 'nix',
+  \ 'php',
   \ 'python',
   \ 'rst',
   \ 'ruby',
@@ -167,10 +168,14 @@ let g:polyglot_disabled = [
   \ 'tsx',
   \ 'idris']
 
-"
 augroup au_polyglot_md_disable_indentexpr
   autocmd!
   autocmd BufEnter *.md set indentexpr=
+augroup END
+
+augroup au_php_autoindent
+  autocmd!
+  autocmd BufEnter *.php set autoindent smartindent
 augroup END
 
 augroup au_filetypes_rename
@@ -496,6 +501,7 @@ if has('nvim')
         \'coc-vimtex',
         \'coc-vimlsp',
         \'coc-yaml',
+        \'@yaegassy/coc-intelephense',
         \]
 endif
 
