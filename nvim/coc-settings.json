@@ -23,7 +23,8 @@
     "haskell",
     "cpp",
     "c",
-    "java"
+    "java",
+    "php"
   ],
   "coc.source.emoji.filetypes": [
     "markdown",
