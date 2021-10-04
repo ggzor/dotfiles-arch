@@ -1,4 +1,10 @@
 {
+  "Log": {
+    "prefix": "conlog",
+    "body": [
+      "console.log($0);"
+    ]
+  },
   "Import": {
     "prefix": "imp",
     "body": [
