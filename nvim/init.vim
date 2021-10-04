@@ -168,25 +168,6 @@ let g:polyglot_disabled = [
   \ 'tsx',
   \ 'idris']
 
-augroup au_polyglot_md_disable_indentexpr
-  autocmd!
-  autocmd BufEnter *.md set indentexpr=
-augroup END
-
-augroup au_php_autoindent
-  autocmd!
-  autocmd BufEnter *.php set autoindent smartindent
-augroup END
-
-augroup au_filetypes_rename
-  autocmd!
-
-  " Enable racket for rkt files
-  autocmd BufNewFile,BufRead *.rkt setfiletype racket
-  autocmd BufNewFile,BufRead *.json setfiletype jsonc
-  autocmd BufNewFile,BufRead *.nix setfiletype nix
-augroup END
-
 " vim-plug download
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -924,6 +905,28 @@ function! RestoreQFItem()
     echohl None
   endif
 endfunction
+
+" }}}
+
+" FileType options {{{
+
+augroup au_file_adjustments
+  autocmd!
+
+  " Enable racket for rkt files
+  autocmd BufNewFile,BufRead *.rkt setfiletype racket
+  autocmd BufNewFile,BufRead *.json setfiletype jsonc
+  autocmd BufNewFile,BufRead *.nix setfiletype nix
+
+  " Enable manually php autoindent
+  autocmd BufEnter *.php set autoindent smartindent
+
+  " Disable buggy md indenting
+  autocmd BufEnter *.md set indentexpr=
+
+  " Run autoformat for
+
+augroup END
 
 " }}}
 
