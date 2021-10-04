@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+VIRT_MIC="virtual_mic"
+REMOTE_MUSIC="remote_music"
+LOCAL_MUSIC="local_music"
+
+DEFAULT_SPEAKERS=$(pactl info | grep -oP 'Default Sink: \K\S*')
+DEFAULT_MIC=$(pactl info | grep -oP 'Default Source: \K\S*')
+
+[[ -z "$DEFAULT_SPEAKERS" ]] && echo "No default speakers are set" && exit 1
+[[ -z "$DEFAULT_MIC" ]] && echo "No default mic is set" && exit 1
+
+echo "Speakers: $DEFAULT_SPEAKERS"
+echo "Mic: $DEFAULT_MIC"
+
+main() {
+  clear_sinks &> /dev/null
+
+  if (( $# > 0 )) && [[ $1 = 'unload' ]]; then
+    return
+  fi
+
+  MUSIC_SINK="music_sink"
+  MUSIC_SINK_AS_SOURCE="${MUSIC_SINK}.monitor"
+
+  VIRT_MIC_SINK="${VIRT_MIC}_sink"
+
+  REMOTE_MUSIC_AS_SOURCE="${REMOTE_MUSIC}.monitor"
+  LOCAL_MUSIC_AS_SOURCE="${LOCAL_MUSIC}.monitor"
+
+  new_sink "$LOCAL_MUSIC"
+  new_sink "$REMOTE_MUSIC"
+  new_sink "$VIRT_MIC_SINK"
+  new_sink "$MUSIC_SINK"
+
+  join_audio "$MUSIC_SINK_AS_SOURCE" "$REMOTE_MUSIC"
+  join_audio "$MUSIC_SINK_AS_SOURCE" "$LOCAL_MUSIC"
+
+  join_audio "$REMOTE_MUSIC_AS_SOURCE" "$VIRT_MIC_SINK"
+  join_audio "$LOCAL_MUSIC_AS_SOURCE" "$DEFAULT_SPEAKERS"
+
+  join_audio "$DEFAULT_MIC" "$VIRT_MIC_SINK" latency_msec=60 adjust_time=6
+
+  sink_as_device "$VIRT_MIC_SINK" "$VIRT_MIC"
+}
+
+new_sink() {
+  SINK_NAME=$1
+
+  pactl load-module module-null-sink \
+        sink_name="$SINK_NAME" \
+        sink_properties=device.description="$SINK_NAME"
+}
+
+join_audio() {
+  SOURCE=$1
+  TARGET=$2
+
+  shift 2
+
+  pactl load-module module-loopback \
+        "$@" \
+        source="$SOURCE" \
+        sink="$TARGET"
+}
+
+clear_sinks() {
+  pactl unload-module module-null-sink
+  pactl unload-module module-loopback
+}
+
+sink_as_device() {
+  SOURCE=$1
+  TARGET=$2
+
+  pactl load-module module-remap-source \
+        master="$SOURCE".monitor  \
+        source_name="$TARGET" \
+        source_properties=device.description="$TARGET"
+}
+
+main "$@"
+
