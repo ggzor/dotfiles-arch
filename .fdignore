@@ -1,1 +1,9 @@
+# Ignore refind submodule assets
 arch_setup/extra/refind-conf/assets
+
+# All the dotfiles within this directory are important,
+# so they should be searchable
+!**/.*
+
+# Except .git, of course
+.git
