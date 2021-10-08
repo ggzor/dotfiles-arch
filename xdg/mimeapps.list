@@ -1,22 +1,20 @@
 [Default Applications]
-# Default browser
-text/html=firefox.desktop
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
-x-scheme-handler/about=firefox.desktop
-x-scheme-handler/unknown=firefox.desktop
-x-scheme-handler/webcal=firefox.desktop
-
-# Directories
-inode/directory=Thunar.desktop
-
-# Other files
 application/pdf=org.pwmt.zathura.desktop
-
-# Images
 image/jpeg=feh.desktop
 image/png=feh.desktop
 image/svg+xml=firefox.desktop
-
-# Video
+inode/directory=Thunar.desktop
+text/html=firefox.desktop
 video/mp4=mpv.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/webcal=firefox.desktop
+
+[Added Associations]
+application/pdf=firefox.desktop;
+application/x-bibtex=nvim.desktop;
+image/pdf=firefox.desktop;
+text/plain=nvim.desktop;
+text/x-tex=nvim.desktop;
