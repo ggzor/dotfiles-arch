@@ -13,6 +13,7 @@ link_same        "$(pwd)/wallpapers"   "$HOME/Pictures/wallpapers"
 
 # Link just files instead of entire folders to avoid
 # polluting this dotfiles directory with generated files
+link_same_files  "$(pwd)/emacs"        "$HOME/.config/emacs"
 link_same_files  "$(pwd)/nvim"         "$HOME/.config/nvim"
 link_same_files  "$(pwd)/vscode"       "$HOME/.config/Code - Insiders/User"
 link_same_files  "$(pwd)/xdg"          "$HOME/.config"

@@ -155,7 +155,7 @@ alias idris2="rlwrap idris2"
 
 # Fix white flash before startup
 emacs() {
-  /usr/bin/env emacsclient -cnqua '' "$@" &> /dev/null
+  /usr/bin/env emacsclient -cnqua '' "$@"
 }
 
 # }}}
