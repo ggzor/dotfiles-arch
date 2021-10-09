@@ -103,7 +103,6 @@ zinit wait'1' lucid for \
   wfxr/forgit
 
 zinit wait lucid for \
-    @ael-code/zsh-colored-man-pages \
     @le0me55i/zsh-extract
 
 ## Completions
@@ -114,7 +113,7 @@ zinit lucid for \
 zinit wait lucid as"completion" for \
   OMZP::docker-compose \
   OMZP::docker/_docker \
-  OMZP::cargo/_cargo \
+  OMZP::cargo \
   @spwhitt/nix-zsh-completions
 
 fi
