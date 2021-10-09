@@ -921,11 +921,8 @@ augroup au_file_adjustments
   " Enable manually php autoindent
   autocmd BufEnter *.php set autoindent smartindent
 
-  " Disable buggy md indenting
-  autocmd BufEnter *.md set indentexpr=
-
-  " Run autoformat for
-
+  " Disable buggy indenting
+  autocmd BufEnter *.md,*.py set indentexpr=
 augroup END
 
 " }}}
