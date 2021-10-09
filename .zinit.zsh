@@ -114,11 +114,20 @@ fzf_preview_params() {
   OUT=("$(
       fzf --query="$1" --preview="$PREVIEW_COMMAND" \
         --preview-window="$(fzf_preview_params)"  \
+        --expect=ctrl-f \
         --history="$HOME/.fzf-open-file-history")")
+
+  read -r KEY <<< "$OUT"
+  OUT=$(tail -n +2 <<< "$OUT")
+  read -r FIRST <<< "$OUT"
 
   # shellcheck disable=SC2128
   if [[ -n "$OUT" ]]; then
-    xargs -d'\n' "${EDITOR:-nvim}" <<< "$OUT"
+    if [[ "$KEY" == 'ctrl-f' ]]; then
+      cd "$(dirname "$FIRST")"
+    else
+      xargs -d'\n' "${EDITOR:-nvim}" <<< "$OUT"
+    fi
   fi
 }
 
