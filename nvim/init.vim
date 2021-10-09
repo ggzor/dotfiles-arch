@@ -1041,6 +1041,9 @@ let g:user_emmet_leader_key='<C-y>'
 " vim-subversive
 nmap s <plug>(SubversiveSubstitute)
 
+" fugitive
+command! Gco Git commit
+
 " gitgutter
 nmap <silent> ]c <Plug>(GitGutterNextHunk)
 nmap <silent> [c <Plug>(GitGutterPrevHunk)
