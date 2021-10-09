@@ -152,6 +152,8 @@ alias gits="git status"
 alias z=zathura
 alias idris2="rlwrap idris2"
 
+alias ddd="dragon-drag-and-drop"
+
 # Fix white flash before startup
 emacs() {
   /usr/bin/env emacsclient -cnqua '' "$@"

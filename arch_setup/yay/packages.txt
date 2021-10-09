@@ -19,6 +19,7 @@ nerd-fonts-jetbrains-mono
 # Utilities
 fnm-bin
 glslviewer-git
+dragon-drag-and-drop
 
 # Fixes some resizing issues with upstream zsh
 zsh-fix-winchanged-git
