@@ -30,8 +30,7 @@
     "markdown",
     "toml"
   ],
-  "python.jediEnabled": false,
-  "python.linting.pylintEnabled": false,
+  "python.linting.pylintEnabled": true,
   "python.linting.lintOnSave": true,
   "python.formatting.provider": "black",
   "rust-analyzer.server.path": "/bin/rust-analyzer",
