@@ -1,14 +1,17 @@
 # Browser
-# Controversial, but this is the browser I use for now
+# Useful for testing stuff
 google-chrome
 
 # Code editors
 neovim-git
 visual-studio-code-insiders-bin
 
+# Development tools
+haskell-language-server-static
+
 # GUI Customization
 awesome-git
-xcursor-sweet
+xcursor-breeze
 
 # Fonts
 nerd-fonts-jetbrains-mono
