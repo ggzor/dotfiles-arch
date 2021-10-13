@@ -172,6 +172,9 @@ bindkey "^[[F"    end-of-line
 bindkey "^[[3~"   delete-char
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+# Remove annoying execute command after ^[:
+bindkey -rM vicmd ':'
 # }}}
 
 # Cursor style {{{
