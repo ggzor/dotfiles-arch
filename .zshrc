@@ -7,6 +7,9 @@ export QT_QPA_PLATFORMTHEME=gtk2
 export MANPAGER='nvim +Man!'
 export BAT_THEME='NightOwl'
 
+# Directory shortcuts
+export D="$HOME/Scratch/Downloads"
+
 # Load theme colors
 source "$HOME/.theme.zsh"
 
