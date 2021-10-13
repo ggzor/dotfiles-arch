@@ -1,38 +1,52 @@
 {
-  // May change frequently
-  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
-  "workbench.colorTheme": "Night Owl",
-  "window.menuBarVisibility": "toggle", // Maybe hidden will be better?
-  "workbench.statusBar.visible": true,
+  // Experimental configuration
+  "editor.wordBasedSuggestions": true,
+  "editor.wordBasedSuggestionsMode": "allDocuments",
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.guides.bracketPairs": true,
+  "editor.detectIndentation": true,
+  //
   // Edition Settings
-  "editor.detectIndentation": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "[sql]": {
+    "editor.formatOnSave": false
+  },
   "editor.tabSize": 2,
-  "editor.suggestSelection": "first",
-  "editor.wordWrapColumn": 88,
+  "editor.suggestSelection": "recentlyUsed",
+  "editor.wordWrapColumn": 90,
+  //
+  // Debugging settings
+  "debug.inlineValues": true,
+  //
   // Visual settings
+  "workbench.colorTheme": "Night Owl",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
+  //
+  "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.fontLigatures": false,
   "editor.minimap.enabled": false,
   "window.dialogStyle": "custom",
+  //
   // Better with a tiling window manager
   "window.titleBarStyle": "native",
   "workbench.activityBar.visible": false,
+  //
   // Cleaner vscode
   "workbench.sideBar.location": "right",
+  "window.menuBarVisibility": "toggle",
   "workbench.startupEditor": "none",
   "breadcrumbs.enabled": false,
-  "editor.scrollbar.verticalScrollbarSize": "0",
-  "editor.renderIndentGuides": false,
+  "editor.scrollbar.verticalScrollbarSize": 0,
   "editor.hideCursorInOverviewRuler": true,
   "[python]": {
     "editor.tabSize": 4,
-    "editor.renderIndentGuides": true
   },
   "git.confirmSync": false,
   "git.autofetch": true,
+  //
   // Exclude files from tree
   "files.exclude": {
     "**/.git": true,
@@ -47,20 +61,31 @@
     "**/.factorypath": true,
     "**/*.olean": true
   },
+  //
   // Terminal
   "terminal.integrated.allowChords": false,
-  "terminal.integrated.shell.linux": "/usr/bin/zsh",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.linux": {
+    "zsh": {
+      "path": "/usr/bin/zsh"
+    },
+  },
+  //
   // Extensions
+  //
   // Intellicode
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  //
   // Haskell
   "haskell.formattingProvider": "ormolu",
   "[haskell]": {
     // Has to format complete file
     "editor.formatOnSaveMode": "file"
   },
+  //
   // Java
   "java.refactor.renameFromFileExplorer": "autoApply",
+  //
   // Python
   "jupyter.insidersChannel": "weekly",
   "python.showStartPage": false,
@@ -74,9 +99,11 @@
   },
   "python.insidersChannel": "weekly",
   "python.languageServer": "Pylance",
+  //
   // Idris
   "idris.idris2Mode": true,
   "idris.idrisPath": "idris2",
+  //
   // VIM
   "vim.changeWordIncludesWhitespace": true,
   "vim.easymotion": true,
@@ -85,11 +112,13 @@
   "vim.replaceWithRegister": true,
   "vim.surround": true,
   "vim.visualstar": true,
+  //
   // Required for remapped esc to work
   "keyboard.dispatch": "keyCode",
   "vim.handleKeys": {
     "<C-f>": false
   },
+  //
   // Mappings at the end, too noisy
   // Don't look after this line, it's really ugly to make
   // vscode work like vim :(
@@ -459,5 +488,5 @@
         "j"
       ]
     }
-  ]
+  ],
 }
