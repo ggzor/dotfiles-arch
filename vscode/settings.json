@@ -14,7 +14,7 @@
   // Visual settings
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.minimap.enabled": false,
   "window.dialogStyle": "custom",
   // Better with a tiling window manager
