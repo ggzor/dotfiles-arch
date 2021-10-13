@@ -19,8 +19,8 @@ augroup au_tab_size_override
   " Use 4 spaces with Python
   autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
 
-  " Use tabs with Go
-  autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=-1
+  " Use tabs with Go and Make
+  autocmd FileType go,make setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=-1
 augroup END
 
 " Indent preserving indentation level
