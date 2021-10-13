@@ -90,8 +90,11 @@ zinit wait lucid for \
   @softmoth/zsh-vim-mode
 
 # fzf integration
+# atclone is used to fix ffmpeg issues with p10k (#176)
 zinit wait lucid light-mode for \
-  @Aloxaf/fzf-tab \
+  reset atclone'sed -ie "s/COLUMNS=500//" fzf-tab.zsh' \
+  atpull'%atclone' nocompile'!' \
+      @Aloxaf/fzf-tab \
   multisrc:'shell/*.zsh' @junegunn/fzf
 
 # get fzf ripgrep preview script
