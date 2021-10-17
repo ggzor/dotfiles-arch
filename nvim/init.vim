@@ -915,9 +915,9 @@ augroup au_file_adjustments
   autocmd!
 
   " Enable racket for rkt files
-  autocmd BufNewFile,BufRead *.rkt setfiletype racket
-  autocmd BufNewFile,BufRead *.json setfiletype jsonc
-  autocmd BufNewFile,BufRead *.nix setfiletype nix
+  autocmd BufNewFile,BufRead *.rkt set filetype=racket
+  autocmd BufNewFile,BufRead *.json set filetype=jsonc
+  autocmd BufNewFile,BufRead *.nix set filetype=nix
 
   " Enable manually php autoindent
   autocmd BufEnter *.php set autoindent smartindent
