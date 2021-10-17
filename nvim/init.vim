@@ -954,8 +954,11 @@ nnoremap <silent> <leader>1 :set opfunc=ProgramFilter<cr>g@
 vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
 
 " Delete and restore from quickfix
-autocmd FileType qf nmap <silent> <buffer> dd :call RemoveQFItem()<cr>
-autocmd FileType qf nmap <silent> <buffer> u :call RestoreQFItem()<cr>
+augroup qf_delete
+  autocmd!
+  autocmd FileType qf nmap <silent> <buffer> dd :call RemoveQFItem()<cr>
+  autocmd FileType qf nmap <silent> <buffer> u :call RestoreQFItem()<cr>
+augroup END
 
 " Go to directory under cursor
 nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
