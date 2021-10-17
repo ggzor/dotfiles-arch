@@ -642,7 +642,9 @@ let g:fzf_history_dir = '~/.fzf-vim-history'
 "   target_prev_width = The size of the preview window
 "   switch_layout_width = The neovim windows size at which full screen mode is
 "                         forced
-function! FZFPreviewOptions(options, target_prev_width, switch_layout_width)
+function! FZFPreviewOptions(options, target_prev_width, switch_layout_width
+                           \, float_max_width = 160
+                           \)
   let ww = &columns
   let wh = &lines
   let go_full = ww <= a:switch_layout_width
@@ -656,7 +658,7 @@ function! FZFPreviewOptions(options, target_prev_width, switch_layout_width)
   let options = fzf#vim#with_preview(a:options, preview_params)
 
   if !go_full
-    let target_width = min([160, float2nr(0.9 * ww)])
+    let target_width = min([a:float_max_width, float2nr(0.9 * ww)])
     let target_height = min([60, float2nr(0.8 * wh)])
     call extend(options, { 'window': { 'width': target_width, 'height': target_height } })
   endif
@@ -692,6 +694,17 @@ function! RipgrepFzf(query, fuzzy)
   call fzf#vim#grep(initial_command, 1, options, go_full)
 endfunction
 
+function! ExecuteWithCocFzf(command) abort
+  try
+    execute a:command
+  catch
+    echohl WarningMsg
+    echon 'Warning: '
+    echohl None
+    echon 'coc.nvim is not ready'
+  endtry
+endfunction
+
 function! FZFDiagnostics(current_file) abort
   let [options, go_full] = FZFPreviewOptions({}, 100, 180)
 
@@ -706,14 +719,19 @@ function! FZFDiagnostics(current_file) abort
 
   let g:coc_fzf_preview = 'up:71%:border:nowrap'
 
-  try
-    execute "CocFzfList diagnostics ".(a:current_file ? '--current-buf' : '')
-  catch
-    echohl WarningMsg
-    echon 'Warning: '
-    echohl None
-    echon 'coc.nvim is not ready'
-  endtry
+  call ExecuteWithCocFzf(
+        \ 'CocFzfList diagnostics '.(a:current_file ? '--current-buf' : ''))
+endfunction
+
+function! FZFOutline() abort
+  let [options, go_full] = FZFPreviewOptions({}, 0, 0, 80)
+
+  " Ugly global configuration
+  let g:coc_fzf_preview_fullscreen = 0
+  let g:fzf_layout = { 'window': options['window'] }
+  let g:coc_fzf_preview = ''
+
+  call ExecuteWithCocFzf('CocFzfList outline')
 endfunction
 
 " Hide status line
@@ -998,6 +1016,7 @@ nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
 nnoremap <silent> ñr :call RipgrepFzf('', 1)<CR>
 nnoremap <silent> ñd :call FZFDiagnostics(1)<CR>
 nnoremap <silent> ñD :call FZFDiagnostics(0)<CR>
+nnoremap <silent> ño :call FZFOutline()<CR>
 
 nnoremap <silent> ñj :Buffers<CR>
 nnoremap <silent> ñ/ :BLines<CR>
