@@ -207,7 +207,6 @@ Plug 'andymass/vim-matchup'
 Plug 'bronson/vim-visual-star-search'
 Plug 'godlygeek/tabular'
 Plug 'machakann/vim-sandwich'
-Plug 'mattn/emmet-vim'
 Plug 'svermeulen/vim-subversive'
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-abolish'
@@ -420,15 +419,6 @@ lua << EOF
     }
 EOF
 endif
-
-" emmet-vim
-let g:user_emmet_install_global = 0
-" Load emmet only in certain file types
-autocmd FileType
-  \ html,css,javascript,typescript
-  \,javascriptreact,typescriptreact,xml
-  \,php
-  \ EmmetInstall
 
 " pear-tree
 let g:pear_tree_smart_openers = 1
@@ -1037,9 +1027,6 @@ if has('nvim')
   vnoremap <silent><nowait><expr> <A-k> coc#float#has_scroll()
         \ ? coc#float#scroll(0) : ""
 endif
-
-" emmet
-let g:user_emmet_leader_key='<C-y>'
 
 " vim-subversive
 nmap s <plug>(SubversiveSubstitute)
