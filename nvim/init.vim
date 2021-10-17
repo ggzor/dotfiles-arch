@@ -1105,8 +1105,8 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 nmap <leader>u :<C-u>MundoToggle<CR>
 
 " vim-qf
-nmap <leader>{ <Plug>(qf_qf_previous)
-nmap <leader>} <Plug>(qf_qf_next)
+nmap <leader>p <Plug>(qf_qf_previous)
+nmap <leader>n <Plug>(qf_qf_next)
 nmap <buffer> <Left>  <Plug>(qf_older)
 nmap <buffer> <Right> <Plug>(qf_newer)
 nmap <leader>q <Plug>(qf_qf_toggle_stay)
