@@ -333,10 +333,10 @@ lua <<EOF
       swap = {
         enable = true,
         swap_next = {
-          ["<leader><leader>l"] = "@parameter.inner",
+          ["<leader>."] = "@parameter.inner",
         },
         swap_previous = {
-          ["<leader><leader>h"] = "@parameter.inner",
+          ["<leader>,"] = "@parameter.inner",
         },
       },
       select = {
