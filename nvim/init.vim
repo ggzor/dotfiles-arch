@@ -1041,9 +1041,8 @@ let g:user_emmet_leader_key='<C-y>'
 nmap s <plug>(SubversiveSubstitute)
 
 " git commands
-nmap <silent> <leader>gl <Plug>(GitGutterNextHunk)
-nmap <silent> <leader>gh <Plug>(GitGutterPrevHunk)
-
+nmap <silent> gl <Plug>(GitGutterNextHunk)zz
+nmap <silent> gh <Plug>(GitGutterPrevHunk)zz
 nmap <silent> <leader>gr <Plug>(GitGutterUndoHunk)
 nmap <silent> <leader>gs :GitGutterStageHunk <bar> GitGutterNextHunk <bar> normal! zz<CR>
 
