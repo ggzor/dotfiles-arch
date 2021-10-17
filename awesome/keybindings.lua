@@ -2,8 +2,6 @@ local awful = require("awful")
 local gears = require("gears")
 local naughty = require("naughty")
 
-local functools = require("utils.functools")
-
 local audio = require("scripts.audio")
 
 local Mod      = {"Mod4"}
@@ -61,6 +59,7 @@ function generate_globalkeys(tags)
             { Mod,      "Return", "Terminal",     spawn("kitty") },
             { Mod,      "b",      "Browser",      spawn("firefox") },
             { Mod,      "d",      "Dotfiles",     open_dotfiles },
+            { Mod,      "ñ",      "Now.md",       open_now_md },
             { Mod,      "p",      "Launcher",     spawn("rofi -show combi -display-combi do") },
             { {},       "Print",  "Print screen", spawn("flameshot gui") },
         },
@@ -131,6 +130,17 @@ function toggle_systray()
     systray.visible = not systray.visible
 end
 
+function spawn_unique(title, command)
+    for _, c in ipairs(client.get()) do
+        if c.name == title then
+            c:jump_to()
+            return
+        end
+    end
+
+    awful.spawn(command)
+end
+
 function open_dotfiles()
     local command = [[
       echo "\033[1mDirectory contents:\033[0m"
@@ -139,18 +149,17 @@ function open_dotfiles()
       zsh -i
     ]]
 
-    local spawn = true
+    spawn_unique(
+        '<dotfiles>',
+        "kitty --title '<dotfiles>' --directory \"$HOME/dotfiles\" zsh -c '"..command.."'"
+    )
+end
 
-    for _, c in ipairs(client.get()) do
-        if c.name == '<dotfiles>' then
-            spawn = false
-            c:jump_to()
-        end
-    end
-
-    if spawn then
-        awful.spawn("kitty --title '<dotfiles>' --directory \"$HOME/dotfiles\" zsh -c '"..command.."'")
-    end
+function open_now_md()
+    spawn_unique(
+        '<now.md>',
+        "kitty --title '<now.md>' nvim Now.md"
+    )
 end
 
 function print_client_debug()
