@@ -990,12 +990,12 @@ if has('nvim')
   vmap <silent> ñp <Plug>(coc-codeaction-selected)
 
   " Navigate through normal diagnostics
-  nmap <silent> <leader>h <Plug>(coc-diagnostic-prev)
-  nmap <silent> <leader>l <Plug>(coc-diagnostic-next)
+  nmap <silent> <leader>h <Plug>(coc-diagnostic-prev)zz
+  nmap <silent> <leader>l <Plug>(coc-diagnostic-next)zz
 
   " Navigate through error diagnostics
-  nmap <silent> <leader><leader>h <Plug>(coc-diagnostic-prev-error)
-  nmap <silent> <leader><leader>l <Plug>(coc-diagnostic-next-error)
+  nmap <silent> <leader><leader>h <Plug>(coc-diagnostic-prev-error)zz
+  nmap <silent> <leader><leader>l <Plug>(coc-diagnostic-next-error)zz
 
   " GoTo code navigation.
   nmap <silent> gd <Plug>(coc-definition)
