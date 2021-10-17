@@ -911,12 +911,19 @@ endfunction
 
 " FileType options {{{
 
+let g:json_exclude_list = ['coc-settings.json']
+
 augroup au_file_adjustments
   autocmd!
 
+  " Use json with comments for almost all files
+  autocmd BufNewFile,BufRead *.json
+        \ if index(g:json_exclude_list, expand('%:t')) < 0
+        \ | set filetype=jsonc
+        \ | endif
+
   " Enable racket for rkt files
   autocmd BufNewFile,BufRead *.rkt set filetype=racket
-  autocmd BufNewFile,BufRead *.json set filetype=jsonc
   autocmd BufNewFile,BufRead *.nix set filetype=nix
 
   " Enable manually php autoindent
