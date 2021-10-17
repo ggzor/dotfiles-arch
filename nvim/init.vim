@@ -230,7 +230,11 @@ Plug 'junegunn/fzf.vim'
 
 " LSP
 if has('nvim')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {
+          \ 'branch': 'master',
+          \ 'do': 'yarn install --frozen-lockfile'
+          \ }
+  Plug 'antoinemadec/coc-fzf'
 endif
 
 " treesitter
@@ -475,6 +479,9 @@ if has('nvim')
         \'coc-yaml',
         \'@yaegassy/coc-intelephense',
         \]
+
+  " coc-fzf
+  let g:coc_fzf_opts = ['--no-exit-0']
 endif
 
 " web-devicons
@@ -683,6 +690,30 @@ function! RipgrepFzf(query, fuzzy)
 
   let [options, go_full] = FZFPreviewOptions({ 'options': options }, 100, 180)
   call fzf#vim#grep(initial_command, 1, options, go_full)
+endfunction
+
+function! FZFDiagnostics(current_file) abort
+  let [options, go_full] = FZFPreviewOptions({}, 100, 180)
+
+  " Ugly global configuration
+  let g:coc_fzf_preview_fullscreen = go_full
+
+  if go_full
+    let g:fzf_layout = {}
+  else
+    let g:fzf_layout = { 'window': options['window'] }
+  endif
+
+  let g:coc_fzf_preview = 'up:71%:border:nowrap'
+
+  try
+    execute "CocFzfList diagnostics ".(a:current_file ? '--current-buf' : '')
+  catch
+    echohl WarningMsg
+    echon 'Warning: '
+    echohl None
+    echon 'coc.nvim is not ready'
+  endtry
 endfunction
 
 " Hide status line
@@ -965,6 +996,8 @@ nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
 nnoremap <silent> ñf :call FZFFiles()<CR>
 nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
 nnoremap <silent> ñr :call RipgrepFzf('', 1)<CR>
+nnoremap <silent> ñd :call FZFDiagnostics(1)<CR>
+nnoremap <silent> ñD :call FZFDiagnostics(0)<CR>
 
 nnoremap <silent> ñj :Buffers<CR>
 nnoremap <silent> ñ/ :BLines<CR>
