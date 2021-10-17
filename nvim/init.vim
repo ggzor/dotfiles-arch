@@ -970,7 +970,7 @@ nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
 nnoremap <silent> ñr :call RipgrepFzf('', 1)<CR>
 
 nnoremap <silent> ñj :Buffers<CR>
-nnoremap <silent> ñl :BLines<CR>
+nnoremap <silent> ñ/ :BLines<CR>
 nnoremap <silent> ññ :History:<CR>
 nnoremap <silent> ñh :Helptags<CR>
 
