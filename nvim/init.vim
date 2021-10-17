@@ -998,9 +998,7 @@ if has('nvim')
   nmap <silent> <leader><leader>l <Plug>(coc-diagnostic-next-error)zz
 
   " GoTo code navigation.
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  " nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gd <Plug>(coc-definition)zz
   nmap <silent> gr <Plug>(coc-references)
 
   " Use K to show documentation in preview window.
@@ -1015,12 +1013,6 @@ if has('nvim')
 
   " Refresh Coc
   inoremap <silent><expr> <C-space> coc#refresh()
-
-  " Use <TAB> for selections ranges.
-  " NOTE: Requires 'textDocument/selectionRange' support from the language server.
-  " coc-tsserver, coc-python are the examples of servers that support it.
-  nmap <silent><leader><TAB> <Plug>(coc-range-select)
-  xmap <silent><leader><TAB> <Plug>(coc-range-select)
 
   " Scroll float documentation
   nnoremap <silent><nowait><expr> <A-j> coc#float#has_scroll()
