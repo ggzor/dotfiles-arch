@@ -993,6 +993,10 @@ if has('nvim')
   nmap <silent> <leader>h <Plug>(coc-diagnostic-prev)
   nmap <silent> <leader>l <Plug>(coc-diagnostic-next)
 
+  " Navigate through error diagnostics
+  nmap <silent> <leader><leader>h <Plug>(coc-diagnostic-prev-error)
+  nmap <silent> <leader><leader>l <Plug>(coc-diagnostic-next-error)
+
   " GoTo code navigation.
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
