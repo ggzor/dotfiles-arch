@@ -2,7 +2,6 @@
 
 declare -A FILES
 FILES=(
-  [" Now.md"]="$HOME/Now.md"
   [" Palabras.md"]="$HOME/Palabras.md"
   [" Notas.md"]="$HOME/Notas.md"
 )
