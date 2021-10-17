@@ -945,10 +945,6 @@ nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 
 " Custom mappings {{{
 
-if has('nvim')
-  nmap <silent> <leader>gh :call ToggleGitDiffMode()<CR>
-endif
-
 " Visual selection filter
 nnoremap <silent> <leader>1 :set opfunc=ProgramFilter<cr>g@
 vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
@@ -1044,14 +1040,19 @@ let g:user_emmet_leader_key='<C-y>'
 " vim-subversive
 nmap s <plug>(SubversiveSubstitute)
 
-" fugitive
-command! Gco Git commit
+" git commands
+nmap <silent> <leader>gl <Plug>(GitGutterNextHunk)
+nmap <silent> <leader>gh <Plug>(GitGutterPrevHunk)
 
-" gitgutter
-nmap <silent> ]c <Plug>(GitGutterNextHunk)
-nmap <silent> [c <Plug>(GitGutterPrevHunk)
 nmap <silent> <leader>gr <Plug>(GitGutterUndoHunk)
 nmap <silent> <leader>gs :GitGutterStageHunk <bar> GitGutterNextHunk <bar> normal! zz<CR>
+
+if has('nvim')
+  nmap <silent> <leader>gd :call ToggleGitDiffMode()<CR>
+endif
+
+" fugitive
+command! Gco Git commit
 
 omap ih <Plug>(GitGutterTextObjectInnerPending)
 omap ah <Plug>(GitGutterTextObjectOuterPending)
