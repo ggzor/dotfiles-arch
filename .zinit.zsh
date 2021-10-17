@@ -44,6 +44,7 @@ alt-u:preview-page-up
 alt-d:preview-page-down
 alt-j:preview-down+preview-down+preview-down
 alt-k:preview-up+preview-up+preview-up
+alt-g:preview-top
 alt-c:toggle-preview
 
 # History
@@ -88,34 +89,60 @@ zstyle ':fzf-tab:*' fzf-flags --height 50%
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --color=always $realpath'
 zstyle ':fzf-tab:complete:cd:*' fzf-flags --height 70%
 
+FZF_DEFAULT_PREV_WIDTH=95
+FZF_DEFAULT_SWITCH_LAYOUT_WIDTH=105
+
 fzf_preview_params() {
-  TARGET_PREV_WIDTH="${1:-95}"
-  SWITCH_LAYOUT_WIDTH="${2:-105}"
+  TARGET_PREV_WIDTH="${1:-$FZF_DEFAULT_PREV_WIDTH}"
+  SWITCH_LAYOUT_WIDTH="${2:-$FZF_DEFAULT_SWITCH_LAYOUT_WIDTH}"
+  HEADER_LINES="${3:-0}"
 
   MAX_WIDTH=$(( 3 * COLUMNS / 5 ))
   PREV_WIDTH=$(( TARGET_PREV_WIDTH > MAX_WIDTH ? MAX_WIDTH : TARGET_PREV_WIDTH ))
   RIGHT_PREV="right:${PREV_WIDTH}:noborder:nowrap"
 
+  HEADER_STR=$((( $HEADER_LINES != 0 )) && printf ":~%d" "$HEADER_LINES" || printf "")
+
   if (( COLUMNS <= SWITCH_LAYOUT_WIDTH )); then
-    echo 'up:71%:border:nowrap'
+    echo "up:71%:border:nowrap$HEADER_STR"
   else
-    echo "$RIGHT_PREV"
+    echo "${RIGHT_PREV}${HEADER_STR}"
   fi
 }
 
 # fzf utilities
 # open files
 ñf() {
-  PREVIEW_COMMAND='
-    [[ \$(file --mime {}) =~ binary ]] \
-        && echo {} is a binary file \
-        || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null'
+  # No function export for zsh to clean this up :(
+
+  PREVIEW_COMMAND=$(cat <<-EOF
+cat <<< $'\
+     \e[2mCtr-f to go to containing folder\e[0m\
+'
+
+if [[ \$(file --mime {}) =~ binary ]]; then
+  FILE_NAME=\$(exa --icons {} 2>/dev/null || echo {})
+  echo "\
+     \e[33;1mBinary file:\e[0m
+       \$FILE_NAME\
+"
+else
+  bat {} --style=numbers --color=always 2>/dev/null || cat {}
+fi
+EOF
+)
 
   OUT=("$(
       fzf --query="$1" --preview="$PREVIEW_COMMAND" \
-        --preview-window="$(fzf_preview_params)"  \
+        --preview-window="$(
+              fzf_preview_params \
+                "$FZF_DEFAULT_PREV_WIDTH" \
+                "$FZF_DEFAULT_SWITCH_LAYOUT_WIDTH" \
+                1
+        )"  \
         --expect=ctrl-f \
-        --history="$HOME/.fzf-open-file-history")")
+        --history="$HOME/.fzf-open-file-history"
+      )")
 
   read -r KEY <<< "$OUT"
   OUT=$(tail -n +2 <<< "$OUT")
