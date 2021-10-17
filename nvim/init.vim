@@ -472,6 +472,7 @@ if has('nvim')
         \'coc-go',
         \'coc-java',
         \'coc-json',
+        \'coc-lua',
         \'coc-prettier',
         \'coc-pyright',
         \'coc-rust-analyzer',
