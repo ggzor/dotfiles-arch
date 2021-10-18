@@ -739,12 +739,19 @@ function! FZFSymbols() abort
 endfunction
 
 function! FZFOutline() abort
-  let [options, go_full] = FZFPreviewOptions({}, 0, 0, 80)
+  let [options, go_full] = FZFPreviewOptions({}, 90, 150)
 
   " Ugly global configuration
-  let g:coc_fzf_preview_fullscreen = 0
-  let g:fzf_layout = { 'window': options['window'] }
-  let g:coc_fzf_preview = ''
+  let g:coc_fzf_preview_fullscreen = go_full
+
+  if go_full
+    let g:fzf_layout = {}
+  else
+    let g:fzf_layout = { 'window': options['window'] }
+  endif
+
+  let g:coc_fzf_preview = options['options'][
+        \ index(options['options'], '--preview-window') + 1]
 
   call ExecuteWithCocFzf('CocFzfList outline')
 endfunction
