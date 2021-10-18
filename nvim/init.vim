@@ -235,7 +235,7 @@ if has('nvim')
           \ 'branch': 'master',
           \ 'do': 'yarn install --frozen-lockfile'
           \ }
-  Plug 'antoinemadec/coc-fzf'
+  Plug 'antoinemadec/coc-fzf', { 'branch': 'master' }
 endif
 
 " treesitter
