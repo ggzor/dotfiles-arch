@@ -204,10 +204,10 @@ zd() {
   RESULT=$(eval "$INITIAL_COMMAND" | fzf "${ARGS[@]}")
 
   if [[ -n "$RESULT" ]]; then
-    if (( $(echo -n "$RESULT" | wc -l) > 1 )); then
-      ${EDITOR:-nvim} -q <(echo -n "$RESULT")
+    if (( $(echo -E "$RESULT" | wc -l) > 1 )); then
+      ${EDITOR:-nvim} -q <(echo -E "$RESULT")
     else
-      ${EDITOR:-nvim} "$(echo "$RESULT" | cut -d: -f1-3)"
+      ${EDITOR:-nvim} "$(echo -E "$RESULT" | cut -d: -f1-3)"
     fi
   fi
 }
