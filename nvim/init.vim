@@ -186,6 +186,7 @@ call plug#begin()
 " Utilities
 Plug 'airblade/vim-gitgutter'
 Plug 'romainl/vim-qf'
+Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 Plug 'wsdjeg/vim-fetch'
@@ -630,8 +631,9 @@ augroup END
 " vim-mundo
 let g:mundo_right=1
 
-" vim-qf
-let g:qf_mapping_ack_style = 1
+" quickfix-reflector.vim
+let g:qf_modifiable = 1
+let g:qf_write_changes = 0
 
 " fzf
 let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --exclude .git --follow"
@@ -915,50 +917,6 @@ endif
 
 " }}}
 
-" Deletes an item from quickfix list
-function! RemoveQFItem()
-  function! GetCurrentQFId()
-    return getqflist({ 'id': 0 }).id
-  endfunction
-
-  function! InsertUndoDictQF(item)
-    if !exists('g:qf_undo_history')
-      let g:qf_undo_history = {}
-    endif
-
-    if !exists('g:qf_undo_history.' . GetCurrentQFId())
-      let g:qf_undo_history[GetCurrentQFId()] = []
-    endif
-
-    call insert(g:qf_undo_history[GetCurrentQFId()], a:item)
-  endfunction
-
-  let curqfidx = line('.') - 1
-  let qfall = getqflist()
-  call InsertUndoDictQF([curqfidx, get(qfall, curqfidx)])
-
-  call remove(qfall, curqfidx)
-  call setqflist(qfall, 'r')
-  execute curqfidx + 1 . "cfirst"
-  :copen
-endfunction
-
-" Restores a previously deleted item from quickfix list
-function! RestoreQFItem()
-  if exists('g:qf_undo_history') && !empty(g:qf_undo_history[GetCurrentQFId()])
-    let [idx, last] = remove(g:qf_undo_history[GetCurrentQFId()], -1)
-    let qfall = getqflist()
-    call insert(qfall, last, idx)
-    call setqflist(qfall, 'r')
-    execute idx + 1 . "cfirst"
-    :copen
-  else
-    echohl WarningMsg
-    echom "No items to restore"
-    echohl None
-  endif
-endfunction
-
 " }}}
 
 " FileType options {{{
@@ -1008,13 +966,6 @@ nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 " Visual selection filter
 nnoremap <silent> <leader>1 :set opfunc=ProgramFilter<cr>g@
 vnoremap <silent> <leader>1 :call ProgramFilter(visualmode(), 1)<cr>
-
-" Delete and restore from quickfix
-augroup qf_delete
-  autocmd!
-  autocmd FileType qf nmap <silent> <buffer> dd :call RemoveQFItem()<cr>
-  autocmd FileType qf nmap <silent> <buffer> u :call RestoreQFItem()<cr>
-augroup END
 
 " Go to directory under cursor
 nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
