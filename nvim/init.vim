@@ -705,7 +705,7 @@ function! ExecuteWithCocFzf(command) abort
   endtry
 endfunction
 
-function! FZFDiagnostics(current_file) abort
+function! CocFZFListDefaultWindow(command) abort
   let [options, go_full] = FZFPreviewOptions({}, 100, 180)
 
   " Ugly global configuration
@@ -719,27 +719,22 @@ function! FZFDiagnostics(current_file) abort
 
   let g:coc_fzf_preview = 'up:71%:border:nowrap'
 
-  call ExecuteWithCocFzf(
+  call ExecuteWithCocFzf(a:command)
+endfunction
+
+function! FZFDiagnostics(current_file) abort
+  call CocFZFListDefaultWindow(
         \ 'CocFzfList diagnostics '.(a:current_file ? '--current-buf' : ''))
 endfunction
 
-function! FZFSymbols() abort
-  let [options, go_full] = FZFPreviewOptions({}, 100, 180)
-
-  " Ugly global configuration
-  let g:coc_fzf_preview_fullscreen = go_full
-
-  if go_full
-    let g:fzf_layout = {}
-  else
-    let g:fzf_layout = { 'window': options['window'] }
-  endif
-
-  let g:coc_fzf_preview = 'up:71%:border:nowrap'
-
-  call ExecuteWithCocFzf('CocFzfList symbols')
+function! FZFReferences() abort
+  call CocFZFListDefaultWindow(
+        \ 'call CocAction("jumpReferences")')
 endfunction
 
+function! FZFSymbols() abort
+  call CocFZFListDefaultWindow('CocFzfList symbols')
+endfunction
 
 function! FZFOutline() abort
   let [options, go_full] = FZFPreviewOptions({}, 0, 0, 80)
@@ -1031,11 +1026,12 @@ nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
 " fzf
 nnoremap <silent> ñf :call FZFFiles()<CR>
 nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
-nnoremap <silent> ñr :call RipgrepFzf('', 1)<CR>
+nnoremap <silent> ñG :call RipgrepFzf('', 1)<CR>
 nnoremap <silent> ñd :call FZFDiagnostics(1)<CR>
 nnoremap <silent> ñD :call FZFDiagnostics(0)<CR>
-nnoremap <silent> ño :call FZFOutline()<CR>
+nnoremap <silent> ñq :call FZFOutline()<CR>
 nnoremap <silent> ñs :call FZFSymbols()<CR>
+nnoremap <silent> ñr :call FZFReferences()<CR>
 
 nnoremap <silent> ñj :Buffers<CR>
 nnoremap <silent> ñ/ :BLines<CR>
@@ -1067,7 +1063,6 @@ if has('nvim')
 
   " GoTo code navigation.
   nmap <silent> gd <Plug>(coc-definition)zz
-  nmap <silent> gr <Plug>(coc-references)
 
   " Use K to show documentation in preview window.
   nnoremap <silent> ñk :call CocAction('doHover')<CR>
