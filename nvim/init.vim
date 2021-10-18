@@ -1019,8 +1019,13 @@ if has('nvim')
   nmap <silent> <leader><leader>h <Plug>(coc-diagnostic-prev-error)zz
   nmap <silent> <leader><leader>l <Plug>(coc-diagnostic-next-error)zz
 
+  function! CocGoToDefinition() abort
+    call CocAction('jumpDefinition')
+    normal! zvzz
+  endfunction
+
   " GoTo code navigation.
-  nmap <silent> gd <Plug>(coc-definition)zz
+  nmap <silent> gd :call CocGoToDefinition()<CR>
 
   " Use K to show documentation in preview window.
   nnoremap <silent> ñk :call CocAction('doHover')<CR>
