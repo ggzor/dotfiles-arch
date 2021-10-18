@@ -723,6 +723,24 @@ function! FZFDiagnostics(current_file) abort
         \ 'CocFzfList diagnostics '.(a:current_file ? '--current-buf' : ''))
 endfunction
 
+function! FZFSymbols() abort
+  let [options, go_full] = FZFPreviewOptions({}, 100, 180)
+
+  " Ugly global configuration
+  let g:coc_fzf_preview_fullscreen = go_full
+
+  if go_full
+    let g:fzf_layout = {}
+  else
+    let g:fzf_layout = { 'window': options['window'] }
+  endif
+
+  let g:coc_fzf_preview = 'up:71%:border:nowrap'
+
+  call ExecuteWithCocFzf('CocFzfList symbols')
+endfunction
+
+
 function! FZFOutline() abort
   let [options, go_full] = FZFPreviewOptions({}, 0, 0, 80)
 
@@ -1017,6 +1035,7 @@ nnoremap <silent> ñr :call RipgrepFzf('', 1)<CR>
 nnoremap <silent> ñd :call FZFDiagnostics(1)<CR>
 nnoremap <silent> ñD :call FZFDiagnostics(0)<CR>
 nnoremap <silent> ño :call FZFOutline()<CR>
+nnoremap <silent> ñs :call FZFSymbols()<CR>
 
 nnoremap <silent> ñj :Buffers<CR>
 nnoremap <silent> ñ/ :BLines<CR>
