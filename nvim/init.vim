@@ -1034,7 +1034,7 @@ nnoremap <silent> ñs :call FZFSymbols()<CR>
 nnoremap <silent> ñr :call FZFReferences()<CR>
 
 nnoremap <silent> ñj :Buffers<CR>
-nnoremap <silent> ñ/ :BLines<CR>
+nnoremap <silent> ñl :BLines<CR>
 nnoremap <silent> ññ :History:<CR>
 nnoremap <silent> ñh :Helptags<CR>
 
