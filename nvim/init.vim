@@ -924,6 +924,33 @@ endif
 
 " }}}
 
+function! FZFWithHandledExit(fun, postFuncName, extraArgs = []) abort
+  let g:__fzf_handled_exit = a:postFuncName
+  let Target = function(a:fun, a:extraArgs)
+  call Target()
+endfunction
+
+function! FZFEndHandledExit() abort
+  if exists('g:__fzf_handled_exit')
+    try
+      let Callback = function(g:__fzf_handled_exit)
+
+      if v:event['status'] == 0
+        call Callback()
+      endif
+    catch /.*/
+      throw v:exception
+    finally
+      unlet g:__fzf_handled_exit
+    endtry
+  endif
+endfunction
+
+augroup fzf_handled_exit
+  autocmd!
+  autocmd TermClose * call FZFEndHandledExit()
+augroup END
+
 " }}}
 
 " FileType options {{{
@@ -981,15 +1008,19 @@ nmap <silent> <leader>d :<C-u>call OpenDirUnderCursor()<CR>
 
 " Plugin mappings {{{
 
+function! CenterAndOpenFold() abort
+  call feedkeys(":normal! zvzz\<CR>")
+endfunction
+
 " fzf
 nnoremap <silent> ñf :call FZFFiles()<CR>
 nnoremap <silent> ñg :call RipgrepFzf('', 0)<CR>
 nnoremap <silent> ñG :call RipgrepFzf('', 1)<CR>
 nnoremap <silent> ñd :call FZFDiagnostics(1)<CR>
 nnoremap <silent> ñD :call FZFDiagnostics(0)<CR>
-nnoremap <silent> ñq :call FZFOutline()<CR>
+nnoremap <silent> ñq :call FZFWithHandledExit('FZFOutline', 'CenterAndOpenFold')<CR>
 nnoremap <silent> ñs :call FZFSymbols()<CR>
-nnoremap <silent> ñr :call FZFReferences()<CR>
+nnoremap <silent> ñr :call FZFWithHandledExit('FZFReferences', 'CenterAndOpenFold')<CR>
 
 nnoremap <silent> ñj :Buffers<CR>
 nnoremap <silent> ñl :BLines<CR>
