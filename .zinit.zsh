@@ -212,7 +212,7 @@ zd() {
   fi
 }
 
-alias ñr='ñg --fuzzy'
+alias ñG='ñg --fuzzy'
 
 # forgit
 export forgit_log=gitl
