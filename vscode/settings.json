@@ -13,7 +13,7 @@
     "editor.formatOnSave": false
   },
   "editor.tabSize": 2,
-  "editor.suggestSelection": "recentlyUsed",
+  "editor.suggestSelection": "first",
   "editor.wordWrapColumn": 90,
   //
   // Debugging settings
