@@ -3,6 +3,10 @@
   "diagnostic.warningSign": "\u1405",
   "diagnostic.infoSign": "\uf05a",
   "diagnostic.hintSign": "\uf425",
+  "emmet.includeLanguages": {
+    "php": "html",
+    "xml": "html"
+  },
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
   "codeLens.enable": false,
