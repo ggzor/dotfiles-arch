@@ -44,7 +44,7 @@ if [ "$USE_PLUGINS" = true ]; then
   if [[ ! -d "$HOME/.zinit" ]]; then
     echo "Installing zinit..."
     mkdir "$HOME/.zinit"
-    git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin"
+    git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin"
 
     # Create lock to compile zinit next time
     touch "$HOME/.zinit-lock"
@@ -79,7 +79,7 @@ zinit light romkatv/zsh-defer
 # command highlighting
 zinit wait'1' silent for \
   atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
