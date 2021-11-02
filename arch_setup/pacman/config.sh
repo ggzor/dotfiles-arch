@@ -14,7 +14,7 @@ systemctl enable --now \
 	sshd.service
 
 # Install stable rust toolchain
-sudo -u "$USER_NAME" rustup default stable
+sudo -u "$USER_NAME" rustup default nightly
 # Update toolchain
 sudo -u "$USER_NAME" rustup update
 
