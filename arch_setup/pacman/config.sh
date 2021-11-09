@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-export USER_NAME=${USER_NAME:-$SUDO_USER}
+export USER_NAME=${USER_NAME:-${SUDO_USER:-${USER}}}
 
 # Add user to docker group
-usermod -aG docker "$USER_NAME"
+sudo usermod -aG docker "$USER_NAME"
 
 # Systemd commands
-systemctl enable --now \
+sudo systemctl enable --now \
 	acpid.service \
 	docker.service \
 	firewalld.service \
