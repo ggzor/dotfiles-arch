@@ -28,8 +28,5 @@ fi
 # Start flameshot (screen capture program)
 flameshot &
 
-# Start picom
-picom &
-
 exec awesome
 
