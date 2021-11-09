@@ -19,3 +19,9 @@ sudo -u "$USER_NAME" rustup install stable nightly
 # Use stable by default
 sudo -u "$USER_NAME" rustup default stable
 
+# Install useful python executables
+sudo -u "$USER_NAME" bash -c '
+	pipx install -f \
+		mathlibtools
+'
+
