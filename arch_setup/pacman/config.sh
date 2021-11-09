@@ -13,8 +13,6 @@ systemctl enable --now \
 	firewalld.service \
 	sshd.service
 
-# Install stable rust toolchain
-sudo -u "$USER_NAME" rustup default nightly
-# Update toolchain
-sudo -u "$USER_NAME" rustup update
+# Install stable and nightly rust toolchain
+sudo -u "$USER_NAME" rustup install stable nightly
 
