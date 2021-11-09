@@ -141,7 +141,6 @@ kb_esp() {
 
 # Alias {{{
 
-alias v=nvim
 alias vi=nvim
 alias xclip="xclip -selection c"
 alias xo="xdg-open"
@@ -155,7 +154,7 @@ alias lt="exa --tree --level=2 --icons"
 alias gitc="git commit -m"
 alias gits="git status"
 
-alias z=zathura
+alias zat="zathura"
 alias idris2="rlwrap idris2"
 
 alias ddd="dragon-drag-and-drop"
