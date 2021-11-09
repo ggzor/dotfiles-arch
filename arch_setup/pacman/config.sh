@@ -16,3 +16,6 @@ systemctl enable --now \
 # Install stable and nightly rust toolchain
 sudo -u "$USER_NAME" rustup install stable nightly
 
+# Use stable by default
+sudo -u "$USER_NAME" rustup default stable
+
