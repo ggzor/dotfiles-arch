@@ -61,6 +61,7 @@ git
 glu
 graphviz
 go
+haskell-language-server
 lldb
 make
 minted
