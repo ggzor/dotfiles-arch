@@ -993,6 +993,9 @@ nnoremap <silent> ña <C-^>
 " Hide highlight temporarily
 nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 
+" Command line
+cnoremap <C-a> <C-b>
+
 " }}}
 
 " Custom mappings {{{
