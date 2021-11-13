@@ -31,8 +31,9 @@ function generate_globalkeys(tags)
             { ModShift, "j", "Swap next",      bind(awful.client.swap.byidx,   1) },
             { ModShift, "k", "Swap previous",  bind(awful.client.swap.byidx,  -1) },
 
-            { Mod,      "u", "Jump to urgent",   awful.client.urgent.jumpto },
-            { Mod,      "g", "Print debug data", print_client_debug },
+            { Mod,      "u", "Jump to urgent",         awful.client.urgent.jumpto },
+            { Mod,      "g", "Print debug data",       print_client_debug },
+            { Mod,      "+", "Unminimize next client", unminimize_next },
         },
         layout = {
             { ModCtrl,  "l", "Increase columns", bind(awful.tag.incncol,  1, nil, true) },
@@ -106,6 +107,7 @@ function generate_clientkeys()
             { Mod,  "m", "Toggle maximized",     client_actions.maximize },
             { Mod,  "n", "Toggle detached",      client_actions.detach },
             { Mod,  "o", "Move to other screen", client_actions.move_to_screen },
+            { Mod,  "-", "Minimize",             client_actions.minimize },
         },
     }
 end
@@ -213,6 +215,26 @@ function spec_to_table(keys_spec)
     return result
 end
 
+function unminimize_next()
+    local target = nil
+    for _, c in ipairs(awful.tag.selected():clients()) do
+        if c.minimized then
+            if target then
+                if c.minimized_time > target.minimized_time then
+                    target = c
+                end
+            else
+                target = c
+            end
+        end
+    end
+
+    if target then
+        target.minimized = false
+        target:jump_to()
+    end
+end
+
 function get_client_actions()
     return {
         close = function(c)
@@ -250,7 +272,11 @@ function get_client_actions()
         resize = function(c)
             c:emit_signal("request::activate", "mouse_click", {raise = true})
             awful.mouse.client.resize(c)
-        end
+        end,
+        minimize = function (c)
+            c.minimized_time = os.time()
+            c.minimized = true
+        end,
     }
 end
 
