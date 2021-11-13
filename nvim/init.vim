@@ -264,7 +264,7 @@ Plug 'dense-analysis/ale'
 Plug 'derekelkins/agda-vim'
 Plug 'edwinb/idris2-vim'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
-Plug 'honza/vim-snippets'
+Plug 'ggzor/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'rhysd/reply.vim'
 

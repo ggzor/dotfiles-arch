@@ -1,6 +1,6 @@
 {
   "Log": {
-    "prefix": "conlog",
+    "prefix": "log",
     "body": [
       "console.log($0);"
     ]
