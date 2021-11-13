@@ -215,6 +215,16 @@ zd() {
 alias ñG='ñg --fuzzy'
 
 # forgit
+FORGIT_ADD_FZF_OPTS=$(cat <<EOF
+--bind='ctrl-f:execute(printf "%s\n" {+} \
+                      | grep -v "D\]" \
+                      | grep -oP "\] +\K.*" \
+                      | xargs -d"\n" bash -c "$EDITOR \\\$@ \
+                                                 < /dev/tty \
+                                                 > /dev/tty" _)+abort'
+EOF
+)
+
 export forgit_log=gitl
 export forgit_diff=gitd
 export forgit_add=gita
