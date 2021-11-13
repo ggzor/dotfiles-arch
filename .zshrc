@@ -143,7 +143,6 @@ kb_esp() {
 
 alias vi=nvim
 alias xclip="xclip -selection c"
-alias xo="xdg-open"
 alias ls="ls --color=auto"
 
 alias l="exa --icons"
@@ -154,7 +153,6 @@ alias lt="exa --tree --level=2 --icons"
 alias gitc="git commit -m"
 alias gits="git status"
 
-alias zat="zathura"
 alias idris2="rlwrap idris2"
 
 alias ddd="dragon-drag-and-drop"
@@ -165,6 +163,11 @@ alias httpwatcher="pipx run httpwatcher"
 alias black="pipx run black"
 alias pre-commit="pipx run pre-commit"
 alias pycln="pipx run pycln"
+
+# xdg-open in background
+xo() {
+  xdg-open "$@" &>/dev/null & disown
+}
 
 # Fix white flash before startup
 emacs() {
