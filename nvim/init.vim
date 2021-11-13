@@ -1050,8 +1050,8 @@ if has('nvim')
   nmap <silent> <leader>l <Plug>(coc-diagnostic-next)zz
 
   " Navigate through error diagnostics
-  nmap <silent> <leader><leader>h <Plug>(coc-diagnostic-prev-error)zz
-  nmap <silent> <leader><leader>l <Plug>(coc-diagnostic-next-error)zz
+  nmap <silent> <leader>H <Plug>(coc-diagnostic-prev-error)zz
+  nmap <silent> <leader>L <Plug>(coc-diagnostic-next-error)zz
 
   function! CocGoToDefinition() abort
     call CocAction('jumpDefinition')
