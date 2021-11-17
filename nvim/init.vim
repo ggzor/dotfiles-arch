@@ -1162,6 +1162,7 @@ else
 endif
 
 " reply.vim
+command! Rr execute("Repl") | call feedkeys("\<C-\>\<C-n>G\<C-w>p")
 noremap <silent><leader>s :ReplSend<cr>
 
 " Code Painter
