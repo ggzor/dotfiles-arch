@@ -159,7 +159,6 @@ zathura-ps
 
 ### Python global packages
 python-pip    # package manager
-python-pywal  # Global color scheme setter
 python-pipx   # Useful python executable installer
 python-poetry # Virtual environment manager
 python-pynvim # nvim python support

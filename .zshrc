@@ -158,7 +158,6 @@ alias idris2="rlwrap idris2"
 alias ddd="dragon-drag-and-drop"
 
 # Useful python executables
-alias poetry="pipx run poetry"
 alias httpwatcher="pipx run httpwatcher"
 alias black="pipx run black"
 alias pre-commit="pipx run pre-commit"
