@@ -219,7 +219,11 @@ function unminimize_next()
     local target = nil
     for _, c in ipairs(awful.tag.selected():clients()) do
         if c.minimized then
-            if target and target.minimized and c.minimized_time then
+            if target
+             and target.minimized
+             and target.minimized_time
+             and c.minimized_time
+             then
                 if c.minimized_time > target.minimized_time then
                     target = c
                 end
