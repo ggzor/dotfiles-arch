@@ -159,7 +159,6 @@ alias ddd="dragon-drag-and-drop"
 
 # Useful python executables
 alias httpwatcher="pipx run httpwatcher"
-alias black="pipx run black"
 alias pre-commit="pipx run pre-commit"
 alias pycln="pipx run pycln"
 

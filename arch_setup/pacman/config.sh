@@ -23,5 +23,9 @@ sudo -u "$USER_NAME" rustup default stable
 sudo -u "$USER_NAME" bash -c '
 	pipx install -f \
 		mathlibtools
+	pipx install -f \
+		poetry
+	pipx install -f \
+		black
 '
 
