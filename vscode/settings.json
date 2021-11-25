@@ -108,7 +108,7 @@
   // VIM
   "vim.changeWordIncludesWhitespace": true,
   "vim.easymotion": true,
-  "vim.easymotionKeys": "fasjuirwzmkhdoe",
+  "vim.easymotionKeys": "aeiousdfjl",
   "vim.leader": " ",
   "vim.replaceWithRegister": true,
   "vim.surround": true,

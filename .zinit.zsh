@@ -235,5 +235,5 @@ export forgit_stash_show=gitstash
 
 # vim easymotion
 bindkey -M vicmd 'ñ' vi-easy-motion
-export EASY_MOTION_TARGET_KEYS='fasjuirwzmkhdoe'
+export EASY_MOTION_TARGET_KEYS='aeiousdfjl'
 

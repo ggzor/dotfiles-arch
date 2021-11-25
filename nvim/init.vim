@@ -413,7 +413,7 @@ let g:EasyMotion_startofline = 0
 " Press space to select first
 let g:EasyMotion_space_jump_first=1
 " The fastest keys I press
-let g:EasyMotion_keys = 'fasjuirwzmkhdoe'
+let g:EasyMotion_keys = 'aeiousdfjl'
 
 " hop.nvim
 if has('nvim')
