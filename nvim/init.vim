@@ -458,13 +458,15 @@ if has('nvim')
   augroup end
 
   let g:coc_global_extensions = [
+        \'@yaegassy/coc-intelephense',
+        \'coc-cfn-lint',
         \'coc-clangd',
         \'coc-css',
-        \'coc-cfn-lint',
         \'coc-emmet',
         \'coc-emoji',
         \'coc-eslint',
         \'coc-go',
+        \'coc-html',
         \'coc-java',
         \'coc-json',
         \'coc-lua',
@@ -475,10 +477,9 @@ if has('nvim')
         \'coc-snippets',
         \'coc-styled-components',
         \'coc-tsserver',
-        \'coc-vimtex',
         \'coc-vimlsp',
+        \'coc-vimtex',
         \'coc-yaml',
-        \'@yaegassy/coc-intelephense',
         \]
 
   " coc-fzf
