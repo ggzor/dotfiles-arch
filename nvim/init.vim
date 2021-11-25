@@ -211,7 +211,13 @@ Plug 'machakann/vim-sandwich'
 Plug 'svermeulen/vim-subversive'
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-commentary'
+
+if has('nvim')
+  Plug 'terrortylor/nvim-comment'
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+else
+  Plug 'tpope/vim-commentary'
+endif
 
 " Extra old syntax
 Plug 'dylon/vim-antlr'
@@ -360,6 +366,22 @@ endif
 
 " highlightedyank
 let g:highlightedyank_highlight_duration = -1
+
+" nvim-comment
+lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
+    }
+  }
+
+  require'nvim_comment'.setup({
+    hook = function()
+      require("ts_context_commentstring.internal").update_commentstring()
+    end,
+  })
+EOF
 
 " rainbow
 let g:rainbow_active = 0
