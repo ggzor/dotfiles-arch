@@ -419,7 +419,7 @@ let g:EasyMotion_keys = 'fasjuirwzmkhdoe'
 if has('nvim')
 lua << EOF
   require'hop'.setup {
-      keys = 'fasjuirwzmkhdoe',
+      keys = 'aeiousdfjl',
       teasing = false
     }
 EOF
