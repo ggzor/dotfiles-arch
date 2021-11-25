@@ -9,6 +9,7 @@ link_same        "$(pwd)/awesome"      "$HOME/.config/awesome"
 link_same        "$(pwd)/bat"          "$HOME/.config/bat"
 link_same        "$(pwd)/direnv"       "$HOME/.config/direnv"
 link_same        "$(pwd)/kitty"        "$HOME/.config/kitty"
+link_same        "$(pwd)/pypoetry"     "$HOME/.config/pypoetry"
 link_same        "$(pwd)/rofi"         "$HOME/.config/rofi"
 link_same        "$(pwd)/wallpapers"   "$HOME/Pictures/wallpapers"
 
