@@ -97,14 +97,17 @@ function generate_globalkeys(tags)
     }
 end
 
+local CMD_FULL = 'CMD_FULL'
+local CMD_MAXIMIZE = 'CMD_MAXIMIZE'
+
 function generate_clientkeys()
     local client_actions = get_client_actions()
 
     return {
         client = {
             { Mod,  "q", "Close",                client_actions.close },
-            { Mod,  "f", "Toggle fullscreen",    client_actions.fullscreen },
-            { Mod,  "m", "Toggle maximized",     client_actions.maximize },
+            { Mod,  "f", "Toggle fullscreen",    client_actions.maximized_or_full(CMD_FULL) },
+            { Mod,  "m", "Toggle maximized",     client_actions.maximized_or_full(CMD_MAXIMIZE) },
             { Mod,  "n", "Toggle detached",      client_actions.detach },
             { Mod,  "o", "Move to other screen", client_actions.move_to_screen },
             { Mod,  "-", "Minimize",             client_actions.minimize },
@@ -244,13 +247,38 @@ function get_client_actions()
         close = function(c)
             c:kill()
         end,
-        fullscreen = function(c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        maximize = function (c)
-            c.maximized = not c.maximized
-            c:raise()
+        maximized_or_full = function (cmd)
+            return function (c)
+                if not c.maximized and not c.fullscreen then
+                    if cmd == CMD_MAXIMIZE then
+                        c.maximized = true
+                        c:raise()
+                    elseif cmd == CMD_FULL then
+                        c.fullscreen = true
+                        c:raise()
+                    end
+                elseif c.maximized and not c.fullscreen then
+                    if cmd == CMD_MAXIMIZE then
+                        c.maximized = false
+                    elseif cmd == CMD_FULL then
+                        c.maximized = false
+                        c.fullscreen = true
+                        c:raise()
+                    end
+                elseif not c.maximized and c.fullscreen then
+                    if cmd == CMD_MAXIMIZE then
+                        -- Do not swap order!
+                        c.fullscreen = false
+                        c.maximized = true
+                        c:raise()
+                    elseif cmd == CMD_FULL then
+                        c.fullscreen = false
+                    end
+                elseif c.maximized and c.fullscreen then
+                    c.maximized = false
+                    c.fullscreen = false
+                end
+            end
         end,
         move_to_screen = function(c)
             c:move_to_screen()
