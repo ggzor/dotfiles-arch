@@ -238,9 +238,8 @@ Plug 'junegunn/fzf.vim'
 " LSP
 if has('nvim')
   Plug 'neoclide/coc.nvim', {
-          \ 'branch': 'master',
-          \ 'do': 'yarn install --frozen-lockfile'
-          \ }
+        \ 'branch': 'master',
+        \ 'do': 'yarn install && yarn build' }
   Plug 'antoinemadec/coc-fzf', { 'branch': 'master' }
 endif
 
@@ -256,7 +255,10 @@ endif
 
 " NERDTree Like
 if has('nvim')
-  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+  Plug 'ms-jpq/chadtree', {
+        \ 'branch': 'chad',
+        \ 'do': 'python3 -m chadtree deps --nvim',
+        \ 'on': 'CHADopen' }
 else
   Plug 'preservim/nerdtree'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
