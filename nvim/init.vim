@@ -1264,7 +1264,11 @@ lua << EOF
       return {
         oneshot = true,
         match = function(s)
-          return vim.regex('\\%'..tostring(col)..'v'):match_str(s)
+          if col == 1 then
+            return vim.regex("^\\S"):match_str(s)
+          else
+            return vim.regex('\\%'..tostring(col)..'v'):match_str(s)
+          end
         end
       }
     end
