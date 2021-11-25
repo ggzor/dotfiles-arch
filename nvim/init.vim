@@ -220,7 +220,7 @@ Plug 'luochen1990/rainbow'
 
 " Easymotion like behavior
 if has('nvim')
-  Plug 'ggzor/hop.nvim'
+  Plug 'phaazon/hop.nvim'
 else
   Plug 'easymotion/vim-easymotion'
 endif
@@ -1186,35 +1186,89 @@ nmap , <Plug>(show-motion-,)
 
 " Easymotion like
 if has('nvim')
-  function! s:hop_add_mapping(key, f, ft)
-    let prefix = len(a:ft) > 0 ? 'autocmd FileType '.a:ft.' ' : ''
+lua << EOF
+  local hop = require('hop')
 
-    exec prefix.'nmap <silent> '.a:key." :lua require'hop'.".a:f.'()<CR>'
-    exec prefix.'vmap <silent> '.a:key.
-      \ " :lua require'hop'.".a:f.'({ extend_visual = true })<CR>'
-  endfunction
+  local function pick_direction(is_forward)
+    local direction = is_forward
+                        and 'AFTER_CURSOR'
+                        or 'BEFORE_CURSOR'
+    return require('hop.hint').HintDirection[direction]
+  end
 
-  let s:hop_mappings = {
-    \ 'ñw': 'hint_words_same_line',
-    \ 'ñb': 'hint_backwords_same_line',
-    \ 'ñe': 'hint_word_ends_same_line',
-    \ 'ñE': 'hint_backword_ends_same_line',
-    \
-    \ 'K': 'hint_lines_to_top',
-    \ 'J': 'hint_lines_to_bottom',
-    \ '<leader>k': 'hint_lines_to_top_same',
-    \ '<leader>j': 'hint_lines_to_bottom_same',
-    \ }
+  function _G.local_hop_search_pattern(is_forward)
+    vim.api.nvim_exec('nohlsearch', false)
 
-  for [key, f] in items(s:hop_mappings)
-    call s:hop_add_mapping(key, f, '')
-  endfor
+    hop.hint_patterns(
+      { direction = pick_direction(vim.v.searchforward == is_forward) },
+      vim.fn.getreg('/')
+    )
 
-  augroup hop_chad
-    au!
-    call s:hop_add_mapping('K', 'hint_lines_sol_to_top', 'CHADTree')
-    call s:hop_add_mapping('J', 'hint_lines_sol_to_bottom', 'CHADTree')
-  augroup end
+    vim.api.nvim_exec('set hlsearch', false)
+  end
+
+  local function override_opts(opts)
+    return setmetatable(opts or {}, { __index = hop.opts })
+  end
+
+  local function scanning_lines(generator)
+    return require'hop.jump_target'.jump_targets_by_scanning_lines(generator)
+  end
+
+  function _G.local_hop_start_of_line(is_forward)
+    local function match_line()
+      return {
+        oneshot = true,
+        match = function(s)
+          return vim.regex("\\S"):match_str(s) or 0, 1, false
+        end
+      }
+    end
+
+    hop.hint_with(
+      scanning_lines(match_line()),
+      override_opts {
+        direction = pick_direction(is_forward == 1)
+      }
+    )
+  end
+
+
+  function _G.local_hop_same_column(is_forward)
+    local col = vim.api.nvim_win_get_cursor(0)[2] + 1
+
+    local function match_line()
+      return {
+        oneshot = true,
+        match = function(s)
+          return vim.regex('\\%'..tostring(col)..'v'):match_str(s)
+        end
+      }
+    end
+
+    hop.hint_with(
+      scanning_lines(match_line()),
+      override_opts {
+        direction = pick_direction(is_forward == 1)
+      }
+    )
+  end
+EOF
+
+  noremap <silent> <leader>n :call v:lua.local_hop_search_pattern(1)<CR>
+  noremap <silent> <leader>N :call v:lua.local_hop_search_pattern(0)<CR>
+
+  noremap <silent> K :call v:lua.local_hop_start_of_line(0)<CR>
+  noremap <silent> J :call v:lua.local_hop_start_of_line(1)<CR>
+
+  noremap <silent> <leader>k :call v:lua.local_hop_same_column(0)<CR>
+  noremap <silent> <leader>j :call v:lua.local_hop_same_column(1)<CR>
+
+  augroup au_chad_hop
+    autocmd!
+    autocmd FileType CHADTree noremap <buffer> <silent> K :HopLineBC<CR>
+    autocmd FileType CHADTree noremap <buffer> <silent> J :HopLineAC<CR>
+  augroup END
 else
   map ñw <Plug>(easymotion-wl)
   map ñb <Plug>(easymotion-bl)
