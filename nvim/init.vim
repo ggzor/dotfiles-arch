@@ -1255,14 +1255,14 @@ lua << EOF
   end
 EOF
 
-  noremap <silent> <leader>n :call v:lua.local_hop_search_pattern(1)<CR>
-  noremap <silent> <leader>N :call v:lua.local_hop_search_pattern(0)<CR>
+  noremap <silent> <leader>n <cmd>call v:lua.local_hop_search_pattern(1)<cr>
+  noremap <silent> <leader>N <cmd>call v:lua.local_hop_search_pattern(0)<cr>
 
-  noremap <silent> K :call v:lua.local_hop_start_of_line(0)<CR>
-  noremap <silent> J :call v:lua.local_hop_start_of_line(1)<CR>
+  noremap <silent> K <cmd>call v:lua.local_hop_start_of_line(0)<cr>
+  noremap <silent> J <cmd>call v:lua.local_hop_start_of_line(1)<cr>
 
-  noremap <silent> <leader>k :call v:lua.local_hop_same_column(0)<CR>
-  noremap <silent> <leader>j :call v:lua.local_hop_same_column(1)<CR>
+  noremap <silent> <leader>k <cmd>call v:lua.local_hop_same_column(0)<cr>
+  noremap <silent> <leader>j <cmd>call v:lua.local_hop_same_column(1)<cr>
 
   augroup au_chad_hop
     autocmd!
