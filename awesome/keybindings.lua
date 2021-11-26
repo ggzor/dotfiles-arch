@@ -9,6 +9,8 @@ local ModShift = {"Mod4", "Shift"}
 local ModCtrl  = {"Mod4", "Control"}
 local ModAlt  = {"Mod4", "Mod1"}
 
+local search_engine = 'https://www.google.com'
+
 local bind = require('utils.functools').bind
 local spawn = function(program)
     return function()
@@ -32,7 +34,7 @@ function generate_globalkeys(tags)
             { ModShift, "k", "Swap previous",  bind(awful.client.swap.byidx,  -1) },
 
             { Mod,      "u", "Jump to urgent",         awful.client.urgent.jumpto },
-            { Mod,      "g", "Print debug data",       print_client_debug },
+            { ModShift, "g", "Print debug data",       print_client_debug },
             { Mod,      "+", "Unminimize next client", unminimize_next },
         },
         layout = {
@@ -60,6 +62,7 @@ function generate_globalkeys(tags)
             { Mod,      "Return", "Terminal",     spawn("kitty") },
             { Mod,      "b",      "Browser",      spawn("firefox") },
             { Mod,      "d",      "Dotfiles",     open_dotfiles },
+            { Mod,      "g",      "Search",       launch_search_engine },
             { Mod,      "ñ",      "Now.md",       open_now_md },
             { Mod,      "p",      "Launcher",     spawn("rofi -show combi -display-combi do") },
             { {},       "Print",  "Print screen", spawn("flameshot gui") },
@@ -144,6 +147,17 @@ function spawn_unique(title, command)
     end
 
     awful.spawn(command)
+end
+
+function launch_search_engine()
+    for _, c in ipairs(awful.tag.selected():clients()) do
+        if c.role == 'browser' then
+            c:jump_to()
+            break
+        end
+    end
+
+    awful.spawn('xdg-open '..'"'..search_engine..'"')
 end
 
 function open_dotfiles()
