@@ -14,4 +14,7 @@ eval "$(fnm env)"
 fnm install "$NODE_VERSION" \
   && fnm use "$NODE_VERSION" \
   && fnm default "$NODE_VERSION"
-fnm exec --using="$NODE_VERSION" npm i -g yarn
+
+fnm exec --using="$NODE_VERSION" \
+  npm i -g yarn obs-cli
+
