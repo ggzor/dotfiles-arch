@@ -19,10 +19,20 @@ else
   echo "Yay is already installed."
 fi
 
+YAY_PARAMS=(--editmenu)
+
+if (( $# > 0 )) && [[ $1 == unattended ]]; then
+  YAY_PARAMS=(--nocleanmenu --noeditmenu)
+fi
+
 # Install packages
 # Update system before installing a new package
 sudo pacman -Syu --noconfirm
-yay -S --norebuild --nodiffmenu --editmenu --batchinstall "${PACKAGES[@]}"
+yay -S --norebuild --nodiffmenu \
+    "${YAY_PARAMS[@]}" \
+    --batchinstall \
+    --sudoloop \
+  "${PACKAGES[@]}"
 
 # Run extra install commands
 ./arch_setup/yay/config.sh
