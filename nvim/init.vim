@@ -1013,6 +1013,8 @@ augroup END
 let g:mapleader = ' '
 let g:maplocalleader = '-'
 
+nmap - <nop>
+
 " Make Y similar to C and D
 noremap Y y$
 
