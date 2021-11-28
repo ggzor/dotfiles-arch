@@ -370,6 +370,9 @@ lua <<EOF
 EOF
 endif
 
+" conjure
+let g:conjure#mapping#doc_word = v:false
+
 " highlightedyank
 let g:highlightedyank_highlight_duration = -1
 
