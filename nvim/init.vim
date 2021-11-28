@@ -266,7 +266,10 @@ endif
 
 " Custom language plugins
 Plug 'wlangstroth/vim-racket'
+Plug 'tpope/vim-dispatch'
+Plug 'clojure-vim/vim-jack-in'
 if has('nvim')
+  Plug 'radenling/vim-dispatch-neovim'
   Plug 'Olical/conjure'
 endif
 Plug 'dense-analysis/ale'
