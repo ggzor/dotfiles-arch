@@ -563,7 +563,7 @@ let g:lightline = {
       \     'left':[ [ 'mode', 'paste' ],
       \              [ 'gitbranch', 'readonly', 'filename' ]
       \     ],
-      \     'right': [ [ 'lineinfo' ], [ 'filetype' ] ]
+      \     'right': [ [ 'lineinfo' ], [ 'mouse', 'filetype' ] ]
       \   },
       \   'inactive': {
       \     'left':[ [ 'filename' ]],
@@ -585,6 +585,7 @@ let g:lightline = {
       \     'readonly': 'LightlineReadonly',
       \     'filename': 'GetFileNameIcon',
       \     'filetype': 'GetFileTypeIcon',
+      \     'mouse': 'LightlineGetMouseOn',
       \   },
       \   'tab_component_function': {
       \     'filename': 'GetTabFileNameIcon',
@@ -651,6 +652,10 @@ function! GetTabFileNameIcon(index)
   endfor
 
   return printf(' %s %s %s', icon, len(bufname) ? bufname : '[No Name]', modlabel)
+endfunction
+
+function! LightlineGetMouseOn() abort
+  return &mouse == "" ? "" : ""
 endfunction
 
 " }}}
@@ -1030,6 +1035,9 @@ nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 
 " Command line
 cnoremap <C-a> <C-b>
+
+" Toggle mouse support to resize panes
+nnoremap <silent> <leader>m <cmd>let &mouse = &mouse == "" ? "a" : "" <cr>
 
 " }}}
 
