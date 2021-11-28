@@ -52,6 +52,7 @@ autoconf
 automake
 bash-language-server
 clang
+clojure
 cmake
 docker
 docker-compose
