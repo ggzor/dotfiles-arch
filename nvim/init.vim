@@ -336,7 +336,7 @@ lua <<EOF
       smart_rename = {
         enable = true,
         keymaps = {
-          smart_rename = "<leader>r"
+          smart_rename = "<leader><leader>r"
         }
       }
     },
@@ -1100,7 +1100,7 @@ if has('nvim')
   nnoremap <silent> ñk :call CocAction('doHover')<CR>
 
   " LSP symbol renaming
-  nmap <leader><leader>r <Plug>(coc-rename)
+  nmap <leader>r <Plug>(coc-rename)
   " Remap keys for applying codeAction to the current line.
   nmap <leader>a <Plug>(coc-codeaction)
   " Apply AutoFix to problem on the current line.
