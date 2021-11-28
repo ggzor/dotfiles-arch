@@ -6,6 +6,9 @@ google-chrome
 neovim-nightly-bin
 visual-studio-code-insiders-bin
 
+# Development tools
+clojure-lsp-bin
+
 # GUI Customization
 awesome-git
 xcursor-breeze

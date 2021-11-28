@@ -489,6 +489,7 @@ if has('nvim')
         \'@yaegassy/coc-intelephense',
         \'coc-cfn-lint',
         \'coc-clangd',
+        \'coc-clojure',
         \'coc-conjure',
         \'coc-css',
         \'coc-emmet',
