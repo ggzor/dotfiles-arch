@@ -265,6 +265,7 @@ else
 endif
 
 " Custom language plugins
+Plug 'wlangstroth/vim-racket'
 if has('nvim')
   Plug 'Olical/conjure'
 endif
@@ -991,8 +992,6 @@ augroup au_file_adjustments
         \ | set filetype=jsonc
         \ | endif
 
-  " Enable racket for rkt files
-  autocmd BufNewFile,BufRead *.rkt set filetype=racket
   autocmd BufNewFile,BufRead *.nix set filetype=nix
 
   " Enable manually php autoindent
