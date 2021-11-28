@@ -1010,6 +1010,7 @@ augroup END
 
 " General mappings {{{
 let g:mapleader = ' '
+let g:maplocalleader = '-'
 
 " Make Y similar to C and D
 noremap Y y$
