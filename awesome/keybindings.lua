@@ -55,8 +55,6 @@ function generate_globalkeys(tags)
         screen = {
             { ModCtrl,  "j", "Focus next",     bind(awful.screen.focus_relative,  1) },
             { ModCtrl,  "k", "Focus previous", bind(awful.screen.focus_relative, -1) },
-
-            { ModCtrl,  "p", "Split screen",   require('scripts.split_screen') },
         },
         programs = {
             { Mod,      "Return", "Terminal",     spawn("kitty") },
@@ -64,6 +62,7 @@ function generate_globalkeys(tags)
             { Mod,      "d",      "Dotfiles",     open_dotfiles },
             { Mod,      "g",      "Search",       launch_search_engine },
             { Mod,      "ñ",      "Now.md",       open_now_md },
+            { Mod,      "a",      "WM Commands",  spawn("rofi -combi-modi command -show combi -display-combi command") },
             { Mod,      "p",      "Launcher",     spawn("rofi -show combi -display-combi do") },
             { {},       "Print",  "Print screen", spawn("flameshot gui") },
         },
