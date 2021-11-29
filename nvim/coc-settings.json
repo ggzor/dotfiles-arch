@@ -10,6 +10,7 @@
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
   "codeLens.enable": false,
+  "coc.preferences.promptInput": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "c",
     "clojure",
