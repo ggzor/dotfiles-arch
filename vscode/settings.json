@@ -490,4 +490,5 @@
       ]
     }
   ],
+  "mssql.connections": [],
 }
