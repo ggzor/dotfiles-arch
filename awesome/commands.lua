@@ -1,4 +1,13 @@
+local awful = require('awful')
 local naughty = require('naughty')
+
+local run = require('awful').spawn.easy_async_with_shell
+
+local function check_status(cont)
+    run('echo $(( $RANDOM % 2 ))', function (stdout)
+        cont(stdout == '1\n')
+    end)
+end
 
 local mod = {}
 
@@ -8,9 +17,9 @@ function mod.split_screen_half()
     end
 
     return {
-        title = 'Split screen into halves',
+        title = 'split screen into halves',
         apply = apply,
-        enabled = true
+        enabled = check_status
     }
 end
 
@@ -20,33 +29,72 @@ function mod.split_screen_third()
     end
 
     return {
-        title = 'Split screen into thirds',
+        title = 'split screen into thirds',
         apply = apply,
-        enabled = true
+        enabled = check_status
     }
 end
 
-function mod.get_list()
-    local result = '\n'
+local function get_options()
+    local result = {}
 
-    for command_func, get_command_info in pairs(mod) do
-        if command_func ~= 'get_list' and command_func ~= 'run_command' then
-            local command = get_command_info()
-
-            if command.enabled then
-                result = result..tostring(command_func)
-                result = result..':'
-                result = result..tostring(command.title)
-                result = result..'\n'
-            end
+    for key, value in pairs(mod) do
+        if key ~= 'show_options' then
+            result[key] = value()
         end
     end
 
     return result
 end
 
-function mod.run_command(command_func_name)
-    mod[command_func_name]().apply()
+local function evaluate_enabled(t, final_result, continuation)
+    local key = next(t)
+    if key == nil then
+        continuation(final_result)
+    else
+        local value = t[key]
+        t[key] = nil
+        value.enabled(function (result)
+            final_result[key] = result
+            evaluate_enabled(t, final_result, continuation)
+        end)
+    end
+end
+
+function mod.show_options()
+    evaluate_enabled(get_options(), {}, function (result)
+        local options = get_options()
+
+        local available_commands = 'do nothing\n'
+
+        local first = true
+
+        for key, enabled in pairs(result) do
+            if enabled then
+                if first then
+                    first = false
+                else
+                    available_commands = available_commands..'\n'
+                end
+
+                available_commands = available_commands..options[key].title
+            end
+        end
+
+        run("rofi -dmenu -p 'command' <<< '"..available_commands.."'",
+            function (stdout, _, _, code)
+                if code == 0 then
+                    local target = stdout:match('^%s*(.*%S)')
+                    for _, command in pairs(get_options()) do
+                        if command.title:match('^%s*(.*%S)') == target then
+                            command.apply()
+                        end
+                    end
+                end
+            end
+        )
+    end)
 end
 
 return mod
+

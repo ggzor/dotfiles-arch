@@ -62,7 +62,7 @@ function generate_globalkeys(tags)
             { Mod,      "d",      "Dotfiles",     open_dotfiles },
             { Mod,      "g",      "Search",       launch_search_engine },
             { Mod,      "ñ",      "Now.md",       open_now_md },
-            { Mod,      "a",      "WM Commands",  spawn("rofi -combi-modi command -show combi -display-combi command") },
+            { Mod,      "c",      "WM Commands",  require('commands').show_options },
             { Mod,      "p",      "Launcher",     spawn("rofi -show combi -display-combi do") },
             { {},       "Print",  "Print screen", spawn("flameshot gui") },
         },
