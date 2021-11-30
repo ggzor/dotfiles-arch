@@ -61,7 +61,7 @@ awful.screen.connect_for_each_screen(function(s)
         wibox.widget {},
         -- Right
         {
-            require('widgets.minimized') { },
+            require('widgets.minimized') { screen = s },
             separator(2),
             require('widgets.network') {
                 server = 'google.com'
