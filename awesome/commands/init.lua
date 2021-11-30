@@ -7,27 +7,25 @@ local op = require('utils.operator')
 local tab = require('utils.tabletools')
 
 local mod = {}
+local options_spec = {}
 
 -- Load plugins
 for _, dir in pairs(fs.list_dir(fs.resolve_relative('commands'))) do
     if dir ~= 'init.lua' then
         module = dir:match('[^%.]+')
-        tab.assign(mod, require('commands.'..module))
+        tab.assign(options_spec, require('commands.'..module))
     end
 end
 
-local function get_options()
-    return tab.map(op.call,
-           tab.filter_keys(op.neq('show_options'),
-           mod))
-end
-
 function mod.show_options()
-    local enabled_results = kont.sequence(tab.map(op.index('enabled'), get_options()))
+    local options = tab.map(op.call, options_spec)
+
+    local enabled_results =
+        kont.sequence(
+            tab.map(op.index('enabled'),
+            options))
 
     enabled_results(function (results)
-        local options = get_options()
-
         local enabled_titles =
             table.concat(
                 tab.map(op.index('title'),
@@ -41,7 +39,7 @@ function mod.show_options()
             function (stdout, _, _, code)
                 if code == 0 then
                     local target = stdout:match('^%s*(.*%S)')
-                    for _, command in pairs(get_options()) do
+                    for _, command in pairs(options) do
                         if command.title:match('^%s*(.*%S)') == target then
                             command.apply()
                         end
