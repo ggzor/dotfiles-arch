@@ -26,8 +26,10 @@ end
 -- Cont (a -> b) -> Cont a -> Cont b
 function mod.ap(cont_f, cont_a)
     return function (cont)
-        cont_a(function (a)
-            cont_f(function (f)
+        -- Order matters here! This applicative is
+        -- not commutative when f is effectful.
+        cont_f(function (f)
+            cont_a(function (a)
                 cont(f(a))
             end)
         end)
