@@ -54,4 +54,9 @@ function mod.assign(target, src)
     end
 end
 
+function mod.sort(t)
+    table.sort(t)
+    return t
+end
+
 return mod

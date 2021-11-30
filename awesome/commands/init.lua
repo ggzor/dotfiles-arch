@@ -17,6 +17,10 @@ for _, dir in pairs(fs.list_dir(fs.resolve_relative('commands'))) do
     end
 end
 
+local function format_item(item)
+    return '<span fgcolor="#6c7a89">'..tostring(item.namespace)..'</span> '..item.title
+end
+
 function mod.show_options()
     local options = tab.map(op.call, options_spec)
 
@@ -28,19 +32,21 @@ function mod.show_options()
     enabled_results(function (results)
         local enabled_titles =
             table.concat(
-                tab.map(op.index('title'),
+                tab.sort(
+                tab.map(format_item,
                 tab.map(op.keyof(options),
                 tab.keys(
                 tab.filter(op.id,
-                results)))),
+                results))))),
                 '\n')
 
-        run("rofi -dmenu -p 'command' <<< '"..enabled_titles.."'",
+        run("rofi -dmenu -p 'command' -markup-rows <<< '"..enabled_titles.."'",
             function (stdout, _, _, code)
                 if code == 0 then
                     local target = stdout:match('^%s*(.*%S)')
                     for _, command in pairs(options) do
-                        if command.title:match('^%s*(.*%S)') == target then
+                        if target:find(command.namespace, 0, true)
+                        and target:find(command.title, 0, true) then
                             command.apply()
                         end
                     end
