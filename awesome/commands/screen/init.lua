@@ -8,26 +8,26 @@ local split = require('commands.screen.split')
 local mod = {}
 
 function mod.split_screen_half()
-    local function apply()
-        naughty.notify { text = 'Halves' }
-    end
-
     return {
         title = 'split screen into halves',
-        apply = apply,
+        apply = function () split.split_screen(1, 1) end,
         enabled = kont.map(op.negate, split.is_split)
     }
 end
 
 function mod.split_screen_third()
-    local function apply()
-        naughty.notify { text = 'Thirds' }
-    end
-
     return {
         title = 'split screen into thirds',
-        apply = apply,
+        apply = function () split.split_screen(1, 2) end,
         enabled = kont.map(op.negate, split.is_split)
+    }
+end
+
+function mod.unsplit_screen()
+    return {
+        title = 'unsplit screen',
+        apply = split.unsplit_screen,
+        enabled = split.is_split
     }
 end
 
