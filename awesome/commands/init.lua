@@ -1,49 +1,19 @@
 local awful = require('awful')
-local naughty = require('naughty')
 local run = awful.spawn.easy_async_with_shell
 
+local fs = require('utils.fs')
 local kont = require('utils.kont')
 local op = require('utils.operator')
 local tab = require('utils.tabletools')
 
-local split_screen = require('commands.split_screen')
-
 local mod = {}
 
-function mod.toggle_systray()
-    return {
-        title = 'toggle systray',
-        apply = function ()
-            local systray = awful.screen.focused().systray
-            systray.visible = not systray.visible
-        end,
-        enabled = kont.pure(true)
-    }
-end
-
-
-function mod.split_screen_half()
-    local function apply()
-        naughty.notify { text = 'Halves' }
+-- Load plugins
+for _, dir in pairs(fs.list_dir(fs.resolve_relative('commands'))) do
+    if dir ~= 'init.lua' then
+        module = dir:match('[^%.]+')
+        tab.assign(mod, require('commands.'..module))
     end
-
-    return {
-        title = 'split screen into halves',
-        apply = apply,
-        enabled = kont.map(op.negate, split_screen.is_split)
-    }
-end
-
-function mod.split_screen_third()
-    local function apply()
-        naughty.notify { text = 'Thirds' }
-    end
-
-    return {
-        title = 'split screen into thirds',
-        apply = apply,
-        enabled = kont.map(op.negate, split_screen.is_split)
-    }
 end
 
 local function get_options()

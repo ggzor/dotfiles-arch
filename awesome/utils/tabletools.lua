@@ -48,4 +48,10 @@ function mod.keys(t)
     return result
 end
 
+function mod.assign(target, src)
+    for key, value in pairs(src) do
+        target[key] = value
+    end
+end
+
 return mod

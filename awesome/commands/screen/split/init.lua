@@ -3,11 +3,19 @@ local awful = require("awful")
 local left_screen  = 'awm-left'
 local right_screen = 'awm-right'
 
-local sh = require("utils.sh").load_scripts_from_dir('scripts/split_screen')
+local sh = require("utils.sh").load_scripts_from_dir('commands/screen/split')
 
-return function()
-    local run = awful.spawn.easy_async_with_shell
+local run = awful.spawn.easy_async_with_shell
 
+local mod = {}
+
+function mod.is_split(cont)
+    run(sh.check_status({ screen = left_screen }), function (_, _, _, code)
+        cont(code == 0)
+    end)
+end
+
+function mod.toggle_split()
     run(sh.check_status({ screen = left_screen }), function (stdout, _, _, code)
         if code == 0 then
             local w, h = stdout:match('([0-9]+)\n([0-9]+)\n')
@@ -68,3 +76,6 @@ return function()
         end
     end)
 end
+
+return mod
+
