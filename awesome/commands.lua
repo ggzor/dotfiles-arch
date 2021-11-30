@@ -11,6 +11,19 @@ end
 
 local mod = {}
 
+function mod.toggle_systray()
+    return {
+        title = 'toggle systray',
+        apply = function ()
+            local systray = awful.screen.focused().systray
+            systray.visible = not systray.visible
+        end,
+        enabled = function (cont)
+            cont(true)
+        end
+    }
+end
+
 function mod.split_screen_half()
     local function apply()
         naughty.notify { text = 'Halves' }
@@ -65,7 +78,7 @@ function mod.show_options()
     evaluate_enabled(get_options(), {}, function (result)
         local options = get_options()
 
-        local available_commands = 'do nothing\n'
+        local available_commands = ''
 
         local first = true
 

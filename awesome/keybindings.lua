@@ -22,7 +22,6 @@ function generate_globalkeys(tags)
     return {
         awesome = {
             { Mod,      "s", "Show help",            require("awful.hotkeys_popup").show_help },
-            { Mod,      "t", "Toggle systray",       toggle_systray },
             { ModCtrl,  "r", "Reload configuration", awesome.restart },
             { ModShift, "q", "Quit awesomewm",       awesome.quit },
         },
@@ -130,11 +129,6 @@ function generate_clientbuttons()
             { Mod, 3, client_actions.resize },
         }
     )
-end
-
-function toggle_systray()
-    local systray = awful.screen.focused().systray
-    systray.visible = not systray.visible
 end
 
 function spawn_unique(title, command)
