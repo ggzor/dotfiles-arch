@@ -69,4 +69,14 @@ function mod.count(t)
     return result
 end
 
+function mod.has(t, item)
+    for _, value in pairs(t) do
+        if item == value then
+            return true
+        end
+    end
+
+    return false
+end
+
 return mod
