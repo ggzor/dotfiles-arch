@@ -18,7 +18,9 @@ local spawn = function(program)
     end
 end
 
-function generate_globalkeys(tags)
+local util = {}
+
+local function generate_globalkeys(tags)
     return {
         awesome = {
             { Mod,      "s", "Show help",            require("awful.hotkeys_popup").show_help },
@@ -33,8 +35,8 @@ function generate_globalkeys(tags)
             { ModShift, "k", "Swap previous",  bind(awful.client.swap.byidx,  -1) },
 
             { Mod,      "u", "Jump to urgent",         awful.client.urgent.jumpto },
-            { ModShift, "g", "Print debug data",       print_client_debug },
-            { Mod,      "+", "Unminimize next client", unminimize_next },
+            { ModShift, "g", "Print debug data",       util.print_client_debug },
+            { Mod,      "+", "Unminimize next client", util.unminimize_next },
         },
         layout = {
             { ModCtrl,  "l", "Increase columns", bind(awful.tag.incncol,  1, nil, true) },
@@ -58,9 +60,9 @@ function generate_globalkeys(tags)
         programs = {
             { Mod,      "Return", "Terminal",     spawn("kitty") },
             { Mod,      "b",      "Browser",      spawn("firefox") },
-            { Mod,      "d",      "Dotfiles",     open_dotfiles },
-            { Mod,      "g",      "Search",       launch_search_engine },
-            { Mod,      "ñ",      "Now.md",       open_now_md },
+            { Mod,      "d",      "Dotfiles",     util.open_dotfiles },
+            { Mod,      "g",      "Search",       util.launch_search_engine },
+            { Mod,      "ñ",      "Now.md",       util.open_now_md },
             { Mod,      "c",      "WM Commands",  require('commands').show_options },
             { Mod,      "p",      "Launcher",     spawn("rofi -show combi -display-combi do") },
             { {},       "Print",  "Print screen", spawn("flameshot gui") },
@@ -69,14 +71,14 @@ function generate_globalkeys(tags)
             { Mod, ",", "Go to previous", awful.tag.viewprev },
             { Mod, ".", "Go to next",     awful.tag.viewnext },
             table.unpack((function ()
-                result = {}
+                local result = {}
 
                 for i, _ in ipairs(tags) do
                     table.insert(result,
-                        { Mod,      "#"..i + 9, "View only tag "..i,      view_tag(i) }
+                        { Mod,      "#"..i + 9, "View only tag "..i,      util.view_tag(i) }
                     )
                     table.insert(result,
-                        { ModShift, "#"..i + 9, "Move client to tag "..i, move_to_tag(i) }
+                        { ModShift, "#"..i + 9, "Move client to tag "..i, util.move_to_tag(i) }
                     )
                 end
 
@@ -101,8 +103,8 @@ end
 local CMD_FULL = 'CMD_FULL'
 local CMD_MAXIMIZE = 'CMD_MAXIMIZE'
 
-function generate_clientkeys()
-    local client_actions = get_client_actions()
+function util.generate_clientkeys()
+    local client_actions = util.get_client_actions()
 
     return {
         client = {
@@ -116,8 +118,8 @@ function generate_clientkeys()
     }
 end
 
-function generate_clientbuttons()
-    local client_actions = get_client_actions()
+local function generate_clientbuttons()
+    local client_actions = util.get_client_actions()
 
     return gears.table.map(
         function(t)
@@ -131,7 +133,7 @@ function generate_clientbuttons()
     )
 end
 
-function spawn_unique(title, command)
+function util.spawn_unique(title, command)
     for _, c in ipairs(client.get()) do
         if c.name == title then
             c:jump_to()
@@ -142,7 +144,7 @@ function spawn_unique(title, command)
     awful.spawn(command)
 end
 
-function launch_search_engine()
+function util.launch_search_engine()
     for _, c in ipairs(awful.tag.selected():clients()) do
         if c.role == 'browser' then
             c:jump_to()
@@ -153,7 +155,7 @@ function launch_search_engine()
     awful.spawn('xdg-open '..'"'..search_engine..'"')
 end
 
-function open_dotfiles()
+function util.open_dotfiles()
     local command = [[
       echo "\033[1mDirectory contents:\033[0m"
       exa --icons 2> /dev/null || ls
@@ -161,20 +163,20 @@ function open_dotfiles()
       zsh -i
     ]]
 
-    spawn_unique(
+    util.spawn_unique(
         '<dotfiles>',
         "kitty --title '<dotfiles>' --directory \"$HOME/dotfiles\" zsh -c '"..command.."'"
     )
 end
 
-function open_now_md()
-    spawn_unique(
+function util.open_now_md()
+    util.spawn_unique(
         '<now.md>',
         "kitty --title '<now.md>' nvim Now.md"
     )
 end
 
-function print_client_debug()
+function util.print_client_debug()
     local c = client.focus
     if c then
         naughty.notify({
@@ -188,7 +190,7 @@ function print_client_debug()
     end
 end
 
-function view_tag(i)
+function util.view_tag(i)
     return function()
         local screen = awful.screen.focused()
         local tag = screen.tags[i]
@@ -198,7 +200,7 @@ function view_tag(i)
     end
 end
 
-function move_to_tag(i)
+function util.move_to_tag(i)
     return function()
         if client.focus then
             local tag = client.focus.screen.tags[i]
@@ -209,12 +211,12 @@ function move_to_tag(i)
     end
 end
 
-function spec_to_table(keys_spec)
+local function spec_to_table(keys_spec)
     local result = {}
 
     for group, values in pairs(keys_spec) do
         for _, spec in pairs(values) do
-            mods, k, description, action = table.unpack(spec)
+            local mods, k, description, action = table.unpack(spec)
             table.insert(result, awful.key(mods, k, action, {
                 description = description,
                 group = group
@@ -225,7 +227,7 @@ function spec_to_table(keys_spec)
     return result
 end
 
-function unminimize_next()
+function util.unminimize_next()
     local target = nil
     for _, c in ipairs(awful.tag.selected():clients()) do
         if c.minimized then
@@ -249,7 +251,7 @@ function unminimize_next()
     end
 end
 
-function get_client_actions()
+function util.get_client_actions()
     return {
         close = function(c)
             c:kill()
@@ -323,7 +325,7 @@ return function(tags)
     local globalkeys = gears.table.join(
                              table.unpack(spec_to_table(generate_globalkeys(tags))))
     local clientkeys = gears.table.join(
-                             table.unpack(spec_to_table(generate_clientkeys())))
+                             table.unpack(spec_to_table(util.generate_clientkeys())))
     local clientbuttons = gears.table.join(
                              table.unpack(generate_clientbuttons()))
 
