@@ -12,8 +12,8 @@ local options_spec = {}
 -- Load plugins
 for _, dir in pairs(fs.list_dir(fs.resolve_relative('commands'))) do
     if dir ~= 'init.lua' then
-        module = dir:match('[^%.]+')
-        tab.assign(options_spec, require('commands.'..module))
+        local plugin = dir:match('[^%.]+')
+        tab.assign(options_spec, require('commands.'..plugin))
     end
 end
 
