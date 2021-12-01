@@ -7,7 +7,7 @@ local tab = require('utils.tabletools')
 local mod = {}
 
 local function disallow_focus_stealing(_, context)
-    if context == 'ewmh' then
+    if context == 'ewmh' or context == 'rules' then
         return false
     end
 end
@@ -24,13 +24,13 @@ function mod.disallow_focus_stealing()
                 awful.permissions.remove_activate_filter(disallow_focus_stealing)
                 naughty.notify {
                     title = "Focus Stealing: Enabled",
-                    text = "New clients will steal focus"
+                    position = "top_middle"
                 }
             else
                 awful.permissions.add_activate_filter(disallow_focus_stealing)
                 naughty.notify {
                     title = "Focus Stealing: Disabled",
-                    text = "Focus will be kept until you change it manually"
+                    position = "top_middle"
                 }
             end
         end,
