@@ -6,7 +6,6 @@ require('error_handling')
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
-local naughty = require("naughty")
 local wibox = require("wibox")
 
 -- Shell for awful.shell
@@ -159,9 +158,8 @@ client.connect_signal("manage", function (c)
 
         if string.find(c.name, '^<') and string.find(c.name, '>$') then
             c.floating = true
-            area = awful.screen.focused().workarea
-
-            conf = beautiful.floating
+            local area = awful.screen.focused().workarea
+            local conf = beautiful.floating
 
             c.width = math.max(conf.min_width, conf.width_factor * area.width)
             c.height = math.max(conf.min_height, conf.height_factor * area.height)
