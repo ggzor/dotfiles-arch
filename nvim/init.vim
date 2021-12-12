@@ -213,7 +213,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-abolish'
 
 if has('nvim')
-  Plug 'terrortylor/nvim-comment'
+  Plug 'numToStr/Comment.nvim'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 else
   Plug 'tpope/vim-commentary'
@@ -385,9 +385,25 @@ lua <<EOF
     }
   }
 
-  require'nvim_comment'.setup({
-    hook = function()
-      require("ts_context_commentstring.internal").update_commentstring()
+  require'Comment'.setup({
+    pre_hook = function(ctx)
+        if vim.bo.filetype == 'typescriptreact' then
+            local U = require('Comment.utils')
+
+            local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
+
+            local location = nil
+            if ctx.ctype == U.ctype.block then
+                location = require('ts_context_commentstring.utils').get_cursor_location()
+            elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
+                location = require('ts_context_commentstring.utils').get_visual_start_location()
+            end
+
+            return require('ts_context_commentstring.internal').calculate_commentstring({
+                key = type,
+                location = location,
+            })
+        end
     end,
   })
 EOF
