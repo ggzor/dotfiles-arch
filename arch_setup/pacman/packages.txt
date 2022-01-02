@@ -73,7 +73,7 @@ python
 racket
 rustup
 rust-analyzer
-scrpy
+scrcpy
 shellcheck
 swi-prolog
 texlive-bin
