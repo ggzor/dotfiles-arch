@@ -19,6 +19,9 @@ sudo -u "$USER_NAME" rustup install stable nightly
 # Use stable by default
 sudo -u "$USER_NAME" rustup default stable
 
+# Remove previous python venvs
+rm -rf ~/.local/pipx
+
 # Install useful python executables
 sudo -u "$USER_NAME" bash -c '
 	pipx install -f \
@@ -27,5 +30,7 @@ sudo -u "$USER_NAME" bash -c '
 		poetry
 	pipx install -f \
 		black
+	pipx install -f \
+		pprofile
 '
 
