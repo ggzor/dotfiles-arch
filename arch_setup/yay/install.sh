@@ -22,7 +22,7 @@ fi
 YAY_PARAMS=(--editmenu)
 
 if (( $# > 0 )) && [[ $1 == unattended ]]; then
-  YAY_PARAMS=(--nocleanmenu --noeditmenu)
+  YAY_PARAMS=(--nocleanmenu --noeditmenu --noupgrademenu --nouseask --noconfirm)
 fi
 
 # Install packages
