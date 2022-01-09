@@ -22,6 +22,7 @@ link_same_files  "$(pwd)/xdg"          "$HOME/.config"
 
 # Link just one file
 link_same_single "$(pwd)" '.gitconfig' "$HOME"
+link_same_single "$(pwd)" '.haskeline' "$HOME"
 link_same_single "$(pwd)" '.inputrc'   "$HOME"
 link_same_single "$(pwd)" '.p10k.zsh'  "$HOME"
 link_same_single "$(pwd)" '.theme.zsh' "$HOME"
