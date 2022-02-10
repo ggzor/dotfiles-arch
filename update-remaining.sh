@@ -4,9 +4,9 @@ set -euo pipefail
 
 # Frequently overridden
 if ! diff ~/.config/mimeapps.list xdg/mimeapps.list; then
-  rm ~/.config/mimeapps.list
   echo "^^^ Diff from mimeapps.list"
 fi
+rm ~/.config/mimeapps.list
 
 # Re-install links
 ./install.sh
