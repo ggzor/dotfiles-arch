@@ -19,9 +19,6 @@ git pull
 ./arch_setup/pacman/install.sh
 ./arch_setup/yay/install.sh unattended
 
-# Update code separately
-yay -S visual-studio-code-insiders-bin --answerclean All --nodiffmenu --noeditmenu
-
 # Update all the dependent components
 ./update-remaining.sh
 
