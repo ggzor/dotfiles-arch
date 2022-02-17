@@ -223,6 +223,7 @@ path+=( $HOME/.local/bin )
 path+=( /usr/lib/emscripten )
 path+=( $HOME/dotfiles/scripts )
 path+=( $HOME/.elan/bin )
+path+=( $HOME/.cargo/bin )
 
 # }}}
 
