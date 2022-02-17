@@ -21,6 +21,7 @@ link_same_files  "$(pwd)/vscode"       "$HOME/.config/Code - Insiders/User"
 link_same_files  "$(pwd)/xdg"          "$HOME/.config"
 
 # Link just one file
+link_same_single "$(pwd)" '.gdbinit'   "$HOME"
 link_same_single "$(pwd)" '.gitconfig' "$HOME"
 link_same_single "$(pwd)" '.haskeline' "$HOME"
 link_same_single "$(pwd)" '.inputrc'   "$HOME"
