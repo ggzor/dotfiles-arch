@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -s nullglob
+
 READ_DIR="$HOME/Documents/Books"
 LIBRARIES=(
     "$READ_DIR"
@@ -18,7 +20,7 @@ else
     for LIBRARY in "${LIBRARIES[@]}"; do
         if [[ -d "$LIBRARY" ]]; then
             LIB_NAME="$(basename "$LIBRARY")"
-            for FILE in "$LIBRARY"/*.pdf; do
+            for FILE in "$LIBRARY"/*.{pdf,epub,djvu}; do
                 printf "<b>%s/</b>$(basename "$FILE")\x00info\x1f%s\n" "$LIB_NAME" "$FILE"
             done
         fi
