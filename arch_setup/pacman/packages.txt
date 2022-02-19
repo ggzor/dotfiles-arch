@@ -32,14 +32,19 @@ exa           # ls and tree replacement with colors and icons
 fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
 jq            # json manipulator
+htop          # improved top
 httpie        # easier curl
+hyperfine     # benchmarking tool
+imagemagick   # powerful image manipulation
 keychain      # ssh identity management
 moreutils     # extra cli utils (especially vidir)
-neofetch      # cli system info viewer
+neofetch      # system info viewer
+pdftk         # pdf editor
 rlwrap        # readline wrapper for better features for CLI programs
 reflector     # determine fastest mirror
 rsync         # file copying and synchronization tool
 ripgrep       # grep replacement with better interface
+silicon       # code screenshot
 shfmt         # shell scripts formatter
 xclip         # clipboard manager
 youtube-dl    # video downloader
@@ -56,6 +61,7 @@ clojure
 cmake
 docker
 docker-compose
+elixir
 gcc
 gdb
 git
@@ -67,17 +73,21 @@ lldb
 make
 minted
 mesa
+nasm
 nodejs
 npm
+patchelf
 python
 racket
 rustup
 rust-analyzer
 scrcpy
 shellcheck
+strace
 swi-prolog
 texlive-bin
 texlive-core
+texlive-fontsextra
 texlive-latexextra
 texlive-pictures
 tk
@@ -96,6 +106,7 @@ flameshot      # Powerful screen shot utility
 geeqie         # Image visualizer
 gimp           # Open source rastar graphics editor
 glava          # Audio visualizer
+gparted        # Partition editor
 inkscape       # Open source vector graphics editor
 kitty          # Featureful terminal emulator
 lxappearance   # GTK theme configuration
@@ -129,6 +140,7 @@ nmap
 openbsd-netcat
 openssh
 openssh-askpass
+openvpn
 strongswan
 traceroute
 wpa_supplicant
@@ -136,6 +148,7 @@ wpa_supplicant
 ### Other
 gifski  # Required by peek to generate good quality gifs
 ntfs-3g # NTFS mount, read and write support
+sane-airscan # Scanner support
 udisks2 # Mount USB without root permissions
 wmctrl  # Control window manager
 
