@@ -5,5 +5,8 @@ arch_setup/extra/refind-conf/assets
 # so they should be searchable
 !**/.*
 
+# Except .zsh_history_complement
+.zsh_history_complement
+
 # Except .git, of course
 .git

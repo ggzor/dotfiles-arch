@@ -1,0 +1,65 @@
+# These are commands that I use sometimes, but not frequently enough
+# to remember them, and not so frequently to deserve their own script
+# or alias.
+
+# Image magick
+magick identify -format "%wx%h" input.png
+magick -size 10x10 canvas:#011627 png:- | feh -
+magick convert input.png -scale 50% png:- | feh -
+magick convert input.png -crop 780x585+0+0 png:- | feh -
+magick convert input.png -resize 50% output.png
+magick convert input.png -set colorspace Gray -separate -average png:- | feh -
+magick convert input.png -size 1000x1000 canvas:black +swap -gravity center -composite png:- | feh -
+magick convert File.ps -rotate -90 -background white -alpha remove -alpha off png:- | feh -
+magick montage -tile 2x2 -geometry +0+0 -border 10 'images/step-%d.png[0-3]' -resize 300x300 png:- | feh -
+
+# ffmpeg
+ffmpeg -i input.mkv -vf "scale=600:-1,crop=600:ih-1:0:0" output.mp4
+ffmpeg -i input.mkv -an -vf "setpts=PTS/60,tpad=stop_mode=clone:stop_duration=2" output.mp4
+ffmpeg -i input.mp4 -vf format=yuv420p output.mp4
+ffmpeg -i input.mkv -vf 'select=eq(n\,1730)' -vframes 1 frame.png
+ffmpeg -i input.mkv -vf 'select=between(n\,720\,1150),setpts=PTS-STARTPTS' -an output.mp4
+ffmpeg -video_size 1024x768 -framerate 60 -f x11grab -i :0.0+100,200 -f matroska | ffplay -
+ffmpeg -i input.mp4 -c copy -map 0 -segment_time 28 -reset_timestamps 1 -f segment output%d.mp4
+ffmpeg -i input.mkv -vf "fps=8,split[s0][s1]; [s0]palettegen[p]; [s1][p]paletteuse" -loop 0 output.gif
+ffmpeg -y -ss 2 -to 24:16 -i input.mkv -vf "crop=710:1250:1238:45,setpts=PTS-STARTPTS,scale=400:-1" ouput.mp4
+
+# Git
+git stash push -m "name" -- file1 file2
+git log --format=oneline
+git show main:file1
+git submodule update --remote --merge
+
+# System management
+sudo firewall-cmd --list-all
+sudo firewall-cmd --add-port=4000/tcp
+sudo firewall-cmd --permanent --add-port=4000/tcp
+sudo ip link set down dev enp0s31f6
+find -type d -name node_modules -prune -or -name .venv -prune | fzf > to_delete
+cat to_delete | while read -r F; do rm "$F" -rf; done
+
+# Development
+nasm -f elf64 -g main.asm
+ld main.o -o main
+gcc main.o -g -o main
+objdump --disassemble -M intel main
+hexdump -C main
+cat input.txt | pprofile main.py 1 > profile.txt
+patchelf --set-interpreter '/lib64/ld-linux-x86-64.so.2' main
+niv update nixpkgs -b release-21.05
+
+# Others
+aws cloudformation describe-stacks
+pdfjam --paper letter -o output.pdf input.pdf
+pdftk file1.pdf file2.pdf cat output output.pdf
+zip -r destination.zip directory
+zip destination.zip file1 file2 file3
+google-chrome-stable --app=https://localhost:4000
+xdg-mime query pdf
+openvpn --config file.ovpn
+sudo du -h /home/ggzor --max-depth=1 | head -n -1 | sort -hr | head -20
+silicon -f 'JetBrainsMono Nerd Font' --theme ~/.config/bat/themes/NightOwl.tmTheme --no-line-number --no-window-controls input.yaml -o input.png
+scanimage --device "hpaio:/net/Deskjet_3520_series?ip=192.168.8.8" --mode Color --format=png --resolution 200 > output.png
+
+# ADB
+adb shell screencap -p | magick convert 'png:-[1x1+100+100]' txt: | grep -oP '#\w{6}' | xclip
