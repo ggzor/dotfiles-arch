@@ -8,7 +8,6 @@ visual-studio-code-insiders-bin
 
 # Development tools
 clojure-lsp-bin
-ncurses5-compat-libs
 
 # GUI Customization
 awesome-git

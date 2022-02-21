@@ -56,6 +56,7 @@ android-tools
 autoconf
 automake
 bash-language-server
+cargo-edit
 clang
 clojure
 cmake
@@ -70,10 +71,12 @@ graphviz
 go
 haskell-language-server
 lldb
+lua-language-server
 make
 minted
 mesa
 nasm
+ncurses5-compat-libs
 nodejs
 npm
 patchelf

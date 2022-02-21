@@ -15,9 +15,12 @@ sudo systemctl enable --now \
 
 # Install stable and nightly rust toolchain
 sudo -u "$USER_NAME" rustup install stable nightly
-
-# Use stable by default
-sudo -u "$USER_NAME" rustup default stable
+# Use nightly by default
+sudo -u "$USER_NAME" rustup default nightly
+# Install useful packages
+sudo -u "$USER_NAME" cargo install \
+	cargo-edit \
+	ugdb
 
 # Remove previous python venvs
 rm -rf ~/.local/pipx
@@ -32,5 +35,8 @@ sudo -u "$USER_NAME" bash -c '
 		black
 	pipx install -f \
 		pprofile
+	pipx install -f \
+		memory_profiler
+	pipx inject memory_profiler matplotlib
 '
 
