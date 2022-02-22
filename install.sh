@@ -34,6 +34,9 @@ link_same_single "$(pwd)" '.zshrc'     "$HOME"
 link_same_single "$(pwd)" 'picom.conf' "$HOME/.config"
 link_same_single "$(pwd)" 'zathurarc'  "$HOME/.config/zathura"
 
+# GTK 3
+link_same_single "$(pwd)" 'settings.ini' "$HOME/.config/gtk-3.0"
+
 # Use same configuration file for neovim and vim
 link_same "$(pwd)/nvim/init.vim" "$HOME/.vimrc"
 
