@@ -173,6 +173,7 @@ emacs() {
 }
 
 alias nrepl='clj -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" --interactive'
+alias objdump='objdump -M intel'
 
 # }}}
 
