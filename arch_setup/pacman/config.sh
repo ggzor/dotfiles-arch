@@ -18,7 +18,7 @@ sudo -u "$USER_NAME" rustup install stable nightly
 # Use nightly by default
 sudo -u "$USER_NAME" rustup default nightly
 # Install useful packages
-sudo -u "$USER_NAME" cargo install --force \
+sudo -u "$USER_NAME" cargo install \
 	cargo-edit \
 	ugdb
 
