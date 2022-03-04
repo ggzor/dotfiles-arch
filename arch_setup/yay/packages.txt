@@ -3,7 +3,6 @@
 google-chrome
 
 # Code editors
-neovim-nightly-bin
 visual-studio-code-insiders-bin
 
 # Development tools

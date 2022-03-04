@@ -12,6 +12,7 @@ ffmpeg
 gzip
 man
 man-db
+neovim
 sudo
 time
 tmux
