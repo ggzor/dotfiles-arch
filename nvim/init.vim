@@ -1120,8 +1120,21 @@ if has('nvim')
   " GoTo code navigation.
   nmap <silent> gd :call CocGoToDefinition()<CR>
 
-  " Use K to show documentation in preview window.
-  nnoremap <silent> ñk :call CocAction('doHover')<CR>
+
+  function! CocDoHover() abort
+    try
+      echo
+      call CocAction('doHover')
+    catch
+      echohl WarningMsg
+      echon 'Warning: '
+      echohl None
+      echon 'Waiting the LSP to be ready...'
+    endtry
+  endfunction
+
+  " Show hover information
+  nnoremap <silent> ñk :call CocDoHover()<CR>
 
   " LSP symbol renaming
   nmap <leader>r <Plug>(coc-rename)
