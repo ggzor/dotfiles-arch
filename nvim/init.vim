@@ -1008,6 +1008,35 @@ augroup END
 
 " }}}
 
+" Scroll repositioning is really annoying if you are trying to keep your
+" buffers at the top
+" This hack was taken from: https://vim.fandom.com/wiki/Avoid_scrolling_when_switch_buffers
+" The tracking issue for this problem is: https://github.com/vim/vim/issues/7954
+function! Hack_AutoSaveWinView()
+  if !exists("w:SavedBufView")
+    let w:SavedBufView = {}
+  endif
+  let w:SavedBufView[bufnr("%")] = winsaveview()
+endfunction
+
+function! Hack_AutoRestoreWinView()
+  let buf = bufnr("%")
+  if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
+    let v = winsaveview()
+    let atStartOfFile = v.lnum == 1 && v.col == 0
+    if atStartOfFile && !&diff
+      call winrestview(w:SavedBufView[buf])
+    endif
+    unlet w:SavedBufView[buf]
+  endif
+endfunction
+
+augroup au_hack_restore_win_view
+  autocmd!
+  autocmd BufLeave * call Hack_AutoSaveWinView()
+  autocmd BufEnter * call Hack_AutoRestoreWinView()
+augroup END
+
 " FileType options {{{
 
 let g:json_exclude_list = ['coc-settings.json']
