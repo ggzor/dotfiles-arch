@@ -27,7 +27,6 @@
     "python",
     "racket",
     "rust",
-    "rust",
     "sass",
     "scss",
     "typescript",
@@ -41,6 +40,8 @@
   "python.linting.lintOnSave": true,
   "python.formatting.provider": "black",
   "rust-analyzer.server.path": "/bin/rust-analyzer",
+  "rust-analyzer.inlayHints.chainingHints": false,
+  "rust-analyzer.checkOnSave.allTargets": false,
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
     "method": "\uf6a6",
