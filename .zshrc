@@ -220,12 +220,15 @@ zle -N zle-line-finish
 
 # Path {{{
 
+# ghcup should be prepended to PATH
+PATH="$HOME/.ghcup/bin:$PATH"
+export PATH
+
 path+=( $HOME/.local/bin )
 path+=( /usr/lib/emscripten )
 path+=( $HOME/dotfiles/scripts )
 path+=( $HOME/.elan/bin )
 path+=( $HOME/.cargo/bin )
-path+=( $HOME/.ghcup/bin:$PATH )
 
 # }}}
 
