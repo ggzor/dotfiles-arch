@@ -42,6 +42,7 @@
   "rust-analyzer.server.path": "/bin/rust-analyzer",
   "rust-analyzer.inlayHints.chainingHints": false,
   "rust-analyzer.checkOnSave.allTargets": false,
+  "rust-analyzer.checkOnSave.command": "clippy",
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
     "method": "\uf6a6",
