@@ -3,12 +3,14 @@
 shopt -s nullglob
 
 READ_DIR="$HOME/Documents/Books"
-LIBRARIES=(
-    "$READ_DIR"
-    "$READ_DIR/TheDaoOfFP"
-    "$READ_DIR/Papers"
-    "$READ_DIR/INF551"
-)
+
+LIBRARIES=( "$READ_DIR" )
+
+for dir in "$READ_DIR"/*; do
+    if [[ -d "$dir" ]]; then
+        LIBRARIES+=( "$dir" )
+    fi
+done
 
 if [ "$@" ]
 then
