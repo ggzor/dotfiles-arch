@@ -142,7 +142,7 @@ netctl
 nmap
 openbsd-netcat
 openssh
-openssh-askpass
+x11-ssh-askpass
 openvpn
 strongswan
 traceroute
