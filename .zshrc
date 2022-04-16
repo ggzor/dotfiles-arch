@@ -155,7 +155,7 @@ alias gits="git status"
 
 alias idris2="rlwrap idris2"
 
-alias ddd="dragon-drag-and-drop"
+alias ddd="dragon-drop"
 
 # Useful python executables
 alias httpwatcher="pipx run httpwatcher"
