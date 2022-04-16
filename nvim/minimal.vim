@@ -11,7 +11,7 @@ call plug#end()
 
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = "maintained",
+    ensure_installed = "all",
     autotag = {
       enable = true,
     },

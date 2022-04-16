@@ -315,7 +315,7 @@ runtime macros/sandwich/keymap/surround.vim
 if has('nvim')
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = "maintained",
+    ensure_installed = "all",
     autotag = {
       enable = true,
     },
