@@ -1007,8 +1007,6 @@ augroup fzf_handled_exit
   autocmd TermClose * call FZFEndHandledExit()
 augroup END
 
-" }}}
-
 " Scroll repositioning is really annoying if you are trying to keep your
 " buffers at the top
 " This hack was taken from: https://vim.fandom.com/wiki/Avoid_scrolling_when_switch_buffers
@@ -1037,6 +1035,8 @@ augroup au_hack_restore_win_view
   autocmd BufLeave * call Hack_AutoSaveWinView()
   autocmd BufEnter * call Hack_AutoRestoreWinView()
 augroup END
+
+" }}}
 
 " FileType options {{{
 
