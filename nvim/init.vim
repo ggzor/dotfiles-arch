@@ -1082,6 +1082,10 @@ nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 " Command line
 cnoremap <C-a> <C-b>
 
+" Use Ctrl-k and Ctrl-j to navigate completion
+inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
+inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
+
 " Toggle mouse support to resize panes
 nnoremap <silent> <leader>m <cmd>let &mouse = &mouse == "" ? "a" : "" <cr>
 
@@ -1121,10 +1125,6 @@ nnoremap <silent> ñh :Helptags<CR>
 
 " coc.nvim
 if has('nvim')
-  " Select completion option
-  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
   " Complete with <c-space>
   inoremap <silent><expr> <c-space> coc#refresh()
 
