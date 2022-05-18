@@ -1147,8 +1147,14 @@ if has('nvim')
     normal! zvzz
   endfunction
 
+  function! CocGoToImplementation() abort
+    call CocAction('jumpImplementation')
+    normal! zvzz
+  endfunction
+
   " GoTo code navigation.
   nmap <silent> gd :call CocGoToDefinition()<CR>
+  nmap <silent> gy :call CocGoToImplementation()<CR>
 
 
   function! CocDoHover() abort
