@@ -33,15 +33,12 @@
     "typescript",
     "typescriptreact"
   ],
-  "coc.source.emoji.filetypes": [
-    "markdown",
-    "toml"
-  ],
+  "coc.source.emoji.filetypes": ["markdown", "toml"],
   "python.linting.pylintEnabled": true,
   "python.linting.lintOnSave": true,
   "python.formatting.provider": "black",
   "rust-analyzer.server.path": "/bin/rust-analyzer",
-  "rust-analyzer.inlayHints.chainingHints": false,
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.checkOnSave.allTargets": false,
   "rust-analyzer.checkOnSave.command": "clippy",
   "suggest.completionItemKindLabels": {
