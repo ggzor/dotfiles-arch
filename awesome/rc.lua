@@ -60,6 +60,18 @@ awful.screen.connect_for_each_screen(function(s)
         wibox.widget {},
         -- Right
         {
+            require('widgets.battery') {
+                highlight = 35,
+                warning   = 25,
+                alert     = 15,
+                suspend   = 7,
+
+                timeout = 10,
+
+                battery = 'BAT0',
+                ac = 'AC'
+            },
+            separator(2),
             require('widgets.minimized') { screen = s },
             separator(2),
             require('widgets.network') {
