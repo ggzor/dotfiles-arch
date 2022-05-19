@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaults
 [
   // Match vim keybindings
   {
@@ -16,55 +15,83 @@
     "command": "workbench.action.quickOpen",
     "when": "!editorTextFocus && !inputFocus"
   },
-
-  // Match coc.vim list item selection
+  // Lists and suggestions
   {
-    "key": "ctrl+n",
+    "key": "ctrl+j",
     "command": "workbench.action.quickOpenSelectNext",
     "when": "inQuickOpen"
   },
   {
-    "key": "ctrl+p",
+    "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
   {
-    "key": "ctrl+n",
-    "command": "-workbench.action.files.newUntitledFile"
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
-  // Match CHADTree behavior
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  // -> Fixes overlapping command
+  {
+    "key": "ctrl+k ctrl+k",
+    "command": "-editor.action.selectFromAnchorToCursor",
+    "when": "editorTextFocus && selectionAnchorSet"
+  },
+  {
+    "key": "ctrl+k ctrl+k",
+    "command": "-editor.action.defineKeybinding",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'jsonc'"
+  },
+  // **** SIDEBAR ****
+  // File explorer
   {
     "key": "ctrl+n",
     "command": "workbench.view.explorer",
     "when": "!suggestWidgetVisible && !inQuickOpen"
   },
   {
-    "key": "ctrl+n", 
+    "key": "ctrl+n",
     "command": "workbench.action.closeSidebar",
     "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
   },
-
-  // Keybindings to allow to hide sidebar with same command
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  // Extensions view (only close is required)
   {
     "key": "ctrl+shift+x",
     "command": "workbench.action.closeSidebar",
     "when": "activeViewlet == 'workbench.view.extensions' && sideBarVisible"
   },
+  // Search (only close is required)
   {
     "key": "ctrl+shift+f",
     "command": "workbench.action.closeSidebar",
     "when": "activeViewlet == 'workbench.view.search' && sideBarVisible"
+  },
+  // SCM
+  {
+    "key": "ctrl+shift+g",
+    "command": "workbench.view.scm"
   },
   {
     "key": "ctrl+shift+g",
     "command": "workbench.action.closeSidebar",
     "when": "activeViewlet == 'workbench.view.scm' && sideBarVisible"
   },
+  // Debug (only close is required)
   {
     "key": "ctrl+shift+d",
     "command": "workbench.action.closeSidebar",
-    "when": "activeViewlet == 'workbench.view.debug' && sideBarVisible",
+    "when": "activeViewlet == 'workbench.view.debug' && sideBarVisible"
   },
+  // Test
   {
     "key": "ctrl+shift+t",
     "command": "workbench.view.extension.test"
@@ -78,6 +105,7 @@
     "key": "ctrl+shift+t",
     "command": "-workbench.action.reopenClosedEditor"
   },
+  // Liveshare
   {
     "key": "ctrl+shift+l",
     "command": "workbench.view.extension.liveshare"
@@ -87,28 +115,15 @@
     "command": "workbench.action.closeSidebar",
     "when": "activeViewlet == 'workbench.view.extension.liveshare' && sideBarVisible"
   },
+  // Notebooks fixes
   {
-    "key": "ctrl+j",
-    "command": "extension.vim_ctrl+j",
-    "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl && !terminalFocus"
+    "key": "ctrl+enter",
+    "command": "-editor.action.insertLineAfter",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+j",
-    "command": "-extension.vim_ctrl+j",
-    "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "extension.vim_ctrl+k",
-    "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl && !terminalFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "-extension.vim_ctrl+k",
-    "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
-  },
+    "key": "ctrl+enter",
+    "command": "notebook.cell.execute",
+    "when": "notebookCellListFocused || editorTextFocus && inputFocus && notebookEditorFocused"
+  }
 ]

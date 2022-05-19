@@ -1,49 +1,62 @@
 {
   // Experimental configuration
+  "editor.inlineSuggest.enabled": true,
   "editor.wordBasedSuggestions": true,
   "editor.wordBasedSuggestionsMode": "allDocuments",
-  "editor.guides.highlightActiveIndentation": true,
-  "editor.guides.bracketPairs": true,
-  "editor.detectIndentation": true,
   //
   // Edition Settings
+  "editor.detectIndentation": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "editor.wordWrapColumn": 90,
+  "[typescript][javascript][json][jsonc][html][css][javascriptreact][typescriptreact][scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[haskell]": {
+    "editor.formatOnSaveMode": "file"
+  },
   "[sql]": {
     "editor.formatOnSave": false
   },
   "editor.tabSize": 2,
-  "editor.suggestSelection": "first",
-  "editor.wordWrapColumn": 90,
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
   //
   // Debugging settings
-  "debug.inlineValues": true,
+  "debug.inlineValues": "auto",
   //
   // Visual settings
   "workbench.colorTheme": "Night Owl",
   "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
-  //
   "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.highlightActiveIndentation": true,
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.fontLigatures": false,
   "editor.minimap.enabled": false,
   "window.dialogStyle": "custom",
+  "workbench.colorCustomizations": {
+    "[Night Owl]": {
+      "editorInlayHint.background": "#ffffff00",
+      "editorInlayHint.foreground": "#d6deeb85"
+    }
+  },
   //
-  // Better with a tiling window manager
+  // Works better with a tiling window manager
   "window.titleBarStyle": "native",
-  "workbench.activityBar.visible": false,
   //
   // Cleaner vscode
+  "workbench.activityBar.visible": false,
   "workbench.sideBar.location": "right",
   "window.menuBarVisibility": "toggle",
   "workbench.startupEditor": "none",
-  "breadcrumbs.enabled": false,
-  "editor.scrollbar.verticalScrollbarSize": 0,
   "editor.hideCursorInOverviewRuler": true,
-  "[python]": {
-    "editor.tabSize": 4,
-  },
   "git.confirmSync": false,
   "git.autofetch": true,
   //
@@ -59,7 +72,8 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.factorypath": true,
-    "**/*.olean": true
+    "**/*.olean": true,
+    "out": false
   },
   //
   // Terminal
@@ -68,7 +82,7 @@
   "terminal.integrated.profiles.linux": {
     "zsh": {
       "path": "/usr/bin/zsh"
-    },
+    }
   },
   //
   // Extensions
@@ -76,34 +90,21 @@
   // Intellicode
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   //
-  // Haskell
+  // Languages
+  "idris.idris2Mode": true,
+  "idris.idrisPath": "idris2",
   "haskell.formattingProvider": "ormolu",
-  "[haskell]": {
-    // Has to format complete file
-    "editor.formatOnSaveMode": "file"
-  },
-  //
-  // Java
-  "java.refactor.renameFromFileExplorer": "autoApply",
-  //
-  // Python
-  "jupyter.insidersChannel": "weekly",
+  "haskell.manageHLS": "PATH",
   "jupyter.askForKernelRestart": false,
-  "python.showStartPage": false,
   "jupyter.interactiveWindowMode": "perFile",
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "python.insidersChannel": "weekly",
   "python.languageServer": "Pylance",
-  //
-  // Idris
-  "idris.idris2Mode": true,
-  "idris.idrisPath": "idris2",
+  "python.analysis.typeCheckingMode": "basic",
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "typescript.updateImportsOnFileMove.enabled": "always",
   //
   // VIM
   "vim.changeWordIncludesWhitespace": true,
@@ -113,382 +114,89 @@
   "vim.replaceWithRegister": true,
   "vim.surround": true,
   "vim.visualstar": true,
+  "vim.hlsearch": true,
+  "vim.ignorecase": false,
   //
   // Required for remapped esc to work
   "keyboard.dispatch": "keyCode",
   "vim.handleKeys": {
-    "<C-f>": false
+    "<C-f>": false,
+    "<C-k>": false
   },
+  "vim.easymotionMarkerForegroundColorOneChar": "#ff007c",
+  "vim.easymotionMarkerForegroundColorTwoCharFirst": "#00dfff",
+  "vim.easymotionMarkerForegroundColorTwoCharSecond": "#2b8db3",
   //
   // Mappings at the end, too noisy
-  // Don't look after this line, it's really ugly to make
-  // vscode work like vim :(
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Show hover
     {
-      "before": [
-        "ñ",
-        "k"
-      ],
-      "after": [
-        "g",
-        "h"
-      ]
+      "before": ["ñ", "k"],
+      "after": ["g", "h"]
     },
     {
-      "before": [
-        "ñ",
-        "q"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
+      "before": ["ñ", "n"],
+      "commands": [":nohl"]
     },
     {
-      "before": [
-        "ñ",
-        "s"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ]
+      "before": ["ñ", "q"],
+      "commands": ["workbench.action.gotoSymbol"]
     },
     {
-      "before": [
-        "ñ",
-        "ñ"
-      ],
-      "commands": [
-        "workbench.action.showCommands"
-      ]
+      "before": ["ñ", "ñ"],
+      "commands": ["workbench.action.showCommands"]
     },
     {
-      "before": [
-        "<leader>",
-        "r"
-      ],
-      "commands": [
-        "editor.action.rename"
-      ]
+      "before": ["<leader>", "h"],
+      "commands": ["editor.action.marker.prev"]
     },
     {
-      "before": [
-        "ñ",
-        "f"
-      ],
-      "commands": [
-        "workbench.action.quickOpen"
-      ]
+      "before": ["<leader>", "l"],
+      "commands": ["editor.action.marker.next"]
     },
     {
-      "before": [
-        "<C-l>"
-      ],
-      "commands": [
-        "workbench.action.navigateRight"
-      ]
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.rename"]
     },
     {
-      "before": [
-        "<C-h>"
-      ],
-      "commands": [
-        "workbench.action.navigateLeft"
-      ]
+      "before": ["ñ", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": [
-        "<C-k>"
-      ],
-      "commands": [
-        "workbench.action.navigateUp"
-      ]
-    },
-    {
-      "before": [
-        "<C-j>"
-      ],
-      "commands": [
-        "workbench.action.navigateDown"
-      ]
+      "before": ["ñ", "a"],
+      "after": ["<C-^>"]
     },
     // Replace with register (similar to vim subversive)
     {
-      "before": [
-        "s"
-      ],
-      "after": [
-        "\"",
-        "\"",
-        "g",
-        "r"
-      ]
-    },
-    // surround
-    {
-      "before": [
-        "ñ",
-        "i"
-      ],
-      "after": [
-        "y",
-        "s"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "d"
-      ],
-      "after": [
-        "d",
-        "s"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "r"
-      ],
-      "after": [
-        "c",
-        "s"
-      ]
+      "before": ["s"],
+      "after": ["\"", "\"", "g", "r"]
     },
     // easymotion
     {
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "f"
-      ]
+      "before": ["K"],
+      "after": ["<leader>", "<leader>", "k"]
     },
     {
-      "before": [
-        "<leader>",
-        "F"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "F"
-      ]
+      "before": ["J"],
+      "after": ["<leader>", "<leader>", "j"]
+    },
+    // Git
+    {
+      "before": ["g", "h"],
+      "commands": ["workbench.action.editor.previousChange"]
     },
     {
-      "before": [
-        "<leader>",
-        "t"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "t"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "T"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "T"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "b"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "b"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "w"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "w"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "e"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "e"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "g",
-        "e"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "g",
-        "e"
-      ]
-    },
-    {
-      "before": [
-        "K"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "k"
-      ]
-    },
-    {
-      "before": [
-        "J"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "j"
-      ]
+      "before": ["g", "l"],
+      "commands": ["workbench.action.editor.nextChange"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
-    // surround
     {
-      "before": [
-        "ñ",
-        "i"
-      ],
-      "after": [
-        "S"
-      ]
-    },
-    // easymotion but in visual mode
-    {
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "f"
-      ]
+      "before": ["K"],
+      "after": ["<leader>", "<leader>", "k"]
     },
     {
-      "before": [
-        "ñ",
-        "F"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "F"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "t"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "t"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "T"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "T"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "b"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "b"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "w"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "w"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "e"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "e"
-      ]
-    },
-    {
-      "before": [
-        "ñ",
-        "g",
-        "e"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "g",
-        "e"
-      ]
-    },
-    {
-      "before": [
-        "K"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "k"
-      ]
-    },
-    {
-      "before": [
-        "J"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "j"
-      ]
+      "before": ["J"],
+      "after": ["<leader>", "<leader>", "j"]
     }
-  ],
-  "mssql.connections": [],
+  ]
 }
