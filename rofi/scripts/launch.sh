@@ -13,6 +13,7 @@ PROGRAMS=(
   [" scrcpy"]="scrcpy"
   [" deluge"]="deluge-gtk"
   [" screenkey"]="screenkey"
+  [" telegram"]="telegram-desktop"
   [" thunar"]="thunar"
   ["墳 pavucontrol"]="pavucontrol"
   [" obs studio"]="obs"
