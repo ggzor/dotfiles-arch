@@ -100,33 +100,34 @@ virtualbox
 virtualbox-guest-utils
 
 ### Desktop
-arandr         # Display configuration
-arc-gtk-theme  # Arc theme
-blender        # 3d graphics creation suite
-deluge-gtk     # Torrent client
-emacs          # Powerful text editor
-feh            # Simple image viewer
-firefox        # Browser
-flameshot      # Powerful screen shot utility
-geeqie         # Image visualizer
-gimp           # Open source rastar graphics editor
-glava          # Audio visualizer
-gparted        # Partition editor
-inkscape       # Open source vector graphics editor
-kitty          # Featureful terminal emulator
-lxappearance   # GTK theme configuration
-mpv            # Media player
-obs-studio     # Powerful screen recorder
-pavucontrol    # Pulseaudio volume control
-peek           # Simple screen recorder
-picom          # Window compositor
-rofi           # Powerful launcher
-screenkey      # Show keys on screen
-slop           # Utility to select a screen region
-thunar         # Customizable file manager
-xarchiver      # GUI for compression
-xcolor         # Color picker
-zathura        # Customizable document viewer
+arandr           # Display configuration
+arc-gtk-theme    # Arc theme
+blender          # 3d graphics creation suite
+deluge-gtk       # Torrent client
+emacs            # Powerful text editor
+feh              # Simple image viewer
+firefox          # Browser
+flameshot        # Powerful screen shot utility
+geeqie           # Image visualizer
+gimp             # Open source rastar graphics editor
+glava            # Audio visualizer
+gparted          # Partition editor
+inkscape         # Open source vector graphics editor
+kitty            # Featureful terminal emulator
+lxappearance     # GTK theme configuration
+mpv              # Media player
+obs-studio       # Powerful screen recorder
+pavucontrol      # Pulseaudio volume control
+peek             # Simple screen recorder
+picom            # Window compositor
+rofi             # Powerful launcher
+screenkey        # Show keys on screen
+slop             # Utility to select a screen region
+telegram-desktop # Telegram
+thunar           # Customizable file manager
+xarchiver        # GUI for compression
+xcolor           # Color picker
+zathura          # Customizable document viewer
 
 ### Fonts
 ttf-fira-mono
