@@ -321,6 +321,7 @@ lua <<EOF
     },
     highlight = {
       enable = true,
+      disable = { "haskell", "markdown" }
     },
     ident = {
       enable = true,
