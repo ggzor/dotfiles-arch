@@ -31,7 +31,8 @@
     "sass",
     "scss",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "yaml"
   ],
   "coc.source.emoji.filetypes": ["markdown", "toml"],
   "python.linting.pylintEnabled": true,
