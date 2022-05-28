@@ -47,6 +47,10 @@
     "command": "-editor.action.defineKeybinding",
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'jsonc'"
   },
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
   // **** SIDEBAR ****
   // File explorer
   {
