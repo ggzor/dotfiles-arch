@@ -1061,6 +1061,12 @@ augroup au_file_adjustments
   autocmd BufEnter *.md,*.py set indentexpr=
 augroup END
 
+augroup au_terminal_adjustments
+  autocmd!
+
+  autocmd TermOpen * setlocal nonumber
+augroup END
+
 " }}}
 
 " Keymappings and text objects
