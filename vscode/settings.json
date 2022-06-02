@@ -19,6 +19,11 @@
   "[sql]": {
     "editor.formatOnSave": false
   },
+  "[tlaplus]": {
+    "editor.codeActionsOnSave": {
+      "source": true
+    }
+  },
   "editor.tabSize": 2,
   "[python]": {
     "editor.tabSize": 4
