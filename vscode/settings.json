@@ -31,6 +31,9 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
+  "github.copilot.enable": {
+    "*": false
+  },
   //
   // Debugging settings
   "debug.inlineValues": "auto",
