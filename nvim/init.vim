@@ -626,8 +626,8 @@ let g:lightline = {
 " Auxiliar lightline functions {{{
 
 function! LightlineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
+  if exists('*FugitiveHead')
+    let branch = FugitiveHead()
     return branch !=# '' ? ' '.branch : ''
   endif
   return ''
