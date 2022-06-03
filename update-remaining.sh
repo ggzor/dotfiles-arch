@@ -16,6 +16,9 @@ echo "Updating neovim..."
 nvim --headless +silent +PlugInstall +PlugUpdate +qall
 nvim --headless +silent +CocUpdateSync +qall
 
+# Update bat cache
+bat cache --clear && bat cache --build
+
 # Update zinit
 zsh -ic 'zinit update --all'
 
