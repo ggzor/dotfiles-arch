@@ -3,6 +3,7 @@
   "diagnostic.warningSign": "\u1405",
   "diagnostic.infoSign": "\uf05a",
   "diagnostic.hintSign": "\uf425",
+  "notification.disabledProgressSources": ["*"],
   "emmet.includeLanguages": {
     "php": "html",
     "xml": "html"
