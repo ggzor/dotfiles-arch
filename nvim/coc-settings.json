@@ -4,6 +4,7 @@
   "diagnostic.infoSign": "\uf05a",
   "diagnostic.hintSign": "\uf425",
   "notification.disabledProgressSources": ["*"],
+  "notification.maxWidth": 0,
   "emmet.includeLanguages": {
     "php": "html",
     "xml": "html"

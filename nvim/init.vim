@@ -279,7 +279,6 @@ Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'ggzor/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'rhysd/reply.vim'
-Plug 'github/copilot.vim'
 
 " Visual plugins
 Plug 'christoomey/vim-tmux-navigator'
