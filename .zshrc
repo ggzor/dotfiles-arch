@@ -220,8 +220,8 @@ zle -N zle-line-finish
 
 # Path {{{
 
-# ghcup should be prepended to PATH
-PATH="$HOME/.ghcup/bin:$PATH"
+# ghcup must be before /usr/bin
+PATH=${PATH/:\/usr\/bin:/:$HOME/.ghcup/bin:/usr/bin:}
 export PATH
 
 path+=( $HOME/.local/bin )
