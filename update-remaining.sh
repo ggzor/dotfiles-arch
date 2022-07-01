@@ -15,6 +15,7 @@ rm ~/.config/mimeapps.list
 echo "Updating neovim..."
 nvim --headless +silent +PlugInstall +PlugUpdate +qall
 nvim --headless +silent +CocUpdateSync +qall
+nvim --headless +silent +TSUpdateSync +qall
 
 # Update bat cache
 bat cache --clear && bat cache --build
