@@ -53,8 +53,6 @@ xclip         # clipboard manager
 youtube-dl    # video downloader
 
 ### Development
-agda
-agda-stdlib
 android-tools
 autoconf
 automake
@@ -72,7 +70,6 @@ git
 glu
 go
 graphviz
-haskell-language-server
 lldb
 lua-language-server
 make
@@ -88,7 +85,6 @@ racket
 rust-analyzer
 rustup
 scrcpy
-shellcheck
 strace
 swi-prolog
 texlive-bin
