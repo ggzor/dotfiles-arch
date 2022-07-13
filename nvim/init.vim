@@ -226,7 +226,7 @@ Plug 'luochen1990/rainbow'
 
 " Easymotion like behavior
 if has('nvim')
-  Plug 'phaazon/hop.nvim'
+  Plug 'phaazon/hop.nvim', 'v1.3.0'
 else
   Plug 'easymotion/vim-easymotion'
 endif
