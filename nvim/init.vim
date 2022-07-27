@@ -120,6 +120,9 @@ set fillchars+=fold:.,vert:│
 
 " Pre-load {{{
 
+" Check if we are in scrollback mode
+let g:in_scrollback = exists("$SCROLLBACK_VIM")
+
 " Agda
 let g:agda_extraincpaths = ['/usr/share/agda/lib/stdlib']
 
@@ -212,7 +215,7 @@ Plug 'svermeulen/vim-subversive'
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-abolish'
 
-if has('nvim')
+if has('nvim') && !g:in_scrollback
   Plug 'numToStr/Comment.nvim'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 else
@@ -221,7 +224,9 @@ endif
 
 " Extra old syntax
 Plug 'dylon/vim-antlr'
+if !g:in_scrollback
 Plug 'sheerun/vim-polyglot'
+end
 Plug 'luochen1990/rainbow'
 
 " Easymotion like behavior
@@ -244,7 +249,7 @@ if has('nvim')
 endif
 
 " treesitter
-if has('nvim')
+if has('nvim') && !g:in_scrollback
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-treesitter/nvim-treesitter-refactor'
@@ -254,7 +259,7 @@ if has('nvim')
 endif
 
 " NERDTree Like
-if has('nvim')
+if has('nvim') && !g:in_scrollback
   Plug 'ms-jpq/chadtree', {
         \ 'branch': 'chad',
         \ 'do': 'python3 -m chadtree deps --nvim',
@@ -311,7 +316,7 @@ let g:ale_disable_lsp = 1
 runtime macros/sandwich/keymap/surround.vim
 
 " nvim-treesitter
-if has('nvim')
+if has('nvim') && !g:in_scrollback
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",
@@ -378,6 +383,7 @@ let g:conjure#mapping#doc_word = v:false
 let g:highlightedyank_highlight_duration = -1
 
 " nvim-comment
+if has('nvim') && !g:in_scrollback
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
     context_commentstring = {
@@ -408,6 +414,7 @@ lua <<EOF
     end,
   })
 EOF
+end
 
 " rainbow
 let g:rainbow_active = 0
@@ -1237,7 +1244,7 @@ nmap <buffer> <Right> <Plug>(qf_newer)
 nmap <leader>q <Plug>(qf_qf_toggle_stay)
 
 " tree-sitter mappings
-if has('nvim')
+if has('nvim') && !g:in_scrollback
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
     playground = {
