@@ -307,6 +307,8 @@ call plug#end()
 let g:ale_enabled=0
 let g:ale_fixers = {
   \  '*': ['trim_whitespace'],
+  \  'diff': [],
+  \  'markdown': [],
   \}
 let g:ale_fix_on_save = 1
 " LSP capabilities are provided by Coc.vim
