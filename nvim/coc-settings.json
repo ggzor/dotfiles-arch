@@ -3,11 +3,16 @@
   "diagnostic.warningSign": "\u1405",
   "diagnostic.infoSign": "\uf05a",
   "diagnostic.hintSign": "\uf425",
+  "notification.border": false,
   "notification.disabledProgressSources": ["*"],
-  "notification.maxWidth": 0,
+  "notification.winblend": 10,
+  "notification.marginRight": 3,
   "emmet.includeLanguages": {
     "php": "html",
     "xml": "html"
+  },
+  "hover.floatConfig": {
+    "highlight": "CocHoverFloat"
   },
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
@@ -46,8 +51,9 @@
   "rust-analyzer.checkOnSave.command": "clippy",
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
+    "constructor": "\uf196",
     "method": "\uf6a6",
-    "variable": "\uf71b",
+    "variable": "𝑥",
     "constant": "\uf8ff",
     "struct": "\ufb44",
     "class": "\uf0e8",
@@ -64,8 +70,8 @@
     "value": "\uf8a3",
     "event": "\ufacd",
     "folder": "\uf115",
-    "keyword": "\uf893",
-    "snippet": "\uf64d",
+    "keyword": "\uf769",
+    "snippet": "\uf40d",
     "operator": "\uf915",
     "reference": "\uf87a",
     "typeParameter": "\uf278",

@@ -114,6 +114,9 @@ let &t_EI = "\<Esc>[2 q"
 " Vertical split char
 set fillchars+=fold:.,vert:│
 
+" Completion window
+set pumheight=12
+
 " }}}
 
 " Plugins
@@ -212,7 +215,12 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'godlygeek/tabular'
 Plug 'machakann/vim-sandwich'
 Plug 'svermeulen/vim-subversive'
-Plug 'tmsvg/pear-tree'
+
+if has('nvim')
+  Plug 'windwp/nvim-autopairs'
+else
+  Plug 'tmsvg/pear-tree'
+endif
 Plug 'tpope/vim-abolish'
 
 if has('nvim') && !g:in_scrollback
@@ -316,6 +324,11 @@ let g:ale_disable_lsp = 1
 
 " vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
+
+" nvim-autopairs
+lua <<EOF
+require("nvim-autopairs").setup {}
+EOF
 
 " nvim-treesitter
 if has('nvim') && !g:in_scrollback
@@ -1097,10 +1110,6 @@ nnoremap <silent> ñn :<C-u>nohlsearch<CR>
 " Command line
 cnoremap <C-a> <C-b>
 
-" Use Ctrl-k and Ctrl-j to navigate completion
-inoremap <expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
-inoremap <expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
-
 " Toggle mouse support to resize panes
 nnoremap <silent> <leader>m <cmd>let &mouse = &mouse == "" ? "a" : "" <cr>
 
@@ -1196,6 +1205,14 @@ if has('nvim')
 
   " Refresh Coc
   inoremap <silent><expr> <C-space> coc#refresh()
+
+  " Use Ctrl-k and Ctrl-j to navigate completion
+  inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
+  inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-j>"
+
+  " Enter to select current item
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " Scroll float documentation
   nnoremap <silent><nowait><expr> <A-j> coc#float#has_scroll()
