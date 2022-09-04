@@ -251,7 +251,7 @@ Plug 'junegunn/fzf.vim'
 " LSP
 if has('nvim')
   Plug 'neoclide/coc.nvim', {
-        \ 'commit': '344002147beffd48b9de1adedb2502fd6db4a0bb',
+        \ 'branch': 'release',
         \ 'do': 'yarn install && yarn build' }
   Plug 'antoinemadec/coc-fzf', { 'branch': 'master' }
 endif
