@@ -3,10 +3,18 @@
 declare -A ACTIONS
 ACTIONS=(
   [" open clipboard image"]=clipboard_image
+  [" ddd clipboard image"]=ddd_clipboard_image
 )
 
 clipboard_image() {
     xclip -selection clipboard -o -t image/png | feh -
+}
+
+ddd_clipboard_image() {
+    local FILE
+    FILE=$(mktemp)
+    xclip -selection clipboard -o -t image/png > "$FILE"
+    dragon-drop "$FILE"
 }
 
 if [ "$@" ]
