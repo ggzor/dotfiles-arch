@@ -76,7 +76,6 @@ make
 mesa
 minted
 nasm
-ncurses5-compat-libs
 nodejs
 npm
 patchelf
