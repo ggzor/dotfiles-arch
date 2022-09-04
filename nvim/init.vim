@@ -231,7 +231,7 @@ Plug 'luochen1990/rainbow'
 
 " Easymotion like behavior
 if has('nvim')
-  Plug 'phaazon/hop.nvim', 'v1.3.0'
+  Plug 'phaazon/hop.nvim', 'v2.0.2'
 else
   Plug 'easymotion/vim-easymotion'
 endif
@@ -243,7 +243,7 @@ Plug 'junegunn/fzf.vim'
 " LSP
 if has('nvim')
   Plug 'neoclide/coc.nvim', {
-        \ 'branch': 'master',
+        \ 'commit': '344002147beffd48b9de1adedb2502fd6db4a0bb',
         \ 'do': 'yarn install && yarn build' }
   Plug 'antoinemadec/coc-fzf', { 'branch': 'master' }
 endif
