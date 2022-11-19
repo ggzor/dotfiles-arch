@@ -150,6 +150,14 @@
       "commands": ["workbench.action.gotoSymbol"]
     },
     {
+      "before": ["ñ", "s"],
+      "commands": ["workbench.action.showAllSymbols"]
+    },
+    {
+      "before": ["ñ", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
       "before": ["ñ", "ñ"],
       "commands": ["workbench.action.showCommands"]
     },
