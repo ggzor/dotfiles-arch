@@ -27,9 +27,19 @@
     "when": "inQuickOpen"
   },
   {
+    "key": "ctrl+k",
+    "command": "list.focusUp",
+    "when": "listFocus && !inputFocus"
+  },
+  {
     "key": "ctrl+j",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "list.focusDown",
+    "when": "listFocus && !inputFocus"
   },
   {
     "key": "ctrl+k",
@@ -129,5 +139,5 @@
     "key": "ctrl+enter",
     "command": "notebook.cell.execute",
     "when": "notebookCellListFocused || editorTextFocus && inputFocus && notebookEditorFocused"
-  }
+  },
 ]
