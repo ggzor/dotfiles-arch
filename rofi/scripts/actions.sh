@@ -12,7 +12,7 @@ clipboard_image() {
 
 ddd_clipboard_image() {
     local FILE
-    FILE=$(mktemp)
+    FILE="$(mktemp).png"
     xclip -selection clipboard -o -t image/png > "$FILE"
     dragon-drop "$FILE"
 }
