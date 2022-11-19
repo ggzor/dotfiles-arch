@@ -73,10 +73,6 @@ awful.screen.connect_for_each_screen(function(s)
             },
             separator(2),
             require('widgets.minimized') { screen = s },
-            separator(2),
-            require('widgets.network') {
-                server = 'google.com'
-            },
             separator(1),
             wibox.widget.textclock(),
             awful.widget.keyboardlayout(),
