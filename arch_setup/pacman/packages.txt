@@ -10,75 +10,86 @@ playerctl
 bc
 binutils
 dialog
-ffmpeg
 gzip
 man
 man-db
-neovim
+patch
 sudo
 time
 tmux
 tree
-usbutils
 unrar
 unzip
+usbutils
 vim
 zip
+zsh
 
 ### CLI Utils
 acpid         # power events daemon
 bat           # cat replacement with syntax highlighting
 brightnessctl # control brightness from command line
-git-delta     # enhanced git diff viewer
 entr          # powerful file watcher
 exa           # ls and tree replacement with colors and icons
 fd            # find replacement with better user experience
+ffmpeg        # video editing
 fzf           # powerful and really useful fuzzy selector
-jq            # json manipulator
+git-delta     # enhanced git diff viewer
 htop          # improved top
 httpie        # easier curl
 hyperfine     # benchmarking tool
 imagemagick   # powerful image manipulation
+jq            # json manipulator
 keychain      # ssh identity management
 moreutils     # extra cli utils (especially vidir)
 neofetch      # system info viewer
 pdftk         # pdf editor
-rlwrap        # readline wrapper for better features for CLI programs
 reflector     # determine fastest mirror
-rsync         # file copying and synchronization tool
 ripgrep       # grep replacement with better interface
-silicon       # code screenshot
+rlwrap        # readline wrapper for better features for CLI programs
+rsync         # file copying and synchronization tool
+shellcheck    # shell scripts linter
 shfmt         # shell scripts formatter
+silicon       # code screenshot
 xclip         # clipboard manager
 youtube-dl    # video downloader
 
 ### Development
+acorn
 android-tools
 autoconf
 automake
 bash-language-server
 cargo-edit
+chromedriver
 clang
+cloc
 clojure
 cmake
 docker
 docker-compose
 elixir
+enca
 gcc
 gdb
 git
+github-cli
 glu
 go
 graphviz
+hexyl
 lldb
 lua-language-server
 make
 mesa
 minted
 nasm
+neovim
 nodejs
 npm
+openshot
 patchelf
+perf
 python
 racket
 rust-analyzer
@@ -119,7 +130,6 @@ picom            # Window compositor
 rofi             # Powerful launcher
 screenkey        # Show keys on screen
 slop             # Utility to select a screen region
-telegram-desktop # Telegram
 thunar           # Customizable file manager
 xarchiver        # GUI for compression
 xcolor           # Color picker
@@ -134,25 +144,32 @@ noto-fonts-emoji
 
 ### Network
 dhcpcd
+ethtool
+firewalld
 inetutils
 iwd
-firewalld
 netctl
+nload
 nmap
 openbsd-netcat
 openssh
-x11-ssh-askpass
 openvpn
 strongswan
 traceroute
 wpa_supplicant
+x11-ssh-askpass
 
 ### Other
+cups # Printer
+cups-pdf # PDF support for printer
 gifski  # Required by peek to generate good quality gifs
 ntfs-3g # NTFS mount, read and write support
 sane-airscan # Scanner support
+smartmontools # Storage systems monitoring
 udisks2 # Mount USB without root permissions
 wmctrl  # Control window manager
+zsa-wally # ZSA keyboards flashing
+zsa-wally-cli # CLI for wally
 
 # Extra filesystem support
 gvfs
@@ -161,6 +178,7 @@ gvfs-smb
 gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
+sshfs
 
 # Thunar plugins
 ffmpegthumbnailer

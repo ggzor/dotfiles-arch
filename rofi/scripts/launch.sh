@@ -22,6 +22,7 @@ PROGRAMS=(
   [" vscode"]="code"
   [" vscode insiders"]="code-insiders"
   [" pick color"]="xcolor -P 80 -S 4 -s"
+  [" wally"]="wally"
 )
 
 if [ "$@" ]

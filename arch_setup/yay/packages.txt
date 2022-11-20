@@ -1,34 +1,23 @@
-# Browser
-# Useful for testing stuff
+# Hard requirements
+awesome-git # Prefer the git version, it's updated frequently
+dragon-drop
+fnm-bin
 google-chrome
-
-# Code editors
+nerd-fonts-jetbrains-mono
 visual-studio-code-insiders-bin
 
-# Development tools
-clojure-lsp-bin
-shellcheck-bin
+# Fixes and plugins
 ncurses5-compat-libs
-
-# GUI Customization
-awesome-git
+qt5-styleplugins
 xcursor-breeze
 
-# Fonts
-nerd-fonts-jetbrains-mono
+# Nice to have
+clojure-lsp-bin
+pup-bin
+glslviewer-git
 
-# Utilities
-fnm-bin
-dragon-drop
-
-# Fixes some resizing issues with upstream zsh
-zsh-fix-winchanged-git
-
-# Qt5 extras
-qt5-styleplugins
-
-# Moonlander
-zsa-wally-cli-bin
-
-# obs-plugins
-obs-websocket # websockets support for obs
+# Deprecate later
+# websockets support for obs
+# TODO: Remove once obs-studio package includes websocket support
+# https://bugs.archlinux.org/task/76069?project=5&string=obs-studio
+obs-websocket-bin

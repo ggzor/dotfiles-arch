@@ -9,6 +9,8 @@ sudo usermod -aG docker "$USER_NAME"
 # Systemd commands
 sudo systemctl enable --now \
 	acpid.service \
+	avahi-daemon.service \
+	cups.service \
 	docker.service \
 	firewalld.service \
 	sshd.service
@@ -19,7 +21,6 @@ sudo -u "$USER_NAME" rustup install stable nightly
 sudo -u "$USER_NAME" rustup default nightly
 # Install useful packages
 sudo -u "$USER_NAME" cargo install \
-	cargo-edit \
 	ugdb
 
 # Remove previous python venvs
