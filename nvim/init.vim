@@ -34,6 +34,9 @@ au FocusGained,BufEnter * if !len(getcmdwintype()) | :checktime | endif
 " Show parenthesis match
 set showmatch
 
+" Disable mouse by default
+set mouse=
+
 " File write behavior
 set updatetime=100
 set backupcopy=yes
