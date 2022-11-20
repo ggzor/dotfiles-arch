@@ -353,7 +353,7 @@ lua <<EOF
     },
     rainbow = {
       enable = true,
-      extend_mode = true,
+      extended_mode = true,
     },
     refactor = {
       highlight_definitions = { enable = true },
