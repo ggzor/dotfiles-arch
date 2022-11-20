@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-EXCLUDE_DIRS='
-.git go virtualenvs node_modules __pycache__ cache jsm build debug release
-dist dist-newstyle mod pkg __MACOSX nltk_data wekafiles libchart fpdf16'
+EXCLUDE_DIRS="\
+.git go/pkg virtualenvs node_modules __pycache__ cache jsm build debug release
+dist dist-newstyle __MACOSX nltk_data wekafiles libchart fpdf16 _build
+Documents/Pri*/* MAlonzo"
 
 EXCLUDE_STRING=$(echo -n "$EXCLUDE_DIRS" | tr ' ' '\n' | \
-                   sed 's/^/--exclude /' | paste -sd' ')
+                          sed 's/^/--exclude /' | paste -sd' ')
 
 # fzf
-export FZF_DEFAULT_COMMAND="fd --type f $EXCLUDE_STRING --follow"
 FZF_BINDINGS='
 # Global
 esc:abort
@@ -69,6 +69,7 @@ marker:$col_red
 header:$col_fg50
 gutter:-1
 spinner:$col_blue
+separator:$col_bg
 "
 FZF_COLORS_STRING="$( echo -n "$FZF_COLORS" | grep -e '^[^#]' | paste -sd',' )"
 
@@ -79,6 +80,7 @@ export FZF_DEFAULT_OPTS="
   --preview-window='down:70%:wrap'
   --bind='$FZF_BINDINGS_STRING'
   --color='$FZF_COLORS_STRING'
+  --border=none
 "
 
 # fzf-tab
@@ -133,7 +135,7 @@ EOF
 )
 
   OUT=("$(
-      fzf --query="$1" --preview="$PREVIEW_COMMAND" \
+      fd --type f . $=EXCLUDE_STRING | fzf --query="$1" --preview="$PREVIEW_COMMAND" \
         --preview-window="$(
               fzf_preview_params \
                 "$FZF_DEFAULT_PREV_WIDTH" \
@@ -161,9 +163,7 @@ EOF
 # go to folder
 zd() {
   PREVIEW_COMMAND='exa --color always --tree --level=2 --icons --git-ignore {}'
-  cd "$(\
-    FZF_DEFAULT_COMMAND="fd --type d $EXCLUDE_STRING" \
-    fzf --no-multi \
+  cd "$(fd --type d . $=EXCLUDE_STRING | fzf --no-multi \
         --exit-0 \
         --preview="$PREVIEW_COMMAND" \
         --preview-window="$(fzf_preview_params 50)" \
