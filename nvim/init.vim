@@ -1151,7 +1151,7 @@ if has('nvim')
   " Replicate vscode code action behavior
   " Unfortunately, Ctrl-. cannot be mapped, so a custom char sequence is
   " used, and then this sequence is mapped with the terminal emulator
-  nmap <silent> ñp v<Plug>(coc-codeaction-selected)<Esc>
+  nmap <silent> ñp <Plug>(coc-codeaction-cursor)
   vmap <silent> ñp <Plug>(coc-codeaction-selected)
 
   " Navigate through normal diagnostics
