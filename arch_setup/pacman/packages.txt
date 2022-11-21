@@ -61,7 +61,6 @@ autoconf
 automake
 bash-language-server
 cargo-edit
-chromedriver
 clang
 cloc
 clojure

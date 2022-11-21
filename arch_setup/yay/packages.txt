@@ -12,6 +12,7 @@ qt5-styleplugins
 xcursor-breeze
 
 # Nice to have
+chromedriver
 clojure-lsp-bin
 pup-bin
 glslviewer-git
