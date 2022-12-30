@@ -215,7 +215,7 @@ zd() {
 alias ñG='ñg --fuzzy'
 
 # forgit
-FORGIT_ADD_FZF_OPTS=$(cat <<EOF
+export FORGIT_ADD_FZF_OPTS=$(cat <<EOF
 --bind='ctrl-f:execute(printf "%s\n" {+} \
                       | grep -v "D\]" \
                       | grep -oP "\] +\K.*" \
