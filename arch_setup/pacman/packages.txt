@@ -39,11 +39,13 @@ htop          # improved top
 httpie        # easier curl
 hyperfine     # benchmarking tool
 imagemagick   # powerful image manipulation
+inotify-tools # simple interface to inotify
 jq            # json manipulator
 keychain      # ssh identity management
 moreutils     # extra cli utils (especially vidir)
 neofetch      # system info viewer
 pdftk         # pdf editor
+pv            # pipe viewer
 reflector     # determine fastest mirror
 ripgrep       # grep replacement with better interface
 rlwrap        # readline wrapper for better features for CLI programs
@@ -74,10 +76,12 @@ gdb
 git
 github-cli
 glu
+man-pages
 go
 graphviz
 hexyl
 lldb
+ltrace
 lua-language-server
 make
 mesa
@@ -146,6 +150,7 @@ dhcpcd
 ethtool
 firewalld
 inetutils
+iptables-nft
 iwd
 netctl
 nload
